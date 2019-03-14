@@ -15,13 +15,13 @@
 <meta property="og:site_name" content="chessur">
 <meta property="og:description" content="1.安装环境1.安装Node.js：在Node.js官网下载最新版本 2.安装Git for Windows：在git官网下载，选择Windows 3.安装cmder：在cmder官网下载，Git Bash并不好用，所以选择使用cmder 4.配置环境变量：需要配置环境变量的有cmder、Git、Node.js。找到安装地址复制路径，右击我的电脑-属性-点击左边高级系统设置-点击环境变量-在下方系">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://chirec.github.io/01.Path.png">
-<meta property="og:image" content="https://chirec.github.io/02.Creat%20a%20new%20repository.png">
-<meta property="og:updated_time" content="2019-03-14T14:01:45.242Z">
+<meta property="og:image" content="https://chirec.github.io/2019/03/14/Hexo+GitHub搭建Blog过程/Hexo+GitHub搭建Blog过程/01.Path.png">
+<meta property="og:image" content="https://chirec.github.io/2019/03/14/Hexo+GitHub搭建Blog过程/Hexo+GitHub搭建Blog过程/02.Creat%20a%20new%20repository.png">
+<meta property="og:updated_time" content="2019-03-14T14:03:21.247Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;Hexo+GitHub搭建Blog过程&#39;">
 <meta name="twitter:description" content="1.安装环境1.安装Node.js：在Node.js官网下载最新版本 2.安装Git for Windows：在git官网下载，选择Windows 3.安装cmder：在cmder官网下载，Git Bash并不好用，所以选择使用cmder 4.配置环境变量：需要配置环境变量的有cmder、Git、Node.js。找到安装地址复制路径，右击我的电脑-属性-点击左边高级系统设置-点击环境变量-在下方系">
-<meta name="twitter:image" content="https://chirec.github.io/01.Path.png">
+<meta name="twitter:image" content="https://chirec.github.io/2019/03/14/Hexo+GitHub搭建Blog过程/Hexo+GitHub搭建Blog过程/01.Path.png">
   
     <link rel="alternative" href="/atom.xml" title="chessur" type="application/atom+xml">
   
@@ -176,10 +176,10 @@
         <h1 id="1-安装环境"><a href="#1-安装环境" class="headerlink" title="1.安装环境"></a>1.安装环境</h1><p>1.安装Node.js：在<a href="https://nodejs.org/en/" target="_blank" rel="noopener">Node.js官网</a>下载最新版本</p>
 <p>2.安装Git for Windows：在<a href="https://www.git-scm.com/download/" target="_blank" rel="noopener">git官网</a>下载，选择Windows</p>
 <p>3.安装cmder：在<a href="https://cmder.net/" target="_blank" rel="noopener">cmder官网</a>下载，Git Bash并不好用，所以选择使用cmder</p>
-<p>4.配置环境变量：需要配置环境变量的有cmder、Git、Node.js。找到安装地址复制路径，右击我的电脑-属性-点击左边高级系统设置-点击环境变量-在下方系统变量中找到Path点击编辑，然后新建-添加环境变量，三个环境变量都添加之后点击确定。<br>这里提供添加完环境变量的图片<br><img src="/01.Path.png" alt></p>
+<p>4.配置环境变量：需要配置环境变量的有cmder、Git、Node.js。找到安装地址复制路径，右击我的电脑-属性-点击左边高级系统设置-点击环境变量-在下方系统变量中找到Path点击编辑，然后新建-添加环境变量，三个环境变量都添加之后点击确定。<br>这里提供添加完环境变量的图片<br><img src="Hexo+GitHub搭建Blog过程/01.Path.png" alt></p>
 <h1 id="2-创建GitHub博客"><a href="#2-创建GitHub博客" class="headerlink" title="2.创建GitHub博客"></a>2.创建GitHub博客</h1><p>新建一个名为 <strong>用户名</strong>.github.io的仓库。例如，我的GitHub用户名是ChireC，那么我创建的仓库名就是ChireC.github.io，将来的Blog地址就是<a href="https://chirec.github.io/。">https://chirec.github.io/。</a></p>
 <p>注意，Username和name并不一样。</p>
-<p><img src="/02.Creat a new repository.png" alt></p>
+<p><img src="Hexo+GitHub搭建Blog过程/02.Creat a new repository.png" alt></p>
 <h1 id="3-配置SSH-key"><a href="#3-配置SSH-key" class="headerlink" title="3.配置SSH key"></a>3.配置SSH key</h1><p>运行之前安装好的cmder，输入以下命令创建SSH密钥</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C 邮件地址</span><br></pre></td></tr></table></figure>
 <p>执行命令后，点击三次Enter，会生成一个名为.ssh的文件夹在用户目录下，使用记事本打开文件夹中的id_rsa.pub文件，将文件内容复制，打开GitHub主页，点击右上方头像，再点击下拉菜单中的Setting，点击左侧菜单中的SSH and GPG keys，点击右边的绿色New SSH key按钮添加新的SSH kye 在Key中粘贴刚刚复制的内容，点击下方绿色Add SSH key按钮，即可完成配置SSH key。</p>
