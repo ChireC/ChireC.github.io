@@ -17,7 +17,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://chirec.github.io/2019/03/14/How-to-Creat-a-Blog-with-Hexo&GitHub/01.Path.png">
 <meta property="og:image" content="https://chirec.github.io/2019/03/14/How-to-Creat-a-Blog-with-Hexo&GitHub/02.Repository.png">
-<meta property="og:updated_time" content="2019-03-15T01:26:15.834Z">
+<meta property="og:updated_time" content="2019-03-15T01:35:35.738Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;Hexo+GitHub搭建Blog过程&#39;">
 <meta name="twitter:description" content="1.安装环境1.安装Node.js：在Node.js官网下载最新版本 2.安装Git for Windows：在git官网下载，选择Windows 3.安装cmder：在cmder官网下载，Git Bash并不好用，所以选择使用cmder 4.配置环境变量：需要配置环境变量的有cmder、Git、Node.js。找到安装地址复制路径，右击我的电脑-属性-点击左边高级系统设置-点击环境变量-在下方系">
@@ -205,6 +205,14 @@
 <h1 id="6-写博客"><a href="#6-写博客" class="headerlink" title="6.写博客"></a>6.写博客</h1><p>打开cmder，跳转到Blog的根目录，执行命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &apos;name&apos;</span><br></pre></td></tr></table></figure>
 <p>执行成功后，会显示生成的md文件的位置，打开这个文件即可开始编写Blog，我使用的是Typora进行编写。</p>
+<h1 id="7-在Hexo中插入图片"><a href="#7-在Hexo中插入图片" class="headerlink" title="7.在Hexo中插入图片"></a>7.在Hexo中插入图片</h1><p>首先，在_config.yml中，将post_asset_folder改为true，这样设置之后，当我们执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &apos;New Page&apos;</span><br></pre></td></tr></table></figure>
+<p>后，会创建一个和文章名相同的文件夹，将要插入的图片放进这个文件夹中，图片名称不要太长，太长似乎不会正确显示。</p>
+<p>然后安装hexo插件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+<p>做完这两步之后，我们在文章要插入图片的地方写入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img 图片名 图片解释 %&#125;</span><br></pre></td></tr></table></figure>
+<p>即可插入图片</p>
 
       
 
