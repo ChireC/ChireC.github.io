@@ -112,7 +112,7 @@
 <meta property="og:image" content="https://chirec.github.io/2019/03/24/Create-Message-Board-with-PHP/05.Create-Table.png">
 <meta property="og:image" content="https://chirec.github.io/2019/03/24/Create-Message-Board-with-PHP/06.DB-Table-Config.png">
 <meta property="og:image" content="https://chirec.github.io/2019/03/24/Create-Message-Board-with-PHP/07.DB-Table.png">
-<meta property="og:updated_time" content="2019-03-24T12:45:53.222Z">
+<meta property="og:updated_time" content="2019-03-24T12:48:21.753Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;使用PHP编写留言板&#39;">
 <meta name="twitter:description" content="PHP留言板结构 1.新建Message类123456789101112131415161718class Message&amp;#123;	public $name;	public $time;	public $content;	function __construct($n,$t,$c)&amp;#123;		$this-&amp;gt;name=$n;		$this-&amp;gt;time=$t;		$this-&amp;gt">
@@ -445,7 +445,7 @@
 <h2 id="4-7INSERT-INTO-SELECT"><a href="#4-7INSERT-INTO-SELECT" class="headerlink" title="4.7INSERT INTO SELECT"></a>4.7INSERT INTO SELECT</h2><p>INSERT INTO SELECT 语句从一个表复制数据，然后把数据插入到一个已存在的表中。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO table2</span><br><span class="line">SELECT * FROM table1;</span><br><span class="line"></span><br><span class="line">INSERT INTO table2</span><br><span class="line">(column_name(s))</span><br><span class="line">SELECT column_name(s)</span><br><span class="line">FROM table1;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO `all_messages`(`name`,`time`,`content`) VALUE(&apos;&quot;.$u.&quot;&apos;,&apos;&quot;.$t.&quot;&apos;,&apos;&quot;.$c.&quot;&apos;)</span><br></pre></td></tr></table></figure>
-<h1 id="5-缺陷"><a href="#5-缺陷" class="headerlink" title="5.缺陷"></a>5.缺陷</h1><p>1.没有删除功能。<br>2.刷新页面时表单会重复提交。</p>
+<h1 id="5-缺陷"><a href="#5-缺陷" class="headerlink" title="5.缺陷"></a>5.缺陷</h1><p>1.没有删除功能。<br>2.刷新页面时表单会重复提交。<br>3.时间显示时区不正确。</p>
 <h1 id="6-参考"><a href="#6-参考" class="headerlink" title="6.参考"></a>6.参考</h1><p>[1] <a href="https://www.bilibili.com/video/av4770115" target="_blank" rel="noopener">php留言板製作</a></p>
 <p>[2] <a href="http://www.w3school.com.cn/php/index.asp" target="_blank" rel="noopener">PHP 教程</a></p>
 <p>[3] <a href="http://www.runoob.com/sql/sql-tutorial.html" target="_blank" rel="noopener">SQL 教程</a></p>
