@@ -107,7 +107,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://chirec.github.io/2019/03/14/How-to-Creat-a-Blog-with-Hexo&GitHub/01.Path.png">
 <meta property="og:image" content="https://chirec.github.io/2019/03/14/How-to-Creat-a-Blog-with-Hexo&GitHub/02.Repository.png">
-<meta property="og:updated_time" content="2019-03-24T07:50:32.197Z">
+<meta property="og:updated_time" content="2019-03-31T11:45:33.445Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;Hexo+GitHub搭建Blog过程&#39;">
 <meta name="twitter:description" content="1.安装环境1.安装Node.js：在Node.js官网下载最新版本 2.安装Git for Windows：在git官网下载，选择Windows 3.安装cmder：在cmder官网下载，Git Bash并不好用，所以选择使用cmder 4.配置环境变量：需要配置环境变量的有cmder、Git、Node.js。找到安装地址复制路径，右击我的电脑-属性-点击左边高级系统设置-点击环境变量-在下方系">
@@ -422,7 +422,12 @@
 <p>做完这两步之后，我们在文章要插入图片的地方写入</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img 图片名 图片解释 %&#125;</span><br></pre></td></tr></table></figure>
 <p>即可插入图片</p>
-<h1 id="8-参考文章"><a href="#8-参考文章" class="headerlink" title="8.参考文章"></a>8.参考文章</h1><p>[1] <a href="https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html" target="_blank" rel="noopener">使用hexo+github搭建免费个人博客详细教程</a></p>
+<h1 id="8-重装系统后再次使用Hexo"><a href="#8-重装系统后再次使用Hexo" class="headerlink" title="8.重装系统后再次使用Hexo"></a>8.重装系统后再次使用Hexo</h1><p>重装系统之后，之前的一些设置会丢失，再次执行一遍命令即可。<br>需要再完成一遍的步骤有安装Node.js、安装Git、配置SSH key、安装Hexo。<br>安装Hexo这一步，若之前博客的文件夹还存在只需要执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">d: //跳转盘符</span><br><span class="line">cd Blog //跳转到存放Blog文件的文件夹</span><br><span class="line">npm install -g hexo //安装hexo</span><br><span class="line">npm install hexo-deployer-git --save //安装上传服务</span><br></pre></td></tr></table></figure>
+<p>若之前的博客不存在了，就要执行hexo初始化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+<p>完成之后，就可以继续写博客了。<br>注：一定要及时备份博客的source文件夹、_config.yml、themes文件夹。source文件夹中是md格式的文章，另外两个则是整个博客的配置文件和主题样式。</p>
+<h1 id="9-参考文章"><a href="#9-参考文章" class="headerlink" title="9.参考文章"></a>9.参考文章</h1><p>[1] <a href="https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html" target="_blank" rel="noopener">使用hexo+github搭建免费个人博客详细教程</a></p>
 <p>[2] <a href="https://www.jianshu.com/p/c2ba9533088a" target="_blank" rel="noopener">hexo博客图片问题</a></p>
 <p>[3] <a href="http://theme-next.iissnan.com/getting-started.html#theme-settings" target="_blank" rel="noopener">开始使用-NexT 使用文档</a></p>
 
@@ -604,7 +609,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-安装环境"><span class="nav-text">1.安装环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-创建GitHub博客"><span class="nav-text">2.创建GitHub博客</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-配置SSH-key"><span class="nav-text">3.配置SSH key</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-安装Hexo"><span class="nav-text">4.安装Hexo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-上传到GitHub"><span class="nav-text">5.上传到GitHub</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-写博客"><span class="nav-text">6.写博客</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-在Hexo中插入图片"><span class="nav-text">7.在Hexo中插入图片</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-参考文章"><span class="nav-text">8.参考文章</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-安装环境"><span class="nav-text">1.安装环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-创建GitHub博客"><span class="nav-text">2.创建GitHub博客</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-配置SSH-key"><span class="nav-text">3.配置SSH key</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-安装Hexo"><span class="nav-text">4.安装Hexo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-上传到GitHub"><span class="nav-text">5.上传到GitHub</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-写博客"><span class="nav-text">6.写博客</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-在Hexo中插入图片"><span class="nav-text">7.在Hexo中插入图片</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-重装系统后再次使用Hexo"><span class="nav-text">8.重装系统后再次使用Hexo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-参考文章"><span class="nav-text">9.参考文章</span></a></li></ol></div>
             
 
           </div>
