@@ -111,9 +111,10 @@
 <meta property="og:image" content="https://chirec.github.io/2019/04/11/Sql-Injection/03.4.1.2.01.tables.png">
 <meta property="og:image" content="https://chirec.github.io/2019/04/11/Sql-Injection/10.2.1.01.signup1.png">
 <meta property="og:image" content="https://chirec.github.io/2019/04/11/Sql-Injection/10.2.1.01.signup2.png">
+<meta property="og:image" content="https://chirec.github.io/2019/04/11/Sql-Injection/10.2.2.01.login.png">
 <meta property="og:image" content="https://chirec.github.io/2019/04/11/Sql-Injection/10.2.3.01.message.png">
 <meta property="og:image" content="https://chirec.github.io/2019/04/11/Sql-Injection/10.2.4.01.result.png">
-<meta property="og:updated_time" content="2019-04-12T01:32:50.415Z">
+<meta property="og:updated_time" content="2019-04-12T02:31:13.434Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;SQL注入总结&#39;">
 <meta name="twitter:description" content="1. SQL注入原理前端有一个参数用户可控服务器对该参数没有过滤或过滤不严谨本质：把用户输入的数据当作代码来执行，违背了“数据与代码分离”的原则 2. SQL注入危害读取数据库的数据修改或删除数据getshell往服务器读写文件">
@@ -544,7 +545,7 @@
 <h2 id="10-1-原理"><a href="#10-1-原理" class="headerlink" title="10.1 原理"></a>10.1 原理</h2><p>在第一次进行数据库插入数据的时候，仅仅只是使用了 addslashes 或者是借助 get_magic_quotes_gpc 对其中的特殊字符进行了转义，在写入数据库的时候还是保留了原来的数据，但是数据本身还是脏数据</p>
 <h2 id="10-2-示例"><a href="#10-2-示例" class="headerlink" title="10.2 示例"></a>10.2 示例</h2><h3 id="10-2-1-注册脏用户"><a href="#10-2-1-注册脏用户" class="headerlink" title="10.2.1 注册脏用户"></a>10.2.1 注册脏用户</h3><img src="/2019/04/11/Sql-Injection/10.2.1.01.signup1.png">
 <img src="/2019/04/11/Sql-Injection/10.2.1.01.signup2.png">
-<h3 id="10-2-2-退出重新登录"><a href="#10-2-2-退出重新登录" class="headerlink" title="10.2.2 退出重新登录"></a>10.2.2 退出重新登录</h3>
+<h3 id="10-2-2-退出重新登录"><a href="#10-2-2-退出重新登录" class="headerlink" title="10.2.2 退出重新登录"></a>10.2.2 退出重新登录</h3><img src="/2019/04/11/Sql-Injection/10.2.2.01.login.png">
 <h3 id="10-2-3-留言"><a href="#10-2-3-留言" class="headerlink" title="10.2.3 留言"></a>10.2.3 留言</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">,(select admin_pass from admin limit 0,1),1);#</span><br></pre></td></tr></table></figure>
 <img src="/2019/04/11/Sql-Injection/10.2.3.01.message.png">
 <h3 id="10-2-4-二次注入结果"><a href="#10-2-4-二次注入结果" class="headerlink" title="10.2.4 二次注入结果"></a>10.2.4 二次注入结果</h3><img src="/2019/04/11/Sql-Injection/10.2.4.01.result.png">
