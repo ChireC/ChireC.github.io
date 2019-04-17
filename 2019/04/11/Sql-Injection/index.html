@@ -124,7 +124,7 @@
 <meta property="og:image" content="https://chirec.github.io/2019/04/11/Sql-Injection/12.4.2.3.03.Result.png">
 <meta property="og:image" content="https://chirec.github.io/2019/04/11/Sql-Injection/12.4.2.4.01.Intruder-payload.png">
 <meta property="og:image" content="https://chirec.github.io/2019/04/11/Sql-Injection/12.4.2.4.02.Result.png">
-<meta property="og:updated_time" content="2019-04-17T12:24:00.155Z">
+<meta property="og:updated_time" content="2019-04-17T12:30:21.590Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;SQL注入总结&#39;">
 <meta name="twitter:description" content="1. SQL注入原理前端有一个参数用户可控服务器对该参数没有过滤或过滤不严谨本质：把用户输入的数据当作代码来执行，违背了“数据与代码分离”的原则 2. SQL注入危害读取数据库的数据修改或删除数据getshell往服务器读写文件">
@@ -680,8 +680,8 @@
 <img src="/2019/04/11/Sql-Injection/12.4.2.4.01.Intruder-payload.png">
 <p>得到的结果</p>
 <img src="/2019/04/11/Sql-Injection/12.4.2.4.02.Result.png">
-<p>重复上述步骤可以暴出账户和密码</p>
-<p>若碰到结尾，可以在正则表达式添加<code>$</code>表示匹配结束</p>
+<p>重复上述步骤可以暴出账户和密码<br>若碰到没有办法出现正确结果，可以在正则表达式添加<code>$</code>验证匹配是否结束，还可以尝试在Intruder-Payloads Options中添加新的字符</p>
+<p>整个过程可以写python脚本进行，我不会写就不说了</p>
 <h1 id="13-Tips"><a href="#13-Tips" class="headerlink" title="13. Tips"></a>13. Tips</h1><h2 id="13-1-判断数字型注入还是字符型注入"><a href="#13-1-判断数字型注入还是字符型注入" class="headerlink" title="13.1 判断数字型注入还是字符型注入"></a>13.1 判断数字型注入还是字符型注入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?id=1 and 1=1 #</span><br><span class="line">?id=1&apos; and &apos;1&apos;=&apos;1</span><br></pre></td></tr></table></figure>
 <h2 id="13-2-注释"><a href="#13-2-注释" class="headerlink" title="13.2 注释"></a>13.2 注释</h2><p>在做sqli-labs-master的时候<br>有些关可以直接使用<code>#</code>，有些关要将#进行URL编码写在payload中<br>有些关可以直接使用<code>--</code>，有些关要将空格进行URL编码写在payload中</p>
 <h1 id="14-参考"><a href="#14-参考" class="headerlink" title="14. 参考"></a>14. 参考</h1><p>[1] <a href="http://p0desta.com/2018/01/28/Sqli_labs%E9%80%9A%E5%85%B3%E6%96%87%E6%A1%A3/" target="_blank" rel="noopener">Sqli_labs通关文档</a></p>
