@@ -106,9 +106,9 @@
 <meta property="og:description" content="1. WebShell什么是ShellShell是系统的用户界面，提供了用户与内核进行交互操作的一种接口。它接收用户输入的命令并把它送入内核去执行。因为系统内核使我们不能直接操作的，shell就给我们提供了一个接口，通过shell我们可以把命令送入到内核。shell管理用户与操作系统之间的交互：等待你输入，向操作系统解释你的输入，并且处理各种各样的操作系统的输出结果。传统意义上的shell指的是命">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://chirec.github.io/2019/04/19/Upload-Files/02.01.upload-files.png">
-<meta property="og:image" content="https://chirec.github.io/2019/04/19/Upload-Files/02.01.upload-files.png">
+<meta property="og:image" content="https://chirec.github.io/2019/04/19/Upload-Files/02.02.Windows-NTFS.png">
 <meta property="og:image" content="https://chirec.github.io/2019/04/19/Upload-Files/02.03.parsing.png">
-<meta property="og:updated_time" content="2019-04-19T13:14:52.530Z">
+<meta property="og:updated_time" content="2019-04-19T13:21:02.125Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;文件上传总结&#39;">
 <meta name="twitter:description" content="1. WebShell什么是ShellShell是系统的用户界面，提供了用户与内核进行交互操作的一种接口。它接收用户输入的命令并把它送入内核去执行。因为系统内核使我们不能直接操作的，shell就给我们提供了一个接口，通过shell我们可以把命令送入到内核。shell管理用户与操作系统之间的交互：等待你输入，向操作系统解释你的输入，并且处理各种各样的操作系统的输出结果。传统意义上的shell指的是命">
@@ -417,7 +417,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test.php:.jpg</span><br></pre></td></tr></table></figure>
 <p>第二步上传时，修改文件名为test.&gt;&gt;&gt;或test.&lt;</p>
 <h6 id="Windows文件名特性-upload-labs第6-7-9关"><a href="#Windows文件名特性-upload-labs第6-7-9关" class="headerlink" title="Windows文件名特性(upload-labs第6,7,9关)"></a>Windows文件名特性(upload-labs第6,7,9关)</h6><p>点或者空格结尾的文件再保存的时候，点和空格会被删除<br>shell.php.(空格)或shell.php&nbsp;(空格)</p>
-<h6 id="Windows文件流-NTFS-特性-upload-labs第8关"><a href="#Windows文件流-NTFS-特性-upload-labs第8关" class="headerlink" title="Windows文件流(NTFS)特性(upload-labs第8关)"></a>Windows文件流(NTFS)特性(upload-labs第8关)</h6><img src="/2019/04/19/Upload-Files/02.01.upload-files.png">
+<h6 id="Windows文件流-NTFS-特性-upload-labs第8关"><a href="#Windows文件流-NTFS-特性-upload-labs第8关" class="headerlink" title="Windows文件流(NTFS)特性(upload-labs第8关)"></a>Windows文件流(NTFS)特性(upload-labs第8关)</h6><img src="/2019/04/19/Upload-Files/02.02.Windows-NTFS.png">
 <h5 id="4-00截断-PHP版本"><a href="#4-00截断-PHP版本" class="headerlink" title="4.00截断 (PHP版本)"></a>4.00截断 (PHP版本)</h5><p>php版本要小于5.3.4，5.3.4及以上已经修复该问题；<br>magic_quotes_gpc需要为OFF状态，在PHP.ini中修改</p>
 <h6 id="path通过GET方式传输-upload-lab第11关"><a href="#path通过GET方式传输-upload-lab第11关" class="headerlink" title="path通过GET方式传输(upload-lab第11关)"></a>path通过GET方式传输(upload-lab第11关)</h6><p>抓包<br>修改URL，在末尾加上可以解析的扩展名和%00进行截断</p>
 <h6 id="path通过POST方式传输-upload-lab第12关"><a href="#path通过POST方式传输-upload-lab第12关" class="headerlink" title="path通过POST方式传输(upload-lab第12关)"></a>path通过POST方式传输(upload-lab第12关)</h6><p>抓包-在保存路径后添加可以解析的扩展名并使用%00进行截断，要将%00选中Ctrl+Shift+U转为十六进制。</p>
