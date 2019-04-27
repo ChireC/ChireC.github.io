@@ -105,12 +105,12 @@
 <meta property="og:site_name" content="Emerald Dream">
 <meta property="og:description" content="1. 文件包含在通过PHP的相应函数（比如include()）引入文件时，由于传入的文件名没有经过合理的校验，从而操作了预想之外的文件，就可能导致意外的文件泄露甚至恶意的代码注入。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://chirec.github.io/2019/04/22/File-Inclusion/15063209941952.png">
-<meta property="og:updated_time" content="2019-04-27T06:15:51.528Z">
+<meta property="og:image" content="https://chirec.github.io/2019/04/22/File-Inclusion/5.6.01.php-protocol.png">
+<meta property="og:updated_time" content="2019-04-27T07:30:11.878Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;文件包含总结&#39;">
 <meta name="twitter:description" content="1. 文件包含在通过PHP的相应函数（比如include()）引入文件时，由于传入的文件名没有经过合理的校验，从而操作了预想之外的文件，就可能导致意外的文件泄露甚至恶意的代码注入。">
-<meta name="twitter:image" content="https://chirec.github.io/2019/04/22/File-Inclusion/15063209941952.png">
+<meta name="twitter:image" content="https://chirec.github.io/2019/04/22/File-Inclusion/5.6.01.php-protocol.png">
 
 
 
@@ -408,7 +408,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data://text/plain,&lt;?php phpinfo();?&gt;</span><br></pre></td></tr></table></figure>
 <p>利用方式2：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data://text/plain;base64,PD9waHAgcGhwaW5mbygpOz8%2b</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/04/22/File-Inclusion/15063209941952.png" alt></p>
+<img src="/2019/04/22/File-Inclusion/5.6.01.php-protocol.png">
 <h2 id="5-7-伪协议利用"><a href="#5-7-伪协议利用" class="headerlink" title="5.7 伪协议利用"></a>5.7 伪协议利用</h2><h3 id="5-7-1-获取服务器中session值"><a href="#5-7-1-获取服务器中session值" class="headerlink" title="5.7.1 获取服务器中session值"></a>5.7.1 获取服务器中session值</h3><p>若可以注册用户名，可以注册带有php代码的用户名，再通过文件包含漏洞包含本地session最终实现RCE命令执行</p>
 <p>(/tmp/ 或者 /var/lib/php/ )</p>
 <p><code>login|s:3:&quot;bee&quot;;admin|s:1:&quot;1&quot;;token|s:40:&quot;sessionID&quot;</code></p>
