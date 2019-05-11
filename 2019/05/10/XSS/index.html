@@ -105,7 +105,7 @@
 <meta property="og:site_name" content="Emerald Dream">
 <meta property="og:description" content="XSS(Cross-Site script)跨站脚本攻击。XSS最大的特点就是能注入恶意的代码到用户浏览器的网页上，从而达到劫持用户会话的目的。是一种经常出现再web应用程序中的计算机安全漏洞，是由于web应用程序对用户的输入过滤不严而产生的。攻击者利用网站漏洞把恶意的脚本代码注入到网页中，当其他用户浏览这些网页时，就会执行其中的恶意代码，对受害用户可能采用cookie资料窃取，会话劫持，钓鱼欺骗">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-10T12:36:57.646Z">
+<meta property="og:updated_time" content="2019-05-11T03:19:20.773Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;XSS&#39;">
 <meta name="twitter:description" content="XSS(Cross-Site script)跨站脚本攻击。XSS最大的特点就是能注入恶意的代码到用户浏览器的网页上，从而达到劫持用户会话的目的。是一种经常出现再web应用程序中的计算机安全漏洞，是由于web应用程序对用户的输入过滤不严而产生的。攻击者利用网站漏洞把恶意的脚本代码注入到网页中，当其他用户浏览这些网页时，就会执行其中的恶意代码，对受害用户可能采用cookie资料窃取，会话劫持，钓鱼欺骗">
@@ -380,6 +380,7 @@
 
       
         <p>XSS(Cross-Site script)跨站脚本攻击。<br>XSS最大的特点就是能注入恶意的代码到用户浏览器的网页上，从而达到劫持用户会话的目的。<br>是一种经常出现再web应用程序中的计算机安全漏洞，是由于web应用程序对用户的输入过滤不严而产生的。攻击者利用网站漏洞把恶意的脚本代码注入到网页中，当其他用户浏览这些网页时，就会执行其中的恶意代码，对受害用户可能采用cookie资料窃取，会话劫持，钓鱼欺骗等攻击手段。</p>
+<a id="more"></a>
 <h1 id="1-基础知识"><a href="#1-基础知识" class="headerlink" title="1. 基础知识"></a>1. 基础知识</h1><h2 id="1-1-Session"><a href="#1-1-Session" class="headerlink" title="1.1 Session"></a>1.1 Session</h2><p>服务器使用Session将用户身份信息临时保存在服务器上，用户离开网站后Session会被销毁。客户端使用Cookie保存SessionID。这种对用户身份信息存储的方式相对于Cookie来说，比较安全。</p>
 <h2 id="1-2-Cookie"><a href="#1-2-Cookie" class="headerlink" title="1.2 Cookie"></a>1.2 Cookie</h2><p>Cookie分为内存Cookie(临时型Cookie)和硬盘Cookie，内存Cookie储存在浏览器内存中，关闭浏览器则消失；硬盘Cookie以文本形式存储在硬盘上，由浏览器存取。Cookie由变量名与值组成，其属性里有标准的Cookie变量，也有用户自定义的属性。<br>cookie格式：<code>Set-Cookie:=[;=][;expiress=][;domain=][;path=][;secure][;httponly]</code><br>cookie各个参数详细内容：</p>
 <ul>

