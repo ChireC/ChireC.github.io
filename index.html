@@ -377,24 +377,17 @@
 
       
         
-          
-            <h1 id="1-查看IP地址"><a href="#1-查看IP地址" class="headerlink" title="1. 查看IP地址"></a>1. 查看IP地址</h1><p>由于不知道靶场的登录密码，所以需要使用其他工具获取IP</p>
+          <h1 id="1-查看IP地址"><a href="#1-查看IP地址" class="headerlink" title="1. 查看IP地址"></a>1. 查看IP地址</h1><p>由于不知道靶场的登录密码，所以需要使用其他工具获取IP</p>
 <p>这里使用Kali自带的一个工具netdiscover</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Usage: netdiscover [-i device] [-r range | -l file | -p] [-m file] [-s time] [-n node] [-c count] [-f] [-d] [-S] [-P] [-c]</span><br><span class="line">  -i device: your network device</span><br><span class="line">  -r range: scan a given range instead of auto scan. 192.168.6.0/24,/16,/8</span><br><span class="line">  -l file: scan the list of ranges contained into the given file</span><br><span class="line">  -p passive mode: do not send anything, only sniff</span><br><span class="line">  -m file: scan the list of known MACs and host names</span><br><span class="line">  -F filter: Customize pcap filter expression (default: &quot;arp&quot;)</span><br><span class="line">  -s time: time to sleep between each arp request (milliseconds)</span><br><span class="line">  -n node: last ip octet used for scanning (from 2 to 253)</span><br><span class="line">  -c count: number of times to send each arp reques (for nets with packet loss)</span><br><span class="line">  -f enable fastmode scan, saves a lot of time, recommended for auto</span><br><span class="line">  -d ignore home config files for autoscan and fast mode</span><br><span class="line">  -S enable sleep time supression between each request (hardcore mode)</span><br><span class="line">  -P print results in a format suitable for parsing by another program</span><br><span class="line">  -N Do not print header. Only valid when -P is enabled.</span><br><span class="line">  -L in parsable output mode (-P), continue listening after the active scan is completed</span><br><span class="line"></span><br><span class="line">If -r, -l or -p are not enabled, netdiscover will scan for common lan addresses.</span><br></pre></td></tr></table></figure>
-<p>执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netdiscover -r 192.168.126.0/24</span><br></pre></td></tr></table></figure>
-<p>查询VMware的Nat模式下的子网</p>
-<p><img src="/2019/05/13/VulnHub-Acid-Server/01.01.netdiscover.png" alt></p>
-<p>找到了靶机的IP<code>192.168.126.161</code></p>
-<h1 id="2-扫描靶机端口"><a href="#2-扫描靶机端口" class="headerlink" title="2. 扫描靶机端口"></a>2. 扫描靶机端口</h1><p>使用Nmap扫描靶机端口</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sS -T4 -sV -O -p- 192.168.126.161</span><br></pre></td></tr></table></figure>
-<p>扫描结果</p>
-<p><img src="/2019/05/13/VulnHub-Acid-Server/02.01.nmap.png" alt></p>
-<h1 id="参考"><a href="#参考" class="headerlink" title=". 参考"></a>. 参考</h1><p>[1] <a href="https://www.vulnhub.com/entry/acid-server,125/" target="_blank" rel="noopener">Acid: Server</a></p>
-<p>[2] <a href="https://www.jianshu.com/p/674a5e88d323" target="_blank" rel="noopener">2018-09-14-Vulnhub渗透测试实战writeup(1)</a></p>
-<p>[3] <a href="https://www.cnblogs.com/zhuxr/p/9996426.html" target="_blank" rel="noopener">Vulnhub Acid</a></p>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/05/13/VulnHub-Acid-Server/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
