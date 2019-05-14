@@ -105,7 +105,7 @@
 <meta property="og:site_name" content="Emerald Dream">
 <meta property="og:description" content="CSRF（Cross Site Request Forgery, 跨站请求伪造）是一种网络的攻击方式，也被称为“One Click Attack”或者Session Riding，通常缩写为CSRF或者XSRF。CSRF漏洞是因为web应用程序在用户进行敏感操作时，如修改账号密码、添加账号、转账等，没有校验表单token或者http请求头中的referer值，从而导致恶意攻击者利用普通用户的身份（">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-11T03:21:43.899Z">
+<meta property="og:updated_time" content="2019-05-14T03:34:31.705Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;CSRF&#39;">
 <meta name="twitter:description" content="CSRF（Cross Site Request Forgery, 跨站请求伪造）是一种网络的攻击方式，也被称为“One Click Attack”或者Session Riding，通常缩写为CSRF或者XSRF。CSRF漏洞是因为web应用程序在用户进行敏感操作时，如修改账号密码、添加账号、转账等，没有校验表单token或者http请求头中的referer值，从而导致恶意攻击者利用普通用户的身份（">
@@ -397,6 +397,7 @@
 <h3 id="伪造HTTP请求进行未授权操作"><a href="#伪造HTTP请求进行未授权操作" class="headerlink" title="伪造HTTP请求进行未授权操作"></a>伪造HTTP请求进行未授权操作</h3><p>篡改、盗取目标网站上的重要用户数据<br>未经允许执行对用户名誉或者资产有害的操作，比如：散播不良信息、进行消费等<br>如果通过使用社工等方式攻击网站管理员，会危害网站本身的安全性</p>
 <p>作为其他攻击向量的辅助攻击手法，比如配合XSS</p>
 <p>传播CSRF蠕虫</p>
+<h1 id="CSRF防御"><a href="#CSRF防御" class="headerlink" title="CSRF防御"></a>CSRF防御</h1><h2 id="1-Referrer验证"><a href="#1-Referrer验证" class="headerlink" title="1.Referrer验证"></a>1.Referrer验证</h2><h2 id="2-Token验证"><a href="#2-Token验证" class="headerlink" title="2. Token验证"></a>2. Token验证</h2><h2 id="3-用户身份验证"><a href="#3-用户身份验证" class="headerlink" title="3. 用户身份验证"></a>3. 用户身份验证</h2><p>绑定邮箱、手机验证码</p>
 
       
     </div>
@@ -508,7 +509,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -582,7 +583,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#条件"><span class="nav-text">条件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自动提交"><span class="nav-text">自动提交</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#复现"><span class="nav-text">复现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#修改密码"><span class="nav-text">修改密码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写文件"><span class="nav-text">写文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读文件"><span class="nav-text">读文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删库"><span class="nav-text">删库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSRF高危触发点"><span class="nav-text">CSRF高危触发点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSRF漏洞危害"><span class="nav-text">CSRF漏洞危害</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#伪造HTTP请求进行未授权操作"><span class="nav-text">伪造HTTP请求进行未授权操作</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#条件"><span class="nav-text">条件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自动提交"><span class="nav-text">自动提交</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#复现"><span class="nav-text">复现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#修改密码"><span class="nav-text">修改密码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写文件"><span class="nav-text">写文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读文件"><span class="nav-text">读文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删库"><span class="nav-text">删库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSRF高危触发点"><span class="nav-text">CSRF高危触发点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSRF漏洞危害"><span class="nav-text">CSRF漏洞危害</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#伪造HTTP请求进行未授权操作"><span class="nav-text">伪造HTTP请求进行未授权操作</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#CSRF防御"><span class="nav-text">CSRF防御</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Referrer验证"><span class="nav-text">1.Referrer验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Token验证"><span class="nav-text">2. Token验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-用户身份验证"><span class="nav-text">3. 用户身份验证</span></a></li></ol></li></div>
             
 
           </div>

