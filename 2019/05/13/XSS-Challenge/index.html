@@ -147,6 +147,15 @@
 <meta property="og:image" content="https://chirec.github.io/2019/05/13/XSS-Challenge/Level-13-04.png">
 <meta property="og:image" content="https://chirec.github.io/2019/05/13/XSS-Challenge/Level-13-05.png">
 <meta property="og:image" content="https://chirec.github.io/2019/05/13/XSS-Challenge/Level-14-01.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/XSS-Challenge/Level-14-02.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/XSS-Challenge/Level-14-03.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/XSS-Challenge/Level-14-04.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/XSS-Challenge/Level-14-05.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/XSS-Challenge/Level-14-06.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/XSS-Challenge/Level-15-01.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/XSS-Challenge/Level-15-02.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/XSS-Challenge/Level-15-03.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/13/XSS-Challenge/Level-15-04.png">
 <meta property="og:image" content="https://chirec.github.io/2019/05/13/XSS-Challenge/Level-16-01.png">
 <meta property="og:image" content="https://chirec.github.io/2019/05/13/XSS-Challenge/Level-16-02.png">
 <meta property="og:image" content="https://chirec.github.io/2019/05/13/XSS-Challenge/Level-16-03.png">
@@ -154,7 +163,7 @@
 <meta property="og:image" content="https://chirec.github.io/2019/05/13/XSS-Challenge/Level-17-02.png">
 <meta property="og:image" content="https://chirec.github.io/2019/05/13/XSS-Challenge/Level-18-01.png">
 <meta property="og:image" content="https://chirec.github.io/2019/05/13/XSS-Challenge/Level-18-02.png">
-<meta property="og:updated_time" content="2019-05-15T07:09:29.682Z">
+<meta property="og:updated_time" content="2019-05-16T01:10:03.820Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;XSS-Challenge&#39;">
 <meta name="twitter:description" content="Level 1通过GET方式传入name，会在页面上显示出来 写入payload">
@@ -429,130 +438,172 @@
       
 
       
-        <h2 id="Level-1"><a href="#Level-1" class="headerlink" title="Level 1"></a>Level 1</h2><p>通过GET方式传入<code>name</code>，会在页面上显示出来<br><img src="/2019/05/13/XSS-Challenge/Level-01-01.png" alt></p>
-<p>写入payload<br><img src="/2019/05/13/XSS-Challenge/Level-01-02.png" alt></p>
+        <h2 id="Level-1"><a href="#Level-1" class="headerlink" title="Level 1"></a>Level 1</h2><p>通过GET方式传入<code>name</code>，会在页面上显示出来<br><img src="/2019/05/13/XSS-Challenge/Level-01-01.png"></p>
+<p>写入payload<br><img src="/2019/05/13/XSS-Challenge/Level-01-02.png"></p>
 <a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = $_GET[&quot;name&quot;];</span><br><span class="line">echo &quot;&lt;h2 align=center&gt;欢迎用户&quot;.$str.&quot;&lt;/h2&gt;&quot;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 <p>在代码中没有看到过滤、转义，直接将输入显示在页面上</p>
-<h2 id="Level-2"><a href="#Level-2" class="headerlink" title="Level 2"></a>Level 2</h2><p>通过GET方式传入<code>keyword</code>，会在页面上显示出来<br><img src="/2019/05/13/XSS-Challenge/Level-02-01.png" alt></p>
-<p>并且在<code>&lt;form&gt;</code>标签的value属性上也会显示输入<br><img src="/2019/05/13/XSS-Challenge/Level-02-02.png" alt></p>
-<p>尝试写入payload，发现没有正确的显示出来<br><img src="/2019/05/13/XSS-Challenge/Level-02-02.png" alt></p>
-<p>使用Firebug查看，发现<code>&lt;h2&gt;</code>标签中的输入被HTML实体化编码<br><img src="/2019/05/13/XSS-Challenge/Level-02-03.png" alt></p>
+<h2 id="Level-2"><a href="#Level-2" class="headerlink" title="Level 2"></a>Level 2</h2><p>通过GET方式传入<code>keyword</code>，会在页面上显示出来<br><img src="/2019/05/13/XSS-Challenge/Level-02-01.png"></p>
+<p>并且在<code>&lt;form&gt;</code>标签的value属性上也会显示输入<br><img src="/2019/05/13/XSS-Challenge/Level-02-02.png"></p>
+<p>尝试写入payload，发现没有正确的显示出来<br><img src="/2019/05/13/XSS-Challenge/Level-02-02.png"></p>
+<p>使用Firebug查看，发现<code>&lt;h2&gt;</code>标签中的输入被HTML实体化编码<br><img src="/2019/05/13/XSS-Challenge/Level-02-03.png"></p>
 <p><code>&lt;form&gt;</code>标签中<code>value</code>属性的值同样被HTML实体化，不过由于在标签内部，所以可以使用事件触发xss，而不需要加上会被转义的<code>&lt;&gt;</code></p>
-<p>payload<br><img src="/2019/05/13/XSS-Challenge/Level-02-05.png" alt></p>
+<p>payload<br><img src="/2019/05/13/XSS-Challenge/Level-02-05.png"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = $_GET[&quot;keyword&quot;];</span><br><span class="line">echo &quot;&lt;h2 align=center&gt;没有找到和&quot;.htmlspecialchars($str).&quot;相关的结果.&lt;/h2&gt;&quot;.&apos;&lt;center&gt;</span><br><span class="line">&lt;form action=level2.php method=GET&gt;</span><br><span class="line">&lt;input name=keyword  value=&quot;&apos;.$str.&apos;&quot;&gt;</span><br><span class="line">&lt;input type=submit name=submit value=&quot;搜索&quot;/&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/center&gt;&apos;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 <p>查看代码，可以看到<code>htmlspecialchars()</code>对输入进行了转义</p>
-<h2 id="Level-3"><a href="#Level-3" class="headerlink" title="Level 3"></a>Level 3</h2><p>通过GET方式传入<code>keyword</code>，显示方式和Level 2相同，在<code>&lt;h2&gt;</code>和<code>&lt;form&gt;</code>标签上显示<br><img src="/2019/05/13/XSS-Challenge/Level-03-01.png" alt></p>
-<p>输入Level 2的payload，发现没有成功闭合<br><img src="/2019/05/13/XSS-Challenge/Level-03-02.png" alt></p>
+<h2 id="Level-3"><a href="#Level-3" class="headerlink" title="Level 3"></a>Level 3</h2><p>通过GET方式传入<code>keyword</code>，显示方式和Level 2相同，在<code>&lt;h2&gt;</code>和<code>&lt;form&gt;</code>标签上显示<br><img src="/2019/05/13/XSS-Challenge/Level-03-01.png"></p>
+<p>输入Level 2的payload，发现没有成功闭合<br><img src="/2019/05/13/XSS-Challenge/Level-03-02.png"></p>
 <p>使用<code>&#39;</code>代替<code>&quot;</code>，成功闭合</p>
-<p>payload<br><img src="/2019/05/13/XSS-Challenge/Level-03-03.png" alt></p>
+<p>payload<br><img src="/2019/05/13/XSS-Challenge/Level-03-03.png"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = $_GET[&quot;keyword&quot;];</span><br><span class="line">echo &quot;&lt;h2 align=center&gt;没有找到和&quot;.htmlspecialchars($str).&quot;相关的结果.&lt;/h2&gt;&quot;.&quot;&lt;center&gt;</span><br><span class="line">&lt;form action=level3.php method=GET&gt;</span><br><span class="line">&lt;input name=keyword  value=&apos;&quot;.htmlspecialchars($str).&quot;&apos;&gt;</span><br><span class="line">&lt;input type=submit name=submit value=搜索 /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/center&gt;&quot;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 <p>代码上和第二关不同的地方在于，<code>value=</code>属性后引号变成了单引号，所以需要使用<code>&#39;</code>进行闭合。由于浏览器会将<code>&#39;</code>变为<code>&quot;</code>显示，所以使用Firebug审查元素时，无法区分</p>
-<h2 id="Level-4"><a href="#Level-4" class="headerlink" title="Level 4"></a>Level 4</h2><p>通过GET方式传入<code>keyword</code>，显示方式和Level 2略有不同，在<code>&lt;h2&gt;</code>标签上显示和输入的是相同的，不过依然被HTML实体化，而在<code>&lt;form&gt;</code>标签上显示的没有<code>&lt;&gt;</code><br><img src="/2019/05/13/XSS-Challenge/Level-04-01.png" alt></p>
-<p>使用Level 2的payload<br><img src="/2019/05/13/XSS-Challenge/Level-04-02.png" alt></p>
+<h2 id="Level-4"><a href="#Level-4" class="headerlink" title="Level 4"></a>Level 4</h2><p>通过GET方式传入<code>keyword</code>，显示方式和Level 2略有不同，在<code>&lt;h2&gt;</code>标签上显示和输入的是相同的，不过依然被HTML实体化，而在<code>&lt;form&gt;</code>标签上显示的没有<code>&lt;&gt;</code><br><img src="/2019/05/13/XSS-Challenge/Level-04-01.png"></p>
+<p>使用Level 2的payload<br><img src="/2019/05/13/XSS-Challenge/Level-04-02.png"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = $_GET[&quot;keyword&quot;];</span><br><span class="line">$str2=str_replace(&quot;&gt;&quot;,&quot;&quot;,$str);</span><br><span class="line">$str3=str_replace(&quot;&lt;&quot;,&quot;&quot;,$str2);</span><br><span class="line">echo &quot;&lt;h2 align=center&gt;没有找到和&quot;.htmlspecialchars($str).&quot;相关的结果.&lt;/h2&gt;&quot;.&apos;&lt;center&gt;</span><br><span class="line">&lt;form action=level4.php method=GET&gt;</span><br><span class="line">&lt;input name=keyword  value=&quot;&apos;.$str3.&apos;&quot;&gt;</span><br><span class="line">&lt;input type=submit name=submit value=搜索 /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/center&gt;&apos;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 <p>可以看到<code>str3</code>是被过滤掉<code>&lt;&gt;</code>的，不过由于使用的on事件，而且本身在标签内部，所以不需要使用<code>&lt;&gt;</code></p>
-<h2 id="Level-5"><a href="#Level-5" class="headerlink" title="Level 5"></a>Level 5</h2><p>测试显示效果<br><img src="/2019/05/13/XSS-Challenge/Level-05-01.png" alt></p>
-<p>使用Level 2的payload<br><img src="/2019/05/13/XSS-Challenge/Level-05-02.png" alt></p>
+<h2 id="Level-5"><a href="#Level-5" class="headerlink" title="Level 5"></a>Level 5</h2><p>测试显示效果<br><img src="/2019/05/13/XSS-Challenge/Level-05-01.png"></p>
+<p>使用Level 2的payload<br><img src="/2019/05/13/XSS-Challenge/Level-05-02.png"></p>
 <p>on事件被过滤为<code>o_n</code> O_o</p>
 <p>使用<code>javascript:alert(/xss/)</code>绕过</p>
-<p>payload<br><img src="/2019/05/13/XSS-Challenge/Level-05-03.png" alt></p>
+<p>payload<br><img src="/2019/05/13/XSS-Challenge/Level-05-03.png"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = strtolower($_GET[&quot;keyword&quot;]);</span><br><span class="line">$str2=str_replace(&quot;&lt;script&quot;,&quot;&lt;scr_ipt&quot;,$str);</span><br><span class="line">$str3=str_replace(&quot;on&quot;,&quot;o_n&quot;,$str2);</span><br><span class="line">echo &quot;&lt;h2 align=center&gt;没有找到和&quot;.htmlspecialchars($str).&quot;相关的结果.&lt;/h2&gt;&quot;.&apos;&lt;center&gt;</span><br><span class="line">&lt;form action=level5.php method=GET&gt;</span><br><span class="line">&lt;input name=keyword  value=&quot;&apos;.$str3.&apos;&quot;&gt;</span><br><span class="line">&lt;input type=submit name=submit value=搜索 /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/center&gt;&apos;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 <p>查看代码，发现不仅过滤了<code>on</code>，还过滤了<code>&lt;script</code>，不过<code>str3</code>没有进行HTML实体化转义</p>
-<h2 id="Level-6"><a href="#Level-6" class="headerlink" title="Level 6"></a>Level 6</h2><p>测试显示效果<br><img src="/2019/05/13/XSS-Challenge/Level-06-01.png" alt></p>
+<h2 id="Level-6"><a href="#Level-6" class="headerlink" title="Level 6"></a>Level 6</h2><p>测试显示效果<br><img src="/2019/05/13/XSS-Challenge/Level-06-01.png"></p>
 <p>两个输出点的<code>&lt;&gt;</code>都被HTML实体编码</p>
-<p>测试on事件<br><img src="/2019/05/13/XSS-Challenge/Level-06-02.png" alt></p>
+<p>测试on事件<br><img src="/2019/05/13/XSS-Challenge/Level-06-02.png"></p>
 <p>使用<code>&quot;</code>闭合，on被过滤为o_n</p>
-<p>测试javascript:alert()<br><img src="/2019/05/13/XSS-Challenge/Level-06-03.png" alt></p>
+<p>测试javascript:alert()<br><img src="/2019/05/13/XSS-Challenge/Level-06-03.png"></p>
 <p>这里href也被过滤了，变成了hr_ef。有个奇怪的地方，刚才测试显示效果时<code>&lt;&gt;</code>被转义掉，但这次并没有被转义掉</p>
 <p>被过滤掉的还有src、script</p>
 <p>然后发现大小写可以绕过，明明前面都不能绕过的</p>
-<p>payload<br><img src="/2019/05/13/XSS-Challenge/Level-06-04.png" alt></p>
+<p>payload<br><img src="/2019/05/13/XSS-Challenge/Level-06-04.png"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = $_GET[&quot;keyword&quot;];</span><br><span class="line">$str2=str_replace(&quot;&lt;script&quot;,&quot;&lt;scr_ipt&quot;,$str);</span><br><span class="line">$str3=str_replace(&quot;on&quot;,&quot;o_n&quot;,$str2);</span><br><span class="line">$str4=str_replace(&quot;src&quot;,&quot;sr_c&quot;,$str3);</span><br><span class="line">$str5=str_replace(&quot;data&quot;,&quot;da_ta&quot;,$str4);</span><br><span class="line">$str6=str_replace(&quot;href&quot;,&quot;hr_ef&quot;,$str5);</span><br><span class="line">echo &quot;&lt;h2 align=center&gt;没有找到和&quot;.htmlspecialchars($str).&quot;相关的结果.&lt;/h2&gt;&quot;.&apos;&lt;center&gt;</span><br><span class="line">&lt;form action=level6.php method=GET&gt;</span><br><span class="line">&lt;input name=keyword  value=&quot;&apos;.$str6.&apos;&quot;&gt;</span><br><span class="line">&lt;input type=submit name=submit value=搜索 /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/center&gt;&apos;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 <p>查看代码发现<code>&lt;script</code>、<code>on</code>、<code>src</code>、<code>data</code>、<code>href</code>都被过滤，但是并没有<code>strtolower()</code>函数过滤大小写</p>
-<h2 id="Level-7"><a href="#Level-7" class="headerlink" title="Level 7"></a>Level 7</h2><p>测试显示效果<br><img src="/2019/05/13/XSS-Challenge/Level-07-01.png" alt><br>这次使用带<code>&lt;Chessur&gt;</code>测试显示效果，发现变成小写了</p>
-<p>测试on事件<br><img src="/2019/05/13/XSS-Challenge/Level-07-02.png" alt><br>发现下面的on被过滤为空</p>
-<p>尝试双写绕过<br><img src="/2019/05/13/XSS-Challenge/Level-07-03.png" alt></p>
+<h2 id="Level-7"><a href="#Level-7" class="headerlink" title="Level 7"></a>Level 7</h2><p>测试显示效果<br><img src="/2019/05/13/XSS-Challenge/Level-07-01.png"><br>这次使用带<code>&lt;Chessur&gt;</code>测试显示效果，发现变成小写了</p>
+<p>测试on事件<br><img src="/2019/05/13/XSS-Challenge/Level-07-02.png"><br>发现下面的on被过滤为空</p>
+<p>尝试双写绕过<br><img src="/2019/05/13/XSS-Challenge/Level-07-03.png"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str =strtolower( $_GET[&quot;keyword&quot;]);</span><br><span class="line">$str2=str_replace(&quot;script&quot;,&quot;&quot;,$str);</span><br><span class="line">$str3=str_replace(&quot;on&quot;,&quot;&quot;,$str2);</span><br><span class="line">$str4=str_replace(&quot;src&quot;,&quot;&quot;,$str3);</span><br><span class="line">$str5=str_replace(&quot;data&quot;,&quot;&quot;,$str4);</span><br><span class="line">$str6=str_replace(&quot;href&quot;,&quot;&quot;,$str5);</span><br><span class="line">echo &quot;&lt;h2 align=center&gt;没有找到和&quot;.htmlspecialchars($str).&quot;相关的结果.&lt;/h2&gt;&quot;.&apos;&lt;center&gt;</span><br><span class="line">&lt;form action=level7.php method=GET&gt;</span><br><span class="line">&lt;input name=keyword  value=&quot;&apos;.$str6.&apos;&quot;&gt;</span><br><span class="line">&lt;input type=submit name=submit value=搜索 /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/center&gt;&apos;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 <p>查看代码，这一关又有大小写过滤了….<br>将关键词替换为空，所以双写直接绕过</p>
 <h2 id="Level-8"><a href="#Level-8" class="headerlink" title="Level 8"></a>Level 8</h2><p>看起来像DOM型XSS</p>
-<p>测试显示效果<br><img src="/2019/05/13/XSS-Challenge/Level-08-01.png" alt><br>这次有2个输出点，一个是<code>&lt;form&gt;</code>标签里，一个是在<code>&lt;a&gt;</code>标签里</p>
-<p>查看过滤情况<br><img src="/2019/05/13/XSS-Challenge/Level-08-02.png" alt><br>发现on、script、src都被过滤掉了，而且大小写无法绕过</p>
+<p>测试显示效果<br><img src="/2019/05/13/XSS-Challenge/Level-08-01.png"><br>这次有2个输出点，一个是<code>&lt;form&gt;</code>标签里，一个是在<code>&lt;a&gt;</code>标签里</p>
+<p>查看过滤情况<br><img src="/2019/05/13/XSS-Challenge/Level-08-02.png"><br>发现on、script、src都被过滤掉了，而且大小写无法绕过</p>
 <p>由于输出点在href属性中，所以使用<code>&lt;a href=javascript:alert()&lt;/a&gt;</code>使用<code>&amp;#x0A;</code>来绕过过滤</p>
-<p>payload<br><img src="/2019/05/13/XSS-Challenge/Level-08-03.png" alt></p>
+<p>payload<br><img src="/2019/05/13/XSS-Challenge/Level-08-03.png"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = strtolower($_GET[&quot;keyword&quot;]);</span><br><span class="line">$str2=str_replace(&quot;script&quot;,&quot;scr_ipt&quot;,$str);</span><br><span class="line">$str3=str_replace(&quot;on&quot;,&quot;o_n&quot;,$str2);</span><br><span class="line">$str4=str_replace(&quot;src&quot;,&quot;sr_c&quot;,$str3);</span><br><span class="line">$str5=str_replace(&quot;data&quot;,&quot;da_ta&quot;,$str4);</span><br><span class="line">$str6=str_replace(&quot;href&quot;,&quot;hr_ef&quot;,$str5);</span><br><span class="line">$str7=str_replace(&apos;&quot;&apos;,&apos;&amp;quot&apos;,$str6);</span><br><span class="line">echo &apos;&lt;center&gt;</span><br><span class="line">&lt;form action=level8.php method=GET&gt;</span><br><span class="line">&lt;input name=keyword  value=&quot;&apos;.htmlspecialchars($str).&apos;&quot;&gt;</span><br><span class="line">&lt;input type=submit name=submit value=添加友情链接 /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/center&gt;&apos;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 <p>查看代码，<code>script</code>、<code>on</code>、<code>src</code>、<code>data</code>、<code>href</code>、<code>&quot;</code>都被过滤掉了</p>
-<h2 id="Level-9"><a href="#Level-9" class="headerlink" title="Level 9"></a>Level 9</h2><p>测试显示效果<br><img src="/2019/05/13/XSS-Challenge/Level-09-01.png" alt><br>使用了新的测试payload</p>
+<h2 id="Level-9"><a href="#Level-9" class="headerlink" title="Level 9"></a>Level 9</h2><p>测试显示效果<br><img src="/2019/05/13/XSS-Challenge/Level-09-01.png"><br>使用了新的测试payload</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;;!–&apos;&lt;CheSSur&gt;=&amp;&#123;(OnonSrcsrcscriptScRIPt)&#125;</span><br></pre></td></tr></table></figure>
 <p>大小写转为小写，没有过滤，有HTML实体编码转义<br>在<code>href</code>标签处会判断链接是否合法<br>判断链接是否合法的规则是输入中是否有<code>http://</code></p>
-<p>使用Level 8的payload加上<code>//http://</code><br><img src="/2019/05/13/XSS-Challenge/Level-09-02.png" alt></p>
+<p>使用Level 8的payload加上<code>//http://</code><br><img src="/2019/05/13/XSS-Challenge/Level-09-02.png"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = strtolower($_GET[&quot;keyword&quot;]);</span><br><span class="line">$str2=str_replace(&quot;script&quot;,&quot;scr_ipt&quot;,$str);</span><br><span class="line">$str3=str_replace(&quot;on&quot;,&quot;o_n&quot;,$str2);</span><br><span class="line">$str4=str_replace(&quot;src&quot;,&quot;sr_c&quot;,$str3);</span><br><span class="line">$str5=str_replace(&quot;data&quot;,&quot;da_ta&quot;,$str4);</span><br><span class="line">$str6=str_replace(&quot;href&quot;,&quot;hr_ef&quot;,$str5);</span><br><span class="line">$str7=str_replace(&apos;&quot;&apos;,&apos;&amp;quot&apos;,$str6);</span><br><span class="line">echo &apos;&lt;center&gt;</span><br><span class="line">&lt;form action=level9.php method=GET&gt;</span><br><span class="line">&lt;input name=keyword  value=&quot;&apos;.htmlspecialchars($str).&apos;&quot;&gt;</span><br><span class="line">&lt;input type=submit name=submit value=添加友情链接 /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/center&gt;&apos;;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">if(false===strpos($str7,&apos;http://&apos;))</span><br><span class="line">&#123;</span><br><span class="line">  echo &apos;&lt;center&gt;&lt;BR&gt;&lt;a href=&quot;您的链接不合法？有没有！&quot;&gt;友情链接&lt;/a&gt;&lt;/center&gt;&apos;;</span><br><span class="line">        &#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">  echo &apos;&lt;center&gt;&lt;BR&gt;&lt;a href=&quot;&apos;.$str7.&apos;&quot;&gt;友情链接&lt;/a&gt;&lt;/center&gt;&apos;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 <p>查看代码发现和Level 8基本相同，在下面添加了判断URL是否合法的规则，不过由于使用的是<code>strpos()</code>函数，只判断字符串中是否出现过字符，而没有判断出现位置，所以可以添加到行尾，使用注释符注释掉进行绕过</p>
-<h2 id="Level-10"><a href="#Level-10" class="headerlink" title="Level 10"></a>Level 10</h2><p>测试显示效果<br><img src="/2019/05/13/XSS-Challenge/Level-10-01.png" alt><br>进行了HTML实体化编码转义，对on、src、script进行了过滤</p>
+<h2 id="Level-10"><a href="#Level-10" class="headerlink" title="Level 10"></a>Level 10</h2><p>测试显示效果<br><img src="/2019/05/13/XSS-Challenge/Level-10-01.png"><br>进行了HTML实体化编码转义，对on、src、script进行了过滤</p>
 <p>但是在<code>&lt;h2</code>标签下面有隐藏的<code>&lt;form&gt;</code>标签，测试发现只有<code>t_sort</code>可以被更改<code>type</code>显示出来</p>
-<p>payload<br><img src="/2019/05/13/XSS-Challenge/Level-10-03.png" alt></p>
+<p>payload<br><img src="/2019/05/13/XSS-Challenge/Level-10-03.png"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = $_GET[&quot;keyword&quot;];</span><br><span class="line">$str11 = $_GET[&quot;t_sort&quot;];</span><br><span class="line">$str22=str_replace(&quot;&gt;&quot;,&quot;&quot;,$str11);</span><br><span class="line">$str33=str_replace(&quot;&lt;&quot;,&quot;&quot;,$str22);</span><br><span class="line">echo &quot;&lt;h2 align=center&gt;没有找到和&quot;.htmlspecialchars($str).&quot;相关的结果.&lt;/h2&gt;&quot;.&apos;&lt;center&gt;</span><br><span class="line">&lt;form id=search&gt;</span><br><span class="line">&lt;input name=&quot;t_link&quot;  value=&quot;&apos;.&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;input name=&quot;t_history&quot;  value=&quot;&apos;.&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;input name=&quot;t_sort&quot;  value=&quot;&apos;.$str33.&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/center&gt;&apos;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 <p>查看代码，发现<code>t_sort</code>接收从页面传来的值，过滤掉了<code>&lt;&gt;</code>，使用on事件绕过</p>
 <h2 id="Level-11"><a href="#Level-11" class="headerlink" title="Level 11"></a>Level 11</h2><p>测试显示效果</p>
-<p><img src="/2019/05/13/XSS-Challenge/Level-11-01.png" alt></p>
+<img src="/2019/05/13/XSS-Challenge/Level-11-01.png">
 <p>和Level 10类似，都有隐藏的<code>&lt;form</code>标签</p>
 <p>从Level 10跳转来会看到Referer，直接打开并没有</p>
-<p><img src="/2019/05/13/XSS-Challenge/Level-11-02.png" alt></p>
+<img src="/2019/05/13/XSS-Challenge/Level-11-02.png">
 <p>使用FireFox浏览器无法修改为Payload，用BurpSuite抓包修改Referer</p>
-<p><img src="/2019/05/13/XSS-Challenge/Level-11-03.png" alt></p>
+<img src="/2019/05/13/XSS-Challenge/Level-11-03.png">
 <p>Forward</p>
-<p><img src="/2019/05/13/XSS-Challenge/Level-11-04.png" alt></p>
+<img src="/2019/05/13/XSS-Challenge/Level-11-04.png">
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = $_GET[&quot;keyword&quot;];</span><br><span class="line">$str00 = $_GET[&quot;t_sort&quot;];</span><br><span class="line">$str11=$_SERVER[&apos;HTTP_REFERER&apos;];</span><br><span class="line">$str22=str_replace(&quot;&gt;&quot;,&quot;&quot;,$str11);</span><br><span class="line">$str33=str_replace(&quot;&lt;&quot;,&quot;&quot;,$str22);</span><br><span class="line">echo &quot;&lt;h2 align=center&gt;没有找到和&quot;.htmlspecialchars($str).&quot;相关的结果.&lt;/h2&gt;&quot;.&apos;&lt;center&gt;</span><br><span class="line">&lt;form id=search&gt;</span><br><span class="line">&lt;input name=&quot;t_link&quot;  value=&quot;&apos;.&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;input name=&quot;t_history&quot;  value=&quot;&apos;.&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;input name=&quot;t_sort&quot;  value=&quot;&apos;.htmlspecialchars($str00).&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;input name=&quot;t_ref&quot;  value=&quot;&apos;.$str33.&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/center&gt;&apos;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 <p>查看代码</p>
 <p><code>$str11</code>获取Referer，过滤掉了<code>&lt;&gt;</code>，再输出到<code>t_ref</code></p>
 <h2 id="Level-12"><a href="#Level-12" class="headerlink" title="Level 12"></a>Level 12</h2><p>直接用Firebug审查元素</p>
-<p><img src="/2019/05/13/XSS-Challenge/Level-12-01.png" alt></p>
+<img src="/2019/05/13/XSS-Challenge/Level-12-01.png">
 <p>看到了<code>&lt;input name=&quot;t_ua&quot; value=&quot;Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0&quot; type=&quot;hidden&quot;&gt;</code></p>
 <p>用BurpSuite抓包修改UserAgent</p>
-<p><img src="/2019/05/13/XSS-Challenge/Level-12-02.png" alt></p>
+<img src="/2019/05/13/XSS-Challenge/Level-12-02.png">
 <p>Forward</p>
-<p><img src="/2019/05/13/XSS-Challenge/Level-12-03.png" alt></p>
+<img src="/2019/05/13/XSS-Challenge/Level-12-03.png">
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = $_GET[&quot;keyword&quot;];</span><br><span class="line">$str00 = $_GET[&quot;t_sort&quot;];</span><br><span class="line">$str11=$_SERVER[&apos;HTTP_USER_AGENT&apos;];</span><br><span class="line">$str22=str_replace(&quot;&gt;&quot;,&quot;&quot;,$str11);</span><br><span class="line">$str33=str_replace(&quot;&lt;&quot;,&quot;&quot;,$str22);</span><br><span class="line">echo &quot;&lt;h2 align=center&gt;没有找到和&quot;.htmlspecialchars($str).&quot;相关的结果.&lt;/h2&gt;&quot;.&apos;&lt;center&gt;</span><br><span class="line">&lt;form id=search&gt;</span><br><span class="line">&lt;input name=&quot;t_link&quot;  value=&quot;&apos;.&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;input name=&quot;t_history&quot;  value=&quot;&apos;.&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;input name=&quot;t_sort&quot;  value=&quot;&apos;.htmlspecialchars($str00).&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;input name=&quot;t_ua&quot;  value=&quot;&apos;.$str33.&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/center&gt;&apos;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 <p>查看代码</p>
 <p><code>$str11</code>获取User Agent，过滤掉<code>&lt;&gt;</code>再输出到<code>t_ua</code></p>
 <h2 id="Level-13"><a href="#Level-13" class="headerlink" title="Level 13"></a>Level 13</h2><p>Firebug审查元素</p>
-<p><img src="/2019/05/13/XSS-Challenge/Level-13-01.png" alt></p>
+<img src="/2019/05/13/XSS-Challenge/Level-13-01.png">
 <p>看到<code>t_cook</code></p>
 <p>使用BurpSuite抓包</p>
-<p><img src="/2019/05/13/XSS-Challenge/Level-13-02.png" alt></p>
+<img src="/2019/05/13/XSS-Challenge/Level-13-02.png">
 <p>Forward</p>
-<p><img src="/2019/05/13/XSS-Challenge/Level-13-03.png" alt></p>
+<img src="/2019/05/13/XSS-Challenge/Level-13-03.png">
 <p>可以看到<code>t_cook</code>的值是Cookie中<code>user</code>的值</p>
 <p>抓包修改Cookie</p>
-<p><img src="/2019/05/13/XSS-Challenge/Level-13-04.png" alt></p>
+<img src="/2019/05/13/XSS-Challenge/Level-13-04.png">
 <p>Forward</p>
-<p><img src="/2019/05/13/XSS-Challenge/Level-13-05.png" alt></p>
+<img src="/2019/05/13/XSS-Challenge/Level-13-05.png">
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">setcookie(&quot;user&quot;, &quot;call me maybe?&quot;, time()+3600);</span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = $_GET[&quot;keyword&quot;];</span><br><span class="line">$str00 = $_GET[&quot;t_sort&quot;];</span><br><span class="line">$str11=$_COOKIE[&quot;user&quot;];</span><br><span class="line">$str22=str_replace(&quot;&gt;&quot;,&quot;&quot;,$str11);</span><br><span class="line">$str33=str_replace(&quot;&lt;&quot;,&quot;&quot;,$str22);</span><br><span class="line">echo &quot;&lt;h2 align=center&gt;没有找到和&quot;.htmlspecialchars($str).&quot;相关的结果.&lt;/h2&gt;&quot;.&apos;&lt;center&gt;</span><br><span class="line">&lt;form id=search&gt;</span><br><span class="line">&lt;input name=&quot;t_link&quot;  value=&quot;&apos;.&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;input name=&quot;t_history&quot;  value=&quot;&apos;.&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;input name=&quot;t_sort&quot;  value=&quot;&apos;.htmlspecialchars($str00).&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;input name=&quot;t_cook&quot;  value=&quot;&apos;.$str33.&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/center&gt;&apos;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 <p><code>$str11</code>获取Cookie中的user，过滤掉<code>&lt;&gt;</code>再输出到<code>t_cook</code></p>
 <h2 id="Level-14"><a href="#Level-14" class="headerlink" title="Level 14"></a>Level 14</h2><p>使用Firebug审查元素</p>
-<p><img src="/2019/05/13/XSS-Challenge/Level-14-01.png" alt></p>
+<img src="/2019/05/13/XSS-Challenge/Level-14-01.png">
 <p>发现<code>iframe</code>标签，连接到<code>http://www.exifviewer.org</code></p>
 <p>以为要通过注入修改<code>iframe</code>标签，但查了一下是要上传xss图片到这个网页上，解析之后弹窗</p>
+<p>开了纸飞机之后，页面加载成功</p>
+<img src="/2019/05/13/XSS-Challenge/Level-14-02.png">
+<p>恶意图片</p>
+<img src="/2019/05/13/XSS-Challenge/Level-14-03.png">
+<p>上传图片页面</p>
+<img src="/2019/05/13/XSS-Challenge/Level-14-04.png">
+<p>Upload</p>
+<img src="/2019/05/13/XSS-Challenge/Level-14-05.png">
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html;charset=utf-8&quot;&gt;</span><br><span class="line">&lt;title&gt;欢迎来到level14&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h1 align=center&gt;欢迎来到level14&lt;/h1&gt;</span><br><span class="line">&lt;center&gt;&lt;iframe name=&quot;leftframe&quot; marginwidth=10 marginheight=10 src=&quot;http://www.exifviewer.org/&quot; frameborder=no width=&quot;80%&quot; scrolling=&quot;no&quot; height=80%&gt;&lt;/iframe&gt;&lt;/center&gt;</span><br><span class="line">&lt;center&gt;这关成功后不会自动跳转。成功者&lt;a href=/xsschallenge/level15.php?src=1.gif&gt;点我进level15&lt;/a&gt;&lt;/center&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 <p>查看代码没有任何输入点，只能访问<code>http://www.exifviewer.org</code></p>
+<p>原理是修改图片的exif信息，在解析器解析图片exif时触发XSS。</p>
+<img src="/2019/05/13/XSS-Challenge/Level-14-06.png">
+<p>未加载的图片都是XSSpayload</p>
 <h2 id="Level-15"><a href="#Level-15" class="headerlink" title="Level 15"></a>Level 15</h2><p>测试显示效果</p>
+<img src="/2019/05/13/XSS-Challenge/Level-15-01.png">
+<p>好像没有输出…</p>
+<p>页面加载了一个JavaScript脚本</p>
+<img src="/2019/05/13/XSS-Challenge/Level-15-02.png">
+<p>在页面源代码里看到输出点</p>
+<img src="/2019/05/13/XSS-Challenge/Level-15-03.png">
+<p>查了一下<code>ng-include:</code>，发现可以包含一个页面</p>
+<p>包含一下第一关的Payload</p>
+<img src="/2019/05/13/XSS-Challenge/Level-15-04.png">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = $_GET[&quot;src&quot;];</span><br><span class="line">echo &apos;&lt;body&gt;&lt;span class=&quot;ng-include:&apos;.htmlspecialchars($str).&apos;&quot;&gt;&lt;/span&gt;&lt;/body&gt;&apos;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>好像Firebug对未加载的标签并不显示，因为没有<code>1.gif</code>这个文件，所以只能在源代码里查看</p>
+<p><code>ng-include</code>包含的文件需要用引号括起来</p>
+<h2 id="Level-16"><a href="#Level-16" class="headerlink" title="Level 16"></a>Level 16</h2><p>测试显示效果</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;;!–&apos;&lt;CheSSurOnonSrcsrcscriptScRIPt&gt;=&amp;&#123;()&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/05/13/XSS-Challenge/Level-16-01.png" alt></p>
+<img src="/2019/05/13/XSS-Challenge/Level-16-01.png">
 <p><code>script</code>被过滤为空格，空格被转义为<code>&amp;nbsp;</code>，大小写被过滤，<code>src</code>和<code>on</code>未被过滤，用<code>&lt;img&gt;</code>标签测试</p>
-<p><img src="/2019/05/13/XSS-Challenge/Level-16-02.png" alt></p>
+<img src="/2019/05/13/XSS-Challenge/Level-16-02.png">
 <p>发现<code>/</code>也被过滤成空格</p>
 <p>使用<code>%0a</code>、<code>%0c</code>、<code>%0d</code>绕过空格检测</p>
-<p><img src="/2019/05/13/XSS-Challenge/Level-16-03.png" alt></p>
+<img src="/2019/05/13/XSS-Challenge/Level-16-03.png">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = strtolower($_GET[&quot;keyword&quot;]);</span><br><span class="line">$str2=str_replace(&quot;script&quot;,&quot;&amp;nbsp;&quot;,$str);</span><br><span class="line">$str3=str_replace(&quot; &quot;,&quot;&amp;nbsp;&quot;,$str2);</span><br><span class="line">$str4=str_replace(&quot;/&quot;,&quot;&amp;nbsp;&quot;,$str3);</span><br><span class="line">$str5=str_replace(&quot;	&quot;,&quot;&amp;nbsp;&quot;,$str4);</span><br><span class="line">echo &quot;&lt;center&gt;&quot;.$str5.&quot;&lt;/center&gt;&quot;;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;center&gt;&lt;img src=level16.png&gt;&lt;/center&gt;</span><br><span class="line">&lt;?php </span><br><span class="line">echo &quot;&lt;h3 align=center&gt;payload的长度:&quot;.strlen($str5).&quot;&lt;/h3&gt;&quot;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>查看代码，<code>script</code>、<code></code>、<code>/</code>都被过滤为<code>&amp;nbsp;</code></p>
 <h2 id="Level-17"><a href="#Level-17" class="headerlink" title="Level 17"></a>Level 17</h2><p>测试显示效果</p>
-<p><img src="/2019/05/13/XSS-Challenge/Level-17-01.png" alt></p>
+<img src="/2019/05/13/XSS-Challenge/Level-17-01.png">
 <p>闭合<code>src</code></p>
-<p><img src="/2019/05/13/XSS-Challenge/Level-17-02.png" alt></p>
+<img src="/2019/05/13/XSS-Challenge/Level-17-02.png">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">echo &quot;&lt;embed src=xsf01.swf?&quot;.htmlspecialchars($_GET[&quot;arg01&quot;]).&quot;=&quot;.htmlspecialchars($_GET[&quot;arg02&quot;]).&quot; width=100% heigth=100%&gt;&quot;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>查看代码，发现2个变量都被HTML实体化编码转义，使用on事件可以绕过</p>
 <h2 id="Level-18"><a href="#Level-18" class="headerlink" title="Level 18"></a>Level 18</h2><p>测试显示效果</p>
-<p><img src="/2019/05/13/XSS-Challenge/Level-18-01.png" alt></p>
+<img src="/2019/05/13/XSS-Challenge/Level-18-01.png">
 <p>闭合<code>src</code></p>
-<p><img src="/2019/05/13/XSS-Challenge/Level-18-02.png" alt></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1.使用on事件绕过<code>&lt;&gt;</code>的转义 Level 2<br>2.使用<code>javascript:alert()</code>绕过对on事件的过滤 Level 5<br>3.测试不应该跳过任何一步，XSS挑战的难度设计并不是线性增加的，有时上一关无效的payload，可能下一关就有用了 Level 6<br>4.输出点在<code>&lt;a&gt;</code>标签中，可以使用<code>&lt;a href=javascript:alert()&lt;/a&gt;</code>绕过 Level 8<br>5.使用<code>&amp;#x0A;</code>等制表符来绕过过滤 Level 8<br>6.判断输入是否合法，可以根据函数特性绕过，如<code>strpos()</code>函数 Level 9<br>7.查看源码是个好习惯，希望我有 Level 10<br>8.修改referer、user agent、cookie注入xsspayload Level 11，12，13</p>
+<img src="/2019/05/13/XSS-Challenge/Level-18-02.png">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">echo &quot;&lt;embed src=xsf02.swf?&quot;.htmlspecialchars($_GET[&quot;arg01&quot;]).&quot;=&quot;.htmlspecialchars($_GET[&quot;arg02&quot;]).&quot; width=100% heigth=100%&gt;&quot;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>查看代码，发现和Level 17的代码区别在于引用了不同的文件，在过滤上并没有改动，所以Level 17的Payload依然可以用</p>
+<p>这两关看起来像Flash XSS，但其实只是简单的注入</p>
+<h2 id="Level-19"><a href="#Level-19" class="headerlink" title="Level 19"></a>Level 19</h2><p>这关真的是考察Flash XSS，并不懂怎么反编译flash，而且现在flash用的也少了，学习的价值并不高，忘记在哪里看到一句话</p>
+<blockquote>
+<p>两年内用不到的知识，并不需要去学习。<br>两年后会被淘汰的知识，也不需要去学习。</p>
+</blockquote>
+<p>这里只放上Payload From:<a href="https://www.jianshu.com/p/4e3a517bc4ea" target="_blank" rel="noopener">XSS挑战之旅–游戏闯关</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?arg01=version&amp;arg02=&lt;a href=&quot;javascript:alert(1)&quot;&gt;123&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="Level-20"><a href="#Level-20" class="headerlink" title="Level 20"></a>Level 20</h2><p>同Level 19</p>
+<p>只放上Payload From:<a href="https://www.jianshu.com/p/4e3a517bc4ea" target="_blank" rel="noopener">XSS挑战之旅–游戏闯关</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?arg01=id&amp;arg02=\%22))&#125;catch(e)&#123;&#125;if(!self.a)self.a=!alert(1)//%26width%26height</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1.使用on事件绕过<code>&lt;&gt;</code>的转义 Level 2<br>2.使用<code>javascript:alert()</code>绕过对on事件的过滤 Level 5<br>3.测试不应该跳过任何一步，XSS挑战的难度设计并不是线性增加的，有时上一关无效的payload，可能下一关就有用了 Level 6<br>4.输出点在<code>&lt;a&gt;</code>标签中，可以使用<code>&lt;a href=javascript:alert()&lt;/a&gt;</code>绕过 Level 8<br>5.使用<code>&amp;#x0A;</code>等制表符来绕过过滤 Level 8<br>6.判断输入是否合法，可以根据函数特性绕过，如<code>strpos()</code>函数 Level 9<br>7.查看源码是个好习惯，希望我有 Level 10<br>8.修改referer、user agent、cookie注入xsspayload Level 11，Level 12，Level 13<br>9.有时Firebug不会显示某些元素，还是要多看源码 Level 15<br>10.<code>ng-include</code>包含的文件需要用引号括起来 Level 15<br>11.使用<code>%0a</code>、<code>%0c</code>、<code>%0d</code>绕过空格检测 Level 16<br>12.看起来像A，但要试过才知道是不是 Level 17 Level 18</p>
+<h2 id="感受"><a href="#感受" class="headerlink" title="感受"></a>感受</h2><p>XSS Challenge并不像Sqli-Lab难度是递增的，有的关卡使用相同Payload都可以过去，不过还是学到了很多新的姿势。感谢作者做了这个挑战，也感谢各个写了WriteUp的大佬，学到很多新的姿势。</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>[1] <a href="https://www.cnblogs.com/r00tuser/p/7407459.html" target="_blank" rel="noopener">某xss挑战赛闯关笔记</a></p>
+<p>[2] <a href="https://www.jianshu.com/p/4e3a517bc4ea" target="_blank" rel="noopener">XSS挑战之旅–游戏闯关</a></p>
 
       
     </div>
@@ -664,7 +715,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-count">27</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -740,7 +791,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-1"><span class="nav-text">Level 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-2"><span class="nav-text">Level 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-3"><span class="nav-text">Level 3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-4"><span class="nav-text">Level 4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-5"><span class="nav-text">Level 5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-6"><span class="nav-text">Level 6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-7"><span class="nav-text">Level 7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-8"><span class="nav-text">Level 8</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-9"><span class="nav-text">Level 9</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-10"><span class="nav-text">Level 10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-11"><span class="nav-text">Level 11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-12"><span class="nav-text">Level 12</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-13"><span class="nav-text">Level 13</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-14"><span class="nav-text">Level 14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-15"><span class="nav-text">Level 15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-17"><span class="nav-text">Level 17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-18"><span class="nav-text">Level 18</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-1"><span class="nav-text">Level 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-2"><span class="nav-text">Level 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-3"><span class="nav-text">Level 3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-4"><span class="nav-text">Level 4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-5"><span class="nav-text">Level 5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-6"><span class="nav-text">Level 6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-7"><span class="nav-text">Level 7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-8"><span class="nav-text">Level 8</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-9"><span class="nav-text">Level 9</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-10"><span class="nav-text">Level 10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-11"><span class="nav-text">Level 11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-12"><span class="nav-text">Level 12</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-13"><span class="nav-text">Level 13</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-14"><span class="nav-text">Level 14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-15"><span class="nav-text">Level 15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-16"><span class="nav-text">Level 16</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-17"><span class="nav-text">Level 17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-18"><span class="nav-text">Level 18</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-19"><span class="nav-text">Level 19</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level-20"><span class="nav-text">Level 20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#感受"><span class="nav-text">感受</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
