@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="看了几篇文章，整合到一起，做个总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="&#39;安全应急响应&#39;">
+<meta property="og:url" content="https://chirec.github.io/2019/05/29/Security-Emergency-Response/index.html">
+<meta property="og:site_name" content="Emerald Dream">
+<meta property="og:description" content="看了几篇文章，整合到一起，做个总结">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://chirec.github.io/2019/05/29/Security-Emergency-Response/权限设置.png">
+<meta property="og:updated_time" content="2019-05-29T12:25:13.609Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="&#39;安全应急响应&#39;">
+<meta name="twitter:description" content="看了几篇文章，整合到一起，做个总结">
+<meta name="twitter:image" content="https://chirec.github.io/2019/05/29/Security-Emergency-Response/权限设置.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://chirec.github.io/2019/05/29/Security-Emergency-Response/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>'安全应急响应' | Emerald Dream</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Emerald Dream</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/yourname" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chirec.github.io/2019/05/29/Security-Emergency-Response/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chessur">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Emerald Dream">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">'安全应急响应'
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-29 15:37:23 / Modified: 20:25:13" itemprop="dateCreated datePublished" datetime="2019-05-29T15:37:23+08:00">2019-05-29</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>看了几篇文章，整合到一起，做个总结</p>
+<a id="more"></a>
+<h1 id="总体思路"><a href="#总体思路" class="headerlink" title="总体思路"></a>总体思路</h1><h2 id="分析原则"><a href="#分析原则" class="headerlink" title="分析原则"></a>分析原则</h2><p>重要数据先备份再分析，尽量不要在原来的系统中分析；<br>已经被入侵的系统都不再安全，如果条件允许最好采用第三方系统进行分析</p>
+<h2 id="分析目标"><a href="#分析目标" class="headerlink" title="分析目标"></a>分析目标</h2><p>找到攻击来源IP找到入侵途径<br>分析影响范围<br>量化影响级别</p>
+<h2 id="分析方法"><a href="#分析方法" class="headerlink" title="分析方法"></a>分析方法</h2><p>大胆猜测是最重要的，猜测入侵途径，然后进行分析一般都会事半功倍。 一般来说，分析日志可以找到很多东西，比如，secure日志可以查看Accept关键字；last可以查看登录信息；bash_history可以查看命令执行信息等，不同的日志有不同的查看方式，最好是系统管理员的陪同下逐步排查，因为系统管理员才最懂他的服务器系统。</p>
+<h2 id="分析影响"><a href="#分析影响" class="headerlink" title="分析影响"></a>分析影响</h2><p>根据服务器的用途、文件内容、机密情况结合数据泄漏、丢失风险，对系统使用者影响等进行影响量化，并记录相关安全事件，总结分析，以便后期总结。 如果已经被进行过内网渗透，还需要及时排查内网机器的安全风险，及时处理。</p>
+<h1 id="Windows安全应急响应"><a href="#Windows安全应急响应" class="headerlink" title="Windows安全应急响应"></a>Windows安全应急响应</h1><h2 id="入侵排查思路"><a href="#入侵排查思路" class="headerlink" title="入侵排查思路"></a>入侵排查思路</h2><h3 id="检查账号安全"><a href="#检查账号安全" class="headerlink" title="检查账号安全"></a>检查账号安全</h3><p>1.查看服务器是否有弱口令，远程管理端口是否对公网开放</p>
+<p>2.查看服务器是否存在可以账号、新增账号</p>
+<p>3.查看服务器是否存在隐藏账号、克隆账号<br>检查方法：<br>    i.打开注册表，查看管理员对应键值<code>HKEY_LOCAL_MACHINE\SAM\SAM\Domains\Account\Users\</code><br>    ii.使用D盾_web查杀工具</p>
+<p>4.结合日志，查看管理员登录时间、用户名是否存在异常<br>检查方法：<br>    i.Win+R打开运行，输入<code>eventvwr.msc</code>，打开事件查看器<br>    ii.导出Windos日志--安全，利用Log Parser进行分析</p>
+<h3 id="检查异常端口、进程"><a href="#检查异常端口、进程" class="headerlink" title="检查异常端口、进程"></a>检查异常端口、进程</h3><p>1.检查端口连接情况，是否有远程连接、可以连接<br>检查方法：<br>    i.<code>netstat -ano</code>查看当前的网络连接，定位可疑的ESTABLISHED<br>    ii.根据<code>netstat</code>定位出的PID，再通过<code>tasklist</code>命令进行进程定位<code>tasklist|findstr &quot;PID&quot;</code></p>
+<p>2.检查进程<br>检查方法：<br>    i.Win+R，输入<code>msinfo32</code>，依次点击<code>软件环境→正在运行任务</code>就可以查看到进程的详细信息，比如进程路径、进程ID、文件创建日期、启动时间<br>    ii.打开D盾_web查杀工具，进程查看，关注没有签名信息的进程<br>    iii.通过微软官方提供的Process Explorer等工具排查<br>    iv.查看可疑的进程及其子进程，通过观察以下内容：没有签名验证信息的进程、没有描述信息的进程、进程的属主、进程的路径是否合法、CPU或内存资源占用长时间过高的进程</p>
+<p>3.小技巧<br>    i.查看端口对应的PID：<code>netstat -ano|findstr &quot;port&quot;</code><br>    ii.查看进程对应的PID：任务管理器–查看–选择列–PID或者<code>tasklist|findstr &quot;Process Name&quot;</code><br>    iii.查看进程对应的程序位置：任务管理器–选择对应进程–右键打开文件位置或Win+R，输入<code>wmic</code>，cmd界面下输入<code>process</code><br>    iv.<code>tasklist/svc</code><br>    v.查看Windows服务所对应的端口：<code>%system%/system32/drivers/etc/services</code>（一般<code>%system%</code>就是<code>C:\Windows</code>）</p>
+<h3 id="检查启动项、计划任务、服务"><a href="#检查启动项、计划任务、服务" class="headerlink" title="检查启动项、计划任务、服务"></a>检查启动项、计划任务、服务</h3><h4 id="1-检查服务器是否有异常的启动项"><a href="#1-检查服务器是否有异常的启动项" class="headerlink" title="1.检查服务器是否有异常的启动项"></a>1.检查服务器是否有异常的启动项</h4><p>检查方法：<br>    i.登录服务器，单击【开始】&gt;【所有程序】&gt;【启动】，默认情况下此目录在是一个空目录，确认是否有非业务程序在该目录下<br>ii.单击开始菜单 &gt;【运行】，输入 msconfig，查看是否存在命名异常的启动项目，是则取消勾选命名异常的启动项目，并到命令中显示的路径删除文件<br>    iii.单击【开始】&gt;【运行】，输入 regedit，打开注册表，查看开机启动项是否正常，特别注意如下三个注册表项：         <code>HKEY_CURRENT_USER\software\micorsoft\windows\currentversion\run</code><br><code>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run</code>     <code>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Runonce</code><br>检查右侧是否有启动异常的项目，如有请删除，并建议安装杀毒软件进行病毒查杀，清除残留病毒或木马<br>    iv.利用安全软件查看启动项、开机时间管理等<br>    v.组策略，运行gpedit.msc</p>
+<h4 id="2-检查计划任务"><a href="#2-检查计划任务" class="headerlink" title="2.检查计划任务"></a>2.检查计划任务</h4><p>检查方法：<br>    i.单击【开始】&gt;【设置】&gt;【控制面板】&gt;【任务计划】，查看计划任务属性，便可以发现木马文件的路径<br>    ii.单击【开始】&gt;【运行】；输入 cmd，然后输入at，检查计算机与网络上的其它计算机之间的会话或计划任务，如有，则确认是否为正常连接</p>
+<h4 id="3-服务自启动"><a href="#3-服务自启动" class="headerlink" title="3.服务自启动"></a>3.服务自启动</h4><p>检查方法：<br>单击【开始】&gt;【运行】，输入services.msc，注意服务状态和启动类型，检查是否有异常服务。</p>
+<h3 id="检查系统相关信息"><a href="#检查系统相关信息" class="headerlink" title="检查系统相关信息"></a>检查系统相关信息</h3><h4 id="1-查看系统版本及补丁信息"><a href="#1-查看系统版本及补丁信息" class="headerlink" title="1.查看系统版本及补丁信息"></a>1.查看系统版本及补丁信息</h4><p>cmd中输入<code>systeminfo</code></p>
+<h4 id="2-查找可以目录及文件"><a href="#2-查找可以目录及文件" class="headerlink" title="2.查找可以目录及文件"></a>2.查找可以目录及文件</h4><p>检查方法：<br>    i.查看用户目录，新建账号会在这个目录生成一个用户目录，查看是否有新建用户目录<br>    Windows 2003 <code>C:\Documents and Settings</code><br>    Windows 2008R2 <code>C:\Users\</code><br>    ii.单击【开始】&gt;【运行】，输入%UserProfile%\Recent，分析最近打开分析可疑文件<br>    iii.在服务器各个目录，可根据文件夹内文件列表时间进行排序，查找可疑文件</p>
+<h3 id="自动化查杀"><a href="#自动化查杀" class="headerlink" title="自动化查杀"></a>自动化查杀</h3><h4 id="病毒查杀"><a href="#病毒查杀" class="headerlink" title="病毒查杀"></a>病毒查杀</h4><p>检查方法：下载安全软件，更新最新病毒库，进行全盘扫描</p>
+<h4 id="WebShell查杀"><a href="#WebShell查杀" class="headerlink" title="WebShell查杀"></a>WebShell查杀</h4><p>检查方法：选择具体站点路径进行WebShell查杀，建议使用两款WebShell查杀工具同时查杀，可相互补充规则库的不足</p>
+<h3 id="日志分析"><a href="#日志分析" class="headerlink" title="日志分析"></a>日志分析</h3><h4 id="系统日志"><a href="#系统日志" class="headerlink" title="系统日志"></a>系统日志</h4><p>分析方法：<br>    i.前提：开启审核策略，若日后系统出现故障、安全事故则可以查看系统的日志文件，排除故障，追查入侵者的信息等。<br>    ii.Win+R打开运行，输入”eventvwr.msc”，回车运行，打开”事件查看器”。<br>    iii.导出应用程序日志、安全日志、系统日志，利用Log Parser进行分析。</p>
+<h4 id="WEB访问日志"><a href="#WEB访问日志" class="headerlink" title="WEB访问日志"></a>WEB访问日志</h4><p>分析方法：<br>    i.找到中间件的web日志，打包到本地方便进行分析。<br>    ii.推荐工具：Window下，推荐用 EmEditor 进行日志分析，支持大文本，搜索效率还不错；Linux下，使用Shell命令组合查询分析</p>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><h3 id="病毒分析"><a href="#病毒分析" class="headerlink" title="病毒分析"></a>病毒分析</h3><p><a href="http://www.xuetr.com" target="_blank" rel="noopener">PCHunter</a></p>
+<p><a href="https://www.huorong.cn" target="_blank" rel="noopener">火绒剑</a></p>
+<h3 id="病毒查杀-1"><a href="#病毒查杀-1" class="headerlink" title="病毒查杀"></a>病毒查杀</h3><p><a href="https://www.huorong.cn" target="_blank" rel="noopener">火绒安全软件</a></p>
+<h3 id="在线病毒扫描"><a href="#在线病毒扫描" class="headerlink" title="在线病毒扫描"></a>在线病毒扫描</h3><p><a href="https://habo.qq.com" target="_blank" rel="noopener">腾讯哈勃分析系统</a></p>
+<h3 id="WebShell查杀-1"><a href="#WebShell查杀-1" class="headerlink" title="WebShell查杀"></a>WebShell查杀</h3><p><a href="http://www.shellpub.com" target="_blank" rel="noopener">河马webshell查杀</a></p>
+<p><a href="http://edr.sangfor.com.cn/backdoor_detection.html" target="_blank" rel="noopener">深信服Webshell网站后门检测工具</a></p>
+<h2 id="DOS命令"><a href="#DOS命令" class="headerlink" title="DOS命令"></a>DOS命令</h2><h3 id="dir"><a href="#dir" class="headerlink" title="dir"></a>dir</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">DIR [drive:][path][filename] [/A[[:]attributes]] [/B] [/C] [/D] [/L] [/N] [/O[[:]sortorder]] [/P] [/Q] [/R] [/S] [/T[[:]timefield]] [/W] [/X] [/4]</span><br><span class="line">/A 显示具有指定属性的文件</span><br><span class="line">   属性：D目录 R只读文件 H隐藏文件 A准备存档的文件 </span><br><span class="line">   S系统文件 I无内容索引文件 L解析点 -表示“否”的前缀</span><br><span class="line">/S 显示指定目录及子目录中文件</span><br><span class="line">/W 用宽列表格式显示</span><br><span class="line">/P 显示满一屏暂停，按任意键后继续显示下一屏</span><br><span class="line">/Q 显示文件所有者</span><br></pre></td></tr></table></figure>
+<h3 id="copy和xcopy"><a href="#copy和xcopy" class="headerlink" title="copy和xcopy"></a>copy和xcopy</h3><p>copy只能拷贝文件，不能拷贝文件夹<br>xcopy能拷贝文件夹及文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">xcopy参数</span><br><span class="line">/S 复制目录和子目录，除了空目录</span><br><span class="line">/E 复制目录和子目录，包括空目录</span><br><span class="line">/C 忽略错误继续复制</span><br><span class="line">/H 复制隐藏和系统文件</span><br></pre></td></tr></table></figure>
+<h3 id="del、deltree、rd"><a href="#del、deltree、rd" class="headerlink" title="del、deltree、rd"></a>del、deltree、rd</h3><p>del 只能删除一个或者多个<strong>文件</strong>，不能删除文件夹</p>
+<p>deltree 是一个外部命令，可以删除文件及文件夹，以及其子文件夹</p>
+<p>rd 删除空文件夹，需要空文件夹的绝对路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">del 参数</span><br><span class="line">/s 递归删除文件夹及文件</span><br><span class="line">/q 不提示确认删除</span><br></pre></td></tr></table></figure>
+<h3 id="move"><a href="#move" class="headerlink" title="move"></a>move</h3><p>移动一个或多个文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/Y 若目标文件夹下有同名文件，忽略提示，直接覆盖原文件</span><br><span class="line">/-Y 提示警告</span><br></pre></td></tr></table></figure>
+<h3 id="attrib"><a href="#attrib" class="headerlink" title="attrib"></a>attrib</h3><p>更改文件属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">attrib 参数</span><br><span class="line">+ 设置属性</span><br><span class="line">- 删除属性</span><br><span class="line">R 只读文件</span><br><span class="line">A 存档文件</span><br><span class="line">S 系统文件</span><br><span class="line">H 隐藏文件</span><br></pre></td></tr></table></figure>
+<h3 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h3><p>查看网络连接、端口信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">NETSTAT [-a] [-b] [-e] [-n] [-o] [-p proto] [-r] [-s] [-t] [-v] [interval]</span><br><span class="line">-a 显示连接和监听端口</span><br><span class="line">-b 显示包含于创建每个连接或监听端口的可执行组件;需要权限</span><br><span class="line">-e 显示以太网统计信息</span><br><span class="line">-n 以数字形式显示地址和端口号</span><br><span class="line">-o 显示与每个连接相关的所属进程ID</span><br><span class="line">-p proto 显示指定协议的连接;可以是TCP、UDP、TCPv6、UDPv6</span><br><span class="line">-r 显示路由表</span><br><span class="line">-s 按协议显示统计信息</span><br><span class="line">-t 显示当前连接卸载状态</span><br><span class="line">-x 显示NetworkDirect连接、侦听器和共享终结点</span><br><span class="line">-y 显示所有连接TCP连接模板;无法与其他选项结合使用</span><br><span class="line">interval 重新显示选定的统计信息，各个显示间暂停的间隔秒数。按CTRL+C停止重新显示统计信息。</span><br></pre></td></tr></table></figure>
+<h3 id="Linux的netstat"><a href="#Linux的netstat" class="headerlink" title="Linux的netstat"></a>Linux的netstat</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">usage: netstat [-vWeenNcCF] [&lt;Af&gt;] -r         netstat &#123;-V|--version|-h|--help&#125;</span><br><span class="line">       netstat [-vWnNcaeol] [&lt;Socket&gt; ...]</span><br><span class="line">       netstat &#123; [-vWeenNac] -i | [-cnNe] -M | -s [-6tuw] &#125;</span><br><span class="line"></span><br><span class="line">        -r, --route              display routing table</span><br><span class="line">        -i, --interfaces         display interface table</span><br><span class="line">        -g, --groups             display multicast group memberships</span><br><span class="line">        -s, --statistics         display networking statistics (like SNMP)</span><br><span class="line">        -M, --masquerade         display masqueraded connections</span><br><span class="line"></span><br><span class="line">        -v, --verbose            be verbose</span><br><span class="line">        -W, --wide               don&apos;t truncate IP addresses</span><br><span class="line">        -n, --numeric            don&apos;t resolve names</span><br><span class="line">        --numeric-hosts          don&apos;t resolve host names</span><br><span class="line">        --numeric-ports          don&apos;t resolve port names</span><br><span class="line">        --numeric-users          don&apos;t resolve user names</span><br><span class="line">        -N, --symbolic           resolve hardware names</span><br><span class="line">        -e, --extend             display other/more information</span><br><span class="line">        -p, --programs           display PID/Program name for sockets</span><br><span class="line">        -o, --timers             display timers</span><br><span class="line">        -c, --continuous         continuous listing</span><br><span class="line"></span><br><span class="line">        -l, --listening          display listening server sockets</span><br><span class="line">        -a, --all                display all sockets (default: connected)</span><br><span class="line">        -F, --fib                display Forwarding Information Base (default)</span><br><span class="line">        -C, --cache              display routing cache instead of FIB</span><br><span class="line">        -Z, --context            display SELinux security context for sockets</span><br><span class="line"></span><br><span class="line">  &lt;Socket&gt;=&#123;-t|--tcp&#125; &#123;-u|--udp&#125; &#123;-U|--udplite&#125; &#123;-S|--sctp&#125; &#123;-w|--raw&#125;</span><br><span class="line">           &#123;-x|--unix&#125; --ax25 --ipx --netrom</span><br><span class="line">  &lt;AF&gt;=Use &apos;-6|-4&apos; or &apos;-A &lt;af&gt;&apos; or &apos;--&lt;af&gt;&apos;; default: inet</span><br><span class="line">  List of possible address families (which support routing):</span><br><span class="line">    inet (DARPA Internet) inet6 (IPv6) ax25 (AMPR AX.25) </span><br><span class="line">    netrom (AMPR NET/ROM) ipx (Novell IPX) ddp (Appletalk DDP) </span><br><span class="line">    x25 (CCITT X.25)</span><br></pre></td></tr></table></figure>
+<h3 id="用户操作"><a href="#用户操作" class="headerlink" title="用户操作"></a>用户操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">net user chessur password /add</span><br><span class="line">net localgroup administrators chessur /add</span><br><span class="line">net user chessur /active:yes</span><br><span class="line">net user chessur /actice:no</span><br><span class="line">net user chessur /del</span><br></pre></td></tr></table></figure>
+<h2 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h2><p>1.事情的起因经过结果<br>2.需要解决的问题<br>3.网络环境，拓扑图<br>4.系统环境<br>5.服务器运行的服务<br>6.服务是否有重要资料，资料是否外泄<br>7.是否有安全设备(防火墙，WAF)<br>8.了解服务环境(开发语言，开发框架，开发商)<br>9.有没有处理过问题，处理了什么东西<br>10.日志是否完整(网站访问日志，中间件日志，网络安全设备日志，系统安全日志，日志时间)<br>11.内网环境下，被攻击服务器是否与其他服务器有连接，排查连接服务器<br>12.没有外连情况下，排查服务器是否安装远程控制类的软件</p>
+<h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><p>1.攻击时间，结束时间(从日志上分析)<br>2.攻击路径(入侵利用的漏洞)<br>3.木马样本取样<br>4.服务器是否被提权<br>5.检查是否有隐藏后门，遗留文件(从高危网站目录上查看，如upload目录)<br>6.检查网站后台是否有可疑操作日志</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>1.让客户做好备份<br>2.不要随意增删改查文件，任何操作都要经过客户同意之后再进行<br>3.删除文件时，让网站开发商确认文件是否为网站自身文件，如果不是，让网站开发商自行删除<br>4.上传安全工具需要客户同意<br>5.如果安全工具缺乏运行环境、驱动不能正常运行，不要随意安装驱动，以免服务崩溃</p>
+<h2 id="问题排查步骤"><a href="#问题排查步骤" class="headerlink" title="问题排查步骤"></a>问题排查步骤</h2><h3 id="1-判断服务器有没有被Rootkit"><a href="#1-判断服务器有没有被Rootkit" class="headerlink" title="1.判断服务器有没有被Rootkit"></a>1.判断服务器有没有被Rootkit</h3><p>Rootkit：一种特殊的恶意软件，它的功能是在安装目标上隐藏自身及指定的文件、进程和网络链接等信息，比较多见到的是Rootkit一般都和木马、后门等其他恶意程序结合使用。</p>
+<p>使用PCHunter查看，如果被Rootkit，只能重装系统</p>
+<h3 id="2-检查登录日志，任务计划，开机启动项"><a href="#2-检查登录日志，任务计划，开机启动项" class="headerlink" title="2.检查登录日志，任务计划，开机启动项"></a>2.检查登录日志，任务计划，开机启动项</h3><h4 id="登录日志"><a href="#登录日志" class="headerlink" title="登录日志"></a>登录日志</h4><p>控制面板->查看事件日志->Windows日志->安全</p>
+<p>可以根据登录日志排查入侵日期，也可判断攻击者是否通过暴破口令入侵。</p>
+<h4 id="任务计划"><a href="#任务计划" class="headerlink" title="任务计划"></a>任务计划</h4><p>管理工具->任务计划程序</p>
+<p>检查攻击者有没有设置定时任务运行恶意程序</p>
+<h4 id="开机启动项"><a href="#开机启动项" class="headerlink" title="开机启动项"></a>开机启动项</h4><p>开始菜单->启动</p>
+<h2 id="检查活动痕迹"><a href="#检查活动痕迹" class="headerlink" title="检查活动痕迹"></a>检查活动痕迹</h2><h3 id="1-用户文件夹"><a href="#1-用户文件夹" class="headerlink" title="1.用户文件夹"></a>1.用户文件夹</h3><p><code>C:\Users</code>查看攻击者的一些活动范围</p>
+<h3 id="2-用户桌面文件"><a href="#2-用户桌面文件" class="headerlink" title="2.用户桌面文件"></a>2.用户桌面文件</h3><p><code>C:\Documents and Settings\user\Desktop</code></p>
+<p><code>Documents and Settings</code>文件夹需要修改权限查看<br>属性->安全->高级->Everyone->编辑->取消<code>列出文件夹/读取数据</code>勾选</p>
+<p><img src="/2019/05/29/Security-Emergency-Response/权限设置.png" alt></p>
+<h3 id="3-用户的网络访问情况"><a href="#3-用户的网络访问情况" class="headerlink" title="3.用户的网络访问情况"></a>3.用户的网络访问情况</h3><p><code>C:\Documents and Settings\user\Cookies</code><br>Cookie文件夹中可能会记录一些敏感信息</p>
+<h3 id="4-程序安装的临时文件"><a href="#4-程序安装的临时文件" class="headerlink" title="4.程序安装的临时文件"></a>4.程序安装的临时文件</h3><p><code>C:\Documents and Settings\user\Local Settings\Temp</code><br>一些程序安装、解压缩等操作可能会在该目录产生临时文件</p>
+<h3 id="5-最近浏览"><a href="#5-最近浏览" class="headerlink" title="5.最近浏览"></a>5.最近浏览</h3><p><code>C:\Documents and Settings\user\Recent</code><br>用户最近访问过哪些文件或文件夹</p>
+<h3 id="6-上网历史记录"><a href="#6-上网历史记录" class="headerlink" title="6.上网历史记录"></a>6.上网历史记录</h3><p><code>C:\Documents and Settings\user\Local Settings\History</code></p>
+<h3 id="7-临时文件"><a href="#7-临时文件" class="headerlink" title="7.临时文件"></a>7.临时文件</h3><p><code>C:\Documents and Settings\user\Local Settings\Temporary Internet Files</code><br>浏览网页时产生的临时文件，但不会存储网页页面内容，还可能以临时文件的方式存储一些下载的文件</p>
+<h2 id="检查隐藏账号"><a href="#检查隐藏账号" class="headerlink" title="检查隐藏账号"></a>检查隐藏账号</h2><p>攻击者使用<code>$</code>符号创建的隐藏账户，使用<code>net user</code>无法查看<br>管理工具->计算机管理->用户查看隐藏用户</p>
+<h2 id="检查注册表"><a href="#检查注册表" class="headerlink" title="检查注册表"></a>检查注册表</h2><p>一些文件可以通过修改注册表达到再生</p>
+<p>有些攻击者通过修改注册表键值创建隐藏用户<br>查看注册表<code>HKEY_LOCAL_MACHINE\SAM\SAM\Domains\Account\Users\</code><br>删除该注册表下对应账户的键值删除隐藏用户</p>
+<h2 id="显示隐藏文件"><a href="#显示隐藏文件" class="headerlink" title="显示隐藏文件"></a>显示隐藏文件</h2><h3 id="1-dir"><a href="#1-dir" class="headerlink" title="1.dir"></a>1.dir</h3><p>cmd下输入<code>dir</code>查看</p>
+<h3 id="2-文件夹选项-显示隐藏"><a href="#2-文件夹选项-显示隐藏" class="headerlink" title="2.文件夹选项-显示隐藏"></a>2.文件夹选项-显示隐藏</h3><p>显示隐藏的文件、文件夹和驱动器<br>隐藏受保护的操作系统文件</p>
+<h3 id="3-xcopy"><a href="#3-xcopy" class="headerlink" title="3.xcopy"></a>3.xcopy</h3><p>复制文件夹到其他目录</p>
+<h3 id="4-move"><a href="#4-move" class="headerlink" title="4.move"></a>4.move</h3><p>移动文件夹到其他目录</p>
+<h3 id="5-attrib"><a href="#5-attrib" class="headerlink" title="5.attrib"></a>5.attrib</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">attrib -h C:\chessur</span><br></pre></td></tr></table></figure>
+<h3 id="6-查看注册表"><a href="#6-查看注册表" class="headerlink" title="6.查看注册表"></a>6.查看注册表</h3><p>修改<code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ Advanced\Folder\Hidden\SHOWALL</code>注册表的<code>CheckedValue</code>值，<code>0</code>表示不显示、<code>1</code>表示显示</p>
+<h3 id="7-移动到Linux系统下"><a href="#7-移动到Linux系统下" class="headerlink" title="7.移动到Linux系统下"></a>7.移动到Linux系统下</h3><p>将文件打包到Linux系统下，提取干净文件，将感染文件夹使用工具粉碎，再将干净文件打包到Windows系统下</p>
+<h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><h2 id="常见应急问题"><a href="#常见应急问题" class="headerlink" title="常见应急问题"></a>常见应急问题</h2><p>挖矿、菠菜、勒索病毒</p>
+<h2 id="痕迹备份"><a href="#痕迹备份" class="headerlink" title="痕迹备份"></a>痕迹备份</h2><p>分析日志前先备份日志，可以通过tar压缩备份</p>
+<h3 id="备份-var-log下所有日志"><a href="#备份-var-log下所有日志" class="headerlink" title="备份/var/log下所有日志"></a>备份/var/log下所有日志</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zcvf /home/chessur/logs.tar.gz /var/log</span><br></pre></td></tr></table></figure>
+<h3 id="备份last"><a href="#备份last" class="headerlink" title="备份last"></a>备份last</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">last &gt; /home/chessur/last.log</span><br></pre></td></tr></table></figure>
+<h3 id="备份在线用户"><a href="#备份在线用户" class="headerlink" title="备份在线用户"></a>备份在线用户</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w  &gt; /home/chessur/w.log</span><br></pre></td></tr></table></figure>
+<h3 id="备份系统服务"><a href="#备份系统服务" class="headerlink" title="备份系统服务"></a>备份系统服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl -a &gt; services.log</span><br></pre></td></tr></table></figure>
+<h3 id="备份进程"><a href="#备份进程" class="headerlink" title="备份进程"></a>备份进程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef &gt; ps.log</span><br></pre></td></tr></table></figure>
+<h3 id="备份监听端口"><a href="#备份监听端口" class="headerlink" title="备份监听端口"></a>备份监听端口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -nlutp &gt; port-listen.log</span><br></pre></td></tr></table></figure>
+<h3 id="备份所有端口情况"><a href="#备份所有端口情况" class="headerlink" title="备份所有端口情况"></a>备份所有端口情况</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ano &gt; port-all.log</span><br></pre></td></tr></table></figure>
+<h2 id="排查流程"><a href="#排查流程" class="headerlink" title="排查流程"></a>排查流程</h2><p>找出问题->解决问题->编写报告<br>菠菜需要多注意网站配置文件是否被修改、网页是否被植入链接</p>
+<h2 id="进程排查"><a href="#进程排查" class="headerlink" title="进程排查"></a>进程排查</h2><h3 id="1-查看当前系统状态"><a href="#1-查看当前系统状态" class="headerlink" title="1.查看当前系统状态"></a>1.查看当前系统状态</h3><p><code>top</code>可以持续的监视进程的信息<br>碰到挖矿应急通常优先使用top命令查看系统进程，因为挖矿病毒会占用较多CPU</p>
+<h3 id="2-查看当前系统进程信息-ps"><a href="#2-查看当前系统进程信息-ps" class="headerlink" title="2.查看当前系统进程信息(ps)"></a>2.查看当前系统进程信息(ps)</h3><p><code>ps</code>Process Status的缩写。ps命令用来列出系统中当前运行的进程。ps命令列出的是当前进程的快照，就是执行ps命令的那个时刻的那些进程，如果想要动态的显示进程信息，就可以使用top命令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">Usage:</span><br><span class="line"> ps [options]</span><br><span class="line"></span><br><span class="line">Basic options:</span><br><span class="line"> -A, -e               all processes</span><br><span class="line"> -a                   all with tty, except session leaders</span><br><span class="line">  a                   all with tty, including other users</span><br><span class="line"> -d                   all except session leaders</span><br><span class="line"> -N, --deselect       negate selection</span><br><span class="line">  r                   only running processes</span><br><span class="line">  T                   all processes on this terminal</span><br><span class="line">  x                   processes without controlling ttys</span><br><span class="line"></span><br><span class="line">Selection by list:</span><br><span class="line"> -C &lt;command&gt;         command name</span><br><span class="line"> -G, --Group &lt;GID&gt;    real group id or name</span><br><span class="line"> -g, --group &lt;group&gt;  session or effective group name</span><br><span class="line"> -p, p, --pid &lt;PID&gt;   process id</span><br><span class="line">        --ppid &lt;PID&gt;  parent process id</span><br><span class="line"> -q, q, --quick-pid &lt;PID&gt;</span><br><span class="line">                      process id (quick mode)</span><br><span class="line"> -s, --sid &lt;session&gt;  session id</span><br><span class="line"> -t, t, --tty &lt;tty&gt;   terminal</span><br><span class="line"> -u, U, --user &lt;UID&gt;  effective user id or name</span><br><span class="line"> -U, --User &lt;UID&gt;     real user id or name</span><br><span class="line"></span><br><span class="line">  The selection options take as their argument either:</span><br><span class="line">    a comma-separated list e.g. &apos;-u root,nobody&apos; or</span><br><span class="line">    a blank-separated list e.g. &apos;-p 123 4567&apos;</span><br><span class="line"></span><br><span class="line">Output formats:</span><br><span class="line"> -F                   extra full</span><br><span class="line"> -f                   full-format, including command lines</span><br><span class="line">  f, --forest         ascii art process tree</span><br><span class="line"> -H                   show process hierarchy</span><br><span class="line"> -j                   jobs format</span><br><span class="line">  j                   BSD job control format</span><br><span class="line"> -l                   long format</span><br><span class="line">  l                   BSD long format</span><br><span class="line"> -M, Z                add security data (for SELinux)</span><br><span class="line"> -O &lt;format&gt;          preloaded with default columns</span><br><span class="line">  O &lt;format&gt;          as -O, with BSD personality</span><br><span class="line"> -o, o, --format &lt;format&gt;</span><br><span class="line">                      user-defined format</span><br><span class="line">  s                   signal format</span><br><span class="line">  u                   user-oriented format</span><br><span class="line">  v                   virtual memory format</span><br><span class="line">  X                   register format</span><br><span class="line"> -y                   do not show flags, show rss vs. addr (used with -l)</span><br><span class="line">     --context        display security context (for SELinux)</span><br><span class="line">     --headers        repeat header lines, one per page</span><br><span class="line">     --no-headers     do not print header at all</span><br><span class="line">     --cols, --columns, --width &lt;num&gt;</span><br><span class="line">                      set screen width</span><br><span class="line">     --rows, --lines &lt;num&gt;</span><br><span class="line">                      set screen height</span><br><span class="line"></span><br><span class="line">Show threads:</span><br><span class="line">  H                   as if they were processes</span><br><span class="line"> -L                   possibly with LWP and NLWP columns</span><br><span class="line"> -m, m                after processes</span><br><span class="line"> -T                   possibly with SPID column</span><br><span class="line"></span><br><span class="line">Miscellaneous options:</span><br><span class="line"> -c                   show scheduling class with -l option</span><br><span class="line">  c                   show true command name</span><br><span class="line">  e                   show the environment after command</span><br><span class="line">  k,    --sort        specify sort order as: [+|-]key[,[+|-]key[,...]]</span><br><span class="line">  L                   show format specifiers</span><br><span class="line">  n                   display numeric uid and wchan</span><br><span class="line">  S,    --cumulative  include some dead child process data</span><br><span class="line"> -y                   do not show flags, show rss (only with -l)</span><br><span class="line"> -V, V, --version     display version information and exit</span><br><span class="line"> -w, w                unlimited output width</span><br><span class="line"></span><br><span class="line">        --help &lt;simple|list|output|threads|misc|all&gt;</span><br><span class="line">                      display help and exit</span><br></pre></td></tr></table></figure>
+<h3 id="3-查看非root运行的进程"><a href="#3-查看非root运行的进程" class="headerlink" title="3.查看非root运行的进程"></a>3.查看非root运行的进程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -u root -N</span><br></pre></td></tr></table></figure>
+<h3 id="4-查看root运行的进程"><a href="#4-查看root运行的进程" class="headerlink" title="4.查看root运行的进程"></a>4.查看root运行的进程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -u root</span><br></pre></td></tr></table></figure>
+<h3 id="5-查看奇怪进程"><a href="#5-查看奇怪进程" class="headerlink" title="5.查看奇怪进程"></a>5.查看奇怪进程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -aef|grep inetd</span><br></pre></td></tr></table></figure>
+<h3 id="6-检查隐藏进程"><a href="#6-检查隐藏进程" class="headerlink" title="6.检查隐藏进程"></a>6.检查隐藏进程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef|awk &apos;&#123;print&#125;&apos;|sort -n|uniq &gt; 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /proc | sort -n |uniq &gt; 2</span><br></pre></td></tr></table></figure>
+<p><code>sort</code>将文本文件内容排序，<code>-n</code>安装数值大小排序<br><code>uniq</code>去掉文本中重复出现的行列</p>
+<h3 id="7-检查计划任务"><a href="#7-检查计划任务" class="headerlink" title="7.检查计划任务"></a>7.检查计划任务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ls /etc/crontab</span><br><span class="line">crontab -u user -l</span><br><span class="line">usage:	crontab [-u user] file</span><br><span class="line">	crontab [ -u user ] [ -i ] &#123; -e | -l | -r &#125;</span><br><span class="line">		(default operation is replace, per 1003.2)</span><br><span class="line">	-e	(edit user&apos;s crontab)</span><br><span class="line">	-l	(list user&apos;s crontab)</span><br><span class="line">	-r	(delete user&apos;s crontab)</span><br><span class="line">	-i	(prompt before deleting user&apos;s crontab)</span><br></pre></td></tr></table></figure>
+<h2 id="活动痕迹排查"><a href="#活动痕迹排查" class="headerlink" title="活动痕迹排查"></a>活动痕迹排查</h2><h3 id="1-查看当前登录用户"><a href="#1-查看当前登录用户" class="headerlink" title="1.查看当前登录用户"></a>1.查看当前登录用户</h3><p><code>who</code>显示系统中有哪些使用者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">who -H</span><br></pre></td></tr></table></figure>
+<h3 id="2-查看当前登录用户信息"><a href="#2-查看当前登录用户信息" class="headerlink" title="2.查看当前登录用户信息"></a>2.查看当前登录用户信息</h3><p><code>w</code>显示目前登入系统的用户信息。</p>
+<h3 id="3-查看最近登录信息"><a href="#3-查看最近登录信息" class="headerlink" title="3.查看最近登录信息"></a>3.查看最近登录信息</h3><p><code>last</code>显示用户最近登录信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">last -num //显示前num个</span><br></pre></td></tr></table></figure>
+<h3 id="4-查看bash历史命令"><a href="#4-查看bash历史命令" class="headerlink" title="4.查看bash历史命令"></a>4.查看bash历史命令</h3><p><code>history</code>列出以前输入的命令和 Bash 日志。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">history num //显示最近的num个</span><br></pre></td></tr></table></figure>
+<h3 id="5-查看空口令账号"><a href="#5-查看空口令账号" class="headerlink" title="5.查看空口令账号"></a>5.查看空口令账号</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk -F: &apos;($2==&quot;&quot;)&apos; /etc/shadow</span><br></pre></td></tr></table></figure>
+<h3 id="6-查看uid为0的账号"><a href="#6-查看uid为0的账号" class="headerlink" title="6.查看uid为0的账号"></a>6.查看uid为0的账号</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">awk -F: &apos;($3==0)&apos; /etc/passwd</span><br><span class="line">cat /etc/passwd|grep &quot;:0:&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="7-查看进程树"><a href="#7-查看进程树" class="headerlink" title="7.查看进程树"></a>7.查看进程树</h3><p><code>pstree</code>以树状图的方式展现进程之间的派生关系</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">-a：显示每个程序的完整指令，包含路径，参数或是常驻服务的标示；</span><br><span class="line">-c：不使用精简标示法；</span><br><span class="line">-G：使用VT100终端机的列绘图字符；</span><br><span class="line">-h：列出树状图时，特别标明现在执行的程序；</span><br><span class="line">-H&lt;程序识别码&gt;：此参数的效果和指定&quot;-h&quot;参数类似，但特别标明指定的程序；</span><br><span class="line">-l：采用长列格式显示树状图；</span><br><span class="line">-n：用程序识别码排序。预设是以程序名称来排序；</span><br><span class="line">-p：显示程序识别码；</span><br><span class="line">-u：显示用户名称；</span><br><span class="line">-U：使用UTF-8列绘图字符；</span><br><span class="line">-V：显示版本信息。</span><br></pre></td></tr></table></figure>
+<h2 id="网络排查"><a href="#网络排查" class="headerlink" title="网络排查"></a>网络排查</h2><h3 id="1-netstat"><a href="#1-netstat" class="headerlink" title="1.netstat"></a>1.netstat</h3><p><code>netstat</code>用于显示网络状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">usage: netstat [-vWeenNcCF] [&lt;Af&gt;] -r         netstat &#123;-V|--version|-h|--help&#125;</span><br><span class="line">       netstat [-vWnNcaeol] [&lt;Socket&gt; ...]</span><br><span class="line">       netstat &#123; [-vWeenNac] -i | [-cnNe] -M | -s [-6tuw] &#125;</span><br><span class="line"></span><br><span class="line">        -r, --route              display routing table</span><br><span class="line">        -i, --interfaces         display interface table</span><br><span class="line">        -g, --groups             display multicast group memberships</span><br><span class="line">        -s, --statistics         display networking statistics (like SNMP)</span><br><span class="line">        -M, --masquerade         display masqueraded connections</span><br><span class="line"></span><br><span class="line">        -v, --verbose            be verbose</span><br><span class="line">        -W, --wide               don&apos;t truncate IP addresses</span><br><span class="line">        -n, --numeric            don&apos;t resolve names</span><br><span class="line">        --numeric-hosts          don&apos;t resolve host names</span><br><span class="line">        --numeric-ports          don&apos;t resolve port names</span><br><span class="line">        --numeric-users          don&apos;t resolve user names</span><br><span class="line">        -N, --symbolic           resolve hardware names</span><br><span class="line">        -e, --extend             display other/more information</span><br><span class="line">        -p, --programs           display PID/Program name for sockets</span><br><span class="line">        -o, --timers             display timers</span><br><span class="line">        -c, --continuous         continuous listing</span><br><span class="line"></span><br><span class="line">        -l, --listening          display listening server sockets</span><br><span class="line">        -a, --all                display all sockets (default: connected)</span><br><span class="line">        -F, --fib                display Forwarding Information Base (default)</span><br><span class="line">        -C, --cache              display routing cache instead of FIB</span><br><span class="line">        -Z, --context            display SELinux security context for sockets</span><br><span class="line"></span><br><span class="line">  &lt;Socket&gt;=&#123;-t|--tcp&#125; &#123;-u|--udp&#125; &#123;-U|--udplite&#125; &#123;-S|--sctp&#125; &#123;-w|--raw&#125;</span><br><span class="line">           &#123;-x|--unix&#125; --ax25 --ipx --netrom</span><br><span class="line">  &lt;AF&gt;=Use &apos;-6|-4&apos; or &apos;-A &lt;af&gt;&apos; or &apos;--&lt;af&gt;&apos;; default: inet</span><br><span class="line">  List of possible address families (which support routing):</span><br><span class="line">    inet (DARPA Internet) inet6 (IPv6) ax25 (AMPR AX.25) </span><br><span class="line">    netrom (AMPR NET/ROM) ipx (Novell IPX) ddp (Appletalk DDP) </span><br><span class="line">    x25 (CCITT X.25)</span><br></pre></td></tr></table></figure>
+<h3 id="2-查看进程占用端口情况"><a href="#2-查看进程占用端口情况" class="headerlink" title="2.查看进程占用端口情况"></a>2.查看进程占用端口情况</h3><p><code>lsof</code>用于查看进程打开的文件，打开文件的进程，进程打开的端口(TCP、UDP)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">-a：列出打开文件存在的进程；</span><br><span class="line">-c&lt;进程名&gt;：列出指定进程所打开的文件；</span><br><span class="line">-g：列出GID号进程详情；</span><br><span class="line">-d&lt;文件号&gt;：列出占用该文件号的进程；</span><br><span class="line">+d&lt;目录&gt;：列出目录下被打开的文件；</span><br><span class="line">+D&lt;目录&gt;：递归列出目录下被打开的文件；</span><br><span class="line">-n&lt;目录&gt;：列出使用NFS的文件；</span><br><span class="line">-i&lt;条件&gt;：列出符合条件的进程。（4、6、协议、:端口、 @ip ）</span><br><span class="line">-p&lt;进程号&gt;：列出指定进程号所打开的文件；</span><br><span class="line">-u：列出UID号进程详情；</span><br><span class="line">-h：显示帮助信息；</span><br><span class="line">-v：显示版本信息。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lsof -i:port //查看端口</span><br><span class="line">lsof -i tcp //查看TCP连接</span><br><span class="line">lsof -i udp //查看UDP连接</span><br><span class="line">lsof -p PID //查看进程号</span><br></pre></td></tr></table></figure>
+<h2 id="文件排查"><a href="#文件排查" class="headerlink" title="文件排查"></a>文件排查</h2><h3 id="1-查看文件"><a href="#1-查看文件" class="headerlink" title="1.查看文件"></a>1.查看文件</h3><p><code>ls</code>用于显示指定工作目录下之内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -al</span><br></pre></td></tr></table></figure>
+<h3 id="2-定位程序位置"><a href="#2-定位程序位置" class="headerlink" title="2.定位程序位置"></a>2.定位程序位置</h3><p><code>whereis</code>用来定位指令的二进制程序、源代码文件和man手册页等相关文件的路径。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-b：只查找二进制文件；</span><br><span class="line">-B&lt;目录&gt;：只在设置的目录下查找二进制文件；</span><br><span class="line">-f：不显示文件名前的路径名称；</span><br><span class="line">-m：只查找说明文件；</span><br><span class="line">-M&lt;目录&gt;：只在设置的目录下查找说明文件；</span><br><span class="line">-s：只查找原始代码文件；</span><br><span class="line">-S&lt;目录&gt;只在设置的目录下查找原始代码文件；</span><br><span class="line">-u：查找不包含指定类型的文件。</span><br></pre></td></tr></table></figure>
+<h4 id="example"><a href="#example" class="headerlink" title="example"></a>example</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whereis nmap</span><br></pre></td></tr></table></figure>
+<h3 id="3-查找最近修改过的文件"><a href="#3-查找最近修改过的文件" class="headerlink" title="3.查找最近修改过的文件"></a>3.查找最近修改过的文件</h3><p><code>find</code>用来在指定目录下查找文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">-amin&lt;分钟&gt;：查找在指定时间曾被存取过的文件或目录，单位以分钟计算；</span><br><span class="line">-anewer&lt;参考文件或目录&gt;：查找其存取时间较指定文件或目录的存取时间更接近现在的文件或目录；</span><br><span class="line">-atime&lt;24小时数&gt;：查找在指定时间曾被存取过的文件或目录，单位以24小时计算；</span><br><span class="line">-cmin&lt;分钟&gt;：查找在指定时间之时被更改过的文件或目录；</span><br><span class="line">-cnewer&lt;参考文件或目录&gt;查找其更改时间较指定文件或目录的更改时间更接近现在的文件或目录；</span><br><span class="line">-ctime&lt;24小时数&gt;：查找在指定时间之时被更改的文件或目录，单位以24小时计算；</span><br><span class="line">-daystart：从本日开始计算时间；</span><br><span class="line">-depth：从指定目录下最深层的子目录开始查找；</span><br><span class="line">-expty：寻找文件大小为0 Byte的文件，或目录下没有任何子目录或文件的空目录；</span><br><span class="line">-exec&lt;执行指令&gt;：假设find指令的回传值为True，就执行该指令；</span><br><span class="line">-false：将find指令的回传值皆设为False；</span><br><span class="line">-fls&lt;列表文件&gt;：此参数的效果和指定“-ls”参数类似，但会把结果保存为指定的列表文件；</span><br><span class="line">-follow：排除符号连接；</span><br><span class="line">-fprint&lt;列表文件&gt;：此参数的效果和指定“-print”参数类似，但会把结果保存成指定的列表文件；</span><br><span class="line">-fprint0&lt;列表文件&gt;：此参数的效果和指定“-print0”参数类似，但会把结果保存成指定的列表文件；</span><br><span class="line">-fprintf&lt;列表文件&gt;&lt;输出格式&gt;：此参数的效果和指定“-printf”参数类似，但会把结果保存成指定的列表文件；</span><br><span class="line">-fstype&lt;文件系统类型&gt;：只寻找该文件系统类型下的文件或目录；</span><br><span class="line">-gid&lt;群组识别码&gt;：查找符合指定之群组识别码的文件或目录；</span><br><span class="line">-group&lt;群组名称&gt;：查找符合指定之群组名称的文件或目录；</span><br><span class="line">-help或——help：在线帮助；</span><br><span class="line">-ilname&lt;范本样式&gt;：此参数的效果和指定“-lname”参数类似，但忽略字符大小写的差别；</span><br><span class="line">-iname&lt;范本样式&gt;：此参数的效果和指定“-name”参数类似，但忽略字符大小写的差别；</span><br><span class="line">-inum&lt;inode编号&gt;：查找符合指定的inode编号的文件或目录；</span><br><span class="line">-ipath&lt;范本样式&gt;：此参数的效果和指定“-path”参数类似，但忽略字符大小写的差别；</span><br><span class="line">-iregex&lt;范本样式&gt;：此参数的效果和指定“-regexe”参数类似，但忽略字符大小写的差别；</span><br><span class="line">-links&lt;连接数目&gt;：查找符合指定的硬连接数目的文件或目录；</span><br><span class="line">-iname&lt;范本样式&gt;：指定字符串作为寻找符号连接的范本样式；</span><br><span class="line">-ls：假设find指令的回传值为Ture，就将文件或目录名称列出到标准输出；</span><br><span class="line">-maxdepth&lt;目录层级&gt;：设置最大目录层级；</span><br><span class="line">-mindepth&lt;目录层级&gt;：设置最小目录层级；</span><br><span class="line">-mmin&lt;分钟&gt;：查找在指定时间曾被更改过的文件或目录，单位以分钟计算；</span><br><span class="line">-mount：此参数的效果和指定“-xdev”相同；</span><br><span class="line">-mtime&lt;24小时数&gt;：查找在指定时间曾被更改过的文件或目录，单位以24小时计算；</span><br><span class="line">-name&lt;范本样式&gt;：指定字符串作为寻找文件或目录的范本样式；</span><br><span class="line">-newer&lt;参考文件或目录&gt;：查找其更改时间较指定文件或目录的更改时间更接近现在的文件或目录；</span><br><span class="line">-nogroup：找出不属于本地主机群组识别码的文件或目录；</span><br><span class="line">-noleaf：不去考虑目录至少需拥有两个硬连接存在；</span><br><span class="line">-nouser：找出不属于本地主机用户识别码的文件或目录；</span><br><span class="line">-ok&lt;执行指令&gt;：此参数的效果和指定“-exec”类似，但在执行指令之前会先询问用户，若回答“y”或“Y”，则放弃执行命令；</span><br><span class="line">-path&lt;范本样式&gt;：指定字符串作为寻找目录的范本样式；</span><br><span class="line">-perm&lt;权限数值&gt;：查找符合指定的权限数值的文件或目录；</span><br><span class="line">-print：假设find指令的回传值为Ture，就将文件或目录名称列出到标准输出。格式为每列一个名称，每个名称前皆有“./”字符串；</span><br><span class="line">-print0：假设find指令的回传值为Ture，就将文件或目录名称列出到标准输出。格式为全部的名称皆在同一行；</span><br><span class="line">-printf&lt;输出格式&gt;：假设find指令的回传值为Ture，就将文件或目录名称列出到标准输出。格式可以自行指定；</span><br><span class="line">-prune：不寻找字符串作为寻找文件或目录的范本样式;</span><br><span class="line">-regex&lt;范本样式&gt;：指定字符串作为寻找文件或目录的范本样式；</span><br><span class="line">-size&lt;文件大小&gt;：查找符合指定的文件大小的文件；</span><br><span class="line">-true：将find指令的回传值皆设为True；</span><br><span class="line">-typ&lt;文件类型&gt;：只寻找符合指定的文件类型的文件；</span><br><span class="line">-uid&lt;用户识别码&gt;：查找符合指定的用户识别码的文件或目录；</span><br><span class="line">-used&lt;日数&gt;：查找文件或目录被更改之后在指定时间曾被存取过的文件或目录，单位以日计算；</span><br><span class="line">-user&lt;拥有者名称&gt;：查找符和指定的拥有者名称的文件或目录；</span><br><span class="line">-version或——version：显示版本信息；</span><br><span class="line">-xdev：将范围局限在先行的文件系统中；</span><br><span class="line">-xtype&lt;文件类型&gt;：此参数的效果和指定“-type”参数类似，差别在于它针对符号连接检查。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -mtime num //num表示文件修改之后的num天</span><br></pre></td></tr></table></figure>
+<h2 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h2><h3 id="根据PID定位"><a href="#根据PID定位" class="headerlink" title="根据PID定位"></a>根据PID定位</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lsof -p PID</span><br><span class="line">ls -al /etc/proc/PID</span><br></pre></td></tr></table></figure>
+<h3 id="根据名称定为"><a href="#根据名称定为" class="headerlink" title="根据名称定为"></a>根据名称定为</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -name &quot;Process Name&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="停止进程"><a href="#停止进程" class="headerlink" title="停止进程"></a>停止进程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -9 PID</span><br></pre></td></tr></table></figure>
+<p>若出现<code>Operation not permitted</code>，可能是病毒使用了<code>chattr +i</code>，使用<code>chattr -i filename</code></p>
+<h2 id="清除后门"><a href="#清除后门" class="headerlink" title="清除后门"></a>清除后门</h2><h3 id="SSH后门"><a href="#SSH后门" class="headerlink" title="SSH后门"></a>SSH后门</h3><p>在<code>/root/.ssh/</code>目录下，攻击者可能会创建自己的SSH公钥，保持控制权限，删除未知公钥</p>
+<h2 id="命令被替换"><a href="#命令被替换" class="headerlink" title="命令被替换"></a>命令被替换</h2><p>清除可以命令，安装干净的命令<br>可以用<code>strings</code>查看命令内容</p>
+<h2 id="日志目录"><a href="#日志目录" class="headerlink" title="日志目录"></a>日志目录</h2><p><code>/etc/crontab</code>计划任务目录，文件内容格式<code>*/1 * * * * chessur  ls /&gt;&gt;/opt/crontab-e 2&gt;&amp;1</code>需要在五个<code>*</code>后面加上用户名</p>
+<p><code>/var/spool/cron/</code>计划任务目录，以用户名目录来区分不同用户的计划任务，文件内容格式<code>*/1 * * * *  ls /&gt;&gt;/opt/crontab-e 2&gt;&amp;1</code>，不需要加上用户名</p>
+<p><code>/var/log/messages</code>整体系统信息日志，包含了系统启动时的引导消息，以及系统运行时的其他状态消息。IO 错误、网络错误和其他系统错误都会记录到这个文件中。</p>
+<p><code>/var/log/syslog</code>系统启动期间的日志，只记录警告信息，系统出问题的信息</p>
+<p><code>/var/log/user.log</code>用户信息日志</p>
+<p><code>/var/log/auth.log</code>系统授权日志，记录登录信息</p>
+<p><code>/var/log/cron</code>记录crontab守护进程crond所派生的子进程的动作，前面加上用 户、登录时间和PID，以及派生出的进程的动作</p>
+<p><code>/var/log/xferlog</code>FTP系统日志，记录用户与FTP服务器的交互信息</p>
+<p><code>/var/log/secure</code> 包含验证和授权方面信息，sshd会将所有信息记录（其中包括失败登录）在这里</p>
+<p><code>/var/log/lastlog</code>记录最近成功登录的事件和最后一次不成功的事件，使用<code>lastlog</code>命令查看，该命令只能以<strong>root</strong>权限执行</p>
+<p><code>/var/log/maillog</code>记录了每一个发送到系统或从系统发出的电子邮件的活动。</p>
+<p><code>/var/log/wtmp</code>永久记录每个用户登录、注销及系统的启动、停机的事件，使用<code>last</code>命令查看</p>
+<p><code>/var/run/utmp</code>记录有关当前登录的每个用户的信息，执行<code>who</code>、<code>w</code>、<code>users</code>、<code>finger</code>等命令时会访问该文件</p>
+<p><code>/var/log/btmp</code>记录所有失败登录信息。使用last命令查看btmp文件<code>last -f /var/log/btmp | more</code></p>
+<p><code>/etc/httpd/logs/access.log</code>Apache访问日志</p>
+<p><code>/var/log/httpd</code>或<code>/var/log/apache2</code>Apache的访问日志</p>
+<p><code>/var/log/lighttpd</code>light HTTPD的访问日志</p>
+<p><code>/var/log/samba/</code>samba存储的信息</p>
+<p><code>/var/log/nginx/</code>Nginx访问日志目录</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1] <a href="https://blubiu.github.io/archive/" target="_blank" rel="noopener">blubiu</a></p>
+<p>[2] <a href="https://zhuanlan.zhihu.com/p/28352723" target="_blank" rel="noopener">Linux安全事件应急响应排查方法总结</a></p>
+<p>[3] <a href="https://bypass007.github.io/Emergency-Response-Notes/" target="_blank" rel="noopener">应急响应实战笔记</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/17/Python-Notes/" rel="next" title="'Python Notes'">
+                <i class="fa fa-chevron-left"></i> 'Python Notes'
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2026/05/28/Will-i/" rel="prev" title="'Diary'">
+                'Diary' <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">chessur</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">32</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/ChireC" title="GitHub &rarr; https://github.com/ChireC" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#总体思路"><span class="nav-text">总体思路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分析原则"><span class="nav-text">分析原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析目标"><span class="nav-text">分析目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析方法"><span class="nav-text">分析方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析影响"><span class="nav-text">分析影响</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows安全应急响应"><span class="nav-text">Windows安全应急响应</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#入侵排查思路"><span class="nav-text">入侵排查思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#检查账号安全"><span class="nav-text">检查账号安全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检查异常端口、进程"><span class="nav-text">检查异常端口、进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检查启动项、计划任务、服务"><span class="nav-text">检查启动项、计划任务、服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-检查服务器是否有异常的启动项"><span class="nav-text">1.检查服务器是否有异常的启动项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-检查计划任务"><span class="nav-text">2.检查计划任务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-服务自启动"><span class="nav-text">3.服务自启动</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检查系统相关信息"><span class="nav-text">检查系统相关信息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-查看系统版本及补丁信息"><span class="nav-text">1.查看系统版本及补丁信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-查找可以目录及文件"><span class="nav-text">2.查找可以目录及文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动化查杀"><span class="nav-text">自动化查杀</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#病毒查杀"><span class="nav-text">病毒查杀</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#WebShell查杀"><span class="nav-text">WebShell查杀</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日志分析"><span class="nav-text">日志分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#系统日志"><span class="nav-text">系统日志</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#WEB访问日志"><span class="nav-text">WEB访问日志</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工具"><span class="nav-text">工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#病毒分析"><span class="nav-text">病毒分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#病毒查杀-1"><span class="nav-text">病毒查杀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在线病毒扫描"><span class="nav-text">在线病毒扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WebShell查杀-1"><span class="nav-text">WebShell查杀</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOS命令"><span class="nav-text">DOS命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dir"><span class="nav-text">dir</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#copy和xcopy"><span class="nav-text">copy和xcopy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#del、deltree、rd"><span class="nav-text">del、deltree、rd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#move"><span class="nav-text">move</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#attrib"><span class="nav-text">attrib</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#netstat"><span class="nav-text">netstat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux的netstat"><span class="nav-text">Linux的netstat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户操作"><span class="nav-text">用户操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信息收集"><span class="nav-text">信息收集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决问题"><span class="nav-text">解决问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意事项"><span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题排查步骤"><span class="nav-text">问题排查步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-判断服务器有没有被Rootkit"><span class="nav-text">1.判断服务器有没有被Rootkit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-检查登录日志，任务计划，开机启动项"><span class="nav-text">2.检查登录日志，任务计划，开机启动项</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#登录日志"><span class="nav-text">登录日志</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#任务计划"><span class="nav-text">任务计划</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开机启动项"><span class="nav-text">开机启动项</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检查活动痕迹"><span class="nav-text">检查活动痕迹</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-用户文件夹"><span class="nav-text">1.用户文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-用户桌面文件"><span class="nav-text">2.用户桌面文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-用户的网络访问情况"><span class="nav-text">3.用户的网络访问情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-程序安装的临时文件"><span class="nav-text">4.程序安装的临时文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-最近浏览"><span class="nav-text">5.最近浏览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-上网历史记录"><span class="nav-text">6.上网历史记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-临时文件"><span class="nav-text">7.临时文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检查隐藏账号"><span class="nav-text">检查隐藏账号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检查注册表"><span class="nav-text">检查注册表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显示隐藏文件"><span class="nav-text">显示隐藏文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-dir"><span class="nav-text">1.dir</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-文件夹选项-显示隐藏"><span class="nav-text">2.文件夹选项-显示隐藏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-xcopy"><span class="nav-text">3.xcopy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-move"><span class="nav-text">4.move</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-attrib"><span class="nav-text">5.attrib</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-查看注册表"><span class="nav-text">6.查看注册表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-移动到Linux系统下"><span class="nav-text">7.移动到Linux系统下</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux"><span class="nav-text">Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见应急问题"><span class="nav-text">常见应急问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#痕迹备份"><span class="nav-text">痕迹备份</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#备份-var-log下所有日志"><span class="nav-text">备份/var/log下所有日志</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#备份last"><span class="nav-text">备份last</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#备份在线用户"><span class="nav-text">备份在线用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#备份系统服务"><span class="nav-text">备份系统服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#备份进程"><span class="nav-text">备份进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#备份监听端口"><span class="nav-text">备份监听端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#备份所有端口情况"><span class="nav-text">备份所有端口情况</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排查流程"><span class="nav-text">排查流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程排查"><span class="nav-text">进程排查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-查看当前系统状态"><span class="nav-text">1.查看当前系统状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-查看当前系统进程信息-ps"><span class="nav-text">2.查看当前系统进程信息(ps)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-查看非root运行的进程"><span class="nav-text">3.查看非root运行的进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-查看root运行的进程"><span class="nav-text">4.查看root运行的进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-查看奇怪进程"><span class="nav-text">5.查看奇怪进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-检查隐藏进程"><span class="nav-text">6.检查隐藏进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-检查计划任务"><span class="nav-text">7.检查计划任务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#活动痕迹排查"><span class="nav-text">活动痕迹排查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-查看当前登录用户"><span class="nav-text">1.查看当前登录用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-查看当前登录用户信息"><span class="nav-text">2.查看当前登录用户信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-查看最近登录信息"><span class="nav-text">3.查看最近登录信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-查看bash历史命令"><span class="nav-text">4.查看bash历史命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-查看空口令账号"><span class="nav-text">5.查看空口令账号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-查看uid为0的账号"><span class="nav-text">6.查看uid为0的账号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-查看进程树"><span class="nav-text">7.查看进程树</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络排查"><span class="nav-text">网络排查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-netstat"><span class="nav-text">1.netstat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-查看进程占用端口情况"><span class="nav-text">2.查看进程占用端口情况</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件排查"><span class="nav-text">文件排查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-查看文件"><span class="nav-text">1.查看文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-定位程序位置"><span class="nav-text">2.定位程序位置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#example"><span class="nav-text">example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-查找最近修改过的文件"><span class="nav-text">3.查找最近修改过的文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定位"><span class="nav-text">定位</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#根据PID定位"><span class="nav-text">根据PID定位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#根据名称定为"><span class="nav-text">根据名称定为</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#停止进程"><span class="nav-text">停止进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#清除后门"><span class="nav-text">清除后门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SSH后门"><span class="nav-text">SSH后门</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令被替换"><span class="nav-text">命令被替换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日志目录"><span class="nav-text">日志目录</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chessur</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+  $('.highlight').not('.gist .highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('Copied');
+        else $(this).text('Copy failed');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('Copy');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+</body>
+</html>
