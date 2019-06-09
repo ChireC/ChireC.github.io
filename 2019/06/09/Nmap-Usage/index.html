@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Nmap一些参数的具体作用">
+<meta name="keywords" content="工具使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="&#39;Nmap-Usage&#39;">
+<meta property="og:url" content="https://chirec.github.io/2019/06/09/Nmap-Usage/index.html">
+<meta property="og:site_name" content="Emerald Dream">
+<meta property="og:description" content="Nmap一些参数的具体作用">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-06-09T00:58:46.166Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="&#39;Nmap-Usage&#39;">
+<meta name="twitter:description" content="Nmap一些参数的具体作用">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://chirec.github.io/2019/06/09/Nmap-Usage/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>'Nmap-Usage' | Emerald Dream</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Emerald Dream</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/yourname" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chirec.github.io/2019/06/09/Nmap-Usage/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chessur">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Emerald Dream">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">'Nmap-Usage'
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-09 08:48:33 / Modified: 08:58:46" itemprop="dateCreated datePublished" datetime="2019-06-09T08:48:33+08:00">2019-06-09</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Nmap一些参数的具体作用</p>
+<a id="more"></a>
+<h2 id="目标说明"><a href="#目标说明" class="headerlink" title="目标说明"></a>目标说明</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-iL &lt;inputfilename&gt; 读取文档</span><br><span class="line">-iR &lt;hostnum&gt; 随机选择目标</span><br><span class="line">--exclude &lt;host1[,host2][,...]&gt; 排除主机/网络</span><br><span class="line">--excludefile &lt;excludefile&gt; 排除文件中的列表</span><br></pre></td></tr></table></figure>
+<h2 id="主机发现"><a href="#主机发现" class="headerlink" title="主机发现"></a>主机发现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">-sL 列表扫描</span><br><span class="line">-sP ping扫描</span><br><span class="line">-P0 默认主机存活</span><br><span class="line">-PS [portlist] TCP SYN Ping</span><br><span class="line">-PA [portlist] TCP ACK PING</span><br><span class="line">-PU [portlist] UDP Ping</span><br><span class="line">-PE;-PP;-PM ICMP Ping Types</span><br><span class="line">-PR ARP Ping</span><br><span class="line">-n 不用域名解析</span><br><span class="line">-R 为所有目标解析域名</span><br><span class="line">--system-dns 使用系统域名解析器</span><br></pre></td></tr></table></figure>
+<h2 id="端口扫描基础"><a href="#端口扫描基础" class="headerlink" title="端口扫描基础"></a>端口扫描基础</h2><h3 id="端口状态"><a href="#端口状态" class="headerlink" title="端口状态"></a>端口状态</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">open</td>
+<td style="text-align:center">开放</td>
+</tr>
+<tr>
+<td style="text-align:center">closed</td>
+<td style="text-align:center">关闭</td>
+</tr>
+<tr>
+<td style="text-align:center">filtered</td>
+<td style="text-align:center">被过滤的</td>
+</tr>
+<tr>
+<td style="text-align:center">unfiltered</td>
+<td style="text-align:center">未被过滤的</td>
+</tr>
+<tr>
+<td style="text-align:center">open\</td>
+<td style="text-align:center">filtered</td>
+<td>开放或被过滤的</td>
+</tr>
+<tr>
+<td style="text-align:center">closed\</td>
+<td style="text-align:center">filtered</td>
+<td>关闭或被过滤的</td>
+</tr>
+</tbody>
+</table>
+<h3 id="端口扫描技术"><a href="#端口扫描技术" class="headerlink" title="端口扫描技术"></a>端口扫描技术</h3><h4 id="sS"><a href="#sS" class="headerlink" title="-sS"></a>-sS</h4><p>TCP SYN扫描，半开放扫描</p>
+<h4 id="sT"><a href="#sT" class="headerlink" title="-sT"></a>-sT</h4><p>TCP Connect扫描，用户没有权限发送原始报文或扫描IPv6时，Nmap默认使用该扫描方式。Nmap调用<code>connect()</code>对目标端口建立连接，这种方式会花费更长的时间、会在目标机留下连接记录。</p>
+<h4 id="sU"><a href="#sU" class="headerlink" title="-sU"></a>-sU</h4><p>UDP扫描，可以和TCP扫描同时使用检查两种协议。</p>
+<p>扫描比较慢，Linux 2.4.20内核限制一秒钟只发送一条目标不可到达消息。加速UDP扫描，可以并发扫描更多的主机，先只对主要端口进行快速扫描，从防火墙后面扫描，使用<code>--host-timeout</code>跳过慢速的主机。</p>
+<h4 id="sN"><a href="#sN" class="headerlink" title="-sN"></a>-sN</h4><p>TCP Null 扫描<br>不设置任何标志位(tcp标志头是0)</p>
+<h4 id="sF"><a href="#sF" class="headerlink" title="-sF"></a>-sF</h4><p>TCP FIN 扫描<br>只设置TCP FIN标志位</p>
+<h4 id="sX"><a href="#sX" class="headerlink" title="-sX"></a>-sX</h4><p>Xmas 扫描<br>设置FIN，PSH，URG标志位，就像点亮圣诞树上所有的灯一样</p>
+<p><code>-sN,-sF,-sX</code>都基于TCP RFC来区分open和closed端口。IDS可以发现这三种方式，而且并不是所有系统都严格遵循RFC 793，例如Microsoft Windows,Cisco,BSDI,IBM OS/400，不过Unix系统都能工作。这三种模式无法区分<code>open</code>还是<code>filtered</code></p>
+<h4 id="sA"><a href="#sA" class="headerlink" title="-sA"></a>-sA</h4><p>TCP ACK扫描<br>不能区分<code>open</code>和<code>open|filtered</code>端口。用于发现防火墙规则，确定它们是有状态还是无状态，哪些端口是被过滤掉的。当扫描未被过滤的系统时，<code>open</code>(开放的)和<code>closed</code>(关闭的) 端口都会返回RST报文。Nmap把它们标记为 <code>unfiltered</code>(未被过滤的)，意思是 ACK报文不能到达，但至于它们是<code>open</code>(开放的)或者 <code>closed</code>(关闭的) 无法确定。不响应的端口或者发送特定的ICMP错误消息(类型3，代号1，2，3，9，10， 或者13)的端口，标记为 <code>filtered</code>(被过滤的)</p>
+<h4 id="sW"><a href="#sW" class="headerlink" title="-sW"></a>-sW</h4><p>TCP窗口扫描<br>TCP窗口值为整数，表示端口开启，TCP窗口值为0表示端口关闭</p>
+<h4 id="sM"><a href="#sM" class="headerlink" title="-sM"></a>-sM</h4><p>Mainmon扫描<br>和<code>-sN,-sF,-sX</code>方式完全一样，除了探测报文是<code>FIN/ACK</code></p>
+<p>–scanflags</p>
+<p>定制的TCP扫描<br><code>--scanflags</code>选项可以指定任意TCP标志位来设计扫描。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--scanflags URGACKPSHRTSSYNFIN</span><br></pre></td></tr></table></figure>
+<h4 id="sI"><a href="#sI" class="headerlink" title="-sI"></a>-sI</h4><p>TCP端口盲扫描，没有报文从真实的IP地址发送到目标</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-sI &lt;zombie host[:probeport]&gt;</span><br></pre></td></tr></table></figure>
+<p>默认端口80<br>可以尝试使用可能被信任的zombies扫描目标</p>
+<h3 id="端口说明和扫描顺序"><a href="#端口说明和扫描顺序" class="headerlink" title="端口说明和扫描顺序"></a>端口说明和扫描顺序</h3><p>默认情况下，Nmap用指定的协议对端口1-1024以及<code>nmap-services</code>文件中列出的更高的端口进行扫描</p>
+<h4 id="p"><a href="#p" class="headerlink" title="-p"></a>-p</h4><p>只扫描指定的端口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-p &lt;port ranges&gt;</span><br><span class="line">-p 21-25,80</span><br></pre></td></tr></table></figure>
+<h4 id="F"><a href="#F" class="headerlink" title="-F"></a>-F</h4><p>快速，有限的端口扫描<br>只扫描<code>nmap-services</code>文件中的端口</p>
+<h4 id="r"><a href="#r" class="headerlink" title="-r"></a>-r</h4><p>不要按随机顺序扫描端口<br>Nmap默认按随机顺序扫描端口，使用<code>-r</code>来顺序端口扫描</p>
+<h3 id="服务和版本探测"><a href="#服务和版本探测" class="headerlink" title="服务和版本探测"></a>服务和版本探测</h3><h4 id="sV"><a href="#sV" class="headerlink" title="-sV"></a>-sV</h4><p>版本探测<br>也可使用<code>-A</code>同时打开操作系统探测和版本探测</p>
+<h4 id="–allports"><a href="#–allports" class="headerlink" title="–allports"></a>–allports</h4><p>不为版本探测排除任何端口</p>
+<h4 id="version-intensity"><a href="#version-intensity" class="headerlink" title="--version-intensity"></a>--version-intensity</h4><p>设置 版本扫描强度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--version-intensity &lt;intensity&gt;</span><br></pre></td></tr></table></figure>
+<p>强度：1-9 默认为7<br>数值越高，服务越有可能被正确识别，高强度扫描花费更多的时间。</p>
+<h4 id="version-light"><a href="#version-light" class="headerlink" title="--version-light"></a>--version-light</h4><p>打开轻量级模式，是<code>--version-intensity 2</code>的别名</p>
+<h4 id="version-all"><a href="#version-all" class="headerlink" title="--version-all"></a>--version-all</h4><p><code>--version-intensity 9</code>的别名</p>
+<h4 id="version-trace"><a href="#version-trace" class="headerlink" title="--version-trace"></a>--version-trace</h4><p>跟踪版本扫描活动<br>Nmap打印出详细的关于正在进行的扫描的调试信息</p>
+<h4 id="sR"><a href="#sR" class="headerlink" title="-sR"></a>-sR</h4><p>RPC扫描<br>可以与许多端口扫描方法联合使用，对所有被发现开放的TCP/UDP端口执行SunRPC程序NULL命令，来确定他们是否有RPC端口并确定程序和版本号。</p>
+<h3 id="操作系统探测"><a href="#操作系统探测" class="headerlink" title="操作系统探测"></a>操作系统探测</h3><h4 id="O"><a href="#O" class="headerlink" title="--O"></a>--O</h4><p>启动操作系统检测<br>也可以使用<code>-A</code>来同时启动操作系统检测和版本检测</p>
+<h4 id="osscan-limit"><a href="#osscan-limit" class="headerlink" title="--osscan-limit"></a>--osscan-limit</h4><p>针对指定的目标进行操作系统检测</p>
+<h4 id="osscan-guess"><a href="#osscan-guess" class="headerlink" title="--osscan-guess"></a>--osscan-guess</h4><h4 id="fuzzy"><a href="#fuzzy" class="headerlink" title="--fuzzy"></a>--fuzzy</h4><p>推测操作系统检测结果</p>
+<h3 id="时间和性能"><a href="#时间和性能" class="headerlink" title="时间和性能"></a>时间和性能</h3><h3 id="防火墙-IDS躲避和哄骗"><a href="#防火墙-IDS躲避和哄骗" class="headerlink" title="防火墙/IDS躲避和哄骗"></a>防火墙/IDS躲避和哄骗</h3><h4 id="f"><a href="#f" class="headerlink" title="-f"></a>-f</h4><p>报文分段</p>
+<h4 id="mtu"><a href="#mtu" class="headerlink" title="--mtu"></a>--mtu</h4><p>使用指定的MTU</p>
+<p><code>-f</code>和<code>-mtu</code>都是将数据包分段的参数，<code>-f</code>使用一次是将包分成8字节或更小，使用两次是将包分为16字节的分段。使用<code>-mtu</code>可以自定义偏移的大小，偏移量必须是8的倍数。一些网络会禁止分段包进入网络</p>
+<h4 id="D"><a href="#D" class="headerlink" title="-D"></a>-D</h4><p>使用诱饵隐蔽扫描</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-D &lt;decoy1 [,decoy2] [,ME],...&gt;</span><br></pre></td></tr></table></figure>
+<p>为使诱饵扫描起作用，需要使远程主机认为是诱饵在扫描目标网络。使用逗号分隔每个诱饵主机，也可用真实IP作为诱饵，这时可使用 ME选项说明。如果在第6个位置或更后的位置使用ME选项，一些常用端口扫描检测器(如Solar Designer’s excellent scanlogd)就不会报告 这个真实IP。如果不使用ME选项，Nmap将真实IP放在一个随机的位置</p>
+<h4 id="S"><a href="#S" class="headerlink" title="-S"></a>-S</h4><p>源地址哄骗</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-S &lt;IP_Address&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="e"><a href="#e" class="headerlink" title="-e"></a>-e</h4><p>使用指定的网卡</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-e &lt;interface&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="源端口哄骗"><a href="#源端口哄骗" class="headerlink" title="源端口哄骗"></a>源端口哄骗</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--source-port &lt;portnumber&gt;</span><br><span class="line">-g &lt;portnumber&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="MAC地址哄骗"><a href="#MAC地址哄骗" class="headerlink" title="MAC地址哄骗"></a>MAC地址哄骗</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--spoof-mac &lt;mac address,prefix,or vendor name&gt;</span><br></pre></td></tr></table></figure>
+<p>使用字符串<code>&quot;0&quot;</code>，Nmap会选择一个完全随机的MAC地址。</p>
+<h4 id="data-length"><a href="#data-length" class="headerlink" title="--data-length"></a>--data-length</h4><p>发送报文时，附加随机数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--data-length &lt;number&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="ttl"><a href="#ttl" class="headerlink" title="--ttl"></a>--ttl</h4><p>设置IPV4报文的time-to-live域</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--ttl &lt;value&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="randomize-hosts"><a href="#randomize-hosts" class="headerlink" title="--randomize-hosts"></a>--randomize-hosts</h4><p>对目标主机的顺序随机排列</p>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><h4 id="oN"><a href="#oN" class="headerlink" title="-oN"></a>-oN</h4><p>标准输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-oN &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="oX"><a href="#oX" class="headerlink" title="-oX"></a>-oX</h4><p>XML输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-oX &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="oG"><a href="#oG" class="headerlink" title="-oG"></a>-oG</h4><p>Grep输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-oG &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="oA"><a href="#oA" class="headerlink" title="-oA"></a>-oA</h4><p>输出至所有格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-oA &lt;basename&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="v"><a href="#v" class="headerlink" title="-v"></a>-v</h4><p>提高输出信息的详细度</p>
+<h4 id="d"><a href="#d" class="headerlink" title="-d"></a>-d</h4><p>提高或设置调试级别</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-d [level]</span><br></pre></td></tr></table></figure>
+<h4 id="packet-trace"><a href="#packet-trace" class="headerlink" title="--packet-trace"></a>--packet-trace</h4><p>跟踪发送和接收的报文</p>
+<p>要求Nmap打印发送和接收的每个报文摘要。为了避免输出过多的行，可以限制扫描的端口数，如<code>-p 20-30</code>，如果只需进行版本检测，使用<code>--version-trace</code></p>
+<h4 id="iflist"><a href="#iflist" class="headerlink" title="--iflist"></a>--iflist</h4><p>列举接口和路由</p>
+<h4 id="append-output"><a href="#append-output" class="headerlink" title="--append-output"></a>--append-output</h4><p>在输出文件中添加</p>
+<h4 id="resume"><a href="#resume" class="headerlink" title="--resume"></a>--resume</h4><p>继续中断的扫描</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--resume &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="stylesheet"><a href="#stylesheet" class="headerlink" title="--stylesheet"></a>--stylesheet</h4><p>设置XSL样式表，转换XML输出</p>
+<h4 id="no-stylesheet"><a href="#no-stylesheet" class="headerlink" title="--no-stylesheet"></a>--no-stylesheet</h4><p>忽略XML声明的XSL样式表</p>
+<h3 id="其他选项"><a href="#其他选项" class="headerlink" title="其他选项"></a>其他选项</h3><h4 id="6"><a href="#6" class="headerlink" title="-6"></a>-6</h4><p>启用IPv6扫描</p>
+<h4 id="A"><a href="#A" class="headerlink" title="-A"></a>-A</h4><p>操作系统检测和版本扫描</p>
+<h4 id="打印版本信息"><a href="#打印版本信息" class="headerlink" title="打印版本信息"></a>打印版本信息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-V</span><br><span class="line">--version</span><br></pre></td></tr></table></figure>
+<h4 id="帮助信息"><a href="#帮助信息" class="headerlink" title="帮助信息"></a>帮助信息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-h</span><br><span class="line">--help</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/工具使用/" rel="tag"># 工具使用</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/01/Intranet-Infiltration/" rel="next" title="'内网渗透'">
+                <i class="fa fa-chevron-left"></i> '内网渗透'
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2026/05/28/Will-i/" rel="prev" title="'Diary'">
+                'Diary' <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">chessur</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">34</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/ChireC" title="GitHub &rarr; https://github.com/ChireC" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标说明"><span class="nav-text">目标说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主机发现"><span class="nav-text">主机发现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#端口扫描基础"><span class="nav-text">端口扫描基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#端口状态"><span class="nav-text">端口状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#端口扫描技术"><span class="nav-text">端口扫描技术</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sS"><span class="nav-text">-sS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sT"><span class="nav-text">-sT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sU"><span class="nav-text">-sU</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sN"><span class="nav-text">-sN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sF"><span class="nav-text">-sF</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sX"><span class="nav-text">-sX</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sA"><span class="nav-text">-sA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sW"><span class="nav-text">-sW</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sM"><span class="nav-text">-sM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sI"><span class="nav-text">-sI</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#端口说明和扫描顺序"><span class="nav-text">端口说明和扫描顺序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#p"><span class="nav-text">-p</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#F"><span class="nav-text">-F</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#r"><span class="nav-text">-r</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务和版本探测"><span class="nav-text">服务和版本探测</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sV"><span class="nav-text">-sV</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#–allports"><span class="nav-text">–allports</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#version-intensity"><span class="nav-text">--version-intensity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#version-light"><span class="nav-text">--version-light</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#version-all"><span class="nav-text">--version-all</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#version-trace"><span class="nav-text">--version-trace</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sR"><span class="nav-text">-sR</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作系统探测"><span class="nav-text">操作系统探测</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#O"><span class="nav-text">--O</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#osscan-limit"><span class="nav-text">--osscan-limit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#osscan-guess"><span class="nav-text">--osscan-guess</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fuzzy"><span class="nav-text">--fuzzy</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时间和性能"><span class="nav-text">时间和性能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#防火墙-IDS躲避和哄骗"><span class="nav-text">防火墙/IDS躲避和哄骗</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#f"><span class="nav-text">-f</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mtu"><span class="nav-text">--mtu</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#D"><span class="nav-text">-D</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#S"><span class="nav-text">-S</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#e"><span class="nav-text">-e</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#源端口哄骗"><span class="nav-text">源端口哄骗</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MAC地址哄骗"><span class="nav-text">MAC地址哄骗</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#data-length"><span class="nav-text">--data-length</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ttl"><span class="nav-text">--ttl</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#randomize-hosts"><span class="nav-text">--randomize-hosts</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出"><span class="nav-text">输出</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#oN"><span class="nav-text">-oN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#oX"><span class="nav-text">-oX</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#oG"><span class="nav-text">-oG</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#oA"><span class="nav-text">-oA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v"><span class="nav-text">-v</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#d"><span class="nav-text">-d</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#packet-trace"><span class="nav-text">--packet-trace</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#iflist"><span class="nav-text">--iflist</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#append-output"><span class="nav-text">--append-output</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#resume"><span class="nav-text">--resume</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#stylesheet"><span class="nav-text">--stylesheet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#no-stylesheet"><span class="nav-text">--no-stylesheet</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他选项"><span class="nav-text">其他选项</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6"><span class="nav-text">-6</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#A"><span class="nav-text">-A</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#打印版本信息"><span class="nav-text">打印版本信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#帮助信息"><span class="nav-text">帮助信息</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chessur</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+  $('.highlight').not('.gist .highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('Copied');
+        else $(this).text('Copy failed');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('Copy');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+</body>
+</html>
