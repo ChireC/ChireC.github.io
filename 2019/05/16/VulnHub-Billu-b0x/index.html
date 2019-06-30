@@ -115,7 +115,7 @@
 <meta property="og:image" content="https://chirec.github.io/2019/05/16/VulnHub-Billu-b0x/02.09.whoami.png">
 <meta property="og:image" content="https://chirec.github.io/2019/05/16/VulnHub-Billu-b0x/02.10.phpmy-config.png">
 <meta property="og:image" content="https://chirec.github.io/2019/05/16/VulnHub-Billu-b0x/02.11.whoami.png">
-<meta property="og:updated_time" content="2019-06-30T05:10:12.276Z">
+<meta property="og:updated_time" content="2019-06-30T05:14:47.770Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;VulnHub Billu b0x Walkthrough&#39;">
 <meta name="twitter:description" content="1. GoalThis Virtual machine is using ubuntu (32 bit) Other packages used: -  PHP Apache MySQL  This virtual machine is having medium difficulty level with tricks. One need to break into VM using web a">
@@ -369,7 +369,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-30 13:10:12" itemprop="dateModified" datetime="2019-06-30T13:10:12+08:00">2019-06-30</time>
+                <time title="Modified: 2019-06-30 13:14:47" itemprop="dateModified" datetime="2019-06-30T13:14:47+08:00">2019-06-30</time>
               
             
           </span>
@@ -456,6 +456,9 @@
 <h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h1><p>1.蚁剑相比菜刀，可以配置各种请求头和请求Body，更灵活</p>
 <p>2.ret=2不知道是什么情况</p>
 <p>3.在页面无法直接执行命令，只能执行个<code>phpinfo</code></p>
+<p>4.在前面反弹shell的时候，有个报错<code>Bad fd number</code>之前碰到过一次，但是忘记了，这次又查了一次。是<code>/bin/sh</code>链接到<code>dash</code>，可以更改链接为<code>/bin/bash</code></p>
+<h1 id="5-参考"><a href="#5-参考" class="headerlink" title="5.参考"></a>5.参考</h1><p>[1] <a href="https://segmentfault.com/a/1190000005069038" target="_blank" rel="noopener">sh: 1: Syntax error: Bad fd number 错误</a></p>
+<p>[2] <a href="https://www.cnblogs.com/chenfool/p/3728454.html" target="_blank" rel="noopener">shell Syntax error: Bad fd number 错误解决</a></p>
 
       
     </div>
@@ -649,7 +652,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Goal"><span class="nav-text">1. Goal</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Web"><span class="nav-text">2. Web</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Nmap"><span class="nav-text">Nmap</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-渗透"><span class="nav-text">3.渗透</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-总结"><span class="nav-text">4.总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Goal"><span class="nav-text">1. Goal</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Web"><span class="nav-text">2. Web</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Nmap"><span class="nav-text">Nmap</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-渗透"><span class="nav-text">3.渗透</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-总结"><span class="nav-text">4.总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-参考"><span class="nav-text">5.参考</span></a></li></ol></div>
             
 
           </div>
