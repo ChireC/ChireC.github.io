@@ -106,7 +106,8 @@
 <meta property="og:image" content="https://chirec.github.io/2019/03/14/How-to-Creat-a-Blog-with-Hexo&GitHub/01.Path.png">
 <meta property="og:image" content="https://chirec.github.io/2019/03/14/How-to-Creat-a-Blog-with-Hexo&GitHub/02.Repository.png">
 <meta property="og:image" content="https://chirec.github.io/2019/03/14/How-to-Creat-a-Blog-with-Hexo&GitHub/Blog/source/_posts/How-to-Creat-a-Blog-with-Hexo&GitHub/03.Set-tags.png">
-<meta property="og:updated_time" content="2019-07-01T12:46:23.569Z">
+<meta property="og:image" content="https://chirec.github.io/2019/03/14/How-to-Creat-a-Blog-with-Hexo&GitHub/Blog/source/_posts/How-to-Creat-a-Blog-with-Hexo&GitHub/04.avatar.png">
+<meta property="og:updated_time" content="2019-07-01T13:35:16.464Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;Hexo+GitHub搭建Blog过程&#39;">
 <meta name="twitter:description" content="1.安装环境1.安装Node.js：在Node.js官网下载最新版本 2.安装Git for Windows：在git官网下载，选择Windows 3.安装cmder：在cmder官网下载，Git Bash并不好用，所以选择使用cmder 4.配置环境变量：需要配置环境变量的有cmder、Git、Node.js。找到安装地址复制路径，右击我的电脑-属性-点击左边高级系统设置-点击环境变量-在下方系">
@@ -360,7 +361,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-01 20:46:23" itemprop="dateModified" datetime="2019-07-01T20:46:23+08:00">2019-07-01</time>
+                <time title="Modified: 2019-07-01 21:35:16" itemprop="dateModified" datetime="2019-07-01T21:35:16+08:00">2019-07-01</time>
               
             
           </span>
@@ -441,12 +442,14 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\!\[\]\(.*?/(.*?)\)</span><br></pre></td></tr></table></figure>
 <p>替换</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;%asset_img $1%&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="8-设置tags"><a href="#8-设置tags" class="headerlink" title="8.设置tags"></a>8.设置tags</h1><p>执行命令</p>
+<h1 id="8-设置"><a href="#8-设置" class="headerlink" title="8.设置"></a>8.设置</h1><h2 id="8-1添加tags"><a href="#8-1添加tags" class="headerlink" title="8.1添加tags"></a>8.1添加tags</h2><p>执行命令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page &quot;tags&quot;</span><br></pre></td></tr></table></figure>
 <p>注意：要加page，我自己设置了好几次没加page，都生成的是日志，加上page会在source目录下新创建一个tags目录</p>
 <p>修改主题配置文件</p>
 <p><img src="/2019/03/14/How-to-Creat-a-Blog-with-Hexo&GitHub/Blog\source\_posts\How-to-Creat-a-Blog-with-Hexo&amp;GitHub\03.Set-tags.png" alt></p>
 <p>然后就大功告成了</p>
+<h2 id="8-2添加头像"><a href="#8-2添加头像" class="headerlink" title="8.2添加头像"></a>8.2添加头像</h2><p>在source目录下创建images目录，将头像放在images目录下。在生成静态页面时，会将<code>source/images/</code>的图片复制到<code>public/images/</code>，在url里添加路径即可添加头像</p>
+<p><img src="/2019/03/14/How-to-Creat-a-Blog-with-Hexo&GitHub/Blog\source\_posts\How-to-Creat-a-Blog-with-Hexo&amp;GitHub\04.avatar.png" alt></p>
 <h1 id="9-重装系统后再次使用Hexo"><a href="#9-重装系统后再次使用Hexo" class="headerlink" title="9.重装系统后再次使用Hexo"></a>9.重装系统后再次使用Hexo</h1><p>重装系统之后，之前的一些设置会丢失，再次执行一遍命令即可。<br>需要再完成一遍的步骤有安装Node.js、安装Git、配置SSH key、安装Hexo。<br>安装Hexo这一步，若之前博客的文件夹还存在只需要执行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">d: //跳转盘符</span><br><span class="line">cd Blog //跳转到存放Blog文件的文件夹</span><br><span class="line">npm install -g hexo //安装hexo</span><br><span class="line">npm install hexo-deployer-git --save //安装上传服务</span><br></pre></td></tr></table></figure>
 <p>若之前的博客不存在了，就要执行hexo初始化</p>
@@ -650,7 +653,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-安装环境"><span class="nav-text">1.安装环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-创建GitHub博客"><span class="nav-text">2.创建GitHub博客</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-配置SSH-key"><span class="nav-text">3.配置SSH key</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-安装Hexo"><span class="nav-text">4.安装Hexo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-上传到GitHub"><span class="nav-text">5.上传到GitHub</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-写博客"><span class="nav-text">6.写博客</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-在Hexo中插入图片"><span class="nav-text">7.在Hexo中插入图片</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#7-1使用插件hexo-asset-image插入图片"><span class="nav-text">7.1使用插件hexo-asset-image插入图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-2使用标签插入图片"><span class="nav-text">7.2使用标签插入图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-3-正则替换图片标签"><span class="nav-text">7.3 正则替换图片标签</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-设置tags"><span class="nav-text">8.设置tags</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-重装系统后再次使用Hexo"><span class="nav-text">9.重装系统后再次使用Hexo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10-参考文章"><span class="nav-text">10.参考文章</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-安装环境"><span class="nav-text">1.安装环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-创建GitHub博客"><span class="nav-text">2.创建GitHub博客</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-配置SSH-key"><span class="nav-text">3.配置SSH key</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-安装Hexo"><span class="nav-text">4.安装Hexo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-上传到GitHub"><span class="nav-text">5.上传到GitHub</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-写博客"><span class="nav-text">6.写博客</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-在Hexo中插入图片"><span class="nav-text">7.在Hexo中插入图片</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#7-1使用插件hexo-asset-image插入图片"><span class="nav-text">7.1使用插件hexo-asset-image插入图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-2使用标签插入图片"><span class="nav-text">7.2使用标签插入图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-3-正则替换图片标签"><span class="nav-text">7.3 正则替换图片标签</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-设置"><span class="nav-text">8.设置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#8-1添加tags"><span class="nav-text">8.1添加tags</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-2添加头像"><span class="nav-text">8.2添加头像</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-重装系统后再次使用Hexo"><span class="nav-text">9.重装系统后再次使用Hexo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10-参考文章"><span class="nav-text">10.参考文章</span></a></li></ol></div>
             
 
           </div>
