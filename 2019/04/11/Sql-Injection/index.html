@@ -122,7 +122,7 @@
 <meta property="og:image" content="https://chirec.github.io/2019/04/11/Sql-Injection/12.4.2.3.03.Result.png">
 <meta property="og:image" content="https://chirec.github.io/2019/04/11/Sql-Injection/12.4.2.4.01.Intruder-payload.png">
 <meta property="og:image" content="https://chirec.github.io/2019/04/11/Sql-Injection/12.4.2.4.02.Result.png">
-<meta property="og:updated_time" content="2019-05-03T12:02:03.381Z">
+<meta property="og:updated_time" content="2019-07-02T03:48:09.095Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;SQL注入总结&#39;">
 <meta name="twitter:description" content="1. SQL注入原理前端有一个参数用户可控服务器对该参数没有过滤或过滤不严谨本质：把用户输入的数据当作代码来执行，违背了“数据与代码分离”的原则 2. SQL注入危害读取数据库的数据修改或删除数据getshell往服务器读写文件">
@@ -241,6 +241,23 @@
     
 
     <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
 
   </li>
         
@@ -376,7 +393,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-03 20:02:03" itemprop="dateModified" datetime="2019-05-03T20:02:03+08:00">2019-05-03</time>
+                <time title="Modified: 2019-07-02 11:48:09" itemprop="dateModified" datetime="2019-07-02T11:48:09+08:00">2019-07-02</time>
               
             
           </span>
@@ -415,7 +432,7 @@
 <a id="more"></a>
 <h1 id="3-显错注入"><a href="#3-显错注入" class="headerlink" title="3. 显错注入"></a>3. 显错注入</h1><h2 id="3-1-常用函数"><a href="#3-1-常用函数" class="headerlink" title="3.1 常用函数"></a>3.1 常用函数</h2><h3 id="3-1-1-显示信息"><a href="#3-1-1-显示信息" class="headerlink" title="3.1.1 显示信息"></a>3.1.1 显示信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">user() </span><br><span class="line">@@hostname</span><br><span class="line">version() </span><br><span class="line">@@version</span><br><span class="line">database() </span><br><span class="line">@@tmpdir</span><br><span class="line">@@datadir</span><br><span class="line">@@basedir</span><br></pre></td></tr></table></figure>
 <h3 id="3-1-2-拼接字段"><a href="#3-1-2-拼接字段" class="headerlink" title="3.1.2 拼接字段"></a>3.1.2 拼接字段</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">concat() 拼接多个字符串</span><br><span class="line">concat(username,0x7e,password)</span><br><span class="line">group_concat() 拼接表头</span><br><span class="line">group_concat(username,password)</span><br><span class="line">concat_ws() 拼接字符串，第一个字符串为分割符</span><br><span class="line">concat_ws(0x7e,username,password)</span><br></pre></td></tr></table></figure>
-<h3 id="3-1-3-截取字段"><a href="#3-1-3-截取字段" class="headerlink" title="3.1.3 截取字段"></a>3.1.3 截取字段</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mid() 适用于MySQL</span><br><span class="line">substr() 适用于Oracle MySQL SQLSERVER</span><br><span class="line">substring() 适用于MySQL SQLSERVER</span><br><span class="line">left()</span><br><span class="line">right()</span><br></pre></td></tr></table></figure>
+<h3 id="3-1-3-截取字段"><a href="#3-1-3-截取字段" class="headerlink" title="3.1.3 截取字段"></a>3.1.3 截取字段</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mid() 适用于MySQL</span><br><span class="line">substring() 适用于MySQL SQLSERVER</span><br><span class="line">substr() 适用于Oracle MySQL SQLSERVER</span><br><span class="line">left()</span><br><span class="line">right()</span><br></pre></td></tr></table></figure>
 <h3 id="3-1-4-条件判断"><a href="#3-1-4-条件判断" class="headerlink" title="3.1.4 条件判断"></a>3.1.4 条件判断</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if(判断的条件，条件为真返回值，条件为假返回值)</span><br><span class="line">select if(&quot;1=1&quot;,&apos;true&apos;,&apos;false&apos;);</span><br><span class="line">select if(ascii(substr(database(),1,1))&gt;92,&apos;true&apos;,&apos;false&apos;);</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">case when 判断的条件 then 条件为真返回值 else 条件为假返回值 end</span><br><span class="line">select case when 1=1 then &apos;true&apos; else &apos;false&apos; end;</span><br><span class="line">select case when ascii(substr(database(),1,1))&gt;92 then &apos;true&apos; else &apos;false&apos; end;</span><br></pre></td></tr></table></figure>
 <h3 id="3-1-5-判断字段数"><a href="#3-1-5-判断字段数" class="headerlink" title="3.1.5 判断字段数"></a>3.1.5 判断字段数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">order by</span><br></pre></td></tr></table></figure>
@@ -769,6 +786,7 @@
 <p>正则匹配</p>
 <p>PDO预处理</p>
 <p>waf</p>
+<p>设计验证</p>
 <h1 id="17-参考"><a href="#17-参考" class="headerlink" title="17. 参考"></a>17. 参考</h1><p>[1] <a href="http://p0desta.com/2018/01/28/Sqli_labs%E9%80%9A%E5%85%B3%E6%96%87%E6%A1%A3/" target="_blank" rel="noopener">Sqli_labs通关文档</a></p>
 <p>[2] <a href="https://blog.51cto.com/chichu/2051375" target="_blank" rel="noopener">【学习笔记】MYSQL的floor报错原理分析总结</a></p>
 <p>[3] <a href="https://www.cnblogs.com/jsq16/p/5942003.html" target="_blank" rel="noopener">伪静态注入的总结</a></p>
@@ -901,6 +919,25 @@
                 </div>
               
 
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
               
 
               
