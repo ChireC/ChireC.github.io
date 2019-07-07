@@ -122,7 +122,7 @@
 <meta property="og:image" content="https://chirec.github.io/2019/04/11/Sql-Injection/12.4.2.3.03.Result.png">
 <meta property="og:image" content="https://chirec.github.io/2019/04/11/Sql-Injection/12.4.2.4.01.Intruder-payload.png">
 <meta property="og:image" content="https://chirec.github.io/2019/04/11/Sql-Injection/12.4.2.4.02.Result.png">
-<meta property="og:updated_time" content="2019-07-04T12:13:00.085Z">
+<meta property="og:updated_time" content="2019-07-07T11:48:24.607Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;SQL注入总结&#39;">
 <meta name="twitter:description" content="1. SQL注入原理前端有一个参数用户可控服务器对该参数没有过滤或过滤不严谨本质：把用户输入的数据当作代码来执行，违背了“数据与代码分离”的原则 2. SQL注入危害读取数据库的数据修改或删除数据getshell往服务器读写文件">
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-04 20:13:00" itemprop="dateModified" datetime="2019-07-04T20:13:00+08:00">2019-07-04</time>
+                <time title="Modified: 2019-07-07 19:48:24" itemprop="dateModified" datetime="2019-07-07T19:48:24+08:00">2019-07-07</time>
               
             
           </span>
@@ -612,7 +612,7 @@
 <h4 id="7-5-2-3-正确使用占位符"><a href="#7-5-2-3-正确使用占位符" class="headerlink" title="7.5.2.3 正确使用占位符"></a>7.5.2.3 正确使用占位符</h4><p>确保每一个传入参数都先使用占位符进行代替</p>
 <h4 id="7-5-2-4-使用预处理"><a href="#7-5-2-4-使用预处理" class="headerlink" title="7.5.2.4 使用预处理"></a>7.5.2.4 使用预处理</h4><p>注意，即使mysql版本支持预处理，某些语句mysql无法支持prepare，那么pdo在处理时还是会使用模拟预处理。这样可能会存在注入的风险。<br>具体可以查看这篇回答：<a href="https://stackoverflow.com/questions/134099/are-pdo-prepared-statements-sufficient-to-prevent-sql-injection/12202218#12202218" target="_blank" rel="noopener">are-pdo-prepared-statements-sufficient-to-prevent-sql-injection</a></p>
 <h1 id="8-二次解码注入"><a href="#8-二次解码注入" class="headerlink" title="8. 二次解码注入"></a>8. 二次解码注入</h1><h2 id="8-1-原理"><a href="#8-1-原理" class="headerlink" title="8.1 原理"></a>8.1 原理</h2><p>浏览器出去的数据会被进行URL编码，到达服务器之后，默认会被URL解码<br>mysql_real_escape_string()等转义函数是在urldecode()之前，所以并不能过滤由于urldecode()产生的单引号。</p>
-<h2 id="8-2-过程"><a href="#8-2-过程" class="headerlink" title="8.2 过程"></a>8.2 过程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">id=1%2527</span><br><span class="line">id=1%27 //</span><br><span class="line">id=1&apos; //urldecode()</span><br></pre></td></tr></table></figure>
+<h2 id="8-2-过程"><a href="#8-2-过程" class="headerlink" title="8.2 过程"></a>8.2 过程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">id=1%25%32%27</span><br><span class="line">id=1%27 //</span><br><span class="line">id=1&apos; //urldecode()</span><br></pre></td></tr></table></figure>
 <h2 id="8-3-防御"><a href="#8-3-防御" class="headerlink" title="8.3 防御"></a>8.3 防御</h2><h3 id="8-3-1-预处理"><a href="#8-3-1-预处理" class="headerlink" title="8.3.1 预处理"></a>8.3.1 预处理</h3><p>使用PDO的prepare进行预编译处理数据库查询</p>
 <h3 id="8-3-2-过滤函数"><a href="#8-3-2-过滤函数" class="headerlink" title="8.3.2 过滤函数"></a>8.3.2 过滤函数</h3><p>PHP常使用的过滤函数有addslashes()、mysql_escape_string()、msyql_real_string()、intval()函数等，在程序进行SQL语句运行之前使用。</p>
 <h3 id="8-3-3-魔术引号"><a href="#8-3-3-魔术引号" class="headerlink" title="8.3.3 魔术引号"></a>8.3.3 魔术引号</h3><p>通常数据污染的方式有两种：一种是应用被动接收参数，类似于GET、POST等；另一种是主动获取参数，类似与读取远程桌面页面或者文件内容等。在PHP中魔术引号配置方法，magic_quotes_gpc负责对GET、POST、COOKIE的值进行过滤，magic_quotes_runtime对数据库或者文件中获取的数据进行过滤。</p>
