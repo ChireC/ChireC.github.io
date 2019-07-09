@@ -105,9 +105,9 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://chirec.github.io/2019/03/14/How-to-Creat-a-Blog-with-Hexo&GitHub/01.Path.png">
 <meta property="og:image" content="https://chirec.github.io/2019/03/14/How-to-Creat-a-Blog-with-Hexo&GitHub/02.Repository.png">
-<meta property="og:image" content="https://chirec.github.io/2019/03/14/How-to-Creat-a-Blog-with-Hexo&GitHub/Blog/source/_posts/How-to-Creat-a-Blog-with-Hexo&GitHub/03.Set-tags.png">
-<meta property="og:image" content="https://chirec.github.io/2019/03/14/How-to-Creat-a-Blog-with-Hexo&GitHub/Blog/source/_posts/How-to-Creat-a-Blog-with-Hexo&GitHub/04.avatar.png">
-<meta property="og:updated_time" content="2019-07-01T13:35:16.464Z">
+<meta property="og:image" content="https://chirec.github.io/2019/03/14/How-to-Creat-a-Blog-with-Hexo&GitHub/03.Set-tags.png">
+<meta property="og:image" content="https://chirec.github.io/2019/03/14/How-to-Creat-a-Blog-with-Hexo&GitHub/04.avatar.png">
+<meta property="og:updated_time" content="2019-07-09T01:56:54.465Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;Hexo+GitHub搭建Blog过程&#39;">
 <meta name="twitter:description" content="1.安装环境1.安装Node.js：在Node.js官网下载最新版本 2.安装Git for Windows：在git官网下载，选择Windows 3.安装cmder：在cmder官网下载，Git Bash并不好用，所以选择使用cmder 4.配置环境变量：需要配置环境变量的有cmder、Git、Node.js。找到安装地址复制路径，右击我的电脑-属性-点击左边高级系统设置-点击环境变量-在下方系">
@@ -395,7 +395,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-01 21:35:16" itemprop="dateModified" datetime="2019-07-01T21:35:16+08:00">2019-07-01</time>
+                <time title="Modified: 2019-07-09 09:56:54" itemprop="dateModified" datetime="2019-07-09T09:56:54+08:00">2019-07-09</time>
               
             
           </span>
@@ -469,7 +469,7 @@
 <h2 id="7-1使用插件hexo-asset-image插入图片"><a href="#7-1使用插件hexo-asset-image插入图片" class="headerlink" title="7.1使用插件hexo-asset-image插入图片"></a>7.1使用插件hexo-asset-image插入图片</h2><p>安装hexo插件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-asset-image --save</span><br></pre></td></tr></table></figure>
 <p>安装插件之后，在生成静态页面时，插件会更新正确的图片link</p>
-<p>使用Typora编写markdown时，可以在文件-偏好设置-图片插入-复制到指定目录中输入<code>./${filename}</code>就可以直接将图片放到之前生成的文件夹中</p>
+<p>使用Typora编写markdown时，可以在文件-偏好设置-图片插入-复制到指定目录中输入<code>./${filename}</code>就可以直接将图片放到之前生成的文件夹中，勾选对本地位置的图片应用上述规则和优先使用相对路径</p>
 <h2 id="7-2使用标签插入图片"><a href="#7-2使用标签插入图片" class="headerlink" title="7.2使用标签插入图片"></a>7.2使用标签插入图片</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img 图片名 图片解释 %&#125;</span><br></pre></td></tr></table></figure>
 <p>即可插入图片</p>
 <h2 id="7-3-正则替换图片标签"><a href="#7-3-正则替换图片标签" class="headerlink" title="7.3 正则替换图片标签"></a>7.3 正则替换图片标签</h2><p>查找匹配</p>
@@ -480,10 +480,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page &quot;tags&quot;</span><br></pre></td></tr></table></figure>
 <p>注意：要加page，我自己设置了好几次没加page，都生成的是日志，加上page会在source目录下新创建一个tags目录</p>
 <p>修改主题配置文件</p>
-<p><img src="/2019/03/14/How-to-Creat-a-Blog-with-Hexo&GitHub/Blog\source\_posts\How-to-Creat-a-Blog-with-Hexo&amp;GitHub\03.Set-tags.png" alt></p>
+<p><img src="/2019/03/14/How-to-Creat-a-Blog-with-Hexo&GitHub/03.Set-tags.png" alt></p>
 <p>然后就大功告成了</p>
 <h2 id="8-2添加头像"><a href="#8-2添加头像" class="headerlink" title="8.2添加头像"></a>8.2添加头像</h2><p>在source目录下创建images目录，将头像放在images目录下。在生成静态页面时，会将<code>source/images/</code>的图片复制到<code>public/images/</code>，在url里添加路径即可添加头像</p>
-<p><img src="/2019/03/14/How-to-Creat-a-Blog-with-Hexo&GitHub/Blog\source\_posts\How-to-Creat-a-Blog-with-Hexo&amp;GitHub\04.avatar.png" alt></p>
+<p><img src="/2019/03/14/How-to-Creat-a-Blog-with-Hexo&GitHub/04.avatar.png" alt></p>
 <h1 id="9-重装系统后再次使用Hexo"><a href="#9-重装系统后再次使用Hexo" class="headerlink" title="9.重装系统后再次使用Hexo"></a>9.重装系统后再次使用Hexo</h1><p>重装系统之后，之前的一些设置会丢失，再次执行一遍命令即可。<br>需要再完成一遍的步骤有安装Node.js、安装Git、配置SSH key、安装Hexo。<br>安装Hexo这一步，若之前博客的文件夹还存在只需要执行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">d: //跳转盘符</span><br><span class="line">cd Blog //跳转到存放Blog文件的文件夹</span><br><span class="line">npm install -g hexo //安装hexo</span><br><span class="line">npm install hexo-deployer-git --save //安装上传服务</span><br></pre></td></tr></table></figure>
 <p>若之前的博客不存在了，就要执行hexo初始化</p>
@@ -607,7 +607,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">34</span>
+                    <span class="site-state-item-count">35</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
