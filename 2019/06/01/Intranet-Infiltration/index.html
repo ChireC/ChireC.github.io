@@ -108,7 +108,7 @@
 <meta property="og:image" content="https://chirec.github.io/2019/06/01/Intranet-Infiltration/03.01.Two-Level.png">
 <meta property="og:image" content="https://chirec.github.io/2019/06/01/Intranet-Infiltration/03.02.Two-Level.png">
 <meta property="og:image" content="https://chirec.github.io/2019/06/01/Intranet-Infiltration/03.03.Three-Level.png">
-<meta property="og:updated_time" content="2019-07-10T13:02:24.463Z">
+<meta property="og:updated_time" content="2019-07-14T06:39:50.014Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;内网渗透&#39;">
 <meta name="twitter:description" content="最近在学习内网渗透，整理一些关于内网渗透的文章">
@@ -396,7 +396,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-10 21:02:24" itemprop="dateModified" datetime="2019-07-10T21:02:24+08:00">2019-07-10</time>
+                <time title="Modified: 2019-07-14 14:39:50" itemprop="dateModified" datetime="2019-07-14T14:39:50+08:00">2019-07-14</time>
               
             
           </span>
@@ -588,7 +588,7 @@
 <p>在C主机上启动SOCKS V5服务，并反弹到B主机的26端口上</p>
 <h5 id="Client-1"><a href="#Client-1" class="headerlink" title="Client"></a>Client</h5><p>在Client上访问VPS<code>126.126.126.126:1080</code>来使用在Server C上架设的Socks5代理</p>
 <p>整个数据流是：Socks5→1080→1260→126→26→rssocks</p>
-<h2 id="HTTP代理"><a href="#HTTP代理" class="headerlink" title="HTTP代理"></a>HTTP代理</h2><h3 id="reGeorg"><a href="#reGeorg" class="headerlink" title="reGeorg"></a>reGeorg</h3><p>如果目标服务器又Web服务，可以使用reGeorg + proxychains(Linux) + Proxifier(Windows)</p>
+<h2 id="HTTP代理"><a href="#HTTP代理" class="headerlink" title="HTTP代理"></a>HTTP代理</h2><h3 id="reGeorg"><a href="#reGeorg" class="headerlink" title="reGeorg"></a>reGeorg</h3><p>如果目标服务器有Web服务，可以使用reGeorg + proxychains(Linux) + Proxifier(Windows)</p>
 <p>下载地址：<a href="https://github.com/sensepost/reGeorg" target="_blank" rel="noopener">https://github.com/sensepost/reGeorg</a></p>
 <h4 id="Server-1"><a href="#Server-1" class="headerlink" title="Server"></a>Server</h4><p>将reGeorg的tunnel文件上传到目标服务器的网站目录下，选择对应语言的脚本</p>
 <p>访问页面，若显示<code>Georg says, &#39;All seems fine&#39;</code>说明脚本正常运行</p>
