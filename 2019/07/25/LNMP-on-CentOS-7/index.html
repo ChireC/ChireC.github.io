@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="搭个LNMP环境，熟悉下Linux，再尝试一下安全加固 搭个LNMP环境，熟悉下Linux，再尝试一下安全加固 最近想把电脑系统换成Linux系统，所以想搭个LNMP环境，熟悉下Linux，再尝试一下安全加固">
+<meta property="og:type" content="article">
+<meta property="og:title" content="&#39;LNMP-on-CentOS-7&#39;">
+<meta property="og:url" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/index.html">
+<meta property="og:site_name" content="Emerald Dream">
+<meta property="og:description" content="搭个LNMP环境，熟悉下Linux，再尝试一下安全加固 搭个LNMP环境，熟悉下Linux，再尝试一下安全加固 最近想把电脑系统换成Linux系统，所以想搭个LNMP环境，熟悉下Linux，再尝试一下安全加固">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/00.01.yum.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/01.01.no_nginx.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/01.02.yum_source.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/01.03.nginx_repo.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/01.04.install_nginx.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/01.05.whereis.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/01.06.firefox.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/01.07.systemctl.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/01.08.rpm.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/02.01.epel.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/02.02.rpms.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/02.03.yum_utils.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/02.04.enable.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/02.05.update.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/02.06.search.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/02.07.install.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/02.08.version.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/02.09.extension.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/02.10.modules.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/02.11.php72-php-fpm.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/02.12.user.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/02.13.config.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/02.14.restart.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/02.15.nginx-config.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/02.16.restart-nginx.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/02.17.phpinfo.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/02.18.firefox.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/03.01.remove.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/03.02.install.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/03.03.systemctl.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/03.04.mysql-secure-installation.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/03.05.login.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/03.06.show.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/04.01.Emerald.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/04.02.Member.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/04.03.pdo.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/04.04.firefox.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/05.01.01.version.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/05.01.02.version.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/05.01.03.log.png">
+<meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/05.02.01.php.png">
+<meta property="og:updated_time" content="2019-07-25T11:26:56.736Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="&#39;LNMP-on-CentOS-7&#39;">
+<meta name="twitter:description" content="搭个LNMP环境，熟悉下Linux，再尝试一下安全加固 搭个LNMP环境，熟悉下Linux，再尝试一下安全加固 最近想把电脑系统换成Linux系统，所以想搭个LNMP环境，熟悉下Linux，再尝试一下安全加固">
+<meta name="twitter:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/00.01.yum.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>'LNMP-on-CentOS-7' | Emerald Dream</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Emerald Dream</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/yourname" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chessur">
+      <meta itemprop="description" content="Freedom as Autonomy">
+      <meta itemprop="image" content="/images/cat.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Emerald Dream">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">'LNMP-on-CentOS-7'
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-25 19:19:14 / Modified: 19:26:56" itemprop="dateCreated datePublished" datetime="2019-07-25T19:19:14+08:00">2019-07-25</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>搭个LNMP环境，熟悉下Linux，再尝试一下安全加固</p>
+<p>搭个LNMP环境，熟悉下Linux，再尝试一下安全加固</p>
+<p>最近想把电脑系统换成Linux系统，所以想搭个LNMP环境，熟悉下Linux，再尝试一下安全加固</p>
+<a id="more"></a>
+<h1 id="0-准备"><a href="#0-准备" class="headerlink" title="0.准备"></a>0.准备</h1><h2 id="0-1更改Yum源"><a href="#0-1更改Yum源" class="headerlink" title="0.1更改Yum源"></a>0.1更改Yum源</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak</span><br><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</span><br><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/00.01.yum.png" alt></p>
+<p>参考：<br>[1] <a href="https://www.cnblogs.com/xjh713/p/7458437.html" target="_blank" rel="noopener">Centos-7修改yum源为国内的yum源</a></p>
+<h2 id="0-2更新"><a href="#0-2更新" class="headerlink" title="0.2更新"></a>0.2更新</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y update</span><br></pre></td></tr></table></figure>
+<h1 id="1-安装Nginx"><a href="#1-安装Nginx" class="headerlink" title="1.安装Nginx"></a>1.安装Nginx</h1><h2 id="1-1添加Yum源"><a href="#1-1添加Yum源" class="headerlink" title="1.1添加Yum源"></a>1.1添加Yum源</h2><p>默认情况下CentOS中无Nginx的源</p>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/01.01.no_nginx.png" alt></p>
+<p>需要自己添加Yum源来进行下载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/01.02.yum_source.png" alt></p>
+<p>执行完成之后，会在<code>/etc/yum.respos.d</code>下多出一个nginx.repo</p>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/01.03.nginx_repo.png" alt></p>
+<p>再执行命令进行安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y nginx</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/01.04.install_nginx.png" alt></p>
+<p>安装完成之后，查看nginx的安装目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whereis nginx</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/01.05.whereis.png" alt></p>
+<p>Nginx的默认路径</p>
+<blockquote>
+<p>  Nginx配置路径：/etc/nginx/</p>
+<p>  PID目录：/var/run/nginx.pid</p>
+<p>  错误日志：/var/log/nginx/error.log</p>
+<p>  访问日志：/var/log/nginx/access.log</p>
+<p>  默认站点目录：/usr/share/nginx/html</p>
+</blockquote>
+<p>浏览器查看</p>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/01.06.firefox.png" alt></p>
+<p>启动Nginx并设置开机自动启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl status nginx</span><br><span class="line">systemctl start nginx</span><br><span class="line">systemclt enable nginx</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/01.07.systemctl.png" alt></p>
+<p>查看Nginx的安装路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ql nginx</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/01.08.rpm.png" alt></p>
+<p>卸载的时候可以使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -e nginx</span><br><span class="line">rpm -e --nodeps nginx #依赖包报错时使用</span><br></pre></td></tr></table></figure>
+<p>源码安装和Yum安装的区别</p>
+<p>a.Yum安装可以直接使用<code>systemctl status nginx</code>；源码安装需要自己创建软链接<br>b.Yum安装会创建很多目录，卸载时比较麻烦；源码安装可以自己设定参数，卸载时直接删除目录<br>c.Yum安装由于源的问题，可能不是最新版本；源码安装可自行选择安装版本</p>
+<p>参考：<br>[1] <a href="https://my.oschina.net/andyfeng/blog/1634805" target="_blank" rel="noopener">centos7通过yum安装nginx</a><br>[2] <a href="https://www.cnblogs.com/songxingzhu/p/8568432.html" target="_blank" rel="noopener">CentOS7中使用yum安装Nginx的方法</a><br>[3] <a href="https://blog.csdn.net/qq_40406061/article/details/83040462" target="_blank" rel="noopener">CentOS7yum或源码包安装Nginx的异同（有具体安装过程）</a><br>[4] <a href="https://www.cyberciti.biz/faq/how-to-install-and-use-nginx-on-centos-7-rhel-7/" target="_blank" rel="noopener">How to install and use Nginx on CentOS 7 / RHEL 7</a></p>
+<h1 id="2-安装PHP-fpm"><a href="#2-安装PHP-fpm" class="headerlink" title="2.安装PHP-fpm"></a>2.安装PHP-fpm</h1><h2 id="2-1安装php"><a href="#2-1安装php" class="headerlink" title="2.1安装php"></a>2.1安装php</h2><p>安装epel源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/02.01.epel.png" alt></p>
+<p>安装这个软件包后，会自动配置Yum的软件仓库</p>
+<p>安装remi源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm</span><br></pre></td></tr></table></figure>
+<p>remi源保证了软件的最新版</p>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/02.02.rpms.png" alt></p>
+<p>添加完源之后，使用<code>yum update</code>更新一下</p>
+<p>安装Yum-utils，协助管理Yum</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install yum-utils</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/02.03.yum_utils.png" alt></p>
+<p>提示已经安装过了</p>
+<p>激活remi库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum-config-manager --enable remi-php72</span><br><span class="line">yum update</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/02.04.enable.png" alt></p>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/02.05.update.png" alt></p>
+<p>查找Yum源中php 7.2的扩展</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum search php72 | more #用more显示</span><br><span class="line">yum search php72 | egrep &apos;fpm|gd|mysql|memcache&apos; #查找特定扩展</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/02.06.search.png" alt></p>
+<p>安装php 7.2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install php72</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/02.07.install.png" alt></p>
+<p>确认php安装是否正确</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php72 --version</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/02.08.version.png" alt></p>
+<p>安装php 7.2扩展</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install php72-php-fpm php72-php-gd php72-php-json php72-php-mbstring php72-php-mysqlnd php72-php-xml php72-php-xmlrpc php72-php-opcache</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/02.09.extension.png" alt></p>
+<p>查看php模块</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php72 --modules</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/02.10.modules.png" alt></p>
+<p>开启php-fpm</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl status php72-php-fpm</span><br><span class="line">systemctl start php72-php-fpm</span><br><span class="line">systemctl enable php72-php-fpm</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/02.11.php72-php-fpm.png" alt></p>
+<h2 id="2-2配置Nginx"><a href="#2-2配置Nginx" class="headerlink" title="2.2配置Nginx"></a>2.2配置Nginx</h2><p>查询Nginx的用户和用户组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">egrep &apos;^(user|group)&apos; /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/02.12.user.png" alt></p>
+<p>修改php-fpm配置文件，设置用户为Nginx</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/opt/remi/php72/php-fpm.d/www.conf</span><br><span class="line">user = nginx</span><br><span class="line">group = nginx</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/02.13.config.png" alt></p>
+<p>保存修改，重启php-fpm服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart php72-php-fpm</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/02.14.restart.png" alt></p>
+<p>修改Nginx配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/nginx/conf.d/default.conf</span><br><span class="line"></span><br><span class="line">location / &#123;</span><br><span class="line">        root   /usr/share/nginx/html;</span><br><span class="line">        index  index.php index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">## enable php support ##</span><br><span class="line">location ~\.php$&#123;</span><br><span class="line">	root /usr/share/nginx/html;</span><br><span class="line">	fastcgi_pass 127.0.0.1:9000;</span><br><span class="line">	fastcgi_index index.php</span><br><span class="line">	include fastcgi_params;</span><br><span class="line">	fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/02.15.nginx-config.png" alt></p>
+<p>保存修改，重启Nginx服务</p>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/02.16.restart-nginx.png" alt></p>
+<p>创建一个测试页面<code>phpinfo.php</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch /usr/share/nginx/html/phpinfo.php</span><br><span class="line">vim /usr/share/nginx/html/phpinfo.php</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/02.17.phpinfo.png" alt></p>
+<p>浏览器访问<code>http://localhost/phpinfo.php</code></p>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/02.18.firefox.png" alt></p>
+<p>CentOS 7 开启80端口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent</span><br><span class="line">systemctl stop firewalld</span><br><span class="line">systemctl start firewalld</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<p>参考：<br>[1] <a href="https://www.cyberciti.biz/faq/how-to-install-php-7-2-on-centos-7-rhel-7/" target="_blank" rel="noopener">How to install PHP 7.2 on CentOS 7/RHEL 7</a></p>
+<h1 id="3-安装Mariadb"><a href="#3-安装Mariadb" class="headerlink" title="3.安装Mariadb"></a>3.安装Mariadb</h1><p>Mariadb是MySQL的分支，在Oracle收购了MySQL后，MySQL有闭源的潜在风险，因此社区采用分支的方式避免MySQL闭源。MariaDB完全兼容MySQL</p>
+<p>CentOS7自带了MariaDB，可以卸载了重新安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep mariadb</span><br><span class="line">yum remove mariadb-libs-5.5.60-1.el7_5.x86_64</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/03.01.remove.png" alt></p>
+<p>卸载完成之后，使用Yum安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install mariadb-server</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/03.02.install.png" alt></p>
+<p>开启Maria DB</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mariadb</span><br><span class="line">systemctl status mariadb</span><br><span class="line">systcmctl enable mariadb</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/03.03.systemctl.png" alt></p>
+<p>对数据库进行配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql_secure_installation</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/03.04.mysql-secure-installation.png" alt></p>
+<p>测试登录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br></pre></td></tr></table></figure>
+<p>进入Maria DB界面即安装成功</p>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/03.05.login.png" alt></p>
+<p>设置Maria DB字符集为utf-8</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/my.cnf</span><br><span class="line">init_connect=&apos;SET collation_connection = utf8_unicode_ci&apos;</span><br><span class="line">init_connect=&apos;SET NAMES utf8&apos;</span><br><span class="line">character-set-server=utf8</span><br><span class="line">collation-server=utf8_unicode_ci</span><br><span class="line">skip-character-set-client-handshake</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/my.cnf.d/client.cnf</span><br><span class="line">default-character-set=utf8</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/my.cnf.d/mysql-clients.cnf</span><br><span class="line">default-character-set=utf8</span><br></pre></td></tr></table></figure>
+<p>重启服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart mariadb</span><br></pre></td></tr></table></figure>
+<p>进入Maria DB查看字符集</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">show variables like &quot;%character%&quot;;</span><br><span class="line">show variables lkie &quot;%collation%&quot;;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/03.06.show.png" alt></p>
+<p>参考：<br>[1] <a href="https://www.cnblogs.com/yhongji/p/9783065.html" target="_blank" rel="noopener">centos7 安装Mariadb</a></p>
+<h1 id="4-PHP连接Maria-DB"><a href="#4-PHP连接Maria-DB" class="headerlink" title="4.PHP连接Maria DB"></a>4.PHP连接Maria DB</h1><h2 id="4-1添加数据库"><a href="#4-1添加数据库" class="headerlink" title="4.1添加数据库"></a>4.1添加数据库</h2><p>创建一个Emerald数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create database Emerald;</span><br></pre></td></tr></table></figure>
+<p>使用Emerald数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use Emerald;</span><br></pre></td></tr></table></figure>
+<p>创建Member表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table `Member`(`ID` int(20) auto_increment,`userName` varchar(50) not null,`Password` varchar(50) not null,`nickname` varchar(50) not null,primary key(`ID`,`userName`))engine=innodb default charset=utf8;</span><br></pre></td></tr></table></figure>
+<p>查看Member表结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">desc Member;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/04.01.Emerald.png" alt></p>
+<p>添加数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into `Member`(userName,Password,nickname) values(&apos;chessur&apos;,&apos;Druid&apos;,&apos;chessur&apos;);</span><br></pre></td></tr></table></figure>
+<p>查询数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from Member;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/04.02.Member.png" alt></p>
+<p>在网站根目录创建一个test.php，测试数据库是否正常使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch /usr/share/nginx/html/test.php</span><br></pre></td></tr></table></figure>
+<p>使用PDO连接数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">    $ip = &apos;localhost&apos;;</span><br><span class="line">    $account = &apos;root&apos;;</span><br><span class="line">    $password = &apos;Druid&apos;;</span><br><span class="line">    $dsn = &quot;mysql:host=$ip;dbname=Emerald&quot;;</span><br><span class="line"></span><br><span class="line">    try&#123;</span><br><span class="line">        $connect = new pdo($dsn,$account,$password);</span><br><span class="line">        echo &quot;connect successfully&lt;br&gt;&quot;;</span><br><span class="line">        $query = &quot;select * from Member;&quot;;</span><br><span class="line">        $res = $connect-&gt;prepare($query);</span><br><span class="line">        $res-&gt;execute();</span><br><span class="line">        while ($result=$res-&gt;fetch(PDO::FETCH_ASSOC))&#123;</span><br><span class="line">            echo &quot;userName: &quot; . $result[&apos;userName&apos;] . &quot;&lt;br&gt;&quot;;</span><br><span class="line">            echo &quot;Password: &quot; . $result[&apos;Password&apos;] . &quot;&lt;br&gt;&quot;;</span><br><span class="line">            echo &quot;nickname: &quot; . $result[&apos;nickname&apos;] . &quot;&lt;br&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">        $dbh = null;</span><br><span class="line">    &#125; catch (PDOException $e) &#123;</span><br><span class="line">        die (&quot;Error!: &quot; . $e-&gt;getMessage() . &quot;&lt;br/&gt;&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/04.03.pdo.png" alt></p>
+<p>查看网页是否正常显示数据</p>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/04.04.firefox.png" alt></p>
+<p>显示数据和数据库中一致，PHP连接Maria DB正常</p>
+<h1 id="5-安全加固"><a href="#5-安全加固" class="headerlink" title="5.安全加固"></a>5.安全加固</h1><h2 id="5-1Nginx"><a href="#5-1Nginx" class="headerlink" title="5.1Nginx"></a>5.1Nginx</h2><p>禁止目录遍历</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http&#123;	</span><br><span class="line">	autoindex off;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>1.16.0默认禁止目录遍历</p>
+<p>删除错误信息中的版本信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http&#123;</span><br><span class="line">	server_tokens off;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>未修改前</p>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/05.01.01.version.png" alt></p>
+<p>修改后</p>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/05.01.02.version.png" alt></p>
+<p>关闭存放数据上传等目录的PHP解析</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">	location ~ /(attachments|data)/.*\.(php|php5)?$&#123;</span><br><span class="line">	deny all;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>限制HTTP请求方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">	if($request_method !~ ^(GET|POST)$ ) &#123;</span><br><span class="line">		return 405;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">	limit_except GET &#123;</span><br><span class="line">		deny all;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在Nginx1.9.9上两种方法均可实现，但1.16.0上无法实现</p>
+<p>设置timeout来防御DOS攻击</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">http&#123;</span><br><span class="line">	client_body_timeout 10;</span><br><span class="line">	client_header_timeout 30;</span><br><span class="line">	keepalive_timeout 30 30;</span><br><span class="line">	send_timeout 10;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>设置日志记录文件、记录内容、记录格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">http&#123;</span><br><span class="line">	log_format main &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot;&apos;</span><br><span class="line">	&apos;$status $body_bytes_sent &quot;$http_referer&quot;&apos;</span><br><span class="line">	&apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;</span><br><span class="line">&#125;</span><br><span class="line">server&#123;</span><br><span class="line">	access_log /var/log/nginx/access.log main</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/05.01.03.log.png" alt></p>
+<p>Nginx测试配置文件是否正确</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -t -c /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
+<h2 id="5-2PHP-fpm"><a href="#5-2PHP-fpm" class="headerlink" title="5.2PHP-fpm"></a>5.2PHP-fpm</h2><p><code>php-fpm.conf</code>配置文件优先级高于<code>php.ini</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#php.ini参数设置</span><br><span class="line"></span><br><span class="line">disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,proc_open,proc_get_status,ini_alter,ini_restore,dl,openlog,syslog,readlink,symlink,popepassthru,stream_socket_server,fsocket,phpinfo #禁用危险函数</span><br><span class="line"></span><br><span class="line">expose_php = off #避免暴露PHP信息</span><br><span class="line"></span><br><span class="line">display_errors = off #关闭错误信息提示</span><br><span class="line"></span><br><span class="line">enable_dl = off #禁用动态链接库</span><br><span class="line"></span><br><span class="line">allow_url_include = off #避免远程调用文件</span><br><span class="line"></span><br><span class="line">session.cookie_httponly = 1 #开启http only</span><br><span class="line"></span><br><span class="line">upload_tmp_dir = /tmp #明确定义upload目录</span><br><span class="line"></span><br><span class="line">open_basedir = ./:/tmp:/home/wwwroot/ #限制用户访问的目录</span><br></pre></td></tr></table></figure>
+<p>禁用危险函数</p>
+<p><img src="/2019/07/25/LNMP-on-CentOS-7/05.02.01.php.png" alt></p>
+<h2 id="5-3Maria-DB"><a href="#5-3Maria-DB" class="headerlink" title="5.3Maria DB"></a>5.3Maria DB</h2><p>确保运行Maria DB的用户为一般用户，存放数据目录权限为mysql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/my.cnf</span><br><span class="line">user = mysql</span><br></pre></td></tr></table></figure>
+<p>开启Maria DB二进制日志，在误删除数据的情况下，可以通过二进制日志恢复到某个时间点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/my.cnf</span><br><span class="line">log_bin = mysql-bin</span><br><span class="line">expire_logs_days = 7</span><br></pre></td></tr></table></figure>
+<p>禁止root账号远程访问，root账号只允许来自本地主机的登录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MariaDB&gt;grant all privileges on *.* to root@localhost identified by &apos;password&apos; with grant option;</span><br><span class="line">MariaDB&gt;flush priveleges;</span><br></pre></td></tr></table></figure>
+<p>删除匿名账号和空口令账号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MariaDB&gt;use mysql;</span><br><span class="line">MariaDB&gt;delete from user where User=&apos;&apos;;</span><br><span class="line">MariaDB&gt;delete from user where Password=&apos;&apos;;</span><br><span class="line">MariaDB&gt;delete from db where User=&apos;&apos;;</span><br></pre></td></tr></table></figure>
+<p>设置活动目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">secure-file-priv=NULL</span><br></pre></td></tr></table></figure>
+<p>为null时，不允许导入导出<br>指定文件夹时，只能导入导出到指定文件夹<br>为空时，没有任何限制</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/08/VulnHub-LazySysAdmin/" rel="next" title="'VulnHub-LazySysAdmin'">
+                <i class="fa fa-chevron-left"></i> 'VulnHub-LazySysAdmin'
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/cat.jpg" alt="chessur">
+            
+              <p class="site-author-name" itemprop="name">chessur</p>
+              <div class="site-description motion-element" itemprop="description">Freedom as Autonomy</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">37</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/ChireC" title="GitHub &rarr; https://github.com/ChireC" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-准备"><span class="nav-text">0.准备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-1更改Yum源"><span class="nav-text">0.1更改Yum源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-2更新"><span class="nav-text">0.2更新</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-安装Nginx"><span class="nav-text">1.安装Nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1添加Yum源"><span class="nav-text">1.1添加Yum源</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-安装PHP-fpm"><span class="nav-text">2.安装PHP-fpm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1安装php"><span class="nav-text">2.1安装php</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2配置Nginx"><span class="nav-text">2.2配置Nginx</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-安装Mariadb"><span class="nav-text">3.安装Mariadb</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-PHP连接Maria-DB"><span class="nav-text">4.PHP连接Maria DB</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1添加数据库"><span class="nav-text">4.1添加数据库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-安全加固"><span class="nav-text">5.安全加固</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1Nginx"><span class="nav-text">5.1Nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2PHP-fpm"><span class="nav-text">5.2PHP-fpm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3Maria-DB"><span class="nav-text">5.3Maria DB</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chessur</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+  $('.highlight').not('.gist .highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('Copied');
+        else $(this).text('Copy failed');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('Copy');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+</body>
+</html>
