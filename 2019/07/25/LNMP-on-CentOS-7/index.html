@@ -96,12 +96,12 @@
 
 
 
-  <meta name="description" content="搭个LNMP环境，熟悉下Linux，再尝试一下安全加固 搭个LNMP环境，熟悉下Linux，再尝试一下安全加固 最近想把电脑系统换成Linux系统，所以想搭个LNMP环境，熟悉下Linux，再尝试一下安全加固">
+  <meta name="description" content="最近想把电脑系统换成Linux系统，所以搭个LNMP环境，熟悉下Linux，再尝试一下安全加固">
 <meta property="og:type" content="article">
 <meta property="og:title" content="&#39;LNMP-on-CentOS-7&#39;">
 <meta property="og:url" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/index.html">
 <meta property="og:site_name" content="Emerald Dream">
-<meta property="og:description" content="搭个LNMP环境，熟悉下Linux，再尝试一下安全加固 搭个LNMP环境，熟悉下Linux，再尝试一下安全加固 最近想把电脑系统换成Linux系统，所以想搭个LNMP环境，熟悉下Linux，再尝试一下安全加固">
+<meta property="og:description" content="最近想把电脑系统换成Linux系统，所以搭个LNMP环境，熟悉下Linux，再尝试一下安全加固">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/00.01.yum.png">
 <meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/01.01.no_nginx.png">
@@ -144,10 +144,10 @@
 <meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/05.01.02.version.png">
 <meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/05.01.03.log.png">
 <meta property="og:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/05.02.01.php.png">
-<meta property="og:updated_time" content="2019-07-25T11:26:56.736Z">
+<meta property="og:updated_time" content="2019-07-25T11:30:20.990Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;LNMP-on-CentOS-7&#39;">
-<meta name="twitter:description" content="搭个LNMP环境，熟悉下Linux，再尝试一下安全加固 搭个LNMP环境，熟悉下Linux，再尝试一下安全加固 最近想把电脑系统换成Linux系统，所以想搭个LNMP环境，熟悉下Linux，再尝试一下安全加固">
+<meta name="twitter:description" content="最近想把电脑系统换成Linux系统，所以搭个LNMP环境，熟悉下Linux，再尝试一下安全加固">
 <meta name="twitter:image" content="https://chirec.github.io/2019/07/25/LNMP-on-CentOS-7/00.01.yum.png">
 
 
@@ -415,7 +415,7 @@
                 
               
 
-              <time title="Created: 2019-07-25 19:19:14 / Modified: 19:26:56" itemprop="dateCreated datePublished" datetime="2019-07-25T19:19:14+08:00">2019-07-25</time>
+              <time title="Created: 2019-07-25 19:19:14 / Modified: 19:30:20" itemprop="dateCreated datePublished" datetime="2019-07-25T19:19:14+08:00">2019-07-25</time>
             
 
             
@@ -454,9 +454,7 @@
       
 
       
-        <p>搭个LNMP环境，熟悉下Linux，再尝试一下安全加固</p>
-<p>搭个LNMP环境，熟悉下Linux，再尝试一下安全加固</p>
-<p>最近想把电脑系统换成Linux系统，所以想搭个LNMP环境，熟悉下Linux，再尝试一下安全加固</p>
+        <p>最近想把电脑系统换成Linux系统，所以搭个LNMP环境，熟悉下Linux，再尝试一下安全加固</p>
 <a id="more"></a>
 <h1 id="0-准备"><a href="#0-准备" class="headerlink" title="0.准备"></a>0.准备</h1><h2 id="0-1更改Yum源"><a href="#0-1更改Yum源" class="headerlink" title="0.1更改Yum源"></a>0.1更改Yum源</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak</span><br><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</span><br><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
 <p><img src="/2019/07/25/LNMP-on-CentOS-7/00.01.yum.png" alt></p>
