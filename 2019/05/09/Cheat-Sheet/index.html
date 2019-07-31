@@ -100,11 +100,11 @@
 <meta name="keywords" content="Cheat Sheet">
 <meta property="og:type" content="article">
 <meta property="og:title" content="&#39;Cheat Sheet&#39;">
-<meta property="og:url" content="https://chirec.github.io/2019/05/09/Cheat Sheet/index.html">
+<meta property="og:url" content="https://chirec.github.io/2019/05/09/Cheat-Sheet/index.html">
 <meta property="og:site_name" content="Emerald Dream">
 <meta property="og:description" content="CTF流程1.查看源代码2.查看robots.txt linux下空格绕过1234cat flag.txtcat$&amp;#123;IFS&amp;#125;flag.txtcat$IFS$9flag.txtcat&amp;lt;flag.txt ${IFS} Shell 脚本中有个变量叫IFS(Internal Field Seprator) ，内部域分隔符。完整定义是The shell uses the value">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-07-24T13:29:54.045Z">
+<meta property="og:updated_time" content="2019-07-25T13:32:45.223Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;Cheat Sheet&#39;">
 <meta name="twitter:description" content="CTF流程1.查看源代码2.查看robots.txt linux下空格绕过1234cat flag.txtcat$&amp;#123;IFS&amp;#125;flag.txtcat$IFS$9flag.txtcat&amp;lt;flag.txt ${IFS} Shell 脚本中有个变量叫IFS(Internal Field Seprator) ，内部域分隔符。完整定义是The shell uses the value">
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="https://chirec.github.io/2019/05/09/Cheat Sheet/">
+  <link rel="canonical" href="https://chirec.github.io/2019/05/09/Cheat-Sheet/">
 
 
 
@@ -245,23 +245,6 @@
         
         
           
-          <li class="menu-item menu-item-categories">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
-
-  </li>
-        
-        
-        
-          
           <li class="menu-item menu-item-archives">
 
     
@@ -273,6 +256,23 @@
     
 
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
 
   </li>
 
@@ -331,7 +331,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chirec.github.io/2019/05/09/Cheat Sheet/">
+    <link itemprop="mainEntityOfPage" href="https://chirec.github.io/2019/05/09/Cheat-Sheet/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chessur">
@@ -391,7 +391,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-24 21:29:54" itemprop="dateModified" datetime="2019-07-24T21:29:54+08:00">2019-07-24</time>
+                <time title="Modified: 2019-07-25 21:32:45" itemprop="dateModified" datetime="2019-07-25T21:32:45+08:00">2019-07-25</time>
               
             
           </span>
@@ -447,6 +447,8 @@
 <h2 id="linux下空格绕过"><a href="#linux下空格绕过" class="headerlink" title="linux下空格绕过"></a>linux下空格绕过</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat flag.txt</span><br><span class="line">cat$&#123;IFS&#125;flag.txt</span><br><span class="line">cat$IFS$9flag.txt</span><br><span class="line">cat&lt;flag.txt</span><br></pre></td></tr></table></figure>
 <p><code>${IFS}</code><br> Shell 脚本中有个变量叫IFS(Internal Field Seprator) ，内部域分隔符。完整定义是The shell uses the value stored in IFS, which is the space, tab, and newline characters by default, to delimit words for the read and set commands, when parsing output from command substitution, and when performing variable substitution.</p>
 <h2 id="PHP-is-numeric-绕过"><a href="#PHP-is-numeric-绕过" class="headerlink" title="PHP is_numeric 绕过"></a>PHP is_numeric 绕过</h2><p>使用十六进制绕过</p>
+<h2 id="PHP-assert"><a href="#PHP-assert" class="headerlink" title="PHP assert()"></a>PHP assert()</h2><p>执行多个命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	assert(print(&apos;Hello&apos;) and print(&apos; &apos;) and print(&apos;world&apos;))</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="outguess"><a href="#outguess" class="headerlink" title="outguess"></a>outguess</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">outguess -r picture text</span><br></pre></td></tr></table></figure>
 <h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><p>python导入bash</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python -c &apos;import pty;pty.spawn(&quot;/bin/sh&quot;)&apos;</span><br><span class="line">python -c &apos;import pty;pty.spawn(&quot;/bin/bash&quot;)&apos;</span><br></pre></td></tr></table></figure>
@@ -775,7 +777,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CTF"><span class="nav-text">CTF</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#流程"><span class="nav-text">流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux下空格绕过"><span class="nav-text">linux下空格绕过</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP-is-numeric-绕过"><span class="nav-text">PHP is_numeric 绕过</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#outguess"><span class="nav-text">outguess</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux"><span class="nav-text">Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加用户"><span class="nav-text">添加用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ufw"><span class="nav-text">ufw</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单用户模式"><span class="nav-text">单用户模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#firewall"><span class="nav-text">firewall</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL"><span class="nav-text">MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#更改secure-file-priv"><span class="nav-text">更改secure_file_priv</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版本"><span class="nav-text">版本</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#反弹shell"><span class="nav-text">反弹shell</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bash"><span class="nav-text">Bash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PERL"><span class="nav-text">PERL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP"><span class="nav-text">PHP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ruby"><span class="nav-text">Ruby</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Netcat"><span class="nav-text">Netcat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-text">其他</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java"><span class="nav-text">Java</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Kali"><span class="nav-text">Kali</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#weevely"><span class="nav-text">weevely</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XSS"><span class="nav-text">XSS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#payload"><span class="nav-text">payload</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PHP-1"><span class="nav-text">PHP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#伪协议"><span class="nav-text">伪协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#终止解析"><span class="nav-text">终止解析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MSF"><span class="nav-text">MSF</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#msfvenom自动补全"><span class="nav-text">msfvenom自动补全</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mysql"><span class="nav-text">Mysql</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后台拿Shell"><span class="nav-text">后台拿Shell</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WebShell"><span class="nav-text">WebShell</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#WebShell的权限"><span class="nav-text">WebShell的权限</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows提权"><span class="nav-text">Windows提权</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PowerShell提权"><span class="nav-text">PowerShell提权</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOS下载文件"><span class="nav-text">DOS下载文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-创建downfile-vbs下载文件"><span class="nav-text">1.创建downfile.vbs下载文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-使用bitsadmin命令"><span class="nav-text">2.使用bitsadmin命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PR提权"><span class="nav-text">PR提权</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#名词解释"><span class="nav-text">名词解释</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#钓鱼攻击"><span class="nav-text">钓鱼攻击</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#水坑攻击"><span class="nav-text">水坑攻击</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#信息收集"><span class="nav-text">信息收集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#员工信息"><span class="nav-text">员工信息</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript编码"><span class="nav-text">JavaScript编码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#抓Hash"><span class="nav-text">抓Hash</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#procdump"><span class="nav-text">procdump</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计划任务"><span class="nav-text">计划任务</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows"><span class="nav-text">Windows</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vim"><span class="nav-text">Vim</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CTF"><span class="nav-text">CTF</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#流程"><span class="nav-text">流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux下空格绕过"><span class="nav-text">linux下空格绕过</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP-is-numeric-绕过"><span class="nav-text">PHP is_numeric 绕过</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP-assert"><span class="nav-text">PHP assert()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#outguess"><span class="nav-text">outguess</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux"><span class="nav-text">Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加用户"><span class="nav-text">添加用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ufw"><span class="nav-text">ufw</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单用户模式"><span class="nav-text">单用户模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#firewall"><span class="nav-text">firewall</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL"><span class="nav-text">MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#更改secure-file-priv"><span class="nav-text">更改secure_file_priv</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版本"><span class="nav-text">版本</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#反弹shell"><span class="nav-text">反弹shell</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bash"><span class="nav-text">Bash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PERL"><span class="nav-text">PERL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP"><span class="nav-text">PHP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ruby"><span class="nav-text">Ruby</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Netcat"><span class="nav-text">Netcat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-text">其他</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java"><span class="nav-text">Java</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Kali"><span class="nav-text">Kali</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#weevely"><span class="nav-text">weevely</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XSS"><span class="nav-text">XSS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#payload"><span class="nav-text">payload</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PHP-1"><span class="nav-text">PHP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#伪协议"><span class="nav-text">伪协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#终止解析"><span class="nav-text">终止解析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MSF"><span class="nav-text">MSF</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#msfvenom自动补全"><span class="nav-text">msfvenom自动补全</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mysql"><span class="nav-text">Mysql</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后台拿Shell"><span class="nav-text">后台拿Shell</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WebShell"><span class="nav-text">WebShell</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#WebShell的权限"><span class="nav-text">WebShell的权限</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows提权"><span class="nav-text">Windows提权</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PowerShell提权"><span class="nav-text">PowerShell提权</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOS下载文件"><span class="nav-text">DOS下载文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-创建downfile-vbs下载文件"><span class="nav-text">1.创建downfile.vbs下载文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-使用bitsadmin命令"><span class="nav-text">2.使用bitsadmin命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PR提权"><span class="nav-text">PR提权</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#名词解释"><span class="nav-text">名词解释</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#钓鱼攻击"><span class="nav-text">钓鱼攻击</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#水坑攻击"><span class="nav-text">水坑攻击</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#信息收集"><span class="nav-text">信息收集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#员工信息"><span class="nav-text">员工信息</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript编码"><span class="nav-text">JavaScript编码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#抓Hash"><span class="nav-text">抓Hash</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#procdump"><span class="nav-text">procdump</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计划任务"><span class="nav-text">计划任务</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows"><span class="nav-text">Windows</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vim"><span class="nav-text">Vim</span></a></li></div>
             
 
           </div>
