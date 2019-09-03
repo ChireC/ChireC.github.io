@@ -104,17 +104,17 @@
 <meta property="og:site_name" content="Emerald Dream">
 <meta property="og:description" content="1.介绍1.1Hydra Number one of the biggest security holes are passwords, as every password security study shows. This tool is a proof of concept code, to give researchers and security consultants the poss">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://chirec.github.io/2019/03/18/Brief-Introduction-on-Medusa&Hydra/01.Hydra.Syntax.png">
-<meta property="og:image" content="https://chirec.github.io/2019/03/18/Brief-Introduction-on-Medusa&Hydra/02.Medusa.Syntax.png">
-<meta property="og:image" content="https://chirec.github.io/2019/03/18/Brief-Introduction-on-Medusa&Hydra/03.Hydra.SSH.Complete.png">
-<meta property="og:image" content="https://chirec.github.io/2019/03/18/Brief-Introduction-on-Medusa&Hydra/04.Medusa.SSH.Complete.png">
-<meta property="og:image" content="https://chirec.github.io/2019/03/18/Brief-Introduction-on-Medusa&Hydra/05.Hydra.FTP.Complete.png">
-<meta property="og:image" content="https://chirec.github.io/2019/03/18/Brief-Introduction-on-Medusa&Hydra/06.Medusa.FTP.Complete.png">
+<meta property="og:image" content="https://chirec.github.io/2019/03/18/Brief-Introduction-on-Medusa&Hydra/03/18/Brief-Introduction-on-Medusa&Hydra/01.Hydra.Syntax.png">
+<meta property="og:image" content="https://chirec.github.io/2019/03/18/Brief-Introduction-on-Medusa&Hydra/03/18/Brief-Introduction-on-Medusa&Hydra/02.Medusa.Syntax.png">
+<meta property="og:image" content="https://chirec.github.io/2019/03/18/Brief-Introduction-on-Medusa&Hydra/03/18/Brief-Introduction-on-Medusa&Hydra/03.Hydra.SSH.Complete.png">
+<meta property="og:image" content="https://chirec.github.io/2019/03/18/Brief-Introduction-on-Medusa&Hydra/03/18/Brief-Introduction-on-Medusa&Hydra/04.Medusa.SSH.Complete.png">
+<meta property="og:image" content="https://chirec.github.io/2019/03/18/Brief-Introduction-on-Medusa&Hydra/03/18/Brief-Introduction-on-Medusa&Hydra/05.Hydra.FTP.Complete.png">
+<meta property="og:image" content="https://chirec.github.io/2019/03/18/Brief-Introduction-on-Medusa&Hydra/03/18/Brief-Introduction-on-Medusa&Hydra/06.Medusa.FTP.Complete.png">
 <meta property="og:updated_time" content="2019-07-03T01:27:43.596Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;Medusa和Hydra对比&#39;">
 <meta name="twitter:description" content="1.介绍1.1Hydra Number one of the biggest security holes are passwords, as every password security study shows. This tool is a proof of concept code, to give researchers and security consultants the poss">
-<meta name="twitter:image" content="https://chirec.github.io/2019/03/18/Brief-Introduction-on-Medusa&Hydra/01.Hydra.Syntax.png">
+<meta name="twitter:image" content="https://chirec.github.io/2019/03/18/Brief-Introduction-on-Medusa&Hydra/03/18/Brief-Introduction-on-Medusa&Hydra/01.Hydra.Syntax.png">
 
 
 
@@ -469,18 +469,18 @@
 </ul>
 </blockquote>
 <a id="more"></a>
-<h1 id="2-参数介绍"><a href="#2-参数介绍" class="headerlink" title="2.参数介绍"></a>2.参数介绍</h1><h2 id="2-1Hydra"><a href="#2-1Hydra" class="headerlink" title="2.1Hydra"></a>2.1Hydra</h2><img src="/2019/03/18/Brief-Introduction-on-Medusa&Hydra/01.Hydra.Syntax.png">
+<h1 id="2-参数介绍"><a href="#2-参数介绍" class="headerlink" title="2.参数介绍"></a>2.参数介绍</h1><h2 id="2-1Hydra"><a href="#2-1Hydra" class="headerlink" title="2.1Hydra"></a>2.1Hydra</h2><img src="/2019/03/18/Brief-Introduction-on-Medusa&Hydra/03/18/Brief-Introduction-on-Medusa&Hydra/01.Hydra.Syntax.png">
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">hydra [[[-l LOGIN|-L FILE] [-p PASS|-P FILE]] | [-C FILE]] [-e nsr] [-o FILE] [-t TASKS] [-M FILE [-T TASKS]] [-w TIME] [-W TIME] [-f] [-s PORT] [-x MIN:MAX:CHARSET] [-c TIME] [-ISOuvVd46] [service://server[:PORT][/OPT]]</span><br><span class="line">-R 恢复上一次的会话</span><br><span class="line">-I 忽略存在的恢复文件</span><br><span class="line">-S SSL连接</span><br><span class="line">-s 端口号</span><br><span class="line">-l 尝试登陆名</span><br><span class="line">-L 从文件中导入登录名</span><br><span class="line">-p 尝试密码</span><br><span class="line">-P 从文件中导入密码</span><br><span class="line">-e nsr n尝试空密码 s尝试与用户名相同的密码 r反向登陆循环</span><br><span class="line">-c TIME 设置尝试登陆等待时间</span><br><span class="line">-4 / -6 使用IPV4地址或IPV6地址</span><br><span class="line">-v / -V 详细信息模式/显示每次尝试的用户名+密码/调试模式</span><br><span class="line">-O 使用旧版本SSL v2和v3</span><br><span class="line">-q 不显示连接错误信息</span><br><span class="line">-h 帮助</span><br><span class="line">-M 从文件中导入服务类型</span><br><span class="line">-f / -F 在找到第一个账号/密码后，停止破解</span><br><span class="line">server 目标IP</span><br><span class="line">service 支持的服务类型</span><br><span class="line">支持的服务类型：adam6500 asterisk cisco cisco-enable cvs firebird ftp ftps http[s]-&#123;head|get|post&#125; http[s]-&#123;get|post&#125;-form http-proxy http-proxy-urlenum icq imap[s] irc ldap2[s] ldap3[-&#123;cram|digest&#125;md5][s] mssql mysql nntp oracle-listener oracle-sid pcanywhere pcnfs pop3[s] postgres radmin2 rdp redis rexec rlogin rpcap rsh rtsp s7-300 sip smb smtp[s] smtp-enum snmp socks5 ssh sshkey svn teamspeak telnet[s] vmauthd vnc xmpp</span><br><span class="line">Examples：</span><br><span class="line">hydra -l user -P passlist.txt ftp://192.168.0.1</span><br><span class="line">  hydra -L userlist.txt -p defaultpw imap://192.168.0.1/PLAIN</span><br><span class="line">  hydra -C defaults.txt -6 pop3s://[2001:db8::1]:143/TLS:DIGEST-MD5</span><br><span class="line">  hydra -l admin -p password ftp://[192.168.0.0/24]/</span><br><span class="line">  hydra -L logins.txt -P pws.txt -M targets.txt ssh</span><br></pre></td></tr></table></figure>
-<h2 id="2-2Medusa"><a href="#2-2Medusa" class="headerlink" title="2.2Medusa"></a>2.2Medusa</h2><img src="/2019/03/18/Brief-Introduction-on-Medusa&Hydra/02.Medusa.Syntax.png">
+<h2 id="2-2Medusa"><a href="#2-2Medusa" class="headerlink" title="2.2Medusa"></a>2.2Medusa</h2><img src="/2019/03/18/Brief-Introduction-on-Medusa&Hydra/03/18/Brief-Introduction-on-Medusa&Hydra/02.Medusa.Syntax.png">
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">Medusa [-h host|-H file] [-u username|-U file] [-p password|-P file] [-C file] -M module [OPT]</span><br><span class="line">-h [TEXT]      目标IP</span><br><span class="line">-H [FILE]      目标主机文件</span><br><span class="line">-u [TEXT]      用户名</span><br><span class="line">-U [FILE]      用户名文件</span><br><span class="line">-p [TEXT]      密码</span><br><span class="line">-P [FILE]      密码文件</span><br><span class="line">-C [FILE]      组合条目文件</span><br><span class="line">-O [FILE]      文件日志信息</span><br><span class="line">-e [n/s/ns]    N意为空密码，S意为密码与用户名相同</span><br><span class="line">-M [TEXT]      模块执行名称</span><br><span class="line">-m [TEXT]      传递参数到模块</span><br><span class="line">-d             显示所有的模块名称</span><br><span class="line">-n [NUM]       使用非默认端口</span><br><span class="line">-s             启用SSL</span><br><span class="line">-r [NUM]       重试间隔时间，默认为3秒</span><br><span class="line">-t [NUM]       设定线程数量</span><br><span class="line">-L             并行化，每个用户使用一个线程</span><br><span class="line">-f             在找到第一个账号/密码后，停止破解</span><br><span class="line">-q             显示模块的使用信息</span><br><span class="line">-v [NUM]       详细级别（0-6详细）</span><br><span class="line">-w [NUM]       错误调试级别（0-10）</span><br><span class="line">-V             显示版本</span><br><span class="line">-Z [TEXT]      继续扫描上一次</span><br><span class="line">Example：</span><br><span class="line">medusa -M ssh -u root -P passwd.txt -h 192.168.126.130 -f -v 6</span><br></pre></td></tr></table></figure>
 <h1 id="3-实验"><a href="#3-实验" class="headerlink" title="3.实验"></a>3.实验</h1><h2 id="3-1暴力破解SSH"><a href="#3-1暴力破解SSH" class="headerlink" title="3.1暴力破解SSH"></a>3.1暴力破解SSH</h2><h3 id="3-1-1Hydra"><a href="#3-1-1Hydra" class="headerlink" title="3.1.1Hydra"></a>3.1.1Hydra</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hydra -l chessur -P passwd.txt ssh://192.168.126.130</span><br></pre></td></tr></table></figure>
-<img src="/2019/03/18/Brief-Introduction-on-Medusa&Hydra/03.Hydra.SSH.Complete.png">
+<img src="/2019/03/18/Brief-Introduction-on-Medusa&Hydra/03/18/Brief-Introduction-on-Medusa&Hydra/03.Hydra.SSH.Complete.png">
 <h3 id="3-1-2Medusa"><a href="#3-1-2Medusa" class="headerlink" title="3.1.2Medusa"></a>3.1.2Medusa</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">medusa -M ssh -u chessur -P passwd.txt -h 192.168.126.130 -F -v 6</span><br></pre></td></tr></table></figure>
-<img src="/2019/03/18/Brief-Introduction-on-Medusa&Hydra/04.Medusa.SSH.Complete.png">
+<img src="/2019/03/18/Brief-Introduction-on-Medusa&Hydra/03/18/Brief-Introduction-on-Medusa&Hydra/04.Medusa.SSH.Complete.png">
 <h2 id="3-2暴力破解FTP"><a href="#3-2暴力破解FTP" class="headerlink" title="3.2暴力破解FTP"></a>3.2暴力破解FTP</h2><h3 id="3-2-1Hydra"><a href="#3-2-1Hydra" class="headerlink" title="3.2.1Hydra"></a>3.2.1Hydra</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hydra -l ftp1 -P passwd.txt ssh://192.168.126.130</span><br></pre></td></tr></table></figure>
-<img src="/2019/03/18/Brief-Introduction-on-Medusa&Hydra/05.Hydra.FTP.Complete.png">
+<img src="/2019/03/18/Brief-Introduction-on-Medusa&Hydra/03/18/Brief-Introduction-on-Medusa&Hydra/05.Hydra.FTP.Complete.png">
 <h3 id="3-2-2Medusa"><a href="#3-2-2Medusa" class="headerlink" title="3.2.2Medusa"></a>3.2.2Medusa</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">medusa -M ftp -u ftp1 -P passwd.txt -h 192.168.126.130 -f -v 6</span><br></pre></td></tr></table></figure>
-<img src="/2019/03/18/Brief-Introduction-on-Medusa&Hydra/06.Medusa.FTP.Complete.png">
+<img src="/2019/03/18/Brief-Introduction-on-Medusa&Hydra/03/18/Brief-Introduction-on-Medusa&Hydra/06.Medusa.FTP.Complete.png">
 <h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h1><p>1.Medusa比Hydra稳定，但是破解速度比较慢。</p>
 <p>2.SSH尝试速度比FTP尝试速度慢。</p>
 <p>3.Medusa支持参数和服务类型比Hydra少，可能是很久不更新的原因。</p>
@@ -605,7 +605,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -636,7 +636,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">7</span>
+                      
+                    
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -667,7 +669,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">7</span>
+                      
+                    
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
