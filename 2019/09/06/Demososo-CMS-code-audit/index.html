@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="This CMS can be downloaded from here. And version of Demososo CMS is v20190822.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="&#39;Demososo-CMS-code-audit&#39;">
+<meta property="og:url" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/index.html">
+<meta property="og:site_name" content="Emerald Dream">
+<meta property="og:description" content="This CMS can be downloaded from here. And version of Demososo CMS is v20190822.">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/01.00.code.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/01.01.click.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/01.02.pos.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/01.03.burp.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/01.04.sleep_1.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/01.05sleep_5.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/01.06.sleep_10.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/02.01.file.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/02.02.include.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/02.03.htmlentidm.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/02.04.fuzz.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/02.05.result.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/02.06.low_phpinfo.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/02.07.high_phpinfo.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/03.01.install.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/03.02.act.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/03.03.file.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/03.04.modify.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/03.05.database.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/03.06.no_filter.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/03.07.return.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/03.08.echo.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/04.01.search.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/04.02.upload_1.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/04.03.upload_2.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/04.04.upload_3.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/09.01.zb_insert.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/09.02.jgp_add.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/09.03.zb_ad.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/09.04.unlink.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/09.05.search.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/09.06.havesub.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/09.07.getip.png">
+<meta property="og:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/09.08.result.png">
+<meta property="og:updated_time" content="2019-09-09T13:49:51.063Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="&#39;Demososo-CMS-code-audit&#39;">
+<meta name="twitter:description" content="This CMS can be downloaded from here. And version of Demososo CMS is v20190822.">
+<meta name="twitter:image" content="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/01.00.code.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>'Demososo-CMS-code-audit' | Emerald Dream</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Emerald Dream</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/yourname" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chirec.github.io/2019/09/06/Demososo-CMS-code-audit/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chessur">
+      <meta itemprop="description" content="Freedom as Autonomy">
+      <meta itemprop="image" content="/images/cat.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Emerald Dream">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">'Demososo-CMS-code-audit'
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-09-06 13:20:50" itemprop="dateCreated datePublished" datetime="2019-09-06T13:20:50+08:00">2019-09-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-09-09 21:49:51" itemprop="dateModified" datetime="2019-09-09T21:49:51+08:00">2019-09-09</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This CMS can be downloaded from <a href="http://down.chinaz.com/soft/37361.htm" target="_blank" rel="noopener">here</a>. And version of Demososo CMS is v20190822.</p>
+<a id="more"></a>
+<h1 id="1-SQL-Injection"><a href="#1-SQL-Injection" class="headerlink" title="1. SQL Injection"></a>1. SQL Injection</h1><p><code>admindm-yourname/mod_account/mod_user.php</code>的第42行，将POST方式传入的参数直接带入数据库中进行查询，很明显的SQL注入</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/01.00.code.png" alt></p>
+<p>使用<code>admin:admin123</code>登录后台<code>admindm-yourname/g.php</code>，点击右上角的图标，选择普通管理员</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/01.01.click.png" alt></p>
+<p>点击<code>排序</code>，并使用Burp Suite抓包</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/01.02.pos.png" alt></p>
+<p>抓到的数据包</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/01.03.burp.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">POST /dmqyjz_v20190822/admindm-yourname/mod_account/mod_user.php?lang=cn&amp;file=list&amp;act=pos HTTP/1.1</span><br><span class="line">Host: localhost</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Referer: http://localhost/dmqyjz_v20190822/admindm-yourname/mod_account/mod_user.php?lang=cn</span><br><span class="line">Cookie: UM_distinctid=16cfc4a88ff268-067ca10ef68b488-1262694a-1fa400-16cfc4a890029a; CNZZDATA1256279252=1005958402-1567599470-http%253A%252F%252Flocalhost%252F%7C1567599470; usercookie=77-5ed9412c29c00eda8c8eca41483d82f6; isadmin=y; admindir=admindm-yourname; username=admin; PHPSESSID=1sean1pmkvo9o10v44mub0a8b3</span><br><span class="line">DNT: 1</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">Content-Length: 31</span><br><span class="line"></span><br><span class="line">99=50&amp;Submit=%E6%8E%92%E5%BA%8F</span><br></pre></td></tr></table></figure>
+<p>修改body的内容</p>
+<p>Payload：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">99&apos;%09or%09sleep(1)#=50&amp;Submit=%E6%8E%92%E5%BA%8F</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/01.04.sleep_1.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">99&apos;%09or%09sleep(5)#=50&amp;Submit=%E6%8E%92%E5%BA%8F</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/01.05sleep_5.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">99&apos;%09or%09sleep(10)#=50&amp;Submit=%E6%8E%92%E5%BA%8F</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/01.06.sleep_10.png" alt></p>
+<p>增加时间，可以看到响应时间也在增加</p>
+<p>不过需要登录后台才能利用</p>
+<h1 id="2-Directory-Traversal"><a href="#2-Directory-Traversal" class="headerlink" title="2. Directory Traversal"></a>2. Directory Traversal</h1><p>在<code>indexDM_load.php</code>中的第69到第72行，可以通过GET方法赋值，其中<code>$file</code>变量可能存在文件包含</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/02.01.file.png" alt></p>
+<p>在文件中搜索<code>$file</code>可以在第321行找到变量<code>$filefilefile</code>获得了<code>$file</code>的值，在下面的if判断中，通过<code>strpos()</code>函数判断<code>$file</code>中是否有正斜杠<code>/</code>，若有正斜杠则会返回正斜杠在字符串中的位置，该值是一个<code>int</code>类型的值，所以<code>is_int()</code>函数返回<code>True</code>进入if判断内部，进一步判断该文件是否存在，若存在则会包含<code>INCLUDE_ROOT.$file.&#39;.php&#39;</code>文件，这里需要截断头和尾。尾部的<code>.php</code>可以通过低版本PHP的<code>%00</code>截断，头只能通过<code>../</code>或<code>..\</code>来进行截断</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/02.02.include.png" alt></p>
+<p>这里需要去看之前对<code>$file</code>进行过滤的<code>htmlentitdm()</code>函数，具体是怎么实现的</p>
+<p><code>htmlentitdm()</code>函数在<code>component/dm-config/global.common.php</code>的第531行</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/02.03.htmlentidm.png" alt></p>
+<p>第一眼看到这个函数的时候，发现<code>..</code>和<code>\</code>被过滤掉了，似乎没有办法进行目录跳转，但是在自己测试函数的时候，发现并没有正确的过滤掉<code>..</code>，而自己写<code>echo str_replace(&#39;..&#39;,&#39;===-&#39;,$str);</code>却可以被过滤掉</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/02.04.fuzz.png" alt></p>
+<p>测试截图：</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/02.05.result.png" alt></p>
+<p>然后再仔细看，发现函数体写的是<code>..&#39;</code>多了个单引号……</p>
+<p>所以是可以目录跳转的，并且如果可以使用<code>%00</code>截断的话，可以直接包含WebShell，不过<code>%00</code>截断在PHP5.3之后都被修复了，如果可以上传<code>.php</code>文件的后缀，就连截断都省了，直接写WebShell的目录和文件名就行了</p>
+<p>这里把PHP版本调成5.2，并关闭魔术引号，测试文件包含</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/02.06.low_phpinfo.png" alt></p>
+<p>可以包含，但是很鸡肋，限制条件太多了</p>
+<p>高版本下文件包含，可以不截断，但是需要上传<code>.php</code>文件</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/02.07.high_phpinfo.png" alt></p>
+<h1 id="3-安装过程配置文件写入"><a href="#3-安装过程配置文件写入" class="headerlink" title="3. 安装过程配置文件写入"></a>3. 安装过程配置文件写入</h1><p>在安装的第二步，可以修改配置信息</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/03.01.install.png" alt></p>
+<p>form表单被自身处理，查看处理过程</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/03.02.act.png" alt></p>
+<p>通过POST方法获得数据，对数据使用<code>htmlentitdm()</code>函数进行过滤，第180行进行拼接，经过三次字符串替换后，在第188行将配置信息写入文件</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/03.03.file.png" alt></p>
+<p>配置信息的写入在检测数据库是否可连接之前，所以可以不用考虑数据库是否可以连接随便改参数</p>
+<p>过程中被过滤掉的字符：<code>&lt;,&gt;,&#39;,&quot;</code>，这些字符都被HTML实体化了</p>
+<p>尝试闭合，注入PHP代码</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/03.04.modify.png" alt></p>
+<p>写在配置文件中的结果</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/03.05.database.png" alt></p>
+<p>单引号被转义了，所以无法构造闭合</p>
+<p>而且这里的<code>return</code>也很有意思，就算没有任何过滤、转义，也会因为<code>return</code>在代码最前面导致后续代码无法执行</p>
+<p>关闭过滤函数后，配置文件</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/03.06.no_filter.png" alt></p>
+<p>以<code>return</code>开头</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/03.07.return.png" alt></p>
+<p><code>phpinfo();</code>没有被执行</p>
+<p>删掉<code>return</code>后</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/03.08.echo.png" alt></p>
+<p><code>phpinfo();</code>被执行</p>
+<h1 id="4-文件上传"><a href="#4-文件上传" class="headerlink" title="4. 文件上传"></a>4. 文件上传</h1><p>全局搜索<code>move_uploaded_file()</code>，共找到3处</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/04.01.search.png" alt></p>
+<p>第一处</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/04.02.upload_1.png" alt></p>
+<p>第二处</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/04.03.upload_2.png" alt></p>
+<p>第三处</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/04.04.upload_3.png" alt></p>
+<h1 id="global-common-php"><a href="#global-common-php" class="headerlink" title="global.common.php"></a>global.common.php</h1><h2 id="zb-insert"><a href="#zb-insert" class="headerlink" title="zb_insert()"></a>zb_insert()</h2><p>In <code>component/dm-config/global.common.php</code> Line 44</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/09.01.zb_insert.png" alt></p>
+<p>代码中，只对数组的<code>value</code>做了过滤，在之前看的文章中，不仅仅是<code>value</code>可以造成漏洞，<code>key</code>同样可以造成漏洞，第一个SQL注入漏洞就是通过<code>key</code>进行注入的</p>
+<p>对XSS进行了过滤，将<code>&lt;script&gt;</code>和<code>&lt;/script&gt;</code>变成了<code>&lt;-nojsscript-&gt;</code>和<code>&lt;-/nojsscript-&gt;</code></p>
+<p>gpc_add()在未开启魔术引号时，使用<code>addslashes()</code>进行转义</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/09.02.jgp_add.png" alt></p>
+<p>将常量<code>UPLOADPATH</code>替换为<code>imgpath_3qys0a_com</code></p>
+<h2 id="zb-insertadv"><a href="#zb-insertadv" class="headerlink" title="zb_insertadv()"></a>zb_insertadv()</h2><p>在下面还可以找到一个<code>zb_insetadv()</code>函数</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/09.03.zb_ad.png" alt></p>
+<p>和<code>zb_insert()</code>相比，多了一些内容，其中一个if判断并没有影响分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if(in_array($k,$postarrexc)) continue;</span><br></pre></td></tr></table></figure>
+<p>当<code>$k</code>在<code>$postarrexc</code>中，则跳过下面的程序，下一个<code>$v</code>进入循环，使用这个判断，可以过滤掉一些设定好的<code>$k</code></p>
+<h2 id="unlinkdm"><a href="#unlinkdm" class="headerlink" title="unlinkdm()"></a>unlinkdm()</h2><p>In Line 286</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/09.04.unlink.png" alt></p>
+<p>判断是否存在文件，直接进行删除，没有验证权限，可能存在删除任意文件的漏洞</p>
+<p>在全局搜索这个函数</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/09.05.search.png" alt></p>
+<p>但是在翻遍了7个文件后，发现没有可以利用的参数，有几个参数在函数里看到了，但是在文件中没有找到，不知道为什么</p>
+<h2 id="havesub"><a href="#havesub" class="headerlink" title="havesub()"></a>havesub()</h2><p>In Line 428、436</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/09.06.havesub.png" alt></p>
+<p>对于传入的<code>$v</code>，没有做过滤或转义，若在传参之前依然没有过滤或转义则会出现SQL注入</p>
+<p>全局搜索，然而并没有调用这两个函数</p>
+<h2 id="getip"><a href="#getip" class="headerlink" title="getip()"></a>getip()</h2><p>In Line 504</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/09.07.getip.png" alt></p>
+<p>在PHP5之后，从<code>$_SERVER</code>获取的Header字段不受GPC影响，所以可能存在注入</p>
+<p>不过在全局搜索函数之后，发现全部都被<code>htmlentitdm()</code>函数过滤</p>
+<p><img src="/2019/09/06/Demososo-CMS-code-audit/09.08.result.png" alt></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/05/Demososo-code-audit/" rel="next" title="'Demososo-code-audit'">
+                <i class="fa fa-chevron-left"></i> 'Demososo-code-audit'
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/06/iCMS-7-0-15-Code-Audit/" rel="prev" title="'iCMS-7.0.15-Code-Audit'">
+                'iCMS-7.0.15-Code-Audit' <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/cat.jpg" alt="chessur">
+            
+              <p class="site-author-name" itemprop="name">chessur</p>
+              <div class="site-description motion-element" itemprop="description">Freedom as Autonomy</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/ChireC" title="GitHub &rarr; https://github.com/ChireC" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-SQL-Injection"><span class="nav-text">1. SQL Injection</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Directory-Traversal"><span class="nav-text">2. Directory Traversal</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-安装过程配置文件写入"><span class="nav-text">3. 安装过程配置文件写入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-文件上传"><span class="nav-text">4. 文件上传</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#global-common-php"><span class="nav-text">global.common.php</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#zb-insert"><span class="nav-text">zb_insert()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zb-insertadv"><span class="nav-text">zb_insertadv()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unlinkdm"><span class="nav-text">unlinkdm()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#havesub"><span class="nav-text">havesub()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getip"><span class="nav-text">getip()</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chessur</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+  $('.highlight').not('.gist .highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('Copied');
+        else $(this).text('Copy failed');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('Copy');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+</body>
+</html>
