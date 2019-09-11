@@ -103,14 +103,14 @@
 <meta property="og:site_name" content="Emerald Dream">
 <meta property="og:description" content="1. WebShell1.1 什么是ShellShell是系统的用户界面，提供了用户与内核进行交互操作的一种接口。它接收用户输入的命令并把它送入内核去执行。因为系统内核使我们不能直接操作的，shell就给我们提供了一个接口，通过shell我们可以把命令送入到内核。shell管理用户与操作系统之间的交互：等待你输入，向操作系统解释你的输入，并且处理各种各样的操作系统的输出结果。传统意义上的shell">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://chirec.github.io/2019/04/19/Upload-Files/04/19/Upload-Files/02.01.upload-files.png">
-<meta property="og:image" content="https://chirec.github.io/2019/04/19/Upload-Files/04/19/Upload-Files/02.02.Windows-NTFS.png">
-<meta property="og:image" content="https://chirec.github.io/2019/04/19/Upload-Files/04/19/Upload-Files/02.03.parsing.png">
-<meta property="og:updated_time" content="2019-07-10T09:26:11.977Z">
+<meta property="og:image" content="https://chirec.github.io/2019/04/19/Upload-Files/02.01.upload-files.png">
+<meta property="og:image" content="https://chirec.github.io/2019/04/19/Upload-Files/02.02.Windows-NTFS.png">
+<meta property="og:image" content="https://chirec.github.io/2019/04/19/Upload-Files/02.03.parsing.png">
+<meta property="og:updated_time" content="2019-09-10T14:01:00.128Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;文件上传总结&#39;">
 <meta name="twitter:description" content="1. WebShell1.1 什么是ShellShell是系统的用户界面，提供了用户与内核进行交互操作的一种接口。它接收用户输入的命令并把它送入内核去执行。因为系统内核使我们不能直接操作的，shell就给我们提供了一个接口，通过shell我们可以把命令送入到内核。shell管理用户与操作系统之间的交互：等待你输入，向操作系统解释你的输入，并且处理各种各样的操作系统的输出结果。传统意义上的shell">
-<meta name="twitter:image" content="https://chirec.github.io/2019/04/19/Upload-Files/04/19/Upload-Files/02.01.upload-files.png">
+<meta name="twitter:image" content="https://chirec.github.io/2019/04/19/Upload-Files/02.01.upload-files.png">
 
 
 
@@ -394,7 +394,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-10 17:26:11" itemprop="dateModified" datetime="2019-07-10T17:26:11+08:00">2019-07-10</time>
+                <time title="Modified: 2019-09-10 22:01:00" itemprop="dateModified" datetime="2019-09-10T22:01:00+08:00">2019-09-10</time>
               
             
           </span>
@@ -448,7 +448,7 @@
 <h2 id="3-2-Linux"><a href="#3-2-Linux" class="headerlink" title="3.2 Linux"></a>3.2 Linux</h2><p>不使用源码安装Apache就是最低权限</p>
 <h1 id="4-文件上传"><a href="#4-文件上传" class="headerlink" title="4. 文件上传"></a>4. 文件上传</h1><h2 id="4-1-文件上传原理"><a href="#4-1-文件上传原理" class="headerlink" title="4.1 文件上传原理"></a>4.1 文件上传原理</h2><p>在文件上传的功能处，若服务端脚本语言未对上传的文件进行严格验证和过滤，导致恶意用户上传恶意的脚本文件时，就有可能获取执行服务端命令的能力，这就是文件上传漏洞。</p>
 <p>文件上传漏洞对Web应用来说是一种非常严重的漏洞。一般情况下，Web应用都会允许用户上传一些文件，如头像、附件等信息，如果Web应用没有对用户上传的文件进行有效的检查过滤，那么恶意用户就会上传一句话木马等Webshell，从而达到控制Web网站的目的。</p>
-<img src="/2019/04/19/Upload-Files/04/19/Upload-Files/02.01.upload-files.png">
+<p><img src="/2019/04/19/Upload-Files/02.01.upload-files.png" alt></p>
 <h3 id="4-1-1-文件上传漏洞高危触发点"><a href="#4-1-1-文件上传漏洞高危触发点" class="headerlink" title="4.1.1 文件上传漏洞高危触发点"></a>4.1.1 文件上传漏洞高危触发点</h3><p>相册、头像上传<br>视频、照片分享<br>附件上传<br>文件管理器</p>
 <h2 id="4-2-文件上传检测"><a href="#4-2-文件上传检测" class="headerlink" title="4.2 文件上传检测"></a>4.2 文件上传检测</h2><h3 id="4-2-1-JavaScript检测"><a href="#4-2-1-JavaScript检测" class="headerlink" title="4.2.1 JavaScript检测"></a>4.2.1 JavaScript检测</h3><p>检测文件后缀名<br>绕过方式：<br>1.关闭JS解析<br>2.在白名单中加上要上传的文件类型<br>3.破坏JS<br>4.拦截数据包修改文件名</p>
 <p>upload-labs第1关</p>
@@ -459,7 +459,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test.php:.jpg</span><br></pre></td></tr></table></figure>
 <p>第二步上传时，修改文件名为test.&gt;&gt;&gt;或test.&lt;</p>
 <h6 id="4-2-3-2-3-2-Windows文件名特性-upload-labs第6-7-9关"><a href="#4-2-3-2-3-2-Windows文件名特性-upload-labs第6-7-9关" class="headerlink" title="4.2.3.2.3.2 Windows文件名特性(upload-labs第6,7,9关)"></a>4.2.3.2.3.2 Windows文件名特性(upload-labs第6,7,9关)</h6><p>点或者空格结尾的文件再保存的时候，点和空格会被删除<br>shell.php.(空格)或shell.php&nbsp;(空格)</p>
-<h6 id="4-2-3-2-3-3-Windows文件流-NTFS-特性-upload-labs第8关"><a href="#4-2-3-2-3-3-Windows文件流-NTFS-特性-upload-labs第8关" class="headerlink" title="4.2.3.2.3.3 Windows文件流(NTFS)特性(upload-labs第8关)"></a>4.2.3.2.3.3 Windows文件流(NTFS)特性(upload-labs第8关)</h6><img src="/2019/04/19/Upload-Files/04/19/Upload-Files/02.02.Windows-NTFS.png">
+<h6 id="4-2-3-2-3-3-Windows文件流-NTFS-特性-upload-labs第8关"><a href="#4-2-3-2-3-3-Windows文件流-NTFS-特性-upload-labs第8关" class="headerlink" title="4.2.3.2.3.3 Windows文件流(NTFS)特性(upload-labs第8关)"></a>4.2.3.2.3.3 Windows文件流(NTFS)特性(upload-labs第8关)</h6><p><img src="/2019/04/19/Upload-Files/02.02.Windows-NTFS.png" alt></p>
 <h5 id="4-2-3-2-4-使用00截断-PHP版本"><a href="#4-2-3-2-4-使用00截断-PHP版本" class="headerlink" title="4.2.3.2.4 使用00截断 (PHP版本)"></a>4.2.3.2.4 使用00截断 (PHP版本)</h5><p>php版本要小于5.3.4，5.3.4及以上已经修复该问题；<br>magic_quotes_gpc需要为OFF状态，在PHP.ini中修改</p>
 <h6 id="4-2-3-2-4-1-path通过GET方式传输-upload-lab第11关"><a href="#4-2-3-2-4-1-path通过GET方式传输-upload-lab第11关" class="headerlink" title="4.2.3.2.4.1 path通过GET方式传输(upload-lab第11关)"></a>4.2.3.2.4.1 path通过GET方式传输(upload-lab第11关)</h6><p>抓包<br>修改URL，在末尾加上可以解析的扩展名和%00进行截断</p>
 <h6 id="4-2-3-2-4-2-path通过POST方式传输-upload-lab第12关"><a href="#4-2-3-2-4-2-path通过POST方式传输-upload-lab第12关" class="headerlink" title="4.2.3.2.4.2 path通过POST方式传输(upload-lab第12关)"></a>4.2.3.2.4.2 path通过POST方式传输(upload-lab第12关)</h6><p>抓包-在保存路径后添加可以解析的扩展名并使用%00进行截断，要将%00选中Ctrl+Shift+U转为十六进制。</p>
@@ -576,7 +576,7 @@
 <p>竞争条件发生在多个线程同时访问同一个共享代码、变量、文件等没有进行锁操作或者同步操作的场景中。</p>
 <p>upload-labs第17关</p>
 <h3 id="4-2-7-写提交按钮"><a href="#4-2-7-写提交按钮" class="headerlink" title="4.2.7 写提交按钮"></a>4.2.7 写提交按钮</h3><p>有些上传页面没有提交按钮，可以用HTML编辑From表单，添加提交按钮</p>
-<h1 id="5-解析漏洞"><a href="#5-解析漏洞" class="headerlink" title="5. 解析漏洞"></a>5. 解析漏洞</h1><img src="/2019/04/19/Upload-Files/04/19/Upload-Files/02.03.parsing.png">
+<h1 id="5-解析漏洞"><a href="#5-解析漏洞" class="headerlink" title="5. 解析漏洞"></a>5. 解析漏洞</h1><p><img src="/2019/04/19/Upload-Files/02.03.parsing.png" alt></p>
 <h2 id="5-1-IIS"><a href="#5-1-IIS" class="headerlink" title="5.1 IIS"></a>5.1 IIS</h2><h3 id="5-1-1-版本：5-x-6-x"><a href="#5-1-1-版本：5-x-6-x" class="headerlink" title="5.1.1 版本：5.x-6.x"></a>5.1.1 版本：5.x-6.x</h3><p>目录解析漏洞：以asp/asa等结尾的目录，其目录下的文件均可被解析</p>
 <p>文件名解析漏洞：以.asp/asa;*.png或;*.jpg结尾的文件均可被解析</p>
 <p>IIS应用层漏洞：以asa、cer、cdx结尾的文件均可被解析</p>

